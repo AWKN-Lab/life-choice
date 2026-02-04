@@ -9,9 +9,10 @@ interface NavbarProps {
   onLoginClick: () => void;
   onLogoutClick: () => void;
   isAuthenticated: boolean;
+  userInfoUpdated?: number;
 }
 
-export default function Navbar({ scrolled, onStartClick, onLoginClick, onLogoutClick, isAuthenticated }: NavbarProps) {
+export default function Navbar({ scrolled, onStartClick, onLoginClick, onLogoutClick, isAuthenticated, userInfoUpdated }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // 获取用户信息
@@ -21,9 +22,10 @@ export default function Navbar({ scrolled, onStartClick, onLoginClick, onLogoutC
   const navLinks = [
     { label: '首页', href: '#hero' },
     { label: '决策模型', href: '#about' },
-    { label: '算法原理', href: '#readings' },
-    { label: '案例库', href: '#how-it-works' },
-    { label: '博客', href: '#blog' },
+    { label: '解读场景', href: '#readings' },
+    { label: '解读指南', href: '#how-it-works' },
+    { label: '命理智慧', href: '#blog' },
+    { label: '用户评价', href: '#testimonials' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -124,21 +126,10 @@ export default function Navbar({ scrolled, onStartClick, onLoginClick, onLogoutC
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 glass border-t border-[#efaf5a]/20">
             <div className="py-4 px-6 space-y-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                  className="block text-white/70 hover:text-[#efaf5a] transition-colors py-2"
-                >
-                  {link.label}
-                </a>
-              ))}
-              
               {/* 用户信息和登录/登出按钮 */}
               {isAuthenticated ? (
-                <div className="pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-3 mb-4">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#efaf5a] to-[#f3c039] flex items-center justify-center">
                       <User className="w-4 h-4 text-black" />
                     </div>

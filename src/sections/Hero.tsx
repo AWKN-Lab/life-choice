@@ -63,7 +63,7 @@ export default function Hero({ onStartClick }: HeroProps) {
 
             {/* 副标题 */}
             <p 
-              className={`text-lg md:text-xl text-white/70 max-w-lg leading-relaxed transition-all duration-1000 delay-800 ${
+              className={`text-base md:text-lg text-white/70 max-w-lg leading-relaxed transition-all duration-1000 delay-800 ${
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
               }`}
             >
@@ -81,9 +81,6 @@ export default function Hero({ onStartClick }: HeroProps) {
                   开启人生外挂
                   <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </span>
-              </a>
-              <a href="#about" className="btn-secondary">
-                查看演示 Demo
               </a>
             </div>
 

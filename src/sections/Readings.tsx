@@ -76,15 +76,6 @@ export default function Readings() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* 头部 */}
         <div className="text-center mb-16">
-          <div 
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#efaf5a]/30 bg-[#efaf5a]/10 mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            <Sparkles className="w-4 h-4 text-[#efaf5a]" />
-            <span className="text-sm text-[#efaf5a] tracking-wider">决策模型</span>
-          </div>
-          
           <h2 
             className={`font-display text-4xl md:text-5xl text-white mb-4 transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

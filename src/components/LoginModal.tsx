@@ -40,33 +40,44 @@ export default function LoginModal({ isOpen, onClose, defaultTab = 'login' }: Lo
       setIsLoading(false);
       
       if (activeTab === 'login') {
-        // 初始化管理员积分
-        initializeAdminPoints();
-        
-        // 检查每日登录奖励
-        const loginReward = checkDailyLoginReward();
-        
         if (formData.email === ADMIN_EMAIL && formData.password === ADMIN_PASSWORD) {
-          const pointsAfterReward = getPointsData().balance;
-          alert(`管理员登录成功！欢迎回来，院长LAY。\n\n🎁 每日登录奖励：+${loginReward.points} 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n管理员拥有无限积分，可免费使用所有功能。`);
+          // 先设置用户信息
           localStorage.setItem('userRole', 'admin');
           localStorage.setItem('userEmail', formData.email);
+          
+          // 初始化管理员积分
+          initializeAdminPoints();
+          
+          // 检查每日登录奖励
+          const loginReward = checkDailyLoginReward();
+          const pointsAfterReward = getPointsData().balance;
+          
+          alert(`管理员登录成功！欢迎回来，院长LAY。\n\n🎁 每日登录奖励：+${loginReward.points} 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n管理员初始积分：10000分，使用功能需要扣除积分。`);
           setPointsInfo(getPointsData());
           onClose();
         } else {
-          const pointsAfterReward = getPointsData().balance;
-          alert(`登录成功！欢迎加入AWKN LAB。\n\n🎁 每日登录奖励：+${loginReward.points} 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n使用积分可以：\n• 与院长LAY对话（100积分/次）\n• 其他会员权益功能`);
+          // 先设置用户信息
           localStorage.setItem('userRole', 'user');
           localStorage.setItem('userEmail', formData.email);
+          
+          // 检查每日登录奖励
+          const loginReward = checkDailyLoginReward();
+          const pointsAfterReward = getPointsData().balance;
+          
+          alert(`登录成功！欢迎加入AWKN LAB。\n\n🎁 每日登录奖励：+${loginReward.points} 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n使用积分可以：\n• 与院长LAY对话（100积分/次）\n• 其他会员权益功能`);
           setPointsInfo(getPointsData());
           onClose();
         }
       } else {
-          addPoints(1000, 'register', '注册赠送');
-          const pointsAfterReward = getPointsData().balance;
-          alert(`注册成功！欢迎加入AWKN LAB。\n\n🎁 新人礼包已发放：\n• 积分 +1000\n• 每日签到 +100 积分\n• 充值 1元 = 500 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n使用积分可以：\n• 与院长LAY对话（100积分/次）\n• 其他会员权益功能`);
+          // 先设置用户信息
           localStorage.setItem('userRole', 'user');
           localStorage.setItem('userEmail', formData.email);
+          
+          // 再添加积分
+          addPoints(1000, 'register', '注册赠送');
+          const pointsAfterReward = getPointsData().balance;
+          
+          alert(`注册成功！欢迎加入AWKN LAB。\n\n🎁 新人礼包已发放：\n• 积分 +1000\n• 每日签到 +100 积分\n• 充值 1元 = 500 积分\n\n当前积分：${formatPoints(pointsAfterReward)}\n\n使用积分可以：\n• 与院长LAY对话（100积分/次）\n• 其他会员权益功能`);
           setPointsInfo(getPointsData());
           onClose();
         }

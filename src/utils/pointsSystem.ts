@@ -142,15 +142,15 @@ export function initializeAdminPoints() {
   const userEmail = localStorage.getItem('userEmail');
   if (userEmail === ADMIN_EMAIL) {
     const data: PointsData = {
-      balance: 999999999,
+      balance: 10000,
       history: [{
-        amount: 999999999,
+        amount: 10000,
         type: 'admin',
         reason: '管理员初始积分',
         timestamp: Date.now()
       }],
       lastLogin: Date.now(),
-      dailyStreak: 999
+      dailyStreak: 1
     };
     
     localStorage.setItem(getPointsKey(), JSON.stringify(data));

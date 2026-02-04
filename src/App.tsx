@@ -31,6 +31,7 @@ function App() {
   // 认证相关状态
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userInfoUpdated, setUserInfoUpdated] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,6 +94,8 @@ function App() {
   const handleAuthComplete = () => {
     setIsAuthenticated(true);
     setShowLoginModal(false);
+    // 更新用户信息状态，触发Navbar重新渲染
+    setUserInfoUpdated(prev => prev + 1);
   };
 
   // 处理登录按钮点击
@@ -118,6 +121,7 @@ function App() {
         onLoginClick={handleLoginClick}
         onLogoutClick={handleLogoutClick}
         isAuthenticated={isAuthenticated}
+        userInfoUpdated={userInfoUpdated}
       />
       
       {/* 主内容 */}

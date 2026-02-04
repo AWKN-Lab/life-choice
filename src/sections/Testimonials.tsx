@@ -56,6 +56,7 @@ export default function Testimonials() {
 
   return (
     <section
+      id="testimonials"
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >

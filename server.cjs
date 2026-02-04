@@ -1,14 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // 千问API配置
-const QIANWEN_API_KEY = 'sk-5f8534271a1446419de43abb12e3820e0f85b3-88c1b59d012d';
-const QIANWEN_API_URL = 'https://api.qianwen.com/v1/chat/completions';
+const QIANWEN_API_KEY = process.env.DASHSCOPE_API_KEY || '';
+const QIANWEN_APP_ID = process.env.QIANWEN_APP_ID || '69c2a3dd1d354752a238de25470c3699';
+const QIANWEN_API_URL = process.env.QIANWEN_API_URL || 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation';
 
 // 天干地支定义
 const TIAN_GAN = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
@@ -449,22 +451,35 @@ app.post('/api/decision-analysis', async (req, res) => {
     
     console.log('收到请求:', { birthInfo, userBazi, userQuestion });
     
-    // 1. 根据八字计算四个内容
-    const fourAspects = calculateFourAspects(userBazi);
+    // 1. 确保有userBazi
+    let finalUserBazi = userBazi;
+    if (!finalUserBazi && birthInfo) {
+      console.log('从birthInfo计算userBazi');
+      finalUserBazi = calculateBazi(birthInfo);
+    }
     
-    // 2. 计算高光日历
-    const highlightDays = calculateHighlightDays(userBazi);
+    if (!finalUserBazi) {
+      throw new Error('缺少userBazi或birthInfo参数');
+    }
     
-    // 3. 如果用户有问题，调用千问AI
+    console.log('使用的userBazi:', finalUserBazi);
+    
+    // 2. 根据八字计算四个内容
+    const fourAspects = calculateFourAspects(finalUserBazi);
+    
+    // 3. 计算高光日历
+    const highlightDays = calculateHighlightDays(finalUserBazi);
+    
+    // 4. 如果用户有问题，调用千问AI
     let aiAnswer = null;
     if (userQuestion && userQuestion.trim()) {
       console.log('调用千问AI，问题:', userQuestion);
-      aiAnswer = await callQianwenAI(userQuestion, userBazi);
+      aiAnswer = await callQianwenAI(userQuestion, finalUserBazi);
     }
     
-    // 4. 返回完整响应
+    // 5. 返回完整响应
     const response = {
-      userBazi,
+      userBazi: finalUserBazi,
       fourAspects,
       highlightDays,
       aiAnswer
@@ -481,8 +496,14 @@ app.post('/api/decision-analysis', async (req, res) => {
 
 // 调用千问AI
 async function callQianwenAI(question, userBazi) {
+  // 检查API密钥是否存在
+  if (!QIANWEN_API_KEY) {
+    console.log('API密钥未配置，返回基于八字格局的通用建议');
+    return `🎯 决策建议：\n\n根据您的八字命盘（${userBazi.yearPillar} ${userBazi.monthPillar} ${userBazi.dayPillar} ${userBazi.hourPillar}），${userBazi.dayMaster}（${userBazi.dayMasterWuxing}）日主，${userBazi.pattern}。\n\n人生决策红绿灯：${userBazi.pattern.includes('财官') ? '绿灯' : '绿灯'} 🟢\n\n建议：${userBazi.pattern.includes('财官') ? '抓住机会，积极行动' : '稳步推进，保持耐心'}。\n\nAI服务暂时不可用，以上为基于八字格局的通用建议。`;
+  }
+
   try {
-    const systemPrompt = `你是一个专业的八字命理分析师和人生决策顾问。请基于以下八字命盘信息，为用户提供专业的决策建议：
+    const prompt = `你是一个专业的八字命理分析师和人生决策顾问。请基于以下八字命盘信息，为用户提供专业的决策建议：
 
 八字命盘信息：
 - 年柱：${userBazi.yearPillar}
@@ -491,6 +512,8 @@ async function callQianwenAI(question, userBazi) {
 - 时柱：${userBazi.hourPillar}
 - 日主：${userBazi.dayMaster}（${userBazi.dayMasterWuxing}）
 - 格局：${userBazi.pattern}
+
+用户问题：${question}
 
 请从以下角度分析用户的问题：
 1. 基于八字命理原理，分析问题的命理背景
@@ -501,18 +524,13 @@ async function callQianwenAI(question, userBazi) {
 
     const response = await axios.post(QIANWEN_API_URL, {
       model: 'qwen-plus',
-      messages: [
-        {
-          role: 'system',
-          content: systemPrompt
-        },
-        {
-          role: 'user',
-          content: question
-        }
-      ],
-      temperature: 0.7,
-      max_tokens: 1000
+      input: {
+        prompt: prompt
+      },
+      parameters: {
+        max_new_tokens: 1000,
+        temperature: 0.7
+      }
     }, {
       headers: {
         'Authorization': `Bearer ${QIANWEN_API_KEY}`,
@@ -520,13 +538,14 @@ async function callQianwenAI(question, userBazi) {
       }
     });
     
-    const answer = response.data.choices[0]?.message?.content || '抱歉，我暂时无法回答您的问题。';
+    const answer = response.data.output?.text || '抱歉，我暂时无法回答您的问题。';
     console.log('千问AI回答:', answer);
     return answer;
     
   } catch (error) {
     console.error('千问AI调用错误:', error.response?.data || error.message);
-    return '抱歉，AI服务暂时不可用。请稍后再试。';
+    // 提供更友好的错误信息
+    return `🎯 决策建议：\n\n根据您的八字命盘（${userBazi.yearPillar} ${userBazi.monthPillar} ${userBazi.dayPillar} ${userBazi.hourPillar}），${userBazi.dayMaster}（${userBazi.dayMasterWuxing}）日主，${userBazi.pattern}。\n\n人生决策红绿灯：${userBazi.pattern.includes('财官') ? '绿灯' : '绿灯'} 🟢\n\n建议：${userBazi.pattern.includes('财官') ? '抓住机会，积极行动' : '稳步推进，保持耐心'}。\n\nAI服务暂时不可用，以上为基于八字格局的通用建议。`;
   }
 }
 

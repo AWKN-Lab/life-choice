@@ -3,6 +3,7 @@ import { X, Calendar, User, Sparkles } from 'lucide-react';
 import { calculateBazi, calculateHighlightDays } from '../lib/bazi-engine';
 import type { BirthInfo, UserBazi } from '../lib/bazi-engine';
 import { getPointsData, reducePoints } from '../utils/pointsSystem';
+import { getDecisionAnalysis } from '../services/apiService';
 import PointsInsufficientModal from './PointsInsufficientModal';
 
 interface BirthInputModalProps {
@@ -36,12 +37,16 @@ export default function BirthInputModal({ onClose, onSubmit, onGoRegister }: Bir
       // 步骤1：只计算八字，进入步骤2
       setLoading(true);
       try {
+        console.log('开始计算八字，参数:', birthInfo);
         const userBazi = calculateBazi(birthInfo);
+        console.log('计算八字成功:', userBazi);
         setUserBazi(userBazi);
         setStep(2);
       } catch (error) {
         console.error('计算八字失败:', error);
-        alert('计算八字失败，请重试');
+        console.error('错误详情:', error.message);
+        console.error('错误堆栈:', error.stack);
+        alert('计算八字失败，请重试\n错误信息: ' + (error.message || String(error)));
       } finally {
         setLoading(false);
       }
@@ -66,62 +71,47 @@ export default function BirthInputModal({ onClose, onSubmit, onGoRegister }: Bir
       
       setLoading(true);
       try {
-        // 1. 前端计算八字和高光日
-        const userBazi = calculateBazi(birthInfo);
-        const highlightDays = calculateHighlightDays(userBazi);
+        // 调用后端API获取决策分析
+        const data = await getDecisionAnalysis(birthInfo, userQuestion);
         
-        // 2. 模拟AI回答（实际项目中需要在后端调用DashScope API）
-        let aiAnswer = '';
-        try {
-          // 这里应该是后端API调用，现在使用模拟数据
-          // 注意：dashscope是Node.js包，不能在浏览器中直接使用
-          // 实际项目中需要在后端实现API调用
-          aiAnswer = '根据您的八字分析，2026年是您事业发展的重要年份。建议您在贵人相助的月份主动寻求合作机会，在财运亨通的时期谨慎投资，同时保持良好的人际关系。';
-          setAiAnswer(aiAnswer);
-        } catch (error) {
-          console.error('API调用失败:', error);
-          aiAnswer = '抱歉，AI服务暂时不可用。请稍后再试。';
-          setAiAnswer(aiAnswer);
-        }
+        // 更新AI回答状态
+        setAiAnswer(data.aiAnswer);
         
-        // 3. 构建响应数据
-        const data = {
-          userBazi,
-          highlightDays,
-          fourAspects: {
-            career: highlightDays.filter(day => day.type === '事业高升').length,
-            wealth: highlightDays.filter(day => day.type === '财运亨通').length,
-            noble: highlightDays.filter(day => day.type === '贵人相助').length,
-            romance: highlightDays.filter(day => day.type === '桃花盛开').length
-          },
-          aiAnswer
-        };
-        
+        // 提交数据并关闭模态框
         onSubmit(data);
         onClose();
       } catch (error) {
-        console.error('处理数据失败:', error);
-        const aiAnswer = '抱歉，服务暂时不可用。请稍后再试。';
-        setAiAnswer(aiAnswer);
+        console.error('API调用失败:', error);
         
-        // 即使出错也计算八字和高光日
-        const userBazi = calculateBazi(birthInfo);
-        const highlightDays = calculateHighlightDays(userBazi);
-        
-        const data = {
-          userBazi,
-          highlightDays,
-          fourAspects: {
-            career: highlightDays.filter(day => day.type === '事业高升').length,
-            wealth: highlightDays.filter(day => day.type === '财运亨通').length,
-            noble: highlightDays.filter(day => day.type === '贵人相助').length,
-            romance: highlightDays.filter(day => day.type === '桃花盛开').length
-          },
-          aiAnswer
-        };
-        
-        onSubmit(data);
-        onClose();
+        // 出错时回退到本地计算
+        try {
+          // 1. 前端计算八字和高光日
+          const userBazi = calculateBazi(birthInfo);
+          const highlightDays = calculateHighlightDays(userBazi);
+          
+          // 2. 使用默认AI回答
+          const aiAnswer = '抱歉，AI服务暂时不可用。请稍后再试。';
+          setAiAnswer(aiAnswer);
+          
+          // 3. 构建响应数据
+          const data = {
+            userBazi,
+            highlightDays,
+            fourAspects: {
+              career: highlightDays.filter(day => day.type === '事业高升').length,
+              wealth: highlightDays.filter(day => day.type === '财运亨通').length,
+              noble: highlightDays.filter(day => day.type === '贵人相助').length,
+              romance: highlightDays.filter(day => day.type === '桃花盛开').length
+            },
+            aiAnswer
+          };
+          
+          onSubmit(data);
+          onClose();
+        } catch (localError) {
+          console.error('本地计算也失败:', localError);
+          alert('计算失败，请重试\n错误信息: ' + (localError.message || String(localError)));
+        }
       } finally {
         setLoading(false);
       }
@@ -200,8 +190,8 @@ export default function BirthInputModal({ onClose, onSubmit, onGoRegister }: Bir
               <Sparkles className="w-6 h-6 text-black" />
             </div>
             <div>
-              <h3 className="font-display text-2xl text-white">开启你的2026高光之旅</h3>
-              <p className="text-white/50 text-sm">输入出生信息，获取专属高光日历</p>
+              <h3 className="font-display text-2xl text-white">开启人生外挂</h3>
+              <p className="text-white/50 text-sm">在不确定的世界寻找确定性</p>
             </div>
           </div>
 

@@ -3,6 +3,10 @@
  * 基于子平真诠简化逻辑，计算用户2026年全年高光日
  */
 
+// 导入lunar-javascript库
+import * as lunar from 'lunar-javascript';
+const { Solar, Lunar } = lunar;
+
 // 天干地支定义
 const TIAN_GAN = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
 const DI_ZHI = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
@@ -66,144 +70,48 @@ export interface BirthInfo {
   minute: number;
   isLunar: boolean;
   gender: 'male' | 'female';
+  longitude?: number; // 经度，用于真太阳时计算
 }
 
 /**
- * 阳历转农历（简化算法）
+ * 阳历转农历（使用lunar-javascript库）
  */
 export function solarToLunar(year: number, month: number, day: number): { year: number; month: number; day: number } {
-  // 简化处理，实际应用需要更复杂的农历转换
-  return { year, month, day };
+  const solar = Solar.fromYmd(year, month, day);
+  const lunar = solar.getLunar();
+  return {
+    year: lunar.getYear(),
+    month: lunar.getMonth(),
+    day: lunar.getDay()
+  };
 }
 
 /**
- * 计算年柱
- */
-function getYearPillar(year: number): string {
-  const ganIndex = (year - 4) % 10;
-  const zhiIndex = (year - 4) % 12;
-  return TIAN_GAN[ganIndex] + DI_ZHI[zhiIndex];
-}
-
-/**
- * 计算月柱（考虑节气）
- * 农历月份与节气关系：寅月始于立春(2/4)，卯月始于清明(4/4)，等等
- */
-function getMonthPillar(year: number, month: number, day: number): string {
-  // 节气日期（阳历月/日）和对应农历地支索引
-  const solarTerms = [
-    { month: 2, day: 4, zhiIndex: 2 },  // 立春 - 寅月
-    { month: 3, day: 6, zhiIndex: 3 },  // 惊蛰 - 卯月
-    { month: 4, day: 5, zhiIndex: 4 },  // 清明 - 辰月
-    { month: 5, day: 5, zhiIndex: 5 },  // 立夏 - 巳月
-    { month: 6, day: 6, zhiIndex: 6 },  // 芒种 - 午月
-    { month: 7, day: 7, zhiIndex: 7 },  // 小暑 - 未月
-    { month: 8, day: 7, zhiIndex: 8 },  // 立秋 - 申月
-    { month: 9, day: 8, zhiIndex: 9 },  // 白露 - 酉月
-    { month: 10, day: 8, zhiIndex: 10 }, // 寒露 - 戌月
-    { month: 11, day: 7, zhiIndex: 11 }, // 立冬 - 亥月
-    { month: 12, day: 7, zhiIndex: 0 },  // 大雪 - 子月
-    { month: 1, day: 5, zhiIndex: 1 }   // 小寒 - 丑月
-  ];
-
-  // 确定月份的地支索引（根据节气）
-  let zhiIndex = month % 12; // 默认
-  for (const term of solarTerms) {
-    if (month === term.month) {
-      if (day < term.day) {
-        // 节气前，用上一个月的地支
-        zhiIndex = (term.zhiIndex - 1 + 12) % 12;
-      } else {
-        // 节气后，用当前月的地支
-        zhiIndex = term.zhiIndex;
-      }
-      break;
-    }
-  }
-
-  // 计算月干（根据年干和月的相对位置）
-  const yearGanIndex = (year - 4) % 10;
-  const monthGanStart = (yearGanIndex % 5) * 2;
-  const monthGanIndex = (monthGanStart + zhiIndex) % 10;
-  
-  return TIAN_GAN[monthGanIndex] + DI_ZHI[zhiIndex];
-}
-
-/**
- * 计算日柱
- * 使用更准确的计算方法
- */
-function getDayPillar(year: number, month: number, day: number): string {
-  // 已知1983年5月20日是戊申日
-  if (year === 1983 && month === 5 && day === 20) {
-    return "戊申";
-  }
-  
-  // 已知1994年11月21日是辛亥日
-  if (year === 1994 && month === 11 && day === 21) {
-    return "辛亥";
-  }
-  
-  // 已知2011年3月20日是甲戌日
-  if (year === 2011 && month === 3 && day === 20) {
-    return "甲戌";
-  }
-  
-  // 对于其他日期，使用通用计算方法
-  // 基准：2000年1月1日是甲子日
-  const baseDate = new Date(2000, 0, 1);
-  const baseDayGanIndex = 0; // 甲
-  const baseDayZhiIndex = 0; // 子
-  
-  const targetDate = new Date(year, month - 1, day);
-  const diffDays = Math.floor((targetDate.getTime() - baseDate.getTime()) / (1000 * 60 * 60 * 24));
-  
-  const ganIndex = (baseDayGanIndex + diffDays) % 10;
-  const zhiIndex = (baseDayZhiIndex + diffDays) % 12;
-  
-  return TIAN_GAN[ganIndex < 0 ? ganIndex + 10 : ganIndex] + DI_ZHI[zhiIndex < 0 ? zhiIndex + 12 : zhiIndex];
-}
-
-/**
- * 计算时柱
- * 时干根据日干推导，时支根据小时推导
- */
-function getHourPillar(dayGan: string, hour: number): string {
-  const dayGanIndex = TIAN_GAN.indexOf(dayGan);
-  
-  // 时支计算：子(23-1)、丑(1-3)、寅(3-5)、卯(5-7)、辰(7-9)、巳(9-11)、
-  // 午(11-13)、未(13-15)、申(15-17)、酉(17-19)、戌(19-21)、亥(21-23)
-  let hourZhiIndex: number;
-  if (hour === 0) {
-    hourZhiIndex = 0; // 子时
-  } else if (hour >= 23) {
-    hourZhiIndex = 11; // 亥时
-  } else {
-    hourZhiIndex = Math.floor((hour + 1) / 2) % 12;
-  }
-  
-  // 时干根据日干和时支推导（五行相生）
-  const hourGanStart = (dayGanIndex % 5) * 2;
-  const hourGanIndex = (hourGanStart + hourZhiIndex) % 10;
-  
-  return TIAN_GAN[hourGanIndex] + DI_ZHI[hourZhiIndex];
-}
-
-/**
- * 计算用户命盘
+ * 计算用户命盘（使用lunar-javascript库）
  */
 export function calculateBazi(birthInfo: BirthInfo): UserBazi {
-  let { year, month, day, hour } = birthInfo;
+  const { year, month, day, hour, minute, isLunar, longitude = 120 } = birthInfo;
   
-  // 如果是农历，转换为阳历（简化处理）
-  if (birthInfo.isLunar) {
-    // 实际应用需要农历转阳历
+  let solar: Solar;
+  
+  if (isLunar) {
+    // 农历转换为阳历
+    const lunar = Lunar.fromYmd(year, month, day);
+    solar = lunar.getSolar();
+  } else {
+    // 直接使用阳历
+    solar = Solar.fromYmdHms(year, month, day, hour, minute, 0);
   }
   
-  const yearPillar = getYearPillar(year);
-  const monthPillar = getMonthPillar(year, month, day);
-  const dayPillar = getDayPillar(year, month, day);
-  const hourPillar = getHourPillar(dayPillar[0], hour);
+  // 直接获取农历信息（暂时不使用真太阳时，避免API错误）
+  const lunar = solar.getLunar();
+  const eightChar = lunar.getEightChar();
+  
+  // 获取四柱
+  const yearPillar = eightChar.getYear();
+  const monthPillar = eightChar.getMonth();
+  const dayPillar = eightChar.getDay();
+  const hourPillar = eightChar.getTime();
   
   const dayMaster = dayPillar[0];
   const dayMasterWuxing = WUXING[dayMaster as keyof typeof WUXING];
@@ -319,6 +227,16 @@ function generateMonthHighlights(
   }
   
   return highlights;
+}
+
+/**
+ * 计算日柱（使用lunar-javascript库）
+ */
+function getDayPillar(year: number, month: number, day: number): string {
+  const solar = Solar.fromYmd(year, month, day);
+  const lunar = solar.getLunar();
+  const eightChar = lunar.getEightChar();
+  return eightChar.getDay();
 }
 
 /**
