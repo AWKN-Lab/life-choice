@@ -8,6 +8,10 @@
       "dest": "server.cjs"
     },
     {
+      "src": "\\/(.*\\.(?:js|css|png|jpg|jpeg|gif|svg|webp|ico|json))$",
+      "dest": "/$1"
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },
