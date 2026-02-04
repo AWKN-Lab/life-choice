@@ -606,16 +606,22 @@ app.get('/', (req, res) => {
   `);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`========================================`);
-  console.log(`人生决策红绿灯 API服务器`);
-  console.log(`========================================`);
-  console.log(`服务器运行在 http://localhost:${PORT}`);
-  console.log(`API端点: POST http://localhost:${PORT}/api/decision-analysis`);
-  console.log(`健康检查: GET http://localhost:${PORT}/api/health`);
-  console.log(`千问API已配置`);
-  console.log(`八字计算算法已集成`);
-  console.log(`四个内容计算已启用`);
-  console.log(`========================================`);
-});
+// 导出Express应用供Vercel Serverless Functions使用
+module.exports = app;
+
+// 本地开发环境启动服务器
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`========================================`);
+    console.log(`人生决策红绿灯 API服务器`);
+    console.log(`========================================`);
+    console.log(`服务器运行在 http://localhost:${PORT}`);
+    console.log(`API端点: POST http://localhost:${PORT}/api/decision-analysis`);
+    console.log(`健康检查: GET http://localhost:${PORT}/api/health`);
+    console.log(`千问API已配置`);
+    console.log(`八字计算算法已集成`);
+    console.log(`四个内容计算已启用`);
+    console.log(`========================================`);
+  });
+}
