@@ -1,0 +1,1216 @@
+From 813cc095029f368017a9e15340a1dbbf4f67fcdd Mon Sep 17 00:00:00 2001
+From: 10919669 <10919669@qq.com>
+Date: Mon, 13 Jul 2026 23:34:03 +0800
+Subject: [PATCH 2/3] =?UTF-8?q?feat(kline-v2):=20Phase=201=20=E6=95=B4?=
+ =?UTF-8?q?=E6=94=B9=E9=97=AD=E7=8E=AF=E5=AE=8C=E6=88=90=20-=20=E7=AE=97?=
+ =?UTF-8?q?=E6=B3=95=E5=A5=91=E7=BA=A6+=E5=9B=9B=E7=BA=BF+=E8=8A=82?=
+ =?UTF-8?q?=E7=82=B9=E8=A7=84=E5=88=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Step 1.1/1.2/1.6: 36个月固定算法契约 + asOfDate 必填 + source=calculated
+
+Step 1.3: 精确流月算法 (lunar-javascript 替换近似算法)
+
+Step 1.4: 四条独立曲线 (overall+career+wealth+relationship)
+
+Step 1.5: 节点规则约束 (间隔>=2月、每类<=3、confidence>=0.65)
+
+Step 1.7: 20 个黄金案例验证通过
+
+验证: 6 套件 / 143 测试全 PASS / Gate P1: V1-V7 全部 PASS
+---
+ .../consult/kline-v2-bridge.service.spec.ts   |  27 ++
+ .../kline-tide/__tests__/golden-cases.spec.ts |  18 +-
+ .../kline-calculation.engine.spec.ts          |  72 +++---
+ .../kline-tide/kline-calculation.engine.ts    | 241 ++++++++++++------
+ .../kline-tide/kline-decision.service.spec.ts |  43 ++--
+ .../src/kline-tide/kline-decision.service.ts  |  32 ++-
+ .../src/kline-tide/kline-snapshot.service.ts  |  38 ++-
+ .../src/kline-tide/kline-v2.controller.ts     |  35 ++-
+ .../api-server/src/kline-tide/v2-contracts.ts |  35 ++-
+ .../src/types/lunar-javascript.d.ts           |  25 ++
+ apps/AWKN-LABlife/shared-types/kline-v2.ts    |   9 +-
+ 11 files changed, 408 insertions(+), 167 deletions(-)
+ create mode 100644 apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/types/lunar-javascript.d.ts
+
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/kline-v2-bridge.service.spec.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/kline-v2-bridge.service.spec.ts
+index 3cd3c8d0cc6354645bdd623fa5b1508570569923..ad62f9271471edbe7694b87feed38464bdb2ded2 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/kline-v2-bridge.service.spec.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/kline-v2-bridge.service.spec.ts
+@@ -40,6 +40,33 @@ function makeViewModel(overrides?: Partial<KlineProductViewModelV2>): KlineProdu
+           confidence: 0.75,
+         },
+       ],
++      career: [
++        {
++          monthLabel: '2026-07',
++          value: 70,
++          evidenceRefs: ['career:rule:guan-xing'],
++          source: 'calculated',
++          confidence: 0.75,
++        },
++      ],
++      wealth: [
++        {
++          monthLabel: '2026-07',
++          value: 68,
++          evidenceRefs: ['wealth:rule:cai-xing'],
++          source: 'calculated',
++          confidence: 0.75,
++        },
++      ],
++      relationship: [
++        {
++          monthLabel: '2026-07',
++          value: 72,
++          evidenceRefs: ['relationship:rule:spouse-star'],
++          source: 'calculated',
++          confidence: 0.75,
++        },
++      ],
+     },
+     windows: {
+       opportunity: [
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/__tests__/golden-cases.spec.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/__tests__/golden-cases.spec.ts
+index c6aa58f21a97aad117f5aa3ca5bf3710f7ff188f..d2d62e647fa2bc9da214bcb3b4a2e382db9f8eaf 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/__tests__/golden-cases.spec.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/__tests__/golden-cases.spec.ts
+@@ -9,7 +9,7 @@
+  *   1. 20 个样例全部能成功 calculate
+  *   2. 同一样例两次调用 → factorsHash 完全一致
+  *   3. 不同样例 → 不同 factorsHash（除非输入确实相同）
+- *   4. 所有 bar.source === 'real'（V2 链路无 simulated）
++ *   4. 所有 bar.source === 'calculated'（V2 链路无 simulated）
+  *   5. 覆盖 5 个类别：jieqi/dayun-change/liunian-transition/shichen-uncertain/missing-data
+  */
+ 
+@@ -24,8 +24,7 @@ interface GoldenCase {
+   input: {
+     birthYear: number;
+     viewMode?: 'life' | 'decade' | 'yearMonth';
+-    currentYear?: number;
+-    rangeYears?: number;
++    asOfDate: Date;
+     birthTime?: string;
+     baziResult: any;
+   };
+@@ -50,6 +49,13 @@ function loadGoldenCases(): GoldenCase[] {
+   }
+   const content = fs.readFileSync(filePath, 'utf-8');
+   const data: GoldenFile = JSON.parse(content);
++  // Phase 1 Step 1.1: 为所有样例注入 asOfDate（JSON 文件可能未包含此字段）
++  const defaultAsOfDate = new Date('2026-07-13T12:00:00Z');
++  for (const c of data.cases) {
++    if (!c.input.asOfDate) {
++      c.input.asOfDate = defaultAsOfDate;
++    }
++  }
+   return data.cases;
+ }
+ 
+@@ -108,15 +114,15 @@ describe('P1-10: 黄金样例确定性验证', () => {
+   });
+ 
+   // ============================================================
+-  // 3. V2 链路标识：source='real'
++  // 3. V2 链路标识：source='calculated'
+   // ============================================================
+ 
+   describe('V2 链路标识（C3）', () => {
+     for (const c of cases) {
+-      it(`${c.id} → 所有 bar.source === 'real'`, () => {
++      it(`${c.id} → 所有 bar.source === 'calculated'`, () => {
+         const r = engine.calculate(c.input);
+         for (const bar of r.bars) {
+-          expect(bar.source).toBe('real');
++          expect(bar.source).toBe('calculated');
+         }
+       });
+     }
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.spec.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.spec.ts
+index 8588b118cd37c53f0f270616eeb307190c42f7ef..1c60c9df96984c159dd6d464e3aae182ca09208b 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.spec.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.spec.ts
+@@ -7,7 +7,7 @@ import { BaziFullResult } from '../calc-engine/bazi-calculator-wrapper';
+  * 核心契约（必须通过）：
+  *   C1: 同输入两次调用 → bars 完全一致（确定性）
+  *   C2: 同输入两次调用 → factorsHash 完全一致
+- *   C3: 所有 bar.source === 'real'（V2 链路无 simulated）
++ *   C3: 所有 bar.source === 'calculated'（V2 链路，Phase 1 Step 1.6 修正）
+  *   C4: meta.engineVersion === 'v2.0.0'
+  *   C5: 15 因子均出现于 meta.factorBreakdowns
+  *   C6: close 落在 [20, 95] 区间
+@@ -69,9 +69,8 @@ describe('P1-02: KlineCalculationEngine', () => {
+     return {
+       baziResult: makeBaziFixture(),
+       birthYear: 1984,
+-      viewMode: 'life',
+-      currentYear: 2026,
+-      rangeYears: 80,
++      viewMode: 'yearMonth', // Phase 1 Step 1.2: 默认 36 个月
++      asOfDate: new Date('2026-07-13T12:00:00Z'), // Phase 1 Step 1.1: 固定日期确保确定性
+       birthTime: '12:30',
+       ...opts,
+     };
+@@ -97,7 +96,7 @@ describe('P1-02: KlineCalculationEngine', () => {
+     });
+ 
+     it('每条 bar 的 factorsHash 稳定且唯一（同批不重复）', () => {
+-      const input = makeInput({ viewMode: 'life', rangeYears: 20 });
++      const input = makeInput({ viewMode: 'life' });
+       const r = engine.calculate(input);
+       const hashes = r.bars.map((b) => b.factorsHash);
+       const unique = new Set(hashes);
+@@ -105,16 +104,13 @@ describe('P1-02: KlineCalculationEngine', () => {
+       expect(unique.size).toBeGreaterThanOrEqual(Math.floor(hashes.length * 0.95));
+     });
+ 
+-    it('calculatedAt 不同不影响 factorsHash（仅时间戳变，因子不变）', () => {
++    it('相同 asOfDate → 相同 calculatedAt 和 factorsHash（确定性验证）', () => {
++      // Phase 1: asOfDate 是固定输入，calculatedAt = asOfDate.toISOString()
++      // 相同 asOfDate → 相同 calculatedAt 和 factorsHash
+       const input = makeInput();
+       const r1 = engine.calculate(input);
+-      // 等待 10ms 让 ISO 时间戳变化
+-      const start = Date.now();
+-      while (Date.now() - start < 10) {
+-        // busy-wait 10ms
+-      }
+       const r2 = engine.calculate(input);
+-      expect(r1.meta.calculatedAt).not.toBe(r2.meta.calculatedAt);
++      expect(r1.meta.calculatedAt).toBe(r2.meta.calculatedAt);
+       expect(r1.meta.factorsHash).toBe(r2.meta.factorsHash);
+     });
+   });
+@@ -123,9 +119,9 @@ describe('P1-02: KlineCalculationEngine', () => {
+   // C3 + C4: V2 链路标识
+   // ============================================================
+   describe('V2 链路标识（C3 + C4）', () => {
+-    it('所有 bar.source === "real"', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
+-      expect(r.bars.every((b) => b.source === 'real')).toBe(true);
++    it('所有 bar.source === "calculated"', () => {
++      const r = engine.calculate(makeInput());
++      expect(r.bars.every((b) => b.source === 'calculated')).toBe(true);
+     });
+ 
+     it('meta.engineVersion === "v2.0.0"', () => {
+@@ -139,7 +135,7 @@ describe('P1-02: KlineCalculationEngine', () => {
+   // ============================================================
+   describe('15 因子完整性（C5）', () => {
+     it('每条 breakdown 含全部 15 因子', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 10 }));
++      const r = engine.calculate(makeInput());
+       expect(r.meta.factorBreakdowns.length).toBe(r.bars.length);
+       for (const bd of r.meta.factorBreakdowns) {
+         expect(bd).toHaveProperty('daYun');
+@@ -169,7 +165,7 @@ describe('P1-02: KlineCalculationEngine', () => {
+   // ============================================================
+   describe('数据区间合法（C6 + C7）', () => {
+     it('close 落在 [20, 95]', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       for (const b of r.bars) {
+         expect(b.close).toBeGreaterThanOrEqual(20);
+         expect(b.close).toBeLessThanOrEqual(95);
+@@ -184,7 +180,7 @@ describe('P1-02: KlineCalculationEngine', () => {
+     });
+ 
+     it('trend ∈ 4 态', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 50 }));
++      const r = engine.calculate(makeInput());
+       const validTrends = ['上升', '调整', '蓄势', '转折'];
+       for (const b of r.bars) {
+         expect(validTrends).toContain(b.trend);
+@@ -192,7 +188,7 @@ describe('P1-02: KlineCalculationEngine', () => {
+     });
+ 
+     it('high >= max(open, close) 且 low <= min(open, close)', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 20 }));
++      const r = engine.calculate(makeInput());
+       for (const b of r.bars) {
+         expect(b.high).toBeGreaterThanOrEqual(Math.max(b.open, b.close));
+         expect(b.low).toBeLessThanOrEqual(Math.min(b.open, b.close));
+@@ -223,8 +219,8 @@ describe('P1-02: KlineCalculationEngine', () => {
+           { index: 0, gan: '壬', zhi: '戌', full: '壬戌', startAge: 5, endAge: 14 },
+         ],
+       });
+-      const r1 = engine.calculate({ baziResult: bazi1, birthYear: 1984, rangeYears: 20 });
+-      const r2 = engine.calculate({ baziResult: bazi2, birthYear: 1984, rangeYears: 20 });
++      const r1 = engine.calculate({ baziResult: bazi1, birthYear: 1984, asOfDate: new Date('2026-07-13T12:00:00Z') });
++      const r2 = engine.calculate({ baziResult: bazi2, birthYear: 1984, asOfDate: new Date('2026-07-13T12:00:00Z') });
+       expect(r1.meta.factorsHash).not.toBe(r2.meta.factorsHash);
+     });
+   });
+@@ -233,24 +229,24 @@ describe('P1-02: KlineCalculationEngine', () => {
+   // 视图模式行为
+   // ============================================================
+   describe('视图模式', () => {
+-    it('life 模式：rangeYears=80 → 81 条 bar（0-80 岁）', () => {
+-      const r = engine.calculate(makeInput({ viewMode: 'life', rangeYears: 80 }));
+-      expect(r.bars.length).toBe(81);
++    it('life 模式：固定 101 条 bar（0-100 岁）', () => {
++      const r = engine.calculate(makeInput({ viewMode: 'life' }));
++      expect(r.bars.length).toBe(101);
+       expect(r.bars[0].age).toBe(0);
+-      expect(r.bars[80].age).toBe(80);
++      expect(r.bars[100].age).toBe(100);
+     });
+ 
+-    it('yearMonth 模式：rangeYears=2 → 25 条 bar（0-2 岁 × 12 月 + 1）', () => {
+-      const r = engine.calculate(makeInput({ viewMode: 'yearMonth', rangeYears: 2 }));
+-      // 0,1,2 岁 = 3 年 × 12 月 = 36 bar
++    it('yearMonth 模式：固定 36 条 bar（从 asOfDate 当前月起 36 个月）', () => {
++      const r = engine.calculate(makeInput({ viewMode: 'yearMonth' }));
++      // Phase 1: yearMonth 固定 36 个月，从 asOfDate 当前月起
+       expect(r.bars.length).toBe(36);
+-      expect(r.bars[0].month).toBe(1);
+-      expect(r.bars[0].age).toBe(0);
++      expect(r.bars[0].month).toBe(7); // asOfDate 2026-07
++      expect(r.bars[0].age).toBe(42); // 2026-1984=42
+     });
+ 
+     it('decade 模式：返回当前大运范围内的 bar', () => {
+-      const r = engine.calculate(makeInput({ viewMode: 'decade', currentYear: 2026, birthYear: 1984 }));
+-      // 2026 - 1984 = 42 岁 → 落在 35-44 大运
++      const r = engine.calculate(makeInput({ viewMode: 'decade', birthYear: 1984 }));
++      // asOfDate 2026-07, 2026 - 1984 = 42 岁 → 落在 35-44 大运
+       expect(r.bars.length).toBe(10); // 35-44 共 10 年
+       for (const b of r.bars) {
+         expect(b.age).toBeGreaterThanOrEqual(35);
+@@ -264,14 +260,14 @@ describe('P1-02: KlineCalculationEngine', () => {
+   // ============================================================
+   describe('边界条件', () => {
+     it('birthTime 缺省时仍能正常计算', () => {
+-      const r = engine.calculate(makeInput({ birthTime: undefined, rangeYears: 10 }));
+-      expect(r.bars.length).toBe(11);
++      const r = engine.calculate(makeInput({ birthTime: undefined }));
++      expect(r.bars.length).toBe(36); // 默认 yearMonth 模式 36 个月
+     });
+ 
+     it('八字缺 shenSha 字段时仍能正常计算', () => {
+       const bazi = makeBaziFixture({ shenSha: undefined as any });
+-      const r = engine.calculate({ baziResult: bazi, birthYear: 1984, rangeYears: 10 });
+-      expect(r.bars.length).toBe(11);
++      const r = engine.calculate({ baziResult: bazi, birthYear: 1984, asOfDate: new Date('2026-07-13T12:00:00Z') });
++      expect(r.bars.length).toBe(36); // 默认 yearMonth 模式 36 个月
+       // 应触发 scoreShenSha 的 try-catch，返回 50（中性）
+       const bd = r.meta.factorBreakdowns[0];
+       expect(bd.shenSha).toBe(50);
+@@ -279,8 +275,8 @@ describe('P1-02: KlineCalculationEngine', () => {
+ 
+     it('大运不存在时仍能计算（daYun 因子取默认 55）', () => {
+       const bazi = makeBaziFixture({ daYun: [] });
+-      const r = engine.calculate({ baziResult: bazi, birthYear: 1984, rangeYears: 5 });
+-      expect(r.bars.length).toBe(6);
++      const r = engine.calculate({ baziResult: bazi, birthYear: 1984, asOfDate: new Date('2026-07-13T12:00:00Z') });
++      expect(r.bars.length).toBe(36); // 默认 yearMonth 模式 36 个月
+       const bd = r.meta.factorBreakdowns[0];
+       expect(bd.daYun).toBe(55);
+     });
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.ts
+index 63527d3ce4455e5b139a9aabb84c474e095338fa..2e6b8295e86141c123a52c49c25188c44c00acf9 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-calculation.engine.ts
+@@ -6,8 +6,10 @@
+ //   1. 纯函数式：相同输入 → 相同输出（无 Math.random、无 Date.now、无 DB）
+ //   2. 无副作用：不写入 DB、不调用 LLM、不读取 env
+ //   3. 因子可验证：每条 bar 附 factorsHash，支持黄金样例比对（P1-10）
+-//   4. 数据源标识：所有 bar 的 source 恒为 'real'（V2 链路）
++//   4. 数据源标识：所有 bar 的 source 恒为 'calculated'（V2 链路，Phase 1 修正）
+ //   5. 不依赖 _seededRandom：V2 链路禁用 seed 生成（P1-03）
++//   6. 36 个月契约：yearMonth 模式固定生成当前月起 36 个数据点（Phase 1 Step 1.2）
++//   7. 无隐式时间：所有时间来源于 asOfDate 输入（Phase 1 Step 1.1）
+ //
+ // 依赖：BaziFullResult（八字完整结果）、birthYear、可选 birthTime
+ // 输出：KlineCalculationResult（bars[] + meta）
+@@ -21,7 +23,8 @@ import {
+   WUXING_TIANGAN,
+   WUXING_DIZHI,
+ } from '../calc-engine/bazi-engine/core/bazi-data.service';
+-import type { KlineDataSource } from './kline-tide.service';
++import type { KlineDataSource } from './v2-contracts';
++import { Lunar } from 'lunar-javascript';
+ 
+ /** V2 视图模式（删除 'monthly'，合并到 'yearMonth'） */
+ export type KlineViewModeV2 = 'life' | 'decade' | 'yearMonth';
+@@ -46,9 +49,15 @@ export interface KlineBarV2 {
+   low: number;
+   /** 收盘价（= 综合评分；V2 替代 KlinePoint.score 与 ParsedKlineBar.close） */
+   close: number;
++  /** 事业线分值（Phase 1 Step 1.4：四条独立曲线之一，基于官星旺衰） */
++  career: number;
++  /** 财富线分值（Phase 1 Step 1.4：基于财星+食伤生财） */
++  wealth: number;
++  /** 情感线分值（Phase 1 Step 1.4：基于配偶星+桃花神煞，男财女官） */
++  relationship: number;
+   /** 波动率 */
+   volatility: number;
+-  /** 数据源标识 — V2 链路恒为 'real' */
++  /** 数据源标识 — V2 链路恒为 'calculated'（Phase 1 Step 1.6 修正） */
+   source: KlineDataSource;
+   /** V2 趋势标签（4 态，待 P1-05 映射为 5 态 V2 阶段） */
+   trend: '上升' | '调整' | '蓄势' | '转折';
+@@ -86,14 +95,14 @@ export interface KlineFactorBreakdown {
+ export interface KlineCalculationInput {
+   baziResult: BaziFullResult;
+   birthYear: number;
+-  /** 视图模式，默认 'life' */
++  /** 视图模式，默认 'yearMonth'（V2 主链路 36 个月，Phase 1 Step 1.2） */
+   viewMode?: KlineViewModeV2;
+-  /** 当前年，默认 new Date().getFullYear() */
+-  currentYear?: number;
+-  /** 范围年数，默认 100（V2 放宽为 number，原 80|100 限制过于严格） */
+-  rangeYears?: number;
++  /** 计算基准日期（必填，替代原 currentYear 隐式读取，Phase 1 Step 1.1） */
++  asOfDate: Date;
+   /** 出生时辰（影响 confidence，不影响 close） */
+   birthTime?: string;
++  /** 性别（Phase 1 Step 1.4：影响 relationship 线计算，男财女官，默认 male） */
++  gender?: 'male' | 'female';
+ }
+ 
+ /** 计算输出 */
+@@ -104,7 +113,10 @@ export interface KlineCalculationResult {
+     calculatedAt: string;
+     factorsHash: string;
+     viewMode: KlineViewModeV2;
++    /** 36 个月契约：yearMonth 模式固定 3（36 个月）；life/decade 模式 100 */
+     rangeYears: number;
++    /** 36 个月契约：yearMonth 模式固定 36 */
++    monthCount?: number;
+     factorBreakdowns: KlineFactorBreakdown[];
+   };
+ }
+@@ -119,22 +131,32 @@ export class KlineCalculationEngine {
+ 
+   /**
+    * 计算 K 线数据（纯确定性）
+-   * 同一 baziResult + birthYear + options → 完全一致的 bars + meta.factorsHash
++   * 同一 baziResult + birthYear + asOfDate → 完全一致的 bars + meta.factorsHash
++   *
++   * Phase 1 修正：
++   * - Step 1.1：asOfDate 必填，删除 new Date() 隐式读取
++   * - Step 1.2：yearMonth 模式固定 36 个月（当前月起）
++   * - Step 1.6：source 改为 'calculated'
+    */
+   calculate(input: KlineCalculationInput): KlineCalculationResult {
+-    const viewMode = input.viewMode ?? 'life';
+-    const currentYear = input.currentYear ?? new Date().getFullYear();
+-    const rangeYears = input.rangeYears ?? 100;
++    const viewMode = input.viewMode ?? 'yearMonth';
++    const currentYear = input.asOfDate.getFullYear();
++    const gender = input.gender ?? 'male';
+ 
+     let bars: KlineBarV2[];
+     let factorBreakdowns: KlineFactorBreakdown[];
++    let rangeYears: number;
++    let monthCount: number | undefined;
+ 
+     if (viewMode === 'yearMonth') {
+-      const r = this.generateYearMonthBars(input.baziResult, input.birthYear, currentYear, rangeYears, input.birthTime);
++      // V2 主链路：当前月起固定 36 个月（Phase 1 Step 1.2）
++      const r = this.generateYearMonthBars(input.baziResult, input.birthYear, input.asOfDate, input.birthTime, gender);
+       bars = r.bars;
+       factorBreakdowns = r.breakdowns;
++      rangeYears = 3;
++      monthCount = 36;
+     } else if (viewMode === 'decade') {
+-      const full = this.generateLifeBars(input.baziResult, input.birthYear, currentYear, rangeYears, input.birthTime);
++      const full = this.generateLifeBars(input.baziResult, input.birthYear, currentYear, 100, input.birthTime, gender);
+       const currentAge = Math.max(0, currentYear - input.birthYear);
+       const currentDaYun = this.findDaYun(input.baziResult, currentAge);
+       if (currentDaYun) {
+@@ -150,11 +172,13 @@ export class KlineCalculationEngine {
+           return age >= currentAge && age < currentAge + 10;
+         });
+       }
++      rangeYears = 100;
+     } else {
+       // life
+-      const full = this.generateLifeBars(input.baziResult, input.birthYear, currentYear, rangeYears, input.birthTime);
++      const full = this.generateLifeBars(input.baziResult, input.birthYear, currentYear, 100, input.birthTime, gender);
+       bars = full.bars;
+       factorBreakdowns = full.meta.factorBreakdowns;
++      rangeYears = 100;
+     }
+ 
+     const factorsHash = this.hashFactors(input, bars, factorBreakdowns);
+@@ -163,10 +187,11 @@ export class KlineCalculationEngine {
+       bars,
+       meta: {
+         engineVersion: ENGINE_VERSION,
+-        calculatedAt: new Date().toISOString(),
++        calculatedAt: input.asOfDate.toISOString(),
+         factorsHash,
+         viewMode,
+         rangeYears,
++        monthCount,
+         factorBreakdowns,
+       },
+     };
+@@ -182,6 +207,7 @@ export class KlineCalculationEngine {
+     currentYear: number,
+     rangeYears: number,
+     birthTime?: string,
++    gender: 'male' | 'female' = 'male',
+   ): KlineCalculationResult {
+     const bars: KlineBarV2[] = [];
+     const breakdowns: KlineFactorBreakdown[] = [];
+@@ -192,6 +218,7 @@ export class KlineCalculationEngine {
+       const liuNian = this.findLiuNian(baziResult, year);
+       const breakdown = this.scoreParts(baziResult, daYun, liuNian);
+       const close = this.clamp(Math.round(this.weightedScore(breakdown)), 20, 95);
++      const lineScores = this.computeLineScores(breakdown, gender);
+       const previousClose = bars.length > 0 ? bars[bars.length - 1].close : close;
+       const volatility = this.clamp(
+         Math.round(7 + Math.abs(close - previousClose) * 0.55 + Math.abs(breakdown.relation - 50) / 6),
+@@ -209,10 +236,13 @@ export class KlineCalculationEngine {
+         high: this.clamp(Math.max(open, close) + volatility, 10, 100),
+         low: this.clamp(Math.min(open, close) - volatility, 10, 100),
+         close,
++        career: lineScores.career,
++        wealth: lineScores.wealth,
++        relationship: lineScores.relationship,
+         volatility,
+-        source: 'real',
++        source: 'calculated',
+         trend: this.trendFromScore(close, open, close),
+-        factorsHash: this.hashSingleBar(age, year, undefined, liuNian, daYun?.full || '', breakdown),
++        factorsHash: this.hashSingleBar(age, year, undefined, liuNian, daYun?.full || '', breakdown, lineScores),
+         isCurrentYear: year === currentYear,
+         isDaYunChange: !!daYun && age === daYun.startAge,
+       });
+@@ -232,53 +262,75 @@ export class KlineCalculationEngine {
+     };
+   }
+ 
++  /**
++   * 生成 36 个月月度数据（V2 主链路，Phase 1 Step 1.2）
++   *
++   * 契约：
++   * - 从 asOfDate 当前月起，固定生成 36 个数据点
++   * - source 恒为 'calculated'（Phase 1 Step 1.6）
++   * - 无 new Date() 隐式读取（Phase 1 Step 1.1）
++   */
+   private generateYearMonthBars(
+     baziResult: BaziFullResult,
+     birthYear: number,
+-    currentYear: number,
+-    rangeYears: number,
++    asOfDate: Date,
+     birthTime?: string,
++    gender: 'male' | 'female' = 'male',
+   ): { bars: KlineBarV2[]; breakdowns: KlineFactorBreakdown[] } {
+     const bars: KlineBarV2[] = [];
+     const breakdowns: KlineFactorBreakdown[] = [];
+-    const prevLife = this.generateLifeBars(baziResult, birthYear, currentYear, 0, birthTime);
++
++    // 初始 previousClose：用出生年（age=0）的 close 作为起点
++    const currentYear = asOfDate.getFullYear();
++    const prevLife = this.generateLifeBars(baziResult, birthYear, currentYear, 0, birthTime, gender);
+     let previousClose = prevLife.bars[0]?.close ?? 60;
+ 
+-    for (let age = 0; age <= rangeYears; age++) {
+-      const year = birthYear + age;
++    // 36 个月契约：从 asOfDate 当前月起
++    const startYear = asOfDate.getFullYear();
++    const startMonth = asOfDate.getMonth() + 1; // 1-12
++    const MONTH_COUNT = 36;
++
++    for (let i = 0; i < MONTH_COUNT; i++) {
++      // 计算第 i 个月的年月
++      const totalMonths = (startYear * 12 + (startMonth - 1)) + i;
++      const year = Math.floor(totalMonths / 12);
++      const month = (totalMonths % 12) + 1;
++      const age = Math.max(0, year - birthYear);
+       const daYun = this.findDaYun(baziResult, age);
+ 
+-      for (let month = 1; month <= 12; month++) {
+-        const monthGanZhi = this.getApproxFlowMonthGanZhi(year, month);
+-        const breakdown = this.scoreParts(baziResult, daYun, monthGanZhi);
+-        const close = this.clamp(Math.round(this.weightedScore(breakdown)), 20, 95);
+-        const volatility = this.clamp(
+-          Math.round(5 + Math.abs(close - previousClose) * 0.45 + Math.abs(breakdown.relation - 50) / 8),
+-          4,
+-          18,
+-        );
+-        const open = this.clamp(Math.round(previousClose * 0.55 + close * 0.45), 10, 100);
+-
+-        bars.push({
+-          age,
+-          year,
+-          month,
+-          ganZhi: monthGanZhi,
+-          daYun: daYun?.full || '',
+-          open,
+-          high: this.clamp(Math.max(open, close) + volatility, 10, 100),
+-          low: this.clamp(Math.min(open, close) - volatility, 10, 100),
+-          close,
+-          volatility,
+-          source: 'real',
+-          trend: this.trendFromScore(close, open, close),
+-          factorsHash: this.hashSingleBar(age, year, month, monthGanZhi, daYun?.full || '', breakdown),
+-          isCurrentYear: year === currentYear && month === new Date().getMonth() + 1,
+-          isDaYunChange: !!daYun && age === daYun.startAge && month === 1,
+-        });
+-        breakdowns.push(breakdown);
+-        previousClose = close;
+-      }
++      const monthGanZhi = this.getFlowMonthGanZhi(year, month);
++      const breakdown = this.scoreParts(baziResult, daYun, monthGanZhi);
++      const close = this.clamp(Math.round(this.weightedScore(breakdown)), 20, 95);
++      const lineScores = this.computeLineScores(breakdown, gender);
++      const volatility = this.clamp(
++        Math.round(5 + Math.abs(close - previousClose) * 0.45 + Math.abs(breakdown.relation - 50) / 8),
++        4,
++        18,
++      );
++      const open = this.clamp(Math.round(previousClose * 0.55 + close * 0.45), 10, 100);
++
++      bars.push({
++        age,
++        year,
++        month,
++        ganZhi: monthGanZhi,
++        daYun: daYun?.full || '',
++        open,
++        high: this.clamp(Math.max(open, close) + volatility, 10, 100),
++        low: this.clamp(Math.min(open, close) - volatility, 10, 100),
++        close,
++        career: lineScores.career,
++        wealth: lineScores.wealth,
++        relationship: lineScores.relationship,
++        volatility,
++        source: 'calculated',
++        trend: this.trendFromScore(close, open, close),
++        factorsHash: this.hashSingleBar(age, year, month, monthGanZhi, daYun?.full || '', breakdown, lineScores),
++        isCurrentYear: i === 0, // 第 0 个为当前月
++        isDaYunChange: !!daYun && age === daYun.startAge && month === 1,
++      });
++      breakdowns.push(breakdown);
++      previousClose = close;
+     }
+ 
+     return { bars, breakdowns };
+@@ -316,6 +368,47 @@ export class KlineCalculationEngine {
+     };
+   }
+ 
++  /**
++   * 计算三线分值（Phase 1 Step 1.4：四条独立曲线）
++   *
++   * 基于 KlineFactorBreakdown.shiShen 的十神字段计算 career/wealth/relationship 三个独立分值。
++   *
++   * 规则参考 KlineScoringService（kline-scoring.service.ts）：
++   *  - career：官星旺衰（zhengGuan + qiSha）+ 日主强弱（baseChart）
++   *  - wealth：财星旺衰（zhengCai + pianCai）+ 食伤生财（shiShen + shangGuan）
++   *  - relationship：配偶星（男财女官）+ 刑冲合害（xingChongHeHai）
++   *
++   * @param breakdown 15 因子完整快照
++   * @param gender 性别（影响 relationship 线计算，男财女官）
++   * @returns 三线分值（0-100）
++   */
++  private computeLineScores(
++    breakdown: KlineFactorBreakdown,
++    gender: 'male' | 'female',
++  ): { career: number; wealth: number; relationship: number } {
++    const { shiShen, baseChart, xingChongHeHai } = breakdown;
++
++    // 事业线：官星旺衰（zhengGuan + qiSha）+ 日主强弱（baseChart）
++    const guanScore = (shiShen.zhengGuan + shiShen.qiSha) / 2;
++    const careerRaw = 40 + guanScore * 0.4 + baseChart * 0.2;
++    const career = this.clamp(Math.round(careerRaw), 20, 95);
++
++    // 财富线：财星旺衰（zhengCai + pianCai）+ 食伤生财（shiShen + shangGuan）
++    const caiScore = (shiShen.zhengCai + shiShen.pianCai) / 2;
++    const shiShangScore = (shiShen.shiShen + shiShen.shangGuan) / 2;
++    const wealthRaw = 40 + caiScore * 0.35 + shiShangScore * 0.15 + baseChart * 0.1;
++    const wealth = this.clamp(Math.round(wealthRaw), 20, 95);
++
++    // 情感线：配偶星（男财女官）+ 刑冲合害
++    const spouseScore = gender === 'male'
++      ? (shiShen.zhengCai + shiShen.pianCai) / 2
++      : (shiShen.zhengGuan + shiShen.qiSha) / 2;
++    const relationshipRaw = 45 + spouseScore * 0.35 + xingChongHeHai * 0.2;
++    const relationship = this.clamp(Math.round(relationshipRaw), 20, 95);
++
++    return { career, wealth, relationship };
++  }
++
+   /** 15 因子加权（权重与 KlineGenerator.weightedScore 一致） */
+   private weightedScore(parts: KlineFactorBreakdown): number {
+     const base =
+@@ -592,24 +685,19 @@ export class KlineCalculationEngine {
+     return `${this.GAN[((offset % 10) + 10) % 10]}${this.ZHI[((offset % 12) + 12) % 12]}`;
+   }
+ 
+-  private getApproxFlowMonthGanZhi(year: number, month: number): string {
+-    const yearGan = this.getGanZhiYear(year)[0];
+-    const startByYearGan: Record<string, number> = {
+-      甲: 2,
+-      己: 2,
+-      乙: 4,
+-      庚: 4,
+-      丙: 6,
+-      辛: 6,
+-      丁: 8,
+-      壬: 8,
+-      戊: 0,
+-      癸: 0,
+-    };
+-    const zhiIndex = (month + 1) % 12;
+-    const monthOrderFromYin = (zhiIndex - 2 + 12) % 12;
+-    const ganIndex = ((startByYearGan[yearGan] || 0) + monthOrderFromYin) % 10;
+-    return `${this.GAN[ganIndex]}${this.ZHI[zhiIndex]}`;
++  /**
++   * 精确流月干支（Phase 1 Step 1.3 替换原 getApproxFlowMonthGanZhi）
++   *
++   * 改造前：基于年干推算起始 index 的近似算法
++   * 改造后：基于 lunar-javascript 的精确农历+节气计算
++   *
++   * 实现细节：用该月 15 号作为参考日期（避开月初节气边界），
++   * 调用 Lunar.getMonthInGanZhi() 获取精确流月干支。
++   */
++  private getFlowMonthGanZhi(year: number, month: number): string {
++    // 用 15 号作为参考日期，避开月初节气切换边界
++    const lunar = Lunar.fromDate(new Date(year, month - 1, 15));
++    return lunar.getMonthInGanZhi();
+   }
+ 
+   private getWeakestElement(baziResult: BaziFullResult): string {
+@@ -685,6 +773,7 @@ export class KlineCalculationEngine {
+     ganZhi: string,
+     daYun: string,
+     breakdown: KlineFactorBreakdown,
++    lineScores?: { career: number; wealth: number; relationship: number },
+   ): string {
+     const payload = JSON.stringify({
+       age,
+@@ -703,6 +792,7 @@ export class KlineCalculationEngine {
+         x: breakdown.xingChongHeHai,
+         p: breakdown.riskPenalty,
+       },
++      ls: lineScores ?? null,
+     });
+     return createHash('sha256').update(payload, 'utf8').digest('hex').slice(0, 16);
+   }
+@@ -720,10 +810,13 @@ export class KlineCalculationEngine {
+     const bazi = input.baziResult;
+     const payload = JSON.stringify({
+       ev: ENGINE_VERSION,
+-      vm: input.viewMode ?? 'life',
+-      ry: input.rangeYears ?? 100,
++      vm: input.viewMode ?? 'yearMonth',
++      ry: input.viewMode === 'yearMonth' ? 3 : 100, // Phase 1: 36 个月 = 3 年
++      mc: input.viewMode === 'yearMonth' ? 36 : undefined, // monthCount
++      ad: input.asOfDate.toISOString(), // asOfDate（Phase 1 Step 1.1）
+       by: input.birthYear,
+       bt: input.birthTime ?? null,
++      gd: input.gender ?? 'male', // Phase 1 Step 1.4：性别影响三线计算
+       bz: {
+         yg: bazi.yearPillar,
+         mg: bazi.monthPillar,
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.spec.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.spec.ts
+index 5b71ca147f6ed224b9d1363f2f1c75cd9e1fdf4f..a2cea8bbaf52ea8af726c3bc6599f5345219a146 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.spec.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.spec.ts
+@@ -38,9 +38,8 @@ describe('P1-05: KlineDecisionService V2', () => {
+     return {
+       baziResult: makeBazi(),
+       birthYear: 1984,
+-      viewMode: 'life',
+-      currentYear: 2026,
+-      rangeYears: 40,
++      viewMode: 'yearMonth', // Phase 1 Step 1.2: 默认 36 个月
++      asOfDate: new Date('2026-07-13T12:00:00Z'), // Phase 1 Step 1.1: 固定日期确保确定性
+       birthTime: '12:30',
+       ...opts,
+     };
+@@ -81,33 +80,33 @@ describe('P1-05: KlineDecisionService V2', () => {
+   // ============================================================
+   describe('D2: V2 阶段 5 态', () => {
+     it('stage 应 ∈ {accumulate, advance, turn, defend, unknown}', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       const validStages: V2Stage[] = ['accumulate', 'advance', 'turn', 'defend', 'unknown'];
+       expect(validStages).toContain(result.current.stage);
+     });
+ 
+     it('trend 应 ∈ {up, sideways, down, unknown}', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       expect(['up', 'sideways', 'down', 'unknown']).toContain(result.current.trend);
+     });
+ 
+     it('actionBias 应 ∈ {expand, probe, repair, hold}', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       expect(['expand', 'probe', 'repair', 'hold']).toContain(result.current.actionBias);
+     });
+ 
+     it('summary 应含年份与综合分', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       expect(result.current.summary).toMatch(/\d{4}/); // 含年份
+       expect(result.current.summary).toMatch(/综合分/);
+     });
+ 
+     it('action 应非空字符串', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 30 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       expect(result.current.action.length).toBeGreaterThan(0);
+     });
+@@ -118,7 +117,7 @@ describe('P1-05: KlineDecisionService V2', () => {
+   // ============================================================
+   describe('D3: 节点识别 + evidenceRefs 契约', () => {
+     it('所有节点 evidenceRefs 必须非空（契约 §3.2）', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 80 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       const allNodes = [
+         ...result.windows.opportunity,
+@@ -132,7 +131,7 @@ describe('P1-05: KlineDecisionService V2', () => {
+     });
+ 
+     it('所有节点 nodeType 应 ∈ {opportunity, risk, turn}', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 80 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       const allNodes = [
+         ...result.windows.opportunity,
+@@ -145,7 +144,7 @@ describe('P1-05: KlineDecisionService V2', () => {
+     });
+ 
+     it('所有节点 snapshotId 应与传入 snapshotId 一致', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 80 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-test-001', 2026);
+       const allNodes = [
+         ...result.windows.opportunity,
+@@ -158,7 +157,7 @@ describe('P1-05: KlineDecisionService V2', () => {
+     });
+ 
+     it('所有节点 confidence 应 ∈ [0, 1]', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 80 }));
++      const r = engine.calculate(makeInput());
+       const result = decision.decideV2(r.bars, 'snap-1', 2026);
+       const allNodes = [
+         ...result.windows.opportunity,
+@@ -172,7 +171,7 @@ describe('P1-05: KlineDecisionService V2', () => {
+     });
+ 
+     it('所有节点 ID 应稳定可重生成（同输入两次调用一致）', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 80 }));
++      const r = engine.calculate(makeInput());
+       const result1 = decision.decideV2(r.bars, 'snap-stable', 2026);
+       const result2 = decision.decideV2(r.bars, 'snap-stable', 2026);
+       const ids1 = [
+@@ -189,8 +188,10 @@ describe('P1-05: KlineDecisionService V2', () => {
+     });
+ 
+     it('数据不足时（<6 bars）应返回空节点', () => {
+-      const r = engine.calculate(makeInput({ rangeYears: 3 }));
+-      const result = decision.decideV2(r.bars, 'snap-1', 2026);
++      // Phase 1: 默认 yearMonth 模式产生 36 条 bar，需手动截取 <6 条测试数据不足场景
++      const r = engine.calculate(makeInput());
++      const fewBars = r.bars.slice(0, 3);
++      const result = decision.decideV2(fewBars, 'snap-1', 2026);
+       expect(result.windows.opportunity.length + result.windows.risk.length + result.windows.turn.length).toBe(0);
+     });
+   });
+@@ -200,15 +201,17 @@ describe('P1-05: KlineDecisionService V2', () => {
+   // ============================================================
+   describe('D4: 无 look-ahead bias', () => {
+     it('截断后的阶段判定应与全量同位置的判定一致', () => {
+-      const full = engine.calculate(makeInput({ rangeYears: 30 }));
++      // Phase 1 Step 1.3: 流月算法改为精确版，stage 判定结果会随算法变化
++      // 但 look-ahead bias 契约不变：截断数据判定的 stage 应与全量数据在截断范围内的判定一致
++      const full = engine.calculate(makeInput());
+       const truncated = full.bars.slice(0, 15);
+ 
+-      const resultFull = decision.decideV2(full.bars, 'snap-1', 2010);
+-      const resultTrunc = decision.decideV2(truncated, 'snap-1', 2010);
++      // currentYear/currentMonth 匹配 asOfDate（2026-07），确保定位在数据范围内
++      const resultFull = decision.decideV2(full.bars, 'snap-1', 2026, 7);
++      const resultTrunc = decision.decideV2(truncated, 'snap-1', 2026, 7);
+ 
+-      // 同一 2010 年位置（如果存在），阶段判定应一致
++      // 截断数据的 stage 应为 unknown（数据不足 6 条时不判定）或与全量一致
+       if (resultFull.current.stage !== 'unknown' && resultTrunc.current.stage !== 'unknown') {
+-        // 允许 trend 因窗口数据差异略有不同，但 stage 应一致
+         expect(resultFull.current.stage).toBe(resultTrunc.current.stage);
+       }
+     });
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.ts
+index 5d56a8a06e4c460350833f1f17e96ed039344ad4..adc21bf543b8418aee65bb4919566d805bac37c2 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-decision.service.ts
+@@ -102,7 +102,9 @@ const STAGE_THRESHOLD_HIGH = 70; // close >= 70 视为高位
+ const STAGE_THRESHOLD_LOW = 45; // close < 45 视为低位
+ const STAGE_TREND_WINDOW = 3; // 最近 3 条 bar 判定趋势
+ const NODE_DEVIATION_MULTIPLE = 1.2; // 偏离均值 1.2 倍标准差触发节点
+-const NODE_MIN_GAP_MONTHS = 6; // 同类型节点最小间隔月份
++const NODE_MIN_GAP_MONTHS = 2; // Phase 1 Step 1.5：同类型节点最小间隔月份（6→2）
++const NODE_MAX_PER_TYPE = 3; // Phase 1 Step 1.5：每类节点最大数量
++const NODE_MIN_CONFIDENCE = 0.65; // Phase 1 Step 1.5：节点最低置信度
+ const CONFIDENCE_BASE = 0.7; // 节点置信度基准
+ const CONFIDENCE_STEP = 0.05; // 每多一档偏离增加 0.05
+ 
+@@ -292,6 +294,10 @@ export class KlineDecisionService {
+     let lastOppMonth = -NODE_MIN_GAP_MONTHS;
+     let lastRiskMonth = -NODE_MIN_GAP_MONTHS;
+     let lastTurnMonth = -NODE_MIN_GAP_MONTHS;
++    // Phase 1 Step 1.5：每类节点数量计数
++    let oppCount = 0;
++    let riskCount = 0;
++    let turnCount = 0;
+ 
+     for (let i = 1; i < bars.length; i++) {
+       const bar = bars[i];
+@@ -303,8 +309,9 @@ export class KlineDecisionService {
+       const prevTrend = this.determineTrend(bars, i - 1);
+       const curTrend = this.determineTrend(bars, i);
+       if (
+-        (prevTrend === 'up' && curTrend === 'down') ||
+-        (prevTrend === 'down' && curTrend === 'up')
++        turnCount < NODE_MAX_PER_TYPE &&
++        ((prevTrend === 'up' && curTrend === 'down') ||
++        (prevTrend === 'down' && curTrend === 'up'))
+       ) {
+         if (monthIndex - lastTurnMonth >= NODE_MIN_GAP_MONTHS) {
+           nodes.push(this.buildNode(
+@@ -313,39 +320,50 @@ export class KlineDecisionService {
+             avg, stddev,
+           ));
+           lastTurnMonth = monthIndex;
++          turnCount++;
+         }
+       }
+ 
+       // 2. 机会节点：close > upperThreshold
+-      if (bar.close > upperThreshold && monthIndex - lastOppMonth >= NODE_MIN_GAP_MONTHS) {
++      if (oppCount < NODE_MAX_PER_TYPE && bar.close > upperThreshold && monthIndex - lastOppMonth >= NODE_MIN_GAP_MONTHS) {
+         nodes.push(this.buildNode(
+           bar, snapshotId, monthLabel, 'opportunity', bar.close,
+           `综合分 ${bar.close.toFixed(1)} 高于均值 ${avg.toFixed(1)} + ${NODE_DEVIATION_MULTIPLE}σ`,
+           avg, stddev,
+         ));
+         lastOppMonth = monthIndex;
++        oppCount++;
+       }
+ 
+       // 3. 风险节点：close < lowerThreshold
+-      if (bar.close < lowerThreshold && monthIndex - lastRiskMonth >= NODE_MIN_GAP_MONTHS) {
++      if (riskCount < NODE_MAX_PER_TYPE && bar.close < lowerThreshold && monthIndex - lastRiskMonth >= NODE_MIN_GAP_MONTHS) {
+         nodes.push(this.buildNode(
+           bar, snapshotId, monthLabel, 'risk', bar.close,
+           `综合分 ${bar.close.toFixed(1)} 低于均值 ${avg.toFixed(1)} - ${NODE_DEVIATION_MULTIPLE}σ`,
+           avg, stddev,
+         ));
+         lastRiskMonth = monthIndex;
++        riskCount++;
+       }
+     }
+ 
++    // Phase 1 Step 1.5：过滤掉置信度低于阈值的节点
++    const filteredNodes = nodes.filter(n => n.confidence >= NODE_MIN_CONFIDENCE);
++    if (filteredNodes.length < nodes.length) {
++      this.logger.log(
++        `[identifyNodes] Phase 1 Step 1.5：过滤 ${nodes.length - filteredNodes.length} 个低置信度节点（阈值 ${NODE_MIN_CONFIDENCE}）`,
++      );
++    }
++
+     // 校验所有节点 evidenceRefs 非空
+-    for (const node of nodes) {
++    for (const node of filteredNodes) {
+       const check = validateEvidenceRefs(node.evidenceRefs);
+       if (!check.valid) {
+         this.logger.warn(`[identifyNodes] 节点 ${node.id} evidenceRefs 无效: ${check.reason}`);
+       }
+     }
+ 
+-    return nodes;
++    return filteredNodes;
+   }
+ 
+   private buildNode(
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-snapshot.service.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-snapshot.service.ts
+index 1f89b4ab556ba2990fd0a5439fdcb70f9c4a921b..d184f74504d158e090124b02d60acf2b6d654eff 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-snapshot.service.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-snapshot.service.ts
+@@ -283,7 +283,7 @@ export class KlineSnapshotService {
+       ? this.formatMonthLabel(input.bars[input.bars.length - 1])
+       : `${currentYear}-12`;
+ 
+-    // series.overall：从 bars 转换为 KlinePoint
++    // series：从 bars 转换为 KlinePoint（Phase 1 Step 1.4：四条独立曲线）
+     const overall: KlinePoint[] = input.bars.map(bar => ({
+       monthLabel: this.formatMonthLabel(bar),
+       value: bar.close,
+@@ -292,6 +292,30 @@ export class KlineSnapshotService {
+       confidence: this.calculateBarConfidence(bar),
+     }));
+ 
++    const career: KlinePoint[] = input.bars.map(bar => ({
++      monthLabel: this.formatMonthLabel(bar),
++      value: bar.career,
++      evidenceRefs: this.buildBarEvidenceRefs(bar, 'career'),
++      source: 'calculated' as KlineDataSource,
++      confidence: this.calculateBarConfidence(bar),
++    }));
++
++    const wealth: KlinePoint[] = input.bars.map(bar => ({
++      monthLabel: this.formatMonthLabel(bar),
++      value: bar.wealth,
++      evidenceRefs: this.buildBarEvidenceRefs(bar, 'wealth'),
++      source: 'calculated' as KlineDataSource,
++      confidence: this.calculateBarConfidence(bar),
++    }));
++
++    const relationship: KlinePoint[] = input.bars.map(bar => ({
++      monthLabel: this.formatMonthLabel(bar),
++      value: bar.relationship,
++      evidenceRefs: this.buildBarEvidenceRefs(bar, 'relationship'),
++      source: 'calculated' as KlineDataSource,
++      confidence: this.calculateBarConfidence(bar),
++    }));
++
+     // windows：opportunity / risk
+     const opportunity: V2KlineNodeContract[] = input.decision.windows.opportunity.map(n => ({
+       id: n.id,
+@@ -348,6 +372,9 @@ export class KlineSnapshotService {
+       },
+       series: {
+         overall,
++        career,
++        wealth,
++        relationship,
+       },
+       windows: {
+         opportunity,
+@@ -450,11 +477,12 @@ export class KlineSnapshotService {
+     return `${bar.year}-01`;
+   }
+ 
+-  private buildBarEvidenceRefs(bar: KlineBarV2): string[] {
++  private buildBarEvidenceRefs(bar: KlineBarV2, line?: 'career' | 'wealth' | 'relationship'): string[] {
+     // 从 bar 构造最小证据引用（factor-registry.buildEvidenceRefs 已在 DecisionService 调用）
+-    const refs: string[] = [`bar:${bar.year}`];
+-    if (bar.isDaYunChange) refs.push(`dayun-change:${bar.daYun}`);
+-    if (bar.factorsHash) refs.push(`factors:${bar.factorsHash.slice(0, 8)}`);
++    const linePrefix = line ? `${line}:` : '';
++    const refs: string[] = [`${linePrefix}bar:${bar.year}`];
++    if (bar.isDaYunChange) refs.push(`${linePrefix}dayun-change:${bar.daYun}`);
++    if (bar.factorsHash) refs.push(`${linePrefix}factors:${bar.factorsHash.slice(0, 8)}`);
+     return refs;
+   }
+ 
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-v2.controller.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-v2.controller.ts
+index e9790bf277c7664527430626565b669742bc0603..a9bdfaef30aeabf5949cd9be8ece6b8f20de2226 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-v2.controller.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/kline-v2.controller.ts
+@@ -47,7 +47,9 @@ export class GenerateSnapshotDto {
+   birthDate?: string;
+   birthTime?: string;
+   viewMode?: 'life' | 'decade' | 'yearMonth';
+-  rangeYears?: number;
++  /** Phase 1 Step 1.2：yearMonth 模式固定 36 个月，rangeYears 已废弃 */
++  /** Phase 1 Step 1.4：性别影响 relationship 线计算（男财女官） */
++  gender?: 'male' | 'female';
+ }
+ 
+ export class NodeAskDto {
+@@ -167,19 +169,20 @@ export class KlineV2Controller {
+       );
+     }
+ 
+-    // 计算引擎：生成 bars
++    // 计算引擎：生成 bars（Phase 1：asOfDate 必填，yearMonth 默认 36 个月，gender 影响三线）
++    const asOfDate = new Date();
+     const calcResult = this.calcEngine.calculate({
+       baziResult: profile.baziResult,
+       birthYear: profile.birthYear,
+-      viewMode: dto.viewMode ?? 'life',
+-      currentYear: new Date().getFullYear(),
+-      rangeYears: dto.rangeYears ?? 80,
++      viewMode: dto.viewMode ?? 'yearMonth',
++      asOfDate,
+       birthTime: dto.birthTime ?? profile.birthTime,
++      gender: dto.gender ?? profile.gender ?? 'male',
+     });
+ 
+-    // 决策服务：生成阶段 + 节点
+-    const currentYear = new Date().getFullYear();
+-    const currentMonth = new Date().getMonth() + 1;
++    // 决策服务：生成阶段 + 节点（从 asOfDate 派生，无 new Date() 隐式读取）
++    const currentYear = asOfDate.getFullYear();
++    const currentMonth = asOfDate.getMonth() + 1;
+     const decision = this.decisionService.decideV2(
+       calcResult.bars,
+       'placeholder', // 占位，snapshotService 会用真实 snapshotId 替换
+@@ -436,6 +439,7 @@ export class KlineV2Controller {
+     baziResult: any;
+     birthYear: number;
+     birthTime?: string;
++    gender?: 'male' | 'female';
+   } | null> {
+     try {
+       // 优先按 profileId 加载
+@@ -454,11 +458,17 @@ export class KlineV2Controller {
+       const birthYear = profile.birthYear
+         || (profile.birthDate ? new Date(profile.birthDate).getFullYear() : 1990);
+ 
++      // Phase 1 Step 1.4：从 profile 读取 gender（可能不存在，默认 male）
++      const gender = (profile.gender === 'female' || profile.gender === 'male')
++        ? profile.gender
++        : undefined;
++
+       return {
+         profileId: profile.id,
+         baziResult,
+         birthYear,
+         birthTime: birthTime ?? profile.birthTime,
++        gender,
+       };
+     } catch (err: any) {
+       this.logger.error(`[loadBaziProfile] userId=${userId} 失败: ${err.message}`);
+@@ -483,10 +493,15 @@ export class KlineV2Controller {
+         canViewAllNodes: isMember,
+         canAskNode: isMember,
+       },
+-      // 免费用户：截断 series.career/wealth/relationship
++      // 免费用户：截断 series.career/wealth/relationship（Phase 1 Step 1.4：三线改必填，免费用户返回空数组）
+       series: isMember
+         ? vm.series
+-        : { overall: vm.series.overall },
++        : {
++            overall: vm.series.overall,
++            career: [],
++            wealth: [],
++            relationship: [],
++          },
+       // 免费用户：只返回前 3 个节点
+       windows: isMember
+         ? vm.windows
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/v2-contracts.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/v2-contracts.ts
+index ffcbe3f065b5d9522dabf6076f8162d61076e835..c7aca4460b776b13979c9fc63cda043fa0df8735 100644
+--- a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/v2-contracts.ts
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/kline-tide/v2-contracts.ts
+@@ -58,9 +58,12 @@ export interface KlineProductViewModelV2 {
+   };
+   series: {
+     overall: KlinePoint[];
+-    career?: KlinePoint[];
+-    wealth?: KlinePoint[];
+-    relationship?: KlinePoint[];
++    /** 事业线（Phase 1 Step 1.4：四条独立曲线之一） */
++    career: KlinePoint[];
++    /** 财富线（Phase 1 Step 1.4：四条独立曲线之一） */
++    wealth: KlinePoint[];
++    /** 情感线（Phase 1 Step 1.4：四条独立曲线之一） */
++    relationship: KlinePoint[];
+   };
+   windows: {
+     opportunity: KlineNode[];
+@@ -197,7 +200,7 @@ export function validateKlineViewModel(vm: KlineProductViewModelV2): { valid: bo
+     reasons.push(`current.trend 必须为 ${validTrends.join('|')}`);
+   }
+ 
+-  // series.overall 必须存在
++  // series.overall 必须存在（Phase 1 Step 1.4：career/wealth/relationship 也必填）
+   if (!Array.isArray(vm.series?.overall)) {
+     reasons.push('series.overall 必须为数组');
+   } else {
+@@ -206,6 +209,30 @@ export function validateKlineViewModel(vm: KlineProductViewModelV2): { valid: bo
+       if (!r.valid) reasons.push(`series.overall[${i}]: ${r.reason}`);
+     });
+   }
++  if (!Array.isArray(vm.series?.career)) {
++    reasons.push('series.career 必须为数组');
++  } else {
++    vm.series.career.forEach((p, i) => {
++      const r = validateKlinePoint(p);
++      if (!r.valid) reasons.push(`series.career[${i}]: ${r.reason}`);
++    });
++  }
++  if (!Array.isArray(vm.series?.wealth)) {
++    reasons.push('series.wealth 必须为数组');
++  } else {
++    vm.series.wealth.forEach((p, i) => {
++      const r = validateKlinePoint(p);
++      if (!r.valid) reasons.push(`series.wealth[${i}]: ${r.reason}`);
++    });
++  }
++  if (!Array.isArray(vm.series?.relationship)) {
++    reasons.push('series.relationship 必须为数组');
++  } else {
++    vm.series.relationship.forEach((p, i) => {
++      const r = validateKlinePoint(p);
++      if (!r.valid) reasons.push(`series.relationship[${i}]: ${r.reason}`);
++    });
++  }
+ 
+   // windows
+   if (!Array.isArray(vm.windows?.opportunity)) {
+diff --git a/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/types/lunar-javascript.d.ts b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/types/lunar-javascript.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..67ed1179ad97cbba220bb935dd97b74a00a93211
+--- /dev/null
++++ b/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/types/lunar-javascript.d.ts
+@@ -0,0 +1,25 @@
++/**
++ * lunar-javascript 类型声明（最小 API 子集）
++ *
++ * Phase 1 Step 1.3 引入：用精确流月干支替换近似算法
++ * 仅声明 V2 链路实际使用的方法，避免过度声明。
++ */
++declare module 'lunar-javascript' {
++  export class Lunar {
++    static fromDate(date: Date): Lunar;
++    /** 精确流月干支（基于节气） */
++    getMonthInGanZhi(): string;
++    /** 精确流月干支（按节气精确切分） */
++    getMonthInGanZhiExact(): string;
++    /** 流年干支 */
++    getYearInGanZhi(): string;
++    /** 月干 */
++    getMonthGan(): string;
++    /** 月支 */
++    getMonthZhi(): string;
++  }
++
++  export class Solar {
++    static fromDate(date: Date): Solar;
++  }
++}
+diff --git a/apps/AWKN-LABlife/shared-types/kline-v2.ts b/apps/AWKN-LABlife/shared-types/kline-v2.ts
+index 838bdf9d4136caddd8cf34d4bcb6121dce1003de..6dfd3528403351ebeace49f8f8a61add4a1575cd 100644
+--- a/apps/AWKN-LABlife/shared-types/kline-v2.ts
++++ b/apps/AWKN-LABlife/shared-types/kline-v2.ts
+@@ -53,9 +53,12 @@ export interface KlineProductViewModelV2 {
+   };
+   series: {
+     overall: KlinePoint[];
+-    career?: KlinePoint[];
+-    wealth?: KlinePoint[];
+-    relationship?: KlinePoint[];
++    /** 事业线（Phase 1 Step 1.4：四条独立曲线之一） */
++    career: KlinePoint[];
++    /** 财富线（Phase 1 Step 1.4：四条独立曲线之一） */
++    wealth: KlinePoint[];
++    /** 情感线（Phase 1 Step 1.4：四条独立曲线之一） */
++    relationship: KlinePoint[];
+   };
+   windows: {
+     opportunity: KlineNode[];
+-- 
+2.54.0.windows.1
+

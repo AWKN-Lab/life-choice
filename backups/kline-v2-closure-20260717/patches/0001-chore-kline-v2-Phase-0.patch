@@ -1,0 +1,245 @@
+From 9835ec2f5723ee0e056c3bb2de244ebf7dc29aea Mon Sep 17 00:00:00 2001
+From: 10919669 <10919669@qq.com>
+Date: Mon, 13 Jul 2026 17:58:51 +0800
+Subject: [PATCH 1/3] =?UTF-8?q?chore(kline-v2):=20Phase=200=20=E5=9F=BA?=
+ =?UTF-8?q?=E7=BA=BF=E5=86=BB=E7=BB=93=E5=AE=8C=E6=88=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- worktree 隔离 (codex/kline-v2-closure 基于 bc2edbae)
+- 基线哈希保存 (schema SHA256: E12A0F71...)
+- FINAL-CLOSING 结果单降级 (PASS -> 代码骨架完成,业务闭环未通过)
+- Gate P0 结果单创建 (5/5 PASS)
+- .env.example 确认 KLINE_SIMULATED_DATA_ALLOWED=false
+
+Gate P0: PASS
+---
+ ...3\223\346\236\234\345\215\225-20260713.md" | 118 ++++++++++++++++++
+ ...3\223\346\236\234\345\215\225-20260713.md" |  19 ++-
+ docs/baseline-20260713/api-health.json        |   1 +
+ docs/baseline-20260713/git-head.txt           |   1 +
+ docs/baseline-20260713/life-index.html        |  25 ++++
+ docs/baseline-20260713/schema.hash            |   5 +
+ 6 files changed, 168 insertions(+), 1 deletion(-)
+ create mode 100644 "apps/AWKN-LABlife/docs/execution-plans/\345\221\275\350\277\220K\347\272\277V2-\345\237\272\347\272\277\345\206\273\347\273\223\347\273\223\346\236\234\345\215\225-20260713.md"
+ create mode 100644 docs/baseline-20260713/api-health.json
+ create mode 100644 docs/baseline-20260713/git-head.txt
+ create mode 100644 docs/baseline-20260713/life-index.html
+ create mode 100644 docs/baseline-20260713/schema.hash
+
+diff --git "a/apps/AWKN-LABlife/docs/execution-plans/\345\221\275\350\277\220K\347\272\277V2-\345\237\272\347\272\277\345\206\273\347\273\223\347\273\223\346\236\234\345\215\225-20260713.md" "b/apps/AWKN-LABlife/docs/execution-plans/\345\221\275\350\277\220K\347\272\277V2-\345\237\272\347\272\277\345\206\273\347\273\223\347\273\223\346\236\234\345\215\225-20260713.md"
+new file mode 100644
+index 0000000000000000000000000000000000000000..5bd8ed90b4eb1eac33fa840250bd4461a08d6166
+--- /dev/null
++++ "b/apps/AWKN-LABlife/docs/execution-plans/\345\221\275\350\277\220K\347\272\277V2-\345\237\272\347\272\277\345\206\273\347\273\223\347\273\223\346\236\234\345\215\225-20260713.md"
+@@ -0,0 +1,118 @@
++# Gate P0 结果单 — 命运K线 V2 整改闭环基线冻结
++
++> **结果单类型**：Gate 验收结果单
++> **日期**：2026-07-13
++> **执行分支**：`codex/kline-v2-closure`
++> **基线 commit**：`bc2edbae90e67719e728b2b5c7065b5210660f81`
++> **执行人**：天火（TRAE runtime）
++
++---
++
++## 一、Gate P0 验收清单
++
++| # | 验收项 | 期望 | 实际 | 状态 |
++|---|--------|------|------|------|
++| 1 | 工作区隔离完成 | 分支 `codex/kline-v2-closure` | `codex/kline-v2-closure` | ✅ PASS |
++| 2 | 基线可复现 | `docs/baseline-20260713/` 4 文件 | schema.hash/git-head.txt/api-health.json/life-index.html | ✅ PASS |
++| 3 | 文档不再误报 PASS | FINAL-CLOSING 结果单降级 | 顶部降级声明已添加，结论改为"代码骨架完成，业务闭环未通过" | ✅ PASS |
++| 4 | 模拟数据禁止 | `KLINE_SIMULATED_DATA_ALLOWED=false` | .env.example 第 128 行 `false`；生产待运维确认（B9） | ✅ PASS（本地）|
++| 5 | 根主页未修改 | `awkn.cn/` 无 V2 内容 | 未修改（worktree 隔离） | ✅ PASS |
++
++**Gate P0 结论**：✅ 放行（5/5 PASS，生产侧 B9 待运维确认但不阻塞 Phase 1-3）
++
++---
++
++## 二、基线证据
++
++### 2.1 Git 基线
++
++- **基线 commit**：`bc2edbae90e67719e728b2b5c7065b5210660f81`
++- **commit message**：`docs(kline): 最终闭环结果单 - P1-P3 全部 Gate PASS 放行`
++- **worktree 路径**：`C:\Users\10919\Desktop\AWKN-Lab\AWKN-Lab-kline-v2-closure`
++- **分支**：`codex/kline-v2-closure`（基于 bc2edbae 新建）
++
++### 2.2 Schema 哈希
++
++- **文件**：`apps/AWKN-LABlife/awkn-life-backend/apps/api-server/prisma/schema.prisma`
++- **SHA256**：`E12A0F718880D8754FBF13C933A6CE81BF5E89A63861F753BFB16C0594BC976A`
++- **保存位置**：`docs/baseline-20260713/schema.hash`
++
++### 2.3 生产接口基线
++
++- **端点**：`https://awkn.cn/api/v1/kline-tide/health`
++- **响应**：`{"success":false,"statusCode":404,"error":"NotFoundException","message":"Cannot GET /api/v1/kline-tide/health"}`
++- **结论**：生产未部署 V2 端点（404）
++- **保存位置**：`docs/baseline-20260713/api-health.json`
++
++### 2.4 生产页面基线
++
++- **端点**：`https://awkn.cn/life/`
++- **响应大小**：2304 bytes
++- **保存位置**：`docs/baseline-20260713/life-index.html`
++
++---
++
++## 三、Phase 0 排查结果摘要
++
++### 3.1 U1-U15 未确认项
++
++- ✅ 已解除：10 项
++- ⚠️ 部分解除：3 项（U8 Playwright/U12 生产 env/U14 黄金案例）
++- ❌ 需运维：2 项（U9 PM2/U10 Nginx）
++
++### 3.2 B1-B12 阻塞项
++
++- ✅ 已解除：8 项
++- ⚠️ 部分解除：3 项
++- ❌ 未解除：2 项（B6/B7 运维侧）
++
++### 3.3 新发现阻塞项 B13-B16
++
++| # | 阻塞项 | 处理阶段 |
++|---|--------|---------|
++| B13 | `KlineShareLink` 模型缺失 | Step 2.1 新增 |
++| B14 | `KlineOutcome` 缺唯一约束 | Step 2.1 新增 |
++| B15 | `ConsultRecord` 缺专用字段 | Step 2.1 决策 |
++| B16 | `KLINE_V2_NODE_ASK_ENABLED` 额外开关 | Step 2.5 处理 |
++
++### 3.4 关键事实确认
++
++- Schema 唯一真源：`apps/api-server/prisma/schema.prisma`（根 schema 已废弃）
++- 数据库类型：SQLite（`provider = "sqlite"`）
++- ask 端点：确认虚构 `consult-*` ID
++- 前端工程根：`apps/AWKN-LABlife/app/`
++- .env.example 三个开关均 `false`（含 `KLINE_V2_NODE_ASK_ENABLED`）
++
++---
++
++## 四、降级文档清单
++
++| 文档 | 原状态 | 降级后状态 |
++|------|--------|-----------|
++| `docs/02开发PRD与工程文档/工程交接/FINAL-CLOSING-结果单-20260713.md` | ✅ 放行 (Approve) | ⚠️ 代码骨架完成，业务闭环未通过 |
++
++---
++
++## 五、待运维确认项（不阻塞 Phase 1-3）
++
++| # | 项 | 排查命令 | 影响 |
++|---|----|---------|------|
++| B6 | PM2 服务名 | `pm2 list` | Phase 4 Step 4.6/4.8 |
++| B7 | Nginx 配置路径 | `nginx -t` | Phase 4 Step 4.7 |
++| B9 | 生产 `KLINE_SIMULATED_DATA_ALLOWED` 值 | `grep KLINE_SIMULATED_DATA_ALLOWED /opt/awkn-life/.env` | Phase 0 止血（本地已满足）|
++
++---
++
++## 六、下一步
++
++- **Phase 0 完成**，Gate P0 放行
++- **下一步**：Phase 1 — 统一 36 个月算法与数据契约（Step 1.1-1.7）
++- **前置条件**：无（本地侧阻塞全部解除）
++
++---
++
++## 变更记录
++
++| 日期 | 版本 | 变更 | 作者 |
++|------|------|------|------|
++| 2026-07-13 | v1.0 | 初始创建，Gate P0 验收通过 | 天火 |
+diff --git "a/docs/02\345\274\200\345\217\221PRD\344\270\216\345\267\245\347\250\213\346\226\207\346\241\243/\345\267\245\347\250\213\344\272\244\346\216\245/FINAL-CLOSING-\347\273\223\346\236\234\345\215\225-20260713.md" "b/docs/02\345\274\200\345\217\221PRD\344\270\216\345\267\245\347\250\213\346\226\207\346\241\243/\345\267\245\347\250\213\344\272\244\346\216\245/FINAL-CLOSING-\347\273\223\346\236\234\345\215\225-20260713.md"
+index f0eca8bf05afa74c5cd08a316d1eae229ec6a228..2299d621fab7146ae68d55c04c989fb064ec4a92 100644
+--- "a/docs/02\345\274\200\345\217\221PRD\344\270\216\345\267\245\347\250\213\346\226\207\346\241\243/\345\267\245\347\250\213\344\272\244\346\216\245/FINAL-CLOSING-\347\273\223\346\236\234\345\215\225-20260713.md"
++++ "b/docs/02\345\274\200\345\217\221PRD\344\270\216\345\267\245\347\250\213\346\226\207\346\241\243/\345\267\245\347\250\213\344\272\244\346\216\245/FINAL-CLOSING-\347\273\223\346\236\234\345\215\225-20260713.md"
+@@ -1,9 +1,26 @@
+ # 最终闭环结果单 — 命运K线与潮汐重构 (P1-P3)
+ 
++> ⚠️ **状态降级声明（2026-07-13 Phase 0 止血）**
++> 本结果单原标记"P1-P3 全部 Gate PASS 放行"为**代码骨架完成**，但**业务闭环未通过**。
++> 经 Phase 0 排查确认以下关键缺陷未修复：
++> - 节点问事使用虚构 `consult-*` ID，无真实 ConsultRecord/扣积分/幂等/事务
++> - `KlineShareLink` 模型完全缺失
++> - `KlineOutcome` 缺 `@@unique([nodeId, userId])` 唯一约束
++> - `ConsultRecord` 无专用 snapshotId/nodeId/targetDate 字段
++> - 生产接口 `/api/v1/kline-tide/health` 返回 404（生产未部署 V2）
++> - 四条曲线副线为可选且可能同形复制，未独立因子映射
++> - 数据源标识误用 `real`，应为 `calculated`
++> - 节点无间隔/数量/置信度约束
++> - 默认范围 80/100 年，未约束 36 个月
++>
++> **真实状态**：本地代码骨架完成，生产未部署，业务闭环未通过。
++> 详见：[工程交接文档-命运K线V2整改闭环-20260713.md](../../execution-plans/工程交接文档-命运K线V2整改闭环-20260713.md)
++
+ - **范围**: P1 + P2 + P3 全部任务（按 AUTHORIZATION-P01-P1-P4-全部任务-20260712.md 授权执行）
+ - **P4**: 框架就绪，标记为"持续迭代"，不做大规模开发
+ - **闭环时间**: 2026-07-13
+-- **最终结论**: ✅ 放行 (Approve) — 工程文档连续执行模式任务全部完成
++- **原结论**: ✅ 放行 (Approve) — 工程文档连续执行模式任务全部完成
++- **降级后结论**: ⚠️ 代码骨架完成，业务闭环未通过 — 需执行 V2 整改闭环（Phase 0-4）
+ 
+ ---
+ 
+diff --git a/docs/baseline-20260713/api-health.json b/docs/baseline-20260713/api-health.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..2e095c28a0afcdba7585231586a31f7b088864b2
+--- /dev/null
++++ b/docs/baseline-20260713/api-health.json
+@@ -0,0 +1 @@
++{"success":false,"statusCode":404,"error":"NotFoundException","message":"Cannot GET /api/v1/kline-tide/health","path":"/api/v1/kline-tide/health","timestamp":"2026-07-13T09:54:15.246Z"}
+diff --git a/docs/baseline-20260713/git-head.txt b/docs/baseline-20260713/git-head.txt
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e16857fef78f42a05a05c340bd539ae1daca739
+--- /dev/null
++++ b/docs/baseline-20260713/git-head.txt
+@@ -0,0 +1 @@
++bc2edbae90e67719e728b2b5c7065b5210660f81
+diff --git a/docs/baseline-20260713/life-index.html b/docs/baseline-20260713/life-index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..460d42d7d052ce4ff8d997f924768f851caa5823
+--- /dev/null
++++ b/docs/baseline-20260713/life-index.html
+@@ -0,0 +1,25 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
++    <meta name="mobile-web-app-capable" content="yes" />
++    <meta name="apple-mobile-web-app-capable" content="yes" />
++    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
++    <meta name="theme-color" content="#10141a" />
++    <title>人生决策宗师</title>
++    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
++    <link rel="icon" type="image/x-icon" href="favicon.ico" />
++    <link rel="manifest" href="manifest.json" />
++    <!-- Material Symbols Outlined — 通过 npm 包 material-symbols 本地加载，避免 Google Fonts 被墙 -->
++    <script type="module" crossorigin src="/life/assets/index-CUoR4RHn.js"></script>
++    <link rel="modulepreload" crossorigin href="/life/assets/vendor-react-BHUVaFkt.js">
++    <link rel="modulepreload" crossorigin href="/life/assets/vendor-i18n-DIWH0r9z.js">
++    <link rel="modulepreload" crossorigin href="/life/assets/vendor-motion-CvqM4Q7S.js">
++    <link rel="stylesheet" crossorigin href="/life/assets/index-ld9PTrrN.css">
++  <script id="vite-plugin-pwa:register-sw" src="/life/registerSW.js"></script></head>
++  <body>
++    <div id="root"></div>
++
++  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1a767c87827a371',t:'MTc4MzkzNjQ1Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
++</html>
+diff --git a/docs/baseline-20260713/schema.hash b/docs/baseline-20260713/schema.hash
+new file mode 100644
+index 0000000000000000000000000000000000000000..1ef45033622e69b7bb8414a589145b5e6dc4e250
+--- /dev/null
++++ b/docs/baseline-20260713/schema.hash
+@@ -0,0 +1,5 @@
++
++Algorithm       Hash                                                                   Path
++---------       ----                                                                   ----
++SHA256          E12A0F718880D8754FBF13C933A6CE81BF5E89A63861F753BFB16C0594BC976A       C:\Users\10919\Desktop\AWKN-Lab\…
++
+-- 
+2.54.0.windows.1
+
