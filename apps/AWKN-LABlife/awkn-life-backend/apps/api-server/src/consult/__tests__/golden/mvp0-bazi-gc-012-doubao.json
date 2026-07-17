@@ -1,0 +1,517 @@
+{
+  "yearPillar": "己巳",
+  "monthPillar": "壬申",
+  "dayPillar": "壬子",
+  "hourPillar": "癸卯",
+  "yearShishen": "正官",
+  "monthShishen": "比肩",
+  "dayShishen": "日主",
+  "hourShishen": "劫财",
+  "wuxing": {
+    "wood": 0.3,
+    "fire": 0.3,
+    "earth": 0.65,
+    "metal": 0.5,
+    "water": 1.5499999999999998
+  },
+  "daYun": [
+    {
+      "index": 1,
+      "gan": "辛",
+      "zhi": "未",
+      "full": "辛未",
+      "startAge": 4,
+      "endAge": 13
+    },
+    {
+      "index": 2,
+      "gan": "庚",
+      "zhi": "午",
+      "full": "庚午",
+      "startAge": 14,
+      "endAge": 23
+    },
+    {
+      "index": 3,
+      "gan": "己",
+      "zhi": "巳",
+      "full": "己巳",
+      "startAge": 24,
+      "endAge": 33
+    },
+    {
+      "index": 4,
+      "gan": "戊",
+      "zhi": "辰",
+      "full": "戊辰",
+      "startAge": 34,
+      "endAge": 43
+    },
+    {
+      "index": 5,
+      "gan": "丁",
+      "zhi": "卯",
+      "full": "丁卯",
+      "startAge": 44,
+      "endAge": 53
+    },
+    {
+      "index": 6,
+      "gan": "丙",
+      "zhi": "寅",
+      "full": "丙寅",
+      "startAge": 54,
+      "endAge": 63
+    },
+    {
+      "index": 7,
+      "gan": "乙",
+      "zhi": "丑",
+      "full": "乙丑",
+      "startAge": 64,
+      "endAge": 73
+    },
+    {
+      "index": 8,
+      "gan": "甲",
+      "zhi": "子",
+      "full": "甲子",
+      "startAge": 74,
+      "endAge": 83
+    }
+  ],
+  "qiYunAge": {
+    "years": 4,
+    "months": 4,
+    "days": 22
+  },
+  "liuNian": [
+    {
+      "year": 2026,
+      "ganZhi": "丙午",
+      "shishen": "偏财"
+    },
+    {
+      "year": 2027,
+      "ganZhi": "丁未",
+      "shishen": "正财"
+    },
+    {
+      "year": 2028,
+      "ganZhi": "戊申",
+      "shishen": "七杀"
+    },
+    {
+      "year": 2029,
+      "ganZhi": "己酉",
+      "shishen": "正官"
+    },
+    {
+      "year": 2030,
+      "ganZhi": "庚戌",
+      "shishen": "偏印"
+    },
+    {
+      "year": 2031,
+      "ganZhi": "辛亥",
+      "shishen": "正印"
+    },
+    {
+      "year": 2032,
+      "ganZhi": "壬子",
+      "shishen": "比肩"
+    },
+    {
+      "year": 2033,
+      "ganZhi": "癸丑",
+      "shishen": "劫财"
+    },
+    {
+      "year": 2034,
+      "ganZhi": "甲寅",
+      "shishen": "食神"
+    },
+    {
+      "year": 2035,
+      "ganZhi": "乙卯",
+      "shishen": "伤官"
+    }
+  ],
+  "liuNianDetail": [
+    {
+      "year": 2026,
+      "ganZhi": "丙午",
+      "shishen": "偏财",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [
+        {
+          "with": "午+子",
+          "relation": "子午冲"
+        }
+      ],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 45,
+      "theme": "变动之年，注意冲击"
+    },
+    {
+      "year": 2027,
+      "ganZhi": "丁未",
+      "shishen": "正财",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        },
+        {
+          "with": "丁未+壬申",
+          "relation": "丁壬合木"
+        },
+        {
+          "with": "丁未+壬子",
+          "relation": "丁壬合木"
+        }
+      ],
+      "chong": [],
+      "hai": [
+        {
+          "with": "未+子",
+          "relation": "子未害"
+        }
+      ],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 72,
+      "theme": "平稳发展，小吉之象"
+    },
+    {
+      "year": 2028,
+      "ganZhi": "戊申",
+      "shishen": "七杀",
+      "he": [
+        {
+          "with": "申+巳",
+          "relation": "巳申合"
+        },
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        },
+        {
+          "with": "戊申+癸卯",
+          "relation": "戊癸合火"
+        }
+      ],
+      "chong": [],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 70,
+      "theme": "平稳发展，小吉之象"
+    },
+    {
+      "year": 2029,
+      "ganZhi": "己酉",
+      "shishen": "正官",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        },
+        {
+          "with": "酉+辰",
+          "relation": "辰酉合"
+        }
+      ],
+      "chong": [
+        {
+          "with": "酉+卯",
+          "relation": "卯酉冲"
+        }
+      ],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 55,
+      "theme": "运势平平，守成为主"
+    },
+    {
+      "year": 2030,
+      "ganZhi": "庚戌",
+      "shishen": "偏印",
+      "he": [
+        {
+          "with": "戌+卯",
+          "relation": "卯戌合"
+        },
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [
+        {
+          "with": "戌+辰",
+          "relation": "辰戌冲"
+        }
+      ],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 50,
+      "theme": "运势平平，守成为主"
+    },
+    {
+      "year": 2031,
+      "ganZhi": "辛亥",
+      "shishen": "正印",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [
+        {
+          "with": "亥+巳",
+          "relation": "巳亥冲"
+        }
+      ],
+      "hai": [
+        {
+          "with": "亥+申",
+          "relation": "申亥害"
+        }
+      ],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 37,
+      "theme": "变动之年，注意冲击"
+    },
+    {
+      "year": 2032,
+      "ganZhi": "壬子",
+      "shishen": "比肩",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 55,
+      "theme": "运势平平，守成为主"
+    },
+    {
+      "year": 2033,
+      "ganZhi": "癸丑",
+      "shishen": "劫财",
+      "he": [
+        {
+          "with": "丑+子",
+          "relation": "子丑合"
+        },
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 60,
+      "theme": "运势平平，守成为主"
+    },
+    {
+      "year": 2034,
+      "ganZhi": "甲寅",
+      "shishen": "食神",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        },
+        {
+          "with": "甲寅+己巳",
+          "relation": "甲己合土"
+        }
+      ],
+      "chong": [
+        {
+          "with": "寅+申",
+          "relation": "寅申冲"
+        }
+      ],
+      "hai": [
+        {
+          "with": "寅+巳",
+          "relation": "寅巳害"
+        }
+      ],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 47,
+      "theme": "变动之年，注意冲击"
+    },
+    {
+      "year": 2035,
+      "ganZhi": "乙卯",
+      "shishen": "伤官",
+      "he": [
+        {
+          "with": "巳+申",
+          "relation": "巳申合"
+        }
+      ],
+      "chong": [],
+      "hai": [],
+      "xing": [],
+      "yongJi": "忌神: 水过旺需泄",
+      "score": 50,
+      "theme": "运势平平，守成为主"
+    }
+  ],
+  "shenSha": {
+    "天乙贵人": [
+      "巳",
+      "卯"
+    ],
+    "太极贵人": [
+      "申"
+    ],
+    "月德贵人": [
+      "申",
+      "子"
+    ],
+    "孤辰": [
+      "申"
+    ],
+    "亡神": [
+      "申"
+    ],
+    "羊刃": [
+      "子"
+    ],
+    "天德贵人": [
+      "卯"
+    ],
+    "灾煞": [
+      "卯"
+    ],
+    "吊客": [
+      "卯"
+    ]
+  },
+  "naYin": {
+    "year": "大林木",
+    "month": "剑锋金",
+    "day": "桑柘木",
+    "hour": "金箔金"
+  },
+  "kongWang": [
+    "寅",
+    "卯"
+  ],
+  "taiYuan": "癸亥",
+  "mingGong": "己卯",
+  "shenGong": "丁亥",
+  "zangganShishen": {
+    "year": [
+      {
+        "gan": "丙",
+        "shishen": "偏财"
+      },
+      {
+        "gan": "庚",
+        "shishen": "偏印"
+      },
+      {
+        "gan": "戊",
+        "shishen": "七杀"
+      }
+    ],
+    "month": [
+      {
+        "gan": "庚",
+        "shishen": "偏印"
+      },
+      {
+        "gan": "壬",
+        "shishen": "比肩"
+      },
+      {
+        "gan": "戊",
+        "shishen": "七杀"
+      }
+    ],
+    "day": [
+      {
+        "gan": "癸",
+        "shishen": "劫财"
+      }
+    ],
+    "hour": [
+      {
+        "gan": "乙",
+        "shishen": "伤官"
+      }
+    ]
+  },
+  "changsheng": {
+    "year": "绝",
+    "month": "长生",
+    "day": "帝旺",
+    "hour": "死"
+  },
+  "xingChongHeHai": {
+    "he": [
+      {
+        "pillars": [
+          "year",
+          "month"
+        ],
+        "relation": "巳申合"
+      }
+    ],
+    "chong": [],
+    "hai": [],
+    "xing": []
+  },
+  "selfSeat": {
+    "year": "土相",
+    "month": "水相",
+    "day": "水旺",
+    "hour": "水泄"
+  },
+  "shenShaByPillar": {
+    "year": [
+      "天乙贵人"
+    ],
+    "month": [
+      "太极贵人",
+      "月德贵人",
+      "孤辰",
+      "亡神"
+    ],
+    "day": [
+      "羊刃",
+      "月德贵人"
+    ],
+    "hour": [
+      "天乙贵人",
+      "天德贵人",
+      "灾煞",
+      "吊客"
+    ]
+  }
+}

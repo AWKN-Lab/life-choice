@@ -1,0 +1,42 @@
+{
+  "name": "awkn-life-mini",
+  "version": "1.0.0",
+  "private": true,
+  "description": "人生决策宗师微信小程序",
+  "scripts": {
+    "dev:weapp": "NITED_DEV=weapp npm run dev:weapp",
+    "dev": "taro build --watch",
+    "build:weapp": "taro build --type weapp",
+    "build": "taro build",
+    "upload": "taro build --type weapp && node upload.js",
+    "upload:only": "node upload.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@tarojs/components": "4.1.11",
+    "@tarojs/plugin-framework-react": "4.1.11",
+    "@tarojs/plugin-platform-weapp": "4.1.11",
+    "@tarojs/react": "4.1.11",
+    "@tarojs/runtime": "4.1.11",
+    "@tarojs/taro": "4.1.11",
+    "@tarojs/webpack5-runner": "^4.1.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.91.0",
+    "zustand": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.28.5",
+    "@babel/runtime": "^7.24.0",
+    "@tarojs/cli": "4.1.11",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-router-dom": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "babel-preset-taro": "4.1.11",
+    "eslint": "^8.0.0",
+    "eslint-config-taro": "4.1.11",
+    "miniprogram-ci": "^2.1.31",
+    "typescript": "~5.0.0"
+  }
+}

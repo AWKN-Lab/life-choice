@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生决策宗师 - 账本</title>
+    <style id="theme-vars">
+/* ===== 人生决策宗师 — Decision OS Design Tokens ===== */
+/* Based on AETHERIA Neo-Mysticism System */
+/* Semantic shift: "精密仪器" not "玄学神坛" */
+
+:root {
+  /* Brand Colors - HSL */
+  --primary: 53 73% 76%;
+  --primary-light: 48 70% 84%;
+  --primary-dim: 42 45% 55%;
+  --secondary: 265 100% 86%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 52%;
+
+  /* Surface Hierarchy */
+  --surface-base: 220 20% 7%;
+  --surface-container: 220 15% 13%;
+  --surface-container-low: 220 15% 10%;
+  --surface-container-lowest: 220 25% 5%;
+  --surface-container-high: 220 14% 17%;
+
+  /* On-Surface */
+  --on-surface: 220 12% 91%;
+  --on-surface-variant: 35 27% 77%;
+  --on-primary: 0 0% 0%;
+  --on-secondary: 0 0% 0%;
+
+  /* Utility */
+  --outline: 35 16% 56%;
+  --outline-variant: 35 18% 30%;
+  --error: 5 100% 86%;
+
+  /* Border & Ring */
+  --border: 220 14% 17%;
+  --input: 220 14% 17%;
+  --ring: 53 73% 76%;
+
+  /* Background & Foreground */
+  --background: 220 20% 7%;
+  --foreground: 220 12% 91%;
+
+  /* Muted */
+  --muted: 220 15% 13%;
+  --muted-foreground: 35 15% 55%;
+
+  /* Popover */
+  --popover: 220 15% 10%;
+  --popover-foreground: 220 12% 91%;
+
+  /* Card */
+  --card: 220 15% 10%;
+  --card-foreground: 220 12% 91%;
+
+  /* Destructive */
+  --destructive: 5 100% 86%;
+  --destructive-foreground: 0 0% 0%;
+
+  /* Radius */
+  --radius: 12px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Primary container */
+  --primary-container: 53 50% 40%;
+
+  /* Extended palette */
+  --shumiyuan-deep: 220 35% 8%;
+  --shumiyuan-graphite: 220 12% 12%;
+  --shumiyuan-ink: 220 20% 5%;
+  --shumiyuan-gold-glow: 53 73% 76%;
+  --shumiyuan-violet-glow: 265 100% 86%;
+  --shumiyuan-risk: 5 80% 65%;
+  --shumiyuan-safe: 163 60% 45%;
+  --shumiyuan-warn: 35 90% 60%;
+
+  /* Decision OS semantic colors */
+  --phase-expand: 163 60% 45%;
+  --phase-explore: 220 80% 60%;
+  --phase-repair: 35 90% 60%;
+  --phase-contract: 5 80% 65%;
+
+  /* Dimension colors */
+  --dim-time: 220 80% 60%;
+  --dim-position: 163 60% 45%;
+  --dim-mind: 265 100% 86%;
+
+  /* State */
+  --state-success: 163 100% 52%;
+  --state-warning: 35 90% 60%;
+  --state-error: 5 80% 65%;
+  --state-info: 220 80% 60%;
+
+  /* Typography */
+  --font-display: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Manrope', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes */
+  --text-hero: 2rem;
+  --text-h1: 1.5rem;
+  --text-h2: 1.25rem;
+  --text-h3: 1.125rem;
+  --text-body: 0.875rem;
+  --text-small: 0.75rem;
+  --text-caption: 0.6875rem;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px hsl(var(--surface-base) / 0.5);
+  --shadow-elevated: 0 4px 12px hsl(var(--surface-base) / 0.3);
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --primary: 211 100% 50%;
+  --primary-light: 211 100% 60%;
+  --primary-dim: 211 80% 40%;
+  --secondary: 265 65% 60%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 40%;
+
+  --surface-base: 0 0% 100%;
+  --surface-container: 0 0% 96%;
+  --surface-container-low: 0 0% 98%;
+  --surface-container-lowest: 0 0% 92%;
+  --surface-container-high: 0 0% 90%;
+
+  --on-surface: 0 0% 12%;
+  --on-surface-variant: 240 2% 54%;
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 240 5% 64%;
+  --outline-variant: 240 5% 88%;
+  --error: 3 100% 59%;
+
+  --border: 240 5% 84%;
+  --input: 240 5% 84%;
+  --ring: 211 100% 50%;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 12%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 240 2% 54%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 12%;
+
+  --destructive: 3 100% 59%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 12px;
+
+  --primary-container: 211 100% 90%;
+
+  --shumiyuan-deep: 220 10% 95%;
+  --shumiyuan-graphite: 220 8% 90%;
+  --shumiyuan-ink: 220 8% 96%;
+  --shumiyuan-gold-glow: 211 100% 50%;
+  --shumiyuan-violet-glow: 265 65% 60%;
+  --shumiyuan-risk: 3 100% 59%;
+  --shumiyuan-safe: 163 100% 40%;
+  --shumiyuan-warn: 39 100% 55%;
+
+  --phase-expand: 163 100% 40%;
+  --phase-explore: 220 80% 50%;
+  --phase-repair: 39 100% 55%;
+  --phase-contract: 3 100% 59%;
+
+  --dim-time: 220 80% 50%;
+  --dim-position: 163 100% 40%;
+  --dim-mind: 265 65% 60%;
+
+  --state-success: 163 100% 40%;
+  --state-warning: 39 100% 55%;
+  --state-error: 3 100% 59%;
+  --state-info: 220 80% 50%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--on-primary);
+    --color-secondary: var(--on-secondary);
+  }
+  @layer base {
+    body { background: var(--on-surface); color: var(--on-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="max-w-[375px] mx-auto pb-20">
+
+        <!-- Header -->
+        <section class="px-5 pt-12 pb-4">
+            <h1 class="text-[1.5rem] leading-snug font-semibold tracking-tight mb-1" style="font-family: var(--font-display); color: hsl(var(--on-surface)); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                决策账本
+            </h1>
+            <p class="text-[0.8125rem] leading-relaxed" style="color: hsl(var(--muted-foreground));">
+                你的每条反馈都在校准系统
+            </p>
+        </section>
+
+        <!-- Section 1: System Confidence Dashboard -->
+        <section class="px-4 py-3">
+            <div class="rounded-lg p-4" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.3);">
+                <!-- Three metric circles -->
+                <div class="flex items-start justify-around mb-4">
+                    <!-- Circle 1: Total analyses -->
+                    <div class="flex flex-col items-center gap-1 min-w-[80px]">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: hsl(var(--primary) / 0.12); border: 1px solid hsl(var(--primary) / 0.25);">
+                            <span class="text-[1.25rem] font-bold whitespace-nowrap" style="color: hsl(var(--primary));">128</span>
+                        </div>
+                        <span class="text-[0.6875rem] font-medium whitespace-nowrap" style="color: hsl(var(--on-surface));">总分析次数</span>
+                        <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">持续积累中</span>
+                    </div>
+                    <!-- Circle 2: Accuracy -->
+                    <div class="flex flex-col items-center gap-1 min-w-[80px]">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: hsl(var(--state-success) / 0.12); border: 1px solid hsl(var(--state-success) / 0.25);">
+                            <span class="text-[1.25rem] font-bold whitespace-nowrap" style="color: hsl(var(--state-success));">78%</span>
+                        </div>
+                        <span class="text-[0.6875rem] font-medium whitespace-nowrap" style="color: hsl(var(--on-surface));">判断准确率</span>
+                        <div class="flex items-center gap-0.5">
+                            <i data-lucide="trending-up" class="w-3 h-3" style="color: hsl(var(--state-success));"></i>
+                            <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--state-success));">5% vs 上月</span>
+                        </div>
+                    </div>
+                    <!-- Circle 3: Feedback count -->
+                    <div class="flex flex-col items-center gap-1 min-w-[80px]">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: hsl(var(--dim-time) / 0.12); border: 1px solid hsl(var(--dim-time) / 0.25);">
+                            <span class="text-[1.25rem] font-bold whitespace-nowrap" style="color: hsl(var(--dim-time));">43</span>
+                        </div>
+                        <span class="text-[0.6875rem] font-medium whitespace-nowrap" style="color: hsl(var(--on-surface));">反馈条数</span>
+                        <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">85 条待反馈</span>
+                    </div>
+                </div>
+                <!-- Calibration progress bar -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[0.6875rem]" style="color: hsl(var(--muted-foreground));">系统校准进度</span>
+                        <span class="text-[0.6875rem] font-medium whitespace-nowrap" style="color: hsl(var(--primary));">78%</span>
+                    </div>
+                    <div class="h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--outline-variant) / 0.4);">
+                        <div class="h-full rounded-full" style="width: 78%; background: hsl(var(--primary));"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Event Timeline -->
+        <section class="px-4 py-3">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-[0.9375rem] font-semibold" style="color: hsl(var(--on-surface));">事件记录</h2>
+                <span class="inline-flex items-center gap-1 text-[0.6875rem] px-2.5 py-1 rounded-lg whitespace-nowrap" style="background: hsl(var(--surface-container-low)); color: hsl(var(--muted-foreground)); border: 1px solid hsl(var(--outline-variant) / 0.3);">
+                    全部
+                    <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                </span>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative ml-4">
+                <!-- Vertical timeline line -->
+                <div class="absolute left-0 top-3 bottom-3 w-px" style="background: hsl(var(--outline-variant));"></div>
+
+                <!-- Event 1 -->
+                <div class="relative pl-6 pb-4">
+                    <div class="absolute left-0 top-2 w-2.5 h-2.5 rounded-full -translate-x-[4.5px]" style="background: hsl(var(--dim-time)); box-shadow: 0 0 0 3px hsl(var(--surface-container-low));"></div>
+                    <div class="rounded-lg p-3 transition-colors" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.2);">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap font-medium" style="background: hsl(var(--dim-time) / 0.15); color: hsl(var(--dim-time));">K线分析</span>
+                            <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">2026年7月8日</span>
+                        </div>
+                        <p class="text-[0.8125rem] leading-snug mb-2 line-clamp-2" style="color: hsl(var(--on-surface));">7月上升趋势确认，支撑位72.3</p>
+                        <div class="flex items-center justify-end">
+                            <span class="inline-flex items-center gap-1 text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap" style="color: hsl(var(--state-success)); background: hsl(var(--state-success) / 0.1);">
+                                <i data-lucide="check" class="w-3 h-3"></i>
+                                准确
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="relative pl-6 pb-4">
+                    <div class="absolute left-0 top-2 w-2.5 h-2.5 rounded-full -translate-x-[4.5px]" style="background: hsl(var(--primary)); box-shadow: 0 0 0 3px hsl(var(--surface-container-low));"></div>
+                    <div class="rounded-lg p-3 transition-colors" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.2);">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap font-medium" style="background: hsl(var(--primary) / 0.15); color: hsl(var(--primary));">咨询</span>
+                            <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">2026年7月5日</span>
+                        </div>
+                        <p class="text-[0.8125rem] leading-snug mb-2 line-clamp-2" style="color: hsl(var(--on-surface));">职业方向选择建议：当前适合坚守</p>
+                        <div class="flex items-center justify-end">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap" style="color: hsl(var(--state-warning)); background: hsl(var(--state-warning) / 0.1);">
+                                部分准确
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="relative pl-6 pb-4">
+                    <div class="absolute left-0 top-2 w-2.5 h-2.5 rounded-full -translate-x-[4.5px]" style="background: hsl(var(--dim-mind)); box-shadow: 0 0 0 3px hsl(var(--surface-container-low));"></div>
+                    <div class="rounded-lg p-3 transition-colors" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.2);">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap font-medium" style="background: hsl(var(--dim-mind) / 0.15); color: hsl(var(--dim-mind));">潮汐</span>
+                            <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">2026年7月2日</span>
+                        </div>
+                        <p class="text-[0.8125rem] leading-snug mb-2 line-clamp-2" style="color: hsl(var(--on-surface));">扩张期中段，资源充足</p>
+                        <div class="flex items-center justify-end">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap" style="color: hsl(var(--muted-foreground)); background: transparent; border: 1px dashed hsl(var(--muted-foreground) / 0.4);">
+                                待反馈
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="relative pl-6 pb-1">
+                    <div class="absolute left-0 top-2 w-2.5 h-2.5 rounded-full -translate-x-[4.5px]" style="background: hsl(var(--dim-time)); box-shadow: 0 0 0 3px hsl(var(--surface-container-low));"></div>
+                    <div class="rounded-lg p-3 transition-colors" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.2);">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap font-medium" style="background: hsl(var(--dim-time) / 0.15); color: hsl(var(--dim-time));">K线分析</span>
+                            <span class="text-[0.625rem] whitespace-nowrap" style="color: hsl(var(--muted-foreground));">2026年6月28日</span>
+                        </div>
+                        <p class="text-[0.8125rem] leading-snug mb-2 line-clamp-2" style="color: hsl(var(--on-surface));">6月回调结束，新上升周期开始</p>
+                        <div class="flex items-center justify-end">
+                            <span class="inline-flex items-center gap-1 text-[0.625rem] px-2 py-0.5 rounded-md whitespace-nowrap" style="color: hsl(var(--state-success)); background: hsl(var(--state-success) / 0.1);">
+                                <i data-lucide="check" class="w-3 h-3"></i>
+                                准确
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Quick Feedback CTA -->
+        <section class="px-4 py-3">
+            <div class="rounded-lg p-4 flex items-center justify-between" style="background: hsl(var(--surface-container-low)); border: 1px solid hsl(var(--outline-variant) / 0.2);">
+                <span class="text-[0.8125rem] leading-snug flex-1 min-w-0" style="color: hsl(var(--on-surface-variant));">回溯历史事件，帮助系统校准</span>
+                <span class="inline-flex items-center gap-1 text-[0.75rem] font-medium whitespace-nowrap ml-3 shrink-0" style="color: hsl(var(--primary));">
+                    查看待反馈事件
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation (fixed) -->
+    <nav class="fixed bottom-0 inset-x-0 z-30" style="background: hsl(var(--surface-container-low) / 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid hsl(var(--outline-variant) / 0.3);">
+        <div class="max-w-[375px] mx-auto h-[50px] flex items-center justify-around px-2">
+            <a href="#" class="flex flex-col items-center justify-center gap-0.5" style="color: hsl(var(--muted-foreground));">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="text-[0.625rem]">首页</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center gap-0.5" style="color: hsl(var(--muted-foreground));">
+                <i data-lucide="track-changes" class="w-5 h-5"></i>
+                <span class="text-[0.625rem]">潮汐</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center gap-0.5" style="color: hsl(var(--muted-foreground));">
+                <i data-lucide="chart-candlestick" class="w-5 h-5"></i>
+                <span class="text-[0.625rem]">K线</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center gap-0.5 relative" style="color: hsl(var(--primary));">
+                <i data-lucide="menu-book" class="w-5 h-5"></i>
+                <span class="text-[0.625rem]">账本</span>
+                <span class="absolute -bottom-0.5 w-1 h-1 rounded-full" style="background: hsl(var(--primary));"></span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center gap-0.5" style="color: hsl(var(--muted-foreground));">
+                <i data-lucide="person" class="w-5 h-5"></i>
+                <span class="text-[0.625rem]">我的</span>
+            </a>
+        </div>
+        <div class="h-[env(safe-area-inset-bottom,0px)]" style="background: inherit;"></div>
+    </nav>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

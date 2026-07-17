@@ -1,0 +1,134 @@
+{
+  "version": "1.0.0",
+  "description": "P0-⑤ Golden Case 扩展 — 5 类 × 3 样例覆盖（2026-07-06）",
+  "source": "P0-⑤ 上线前必须处理项：覆盖命盘/命运K线/问事/取名/追问 5 类，每类至少 3 个样例",
+  "coverage": {
+    "命盘": { "existing": ["ziping-001", "ziping-002", "ziping-003", "ziping-004"], "count": 4, "status": "PASS" },
+    "问事": { "existing": ["gc-001~gc-020"], "count": 20, "status": "PASS" },
+    "追问": { "existing": ["gc-012"], "count": 1, "new": ["gc-multiturn-002", "gc-multiturn-003"], "target": 3, "status": "ADD" },
+    "命运K线": { "existing": [], "count": 0, "new": ["gc-kline-001", "gc-kline-002", "gc-kline-003"], "target": 3, "status": "ADD" },
+    "取名": { "existing": [], "count": 0, "new": ["gc-quming-001", "gc-quming-002", "gc-quming-003"], "target": 3, "status": "ADD" }
+  },
+  "totalNew": 8,
+  "notes": "命盘/问事已满足 3 条，本轮新增 8 条（追问 2 + K线 3 + 取名 3）。case 格式参照 consult/golden-cases.json，runner 适配后续处理。",
+  "cases": [
+    {
+      "id": "gc-multiturn-002",
+      "module": "consult",
+      "scenario": "事业",
+      "multiTurn": true,
+      "birthInfo": { "year": 1990, "month": 5, "day": 15, "hour": 10, "gender": "male", "birthPlace": "上海" },
+      "question": "我今年想换工作，但现在的岗位很稳定，该怎么判断？",
+      "rounds": [
+        { "round": 1, "role": "user", "content": "我今年想换工作，但现在的岗位很稳定，该怎么判断？" },
+        { "round": 2, "role": "assistant", "context": "第一轮分析大运流年对事业宫的影响" },
+        { "round": 2, "role": "user", "content": "如果我现在的主管明年调走，是不是更好的时机？我该不该等到那时候？" }
+      ],
+      "expectedScoreRange": [55, 75],
+      "expectedKeywords": ["大运", "事业宫", "流年", "时机", "主管"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在伤官见官年份冲动辞职", "不与上级正面冲突"],
+      "notes": "事业追问 case。第二轮追问时机判断，测试 LLM 对时机的细化分析能力。"
+    },
+    {
+      "id": "gc-multiturn-003",
+      "module": "consult",
+      "scenario": "财运",
+      "multiTurn": true,
+      "birthInfo": { "year": 1985, "month": 11, "day": 3, "hour": 22, "gender": "female", "birthPlace": "广州" },
+      "question": "我考虑和朋友合伙开店，但担心财务风险，该怎么评估？",
+      "rounds": [
+        { "round": 1, "role": "user", "content": "我考虑和朋友合伙开店，但担心财务风险，该怎么评估？" },
+        { "round": 2, "role": "assistant", "context": "第一轮分析比劫夺财信号" },
+        { "round": 2, "role": "user", "content": "如果我只出技术不出钱，分成按 30% 算，这个比例合理吗？还是应该再低一点？" },
+        { "round": 3, "role": "assistant", "context": "第二轮分析技术入股的市场定价" },
+        { "round": 3, "role": "user", "content": "如果对方坚持要我出 10% 的钱作为'诚意'，我该接受吗？" }
+      ],
+      "expectedScoreRange": [50, 70],
+      "expectedKeywords": ["比劫夺财", "偏财格", "合伙", "技术入股", "现金流"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": ["不替人担保", "不做高杠杆投资", "不与朋友合伙大项目"],
+      "notes": "财运追问 case。三轮对话测试 LLM 对合伙风险的递进分析。含比劫夺财（高风险信号）。"
+    },
+    {
+      "id": "gc-kline-001",
+      "module": "kline-tide",
+      "scenario": "命运K线",
+      "birthInfo": { "year": 1988, "month": 3, "day": 12, "hour": 8, "gender": "male", "birthPlace": "北京" },
+      "question": "我的人生 K 线现在处于什么位置？未来 3 年的趋势如何？",
+      "expectedScoreRange": [50, 80],
+      "expectedKeywords": ["K线", "大运", "流年", "趋势", "均线"],
+      "expectedSegments": ["tideJudgment", "phaseJudgment", "shortDirective", "windowTip", "actionAdvice"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在大运凶时重仓投入", "不在趋势下行期扩张"],
+      "notes": "命运 K 线 case。验证 kline-tide 模块的 tideJudgment 字段输出。score 指 tideScore（综合状态分）。"
+    },
+    {
+      "id": "gc-kline-002",
+      "module": "kline-tide",
+      "scenario": "命运K线",
+      "birthInfo": { "year": 1992, "month": 7, "day": 25, "hour": 14, "gender": "female", "birthPlace": "深圳" },
+      "question": "我的事业 K 线显示现在是什么阶段？有没有机会窗口？",
+      "expectedScoreRange": [55, 85],
+      "expectedKeywords": ["事业K线", "机会窗口", "风险窗口", "大运", "流月"],
+      "expectedSegments": ["tideJudgment", "phaseJudgment", "shortDirective", "windowTip", "actionAdvice"],
+      "expectedRiskLevel": "low",
+      "expectedRedLines": ["不在机会窗口前提前消耗资源", "不在风险窗口期强行扩张"],
+      "notes": "事业 K 线 case。验证 K 线对事业维度的判断。low risk 因为命盘无高风险信号。"
+    },
+    {
+      "id": "gc-kline-003",
+      "module": "kline-tide",
+      "scenario": "命运K线",
+      "birthInfo": { "year": 1980, "month": 12, "day": 8, "hour": 4, "gender": "male", "birthPlace": "成都" },
+      "question": "我的财运 K 线现在怎么样？100 日线和 3 日线分别说明什么？",
+      "expectedScoreRange": [40, 70],
+      "expectedKeywords": ["财运K线", "100日线", "3日线", "11日线", "机会窗口"],
+      "expectedSegments": ["tideJudgment", "phaseJudgment", "shortDirective", "windowTip", "actionAdvice"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": ["不在财运下行期重仓投资", "不在均线死叉时加仓"],
+      "notes": "财运 K 线 case。测试多周期均线（3/11/100 日）的解读。high risk 因命盘含财坏印信号。"
+    },
+    {
+      "id": "gc-quming-001",
+      "module": "quming",
+      "scenario": "取名",
+      "birthInfo": { "year": 2025, "month": 6, "day": 15, "hour": 10, "gender": "male", "birthPlace": "杭州" },
+      "question": "给我孩子起个名字，要符合八字喜用神，补足五行",
+      "expectedScoreRange": [70, 90],
+      "expectedKeywords": ["喜用神", "五行", "三才", "五格", "音韵"],
+      "expectedSegments": ["候选名", "用神分析", "五行配置", "三才五格", "音韵寓意"],
+      "expectedRiskLevel": "low",
+      "expectedRedLines": ["不用与长辈同音的字", "不用生僻字", "不用谐音不吉的字"],
+      "notes": "取名 case。验证 quming 模块对新生儿命盘的用神分析 + 名字候选生成。"
+    },
+    {
+      "id": "gc-quming-002",
+      "module": "quming",
+      "scenario": "取名",
+      "birthInfo": { "year": 2024, "month": 9, "day": 20, "hour": 16, "gender": "female", "birthPlace": "南京" },
+      "question": "女儿名字想用'梓'字，但不知道五行匹不匹配，帮我分析一下并给替代方案",
+      "expectedScoreRange": [60, 85],
+      "expectedKeywords": ["梓", "五行匹配", "替代方案", "喜用神", "三才"],
+      "expectedSegments": ["用神分析", "字义分析", "五行匹配度", "替代候选", "三才五格"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不用与长辈同音的字", "不用生僻字"],
+      "notes": "取名分析 case。用户指定用字，验证 LLM 对特定字的五行分析 + 替代方案生成。"
+    },
+    {
+      "id": "gc-quming-003",
+      "module": "quming",
+      "scenario": "改名",
+      "birthInfo": { "year": 1990, "month": 4, "day": 10, "hour": 6, "gender": "male", "birthPlace": "武汉" },
+      "question": "我现在 35 岁，事业一直不顺，想改名转运，该怎么评估要不要改？改的话用什么名字？",
+      "expectedScoreRange": [50, 75],
+      "expectedKeywords": ["改名", "转运", "喜用神", "大运", "事业"],
+      "expectedSegments": ["改名必要性", "用神分析", "候选名", "三才五格", "观察期"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在伤官见官年份改身份证", "改名后观察 6 个月再改证件"],
+      "notes": "改名 case。成年人改名场景，验证 LLM 对改名必要性的评估 + 候选名生成。"
+    }
+  ]
+}

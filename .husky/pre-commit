@@ -1,0 +1,23 @@
+#!/bin/sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running typecheck (backend)..."
+(cd apps/AWKN-LABlife/awkn-life-backend && npm run typecheck) || exit 1
+
+echo "🔍 Running typecheck (frontend)..."
+(cd apps/AWKN-LABlife/app && npm run typecheck) || exit 1
+
+echo "🔍 Running lint-staged..."
+npx lint-staged
+
+# 文档失效引用检查（dry-run 模式，不阻塞 commit）
+# 验证 1 周稳定后，将 `|| true` 移除以启用阻塞模式
+if [ -f "scripts/check-docs.sh" ]; then
+  echo "🔍 Running docs link check (dry-run, non-blocking)..."
+  bash scripts/check-docs.sh . || {
+    echo "⚠️  发现文档失效引用，请检查上述输出"
+    echo "⚠️  当前为 dry-run 模式，不阻塞 commit。1 周后启用阻塞模式。"
+    echo "⚠️  修复指引：参考 FR-1.2 修复方式（docs/文档索引.md）"
+    true  # 不阻塞
+  }
+fi

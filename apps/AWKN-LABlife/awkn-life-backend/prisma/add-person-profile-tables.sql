@@ -1,0 +1,59 @@
+CREATE TABLE IF NOT EXISTS PersonProfile (
+  id TEXT PRIMARY KEY NOT NULL,
+  userId TEXT,
+  sessionId TEXT,
+  birthDate TEXT,
+  birthTime TEXT,
+  gender TEXT,
+  birthPlace TEXT,
+  name TEXT,
+  yearPillar TEXT,
+  monthPillar TEXT,
+  dayPillar TEXT,
+  hourPillar TEXT,
+  naYin TEXT,
+  kongWang TEXT,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (userId) REFERENCES User(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS PersonProfileRecord (
+  id TEXT PRIMARY KEY NOT NULL,
+  personProfileId TEXT NOT NULL,
+  consultRecordId TEXT NOT NULL,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (personProfileId) REFERENCES PersonProfile(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (consultRecordId) REFERENCES ConsultRecord(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE(personProfileId, consultRecordId)
+);
+
+CREATE TABLE IF NOT EXISTS PageVisit (
+  id TEXT PRIMARY KEY NOT NULL,
+  userId TEXT,
+  sessionId TEXT,
+  pageName TEXT NOT NULL,
+  pageUrl TEXT,
+  referrer TEXT,
+  deviceInfo TEXT,
+  screenSize TEXT,
+  ipCountry TEXT,
+  ipCity TEXT,
+  entryTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  exitTime DATETIME,
+  duration INTEGER DEFAULT 0,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (userId) REFERENCES User(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS UserActivity (
+  id TEXT PRIMARY KEY NOT NULL,
+  userId TEXT,
+  sessionId TEXT,
+  activityType TEXT NOT NULL,
+  activityData TEXT NOT NULL DEFAULT '{}',
+  duration INTEGER,
+  timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (userId) REFERENCES User(id) ON DELETE SET NULL ON UPDATE CASCADE
+);

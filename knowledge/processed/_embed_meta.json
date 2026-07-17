@@ -1,0 +1,14 @@
+{
+  "model": "tfidf-char-bigram-v1",
+  "dim": 1024,
+  "count": 329577,
+  "elapsed_sec": 194.4,
+  "passages_per_sec": 1695.1,
+  "index_file": "knowledge\\processed\\classics_index.jsonl",
+  "embed_file": "knowledge\\processed\\embeddings.npy",
+  "first_passage_id": "三命通会 ([明]万明英 撰  陈明  王胜恩 注释)::p00000",
+  "last_passage_id": "大六壬快速入门完整::l7p00469",
+  "version": "v1.0",
+  "generated_at": "2026-06-18",
+  "plan_b_used": true
+}

@@ -1,0 +1,31 @@
+{
+  "caseId": "gc-001",
+  "description": "男方 1989-08-20 06:00 广西柳州（单命 case，无女方八字）",
+  "maleBirthYear": 1989,
+  "male": {
+    "yearPillar": "己巳",
+    "monthPillar": "壬申",
+    "dayPillar": "壬子",
+    "hourPillar": "癸卯",
+    "yearShishen": "正官",
+    "monthShishen": "比肩",
+    "dayShishen": "日主",
+    "hourShishen": "劫财",
+    "wuxing": { "wood": 0.3, "fire": 0.3, "earth": 0.65, "metal": 0.5, "water": 1.55 },
+    "daYun": [
+      { "index": 1, "gan": "辛", "zhi": "未", "full": "辛未", "startAge": 4, "endAge": 13 },
+      { "index": 2, "gan": "庚", "zhi": "午", "full": "庚午", "startAge": 14, "endAge": 23 },
+      { "index": 3, "gan": "己", "zhi": "巳", "full": "己巳", "startAge": 24, "endAge": 33 },
+      { "index": 4, "gan": "戊", "zhi": "辰", "full": "戊辰", "startAge": 34, "endAge": 43 }
+    ],
+    "liuNian": [
+      { "year": 2026, "ganZhi": "丙午", "shishen": "偏财" }
+    ],
+    "xingChongHeHai": {
+      "he": [{ "pillars": ["年柱", "月柱"], "relation": "巳申合" }],
+      "chong": [{ "pillars": ["日柱", "流年"], "relation": "子午冲" }],
+      "hai": [],
+      "xing": []
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "total_pdf_local": 5,
+  "shushu_pdf_count": 5,
+  "uncategorized_pdf_count": 0,
+  "category_distribution": {
+    "liuren": 5
+  },
+  "md_converted_count": 69,
+  "overall_recommendation": "PDF 已批量 OCR 为 markdown,直接复用 md_converted 目录内容,无需重做 OCR",
+  "ocr_recommendation": "复用已有 OCR 结果",
+  "samples_assessed": [
+    {
+      "path": "_archive\\data-dumps\\md_converted\\东方术数\\六壬\\大六壬择日精要_pipeline\\大六壬择日精要\\auto\\大六壬择日精要_layout.pdf",
+      "size_kb": 1.6,
+      "assessment": "PyPDF2未安装,无法评估"
+    },
+    {
+      "path": "_archive\\data-dumps\\md_converted\\东方术数\\六壬\\大六壬择日精要_pipeline\\大六壬择日精要\\auto\\大六壬择日精要_origin.pdf",
+      "size_kb": 1.7,
+      "assessment": "PyPDF2未安装,无法评估"
+    },
+    {
+      "path": "_archive\\data-dumps\\md_converted\\东方术数\\六壬\\大六壬择日精要_pipeline\\大六壬择日精要\\auto\\大六壬择日精要_span.pdf",
+      "size_kb": 1.6,
+      "assessment": "PyPDF2未安装,无法评估"
+    },
+    {
+      "path": "_archive\\data-dumps\\md_converted\\东方术数\\六壬\\大六壬择日精要_test\\大六壬择日精要\\hybrid_ocr\\大六壬择日精要_layout.pdf",
+      "size_kb": 17.7,
+      "assessment": "PyPDF2未安装,无法评估"
+    },
+    {
+      "path": "_archive\\data-dumps\\md_converted\\东方术数\\六壬\\大六壬择日精要_test\\大六壬择日精要\\hybrid_ocr\\大六壬择日精要_origin.pdf",
+      "size_kb": 17.3,
+      "assessment": "PyPDF2未安装,无法评估"
+    }
+  ],
+  "note": "本地 PDF 数量远少于盘点报告的 1639,大量 PDF 可能在 Git dangling objects 中或已丢失"
+}

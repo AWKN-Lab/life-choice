@@ -1,0 +1,54 @@
+# CODEOWNERS - 核心目录 PR 强制 owner 审核
+# 文档参考: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# 规则:
+# - 默认 owner 为 @cto-user
+# - 后端核心模块 (consult / payment / auth / prisma) 由 @backend-lead 审核
+# - consult 模块额外由 @consult-owner 审核
+# - payment 模块额外由 @payment-owner 审核
+# - 前端代码由 @frontend-lead 审核
+# - 知识库与 AI 服务由 @ai-owner 审核
+# - 部署/运维/CI 由 @devops-lead 审核
+# - 安全与密钥相关由 @cto-user 与 @devops-lead 共同审核
+#
+# 注意: 以下 owner 用户名均为占位符, 接入正式仓库时请替换为真实 GitHub 用户名或 Team
+#   (例如 @your-org/backend-lead, @your-org/consult-owner 等)
+
+# 默认 owner (所有未匹配的文件)
+*                           @cto-user
+
+# 后端核心 - consult 模块
+/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/    @backend-lead @consult-owner
+
+# 后端核心 - auth 模块
+/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/auth/       @backend-lead
+
+# 后端核心 - payment 模块
+/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/payment/    @backend-lead @payment-owner
+
+# 后端核心 - prisma 数据库 schema
+/apps/AWKN-LABlife/awkn-life-backend/apps/api-server/src/prisma/     @backend-lead
+
+# 知识库服务
+/apps/AWKN-LABlife/services/knowledge-service/                       @ai-owner
+
+# 前端
+/apps/AWKN-LABlife/app/src/                                          @frontend-lead
+
+# 基础设施 - CI/CD 工作流
+/.github/workflows/                                                  @devops-lead
+
+# 基础设施 - 部署/运维脚本
+/apps/AWKN-LABlife/scripts/                                          @devops-lead
+
+# 基础设施 - PM2 进程配置
+/apps/AWKN-LABlife/awkn-life-backend/ecosystem.config.js             @devops-lead
+
+# 基础设施 - Docker Compose
+/apps/AWKN-LABlife/docker-compose.yml                                @devops-lead
+
+# 安全与密钥 - 生产环境变量样例
+/.env.prod.example                                                   @cto-user @devops-lead
+
+# 安全与密钥 - 密钥管理 SOP
+/docs/05审核与质量/密钥管理SOP.md                                      @cto-user

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "created_at": "2026-06-13T16:38:23.140155Z",
+  "updated_at": "2026-06-13T23:14:10.138218Z",
+  "sessions": [
+    {
+      "session_id": "unknown",
+      "date": "2026-06-13",
+      "started_at": "2026-06-13T16:38:23.140191Z",
+      "current_task": "",
+      "completed_tasks": [
+        {
+          "description": "completed\",\"activeForm\":\"在 FLAG_REGISTRY 注册新 flag\"},{\"content\":\"扫查 8 处 psycholog",
+          "completed_at": "2026-06-13T16:38:23.140184Z"
+        }
+      ],
+      "remaining_tasks": [
+        {
+          "description": "pending",
+          "status": "pending"
+        }
+      ],
+      "note": "auto-save from Stop hook, 400 transcript lines"
+    },
+    {
+      "session_id": "unknown",
+      "date": "2026-06-13",
+      "started_at": "2026-06-13T23:14:10.138218Z",
+      "current_task": "",
+      "completed_tasks": [
+        {
+          "description": "completed\",\"activeForm\":\"更新 feature-flag.ts\"},{\"content\":\"feature-flags.config.t",
+          "completed_at": "2026-06-13T23:14:10.138172Z"
+        }
+      ],
+      "remaining_tasks": [
+        {
+          "description": "remaining",
+          "status": "pending"
+        }
+      ],
+      "note": "auto-save from Stop hook, 400 transcript lines"
+    }
+  ],
+  "project": "app",
+  "project_dir": "C:\\Users\\10919\\Desktop\\AWKN-Lab\\人生决策宗师\\apps\\AWKN-LABlife\\app"
+}

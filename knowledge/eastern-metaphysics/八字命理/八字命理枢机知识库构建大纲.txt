@@ -1,0 +1,451 @@
+八字命理枢机知识库完整架构
+
+本架构为智能体提供全部推理所需的静态数据、规则库、动态计算规则和辅助资源。采用分层设计，支持正格/变格分流、大运流年动态推演、术语实时翻译。可落地实施，可版本迭代。
+
+---
+
+一、总体架构图
+
+```
+knowledge-base/
+│
+├── 01_basic/                     # 基础数据（静态表，一次构建）
+│   ├── tiangandizhi.json         # 天干地支、阴阳五行
+│   ├── shishen.json              # 十神关系表
+│   ├── nayin.json                # 纳音五行表
+│   ├── changsheng.json           # 十二长生表
+│   ├── zanggan.json              # 地支藏干表
+│   ├── wuhudun.json              # 五虎遁表
+│   ├── wushudun.json             # 五鼠遁表
+│   ├── dayun.json                # 大运排法规则
+│   ├── shensha.json              # 神煞起例表
+│   └── kongwang.json             # 空亡表
+│
+├── 02_rules/                     # 推理规则库（核心）
+│   │
+│   ├── pattern_recognition/      # 格局识别规则
+│   │   ├── priority.json         # 判格优先级（变格 > 正格）
+│   │   ├── special/              # 变格识别规则
+│   │   │   ├── cong.json         # 从格（财/官/儿/势）
+│   │   │   ├── zhuan_wang.json   # 专旺格（5种）
+│   │   │   ├── hua_qi.json       # 化气格（5种）
+│   │   │   ├── liang_qi.json     # 两气成象格（7种）
+│   │   │   └── yi_xing.json      # 一行得气格（建禄/阳刃）
+│   │   └── normal/               # 正格识别规则
+│   │       └── ba_ge.json        # 八格（官杀财印食伤）条件
+│   │
+│   ├── normal_logic/             # 正格逻辑（扶抑/调候/病药/通关/十神）
+│   │   ├── tiaohou.json          # 调候用神表（穷通宝鉴）
+│   │   ├── bingyao.json          # 病药规则（神峰通考）
+│   │   ├── tongguan.json         # 通关规则
+│   │   ├── shishen_interact.json # 十神交互规则
+│   │   └── liuqin.json           # 六亲宫位规则
+│   │
+│   ├── special_logic/            # 变格逻辑（与正格不同）
+│   │   ├── cong.json             # 从格喜忌行运
+│   │   ├── zhuan_wang.json       # 专旺格喜忌行运
+│   │   ├── hua_qi.json           # 化气格喜忌行运
+│   │   └── liang_qi.json         # 两气成象格喜忌行运
+│   │
+│   └── suiyun/                   # 大运流年动态计算规则
+│       ├── relation_types.json   # 干支作用关系定义（冲合刑害等）
+│       ├── priority.json         # 关系优先级裁决规则
+│       ├── yearly.json           # 年运规则（天克地冲、岁运并临等）
+│       ├── monthly.json          # 月运细化规则
+│       └── special_periods.json  # 特殊应期（换运、节气交界等）
+│
+├── 03_terminology/               # 术语解释库（用于前台翻译）
+│   └── glossary.json             # 术语 → 白话映射
+│
+├── 04_cases/                     # 命例库（可选，长期积累）
+│   ├── classic.json              # 经典命例（袁氏命谱等）
+│   └── anonymized.json           # 脱敏用户案例
+│
+└── 05_assets/                    # 提示词辅助资源
+    ├── output_examples.json      # 输出语气锚点
+    └── routing_examples.json     # 路由识别示例
+```
+
+---
+
+二、各子库详细设计
+
+01_basic/：基础数据（9个文件）
+
+每个文件为标准表格数据，不展开字段，但需确保完整性。
+
+文件 内容 关键字段
+tiangandizhi.json 十天干、十二地支的阴阳五行属性 name, yin_yang, element
+shishen.json 十神关系映射表 relation, same_gender, diff_gender
+nayin.json 六十甲子纳音 ganzhi, nayin
+changsheng.json 日干对地支的十二长生表 day_master, di_zhi, stage
+zanggan.json 地支藏干（人元） di_zhi, main, middle, residual
+wuhudun.json 五虎遁（年干推月干） year_master, month_start
+wushudun.json 五鼠遁（日干推时干） day_master, hour_start
+dayun.json 大运排法规则（顺逆、起运计算） gender, year_yin_yang, direction, start_formula
+shensha.json 神煞起例表（天乙、太极、文昌、羊刃、桃花、华盖、驿马等） shensha_name, rule
+kongwang.json 六甲空亡表 xun, kongwang
+
+---
+
+02_rules/：推理规则库
+
+2.1 pattern_recognition/：格局识别规则
+
+priority.json：判格优先级
+
+```json
+{
+  "description": "格局判定优先级，数字越小越优先",
+  "order": [
+    { "priority": 1, "type": "hua_qi", "name": "化气格" },
+    { "priority": 2, "type": "zhuan_wang", "name": "专旺格" },
+    { "priority": 3, "type": "liang_qi", "name": "两气成象格" },
+    { "priority": 4, "type": "cong", "name": "从格" },
+    { "priority": 5, "type": "normal", "name": "正格（含建禄阳刃）" }
+  ]
+}
+```
+
+special/cong.json：从格识别规则
+
+```json
+{
+  "pattern_name": "从格",
+  "sub_types": [
+    {
+      "name": "从财格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "cai_star_strong": true,
+        "cai_star_count": "≥4或成方成局"
+      }
+    },
+    {
+      "name": "从官杀格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "guan_sha_strong": true
+      }
+    },
+    {
+      "name": "从儿格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "shi_shang_strong": true
+      }
+    },
+    {
+      "name": "从势格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "cai_guan_shi_mixed": true,
+        "no_single_dominant": true
+      }
+    }
+  ]
+}
+```
+
+special/zhuan_wang.json：专旺格识别规则
+
+```json
+{
+  "pattern_name": "专旺格",
+  "sub_types": [
+    { "name": "曲直仁寿格", "day_master": ["甲","乙"], "di_zhi_conditions": "寅卯辰全或亥卯未全", "avoid": "庚辛申酉" },
+    { "name": "炎上格", "day_master": ["丙","丁"], "di_zhi_conditions": "巳午未全或寅午戌全", "avoid": "壬癸亥子" },
+    { "name": "稼穑格", "day_master": ["戊","己"], "di_zhi_conditions": "辰戌丑未全", "avoid": "甲乙寅卯" },
+    { "name": "从革格", "day_master": ["庚","辛"], "di_zhi_conditions": "申酉戌全或巳酉丑全", "avoid": "丙丁巳午" },
+    { "name": "润下格", "day_master": ["壬","癸"], "di_zhi_conditions": "亥子丑全或申子辰全", "avoid": "戊己辰戌丑未" }
+  ]
+}
+```
+
+special/hua_qi.json：化气格识别规则
+
+```json
+{
+  "pattern_name": "化气格",
+  "sub_types": [
+    { "name": "甲己化土", "day_master": "甲", "he_gan": "己", "month": ["辰","戌","丑","未"] },
+    { "name": "乙庚化金", "day_master": "乙", "he_gan": "庚", "month": ["申","酉"] },
+    { "name": "丙辛化水", "day_master": "丙", "he_gan": "辛", "month": ["亥","子"] },
+    { "name": "丁壬化木", "day_master": "丁", "he_gan": "壬", "month": ["寅","卯"] },
+    { "name": "戊癸化火", "day_master": "戊", "he_gan": "癸", "month": ["巳","午"] }
+  ],
+  "extra_condition": "需见辰字（化神元神），且无争合妒合"
+}
+```
+
+special/liang_qi.json：两气成象格识别规则
+
+```json
+{
+  "pattern_name": "两气成象格",
+  "sub_types": [
+    { "name": "木火通明", "elements": ["木","火"], "ratio": "各占一半左右", "relation": "相生" },
+    { "name": "火土相资", "elements": ["火","土"], "ratio": "各占一半左右", "relation": "相生" },
+    { "name": "土金相生", "elements": ["土","金"], "ratio": "各占一半左右", "relation": "相生" },
+    { "name": "金白水清", "elements": ["金","水"], "ratio": "各占一半左右", "relation": "相生" },
+    { "name": "水木相生", "elements": ["水","木"], "ratio": "各占一半左右", "relation": "相生" },
+    { "name": "金木相成", "elements": ["金","木"], "ratio": "各占一半左右", "relation": "相战", "need_tongguan": true },
+    { "name": "水火既济", "elements": ["水","火"], "ratio": "各占一半左右", "relation": "相战", "need_tongguan": true }
+  ]
+}
+```
+
+special/yi_xing.json：一行得气格（建禄/阳刃）
+
+```json
+{
+  "pattern_name": "一行得气格",
+  "sub_types": [
+    { "name": "建禄格", "condition": "月支为日干临官（如甲日寅月）", "note": "归入正格，特殊处理" },
+    { "name": "阳刃格", "condition": "月支为日干帝旺（如甲日卯月）", "note": "归入正格，喜制或泄" }
+  ]
+}
+```
+
+normal/ba_ge.json：正格识别规则
+
+```json
+{
+  "pattern_name": "八格",
+  "sub_types": [
+    { "name": "正官格", "condition": "月令主气为正官" },
+    { "name": "七杀格", "condition": "月令主气为七杀" },
+    { "name": "正财格", "condition": "月令主气为正财" },
+    { "name": "偏财格", "condition": "月令主气为偏财" },
+    { "name": "正印格", "condition": "月令主气为正印" },
+    { "name": "偏印格", "condition": "月令主气为偏印" },
+    { "name": "食神格", "condition": "月令主气为食神" },
+    { "name": "伤官格", "condition": "月令主气为伤官" }
+  ],
+  "special_note": "若月令无用，取年时天透地藏"
+}
+```
+
+2.2 normal_logic/：正格逻辑
+
+每个子库为规则条目集合，每条包含 conditions, preferences, yun_preferences, source。
+
+文件 内容 来源
+tiaohou.json 十天干十二月令调候用神 穷通宝鉴
+bingyao.json 病药规则（过旺/过弱/冲刑等） 神峰通考
+tongguan.json 通关规则（两行相战时的通关之神） 滴天髓
+shishen_interact.json 十神组合断语（杀印相生、财多身弱等） 子平真诠
+liuqin.json 六亲宫位规则 渊海子平
+
+2.3 special_logic/：变格逻辑
+
+与 normal_logic/ 结构相同，但 preferences 和 yun_preferences 的喜忌与正格不同甚至相反。按格局类型拆分为：
+
+· cong.json：从财/从官/从儿/从势的喜忌行运
+· zhuan_wang.json：曲直/炎上/稼穑/从革/润下的喜忌行运
+· hua_qi.json：甲己/乙庚/丙辛/丁壬/戊癸化气的喜忌行运
+· liang_qi.json：木火/火土/土金/金水/水木/金木/水火的喜忌行运
+
+2.4 suiyun/：大运流年动态计算规则
+
+relation_types.json：干支作用关系定义
+
+```json
+{
+  "relations": [
+    { "name": "六冲", "pairs": ["子午","丑未","寅申","卯酉","辰戌","巳亥"], "basic_meaning": "主动、散、变、快" },
+    { "name": "六合", "pairs": ["子丑","寅亥","卯戌","辰酉","巳申","午未"], "basic_meaning": "主合、聚、稳、缓" },
+    { "name": "三合", "groups": ["申子辰","亥卯未","寅午戌","巳酉丑"], "basic_meaning": "主成局、大势" },
+    { "name": "三会", "groups": ["寅卯辰","巳午未","申酉戌","亥子丑"], "basic_meaning": "主一方之气、极旺" },
+    { "name": "六害", "pairs": ["子未","丑午","寅巳","卯辰","申亥","酉戌"], "basic_meaning": "主暗损、不和" },
+    { "name": "三刑", "groups": ["寅巳申","丑戌未","子卯"], "basic_meaning": "主官非、伤病、纠缠" },
+    { "name": "自刑", "pairs": ["辰辰","午午","酉酉","亥亥"], "basic_meaning": "主自寻烦恼、抑郁" }
+  ]
+}
+```
+
+priority.json：关系优先级裁决
+
+```json
+{
+  "rules": [
+    { "scenario": "合与冲并存", "rule": "六合 > 三合 > 六冲 > 刑 > 害", "exception": "天克地冲优先级高于合" },
+    { "scenario": "同一地支多种关系", "rule": "三合/三会 > 六合 > 冲 > 刑 > 害" },
+    { "scenario": "合解冲", "condition": "有合则冲力减弱", "rule": "先论合，再论冲" },
+    { "scenario": "冲可破合", "condition": "有冲则合不牢", "rule": "冲力强时合被破" }
+  ]
+}
+```
+
+yearly.json：年运规则
+
+```json
+{
+  "rules": [
+    {
+      "name": "天克地冲",
+      "conditions": "流年与某柱天干相克且地支相冲",
+      "judgment": "主重大变动、转折、分离",
+      "severity": "日柱 > 月柱 > 年柱 > 时柱"
+    },
+    {
+      "name": "岁运并临",
+      "conditions": "流年干支与大运干支完全相同",
+      "judgment": "吉凶加倍，若为喜用神大吉，忌神大凶"
+    },
+    {
+      "name": "反吟伏吟",
+      "conditions": "伏吟：流年地支与某柱相同；反吟：流年地支与某柱相冲",
+      "judgment": "伏吟主抑郁反复；反吟主变动冲击"
+    },
+    {
+      "name": "日犯岁君",
+      "conditions": "流年天干克日干（如甲日见庚年）",
+      "judgment": "主压力、管制、不顺，有救则轻"
+    }
+  ]
+}
+```
+
+monthly.json：月运细化规则
+
+```json
+{
+  "rules": [
+    {
+      "name": "流月冲大运",
+      "conditions": "流月地支与大运地支相冲",
+      "judgment": "当月易有突发变动"
+    },
+    {
+      "name": "流月合喜用",
+      "conditions": "流月地支与喜用神所在柱相合",
+      "judgment": "当月顺遂，有贵人"
+    },
+    {
+      "name": "流月入墓",
+      "conditions": "流月地支为喜用神之墓库",
+      "judgment": "当月喜用神受困，事倍功半"
+    }
+  ]
+}
+```
+
+special_periods.json：特殊应期
+
+```json
+{
+  "periods": [
+    { "name": "换大运", "rule": "每十年一换，交接前后一年为动荡期", "advice": "宜守不宜攻" },
+    { "name": "节气交界", "rule": "节气前后3-5天气场不稳", "advice": "重大决策避开" },
+    { "name": "本命年", "rule": "地支与年支相同（值太岁）", "advice": "低调、忌冒险" }
+  ]
+}
+```
+
+---
+
+03_terminology/glossary.json：术语解释库
+
+```json
+{
+  "terms": [
+    { "term": "正印格", "translation": "月令印星当令，主贵人扶持、学习能力强、适合教育文化类工作" },
+    { "term": "巳亥冲", "translation": "年支与月支相冲，主奔波、环境变动，可能换工作或搬家" },
+    { "term": "从财格", "translation": "您命里财星极旺，日主极弱，只能顺从财势。适合经商、金融，不宜公职、合伙" },
+    { "term": "杀印相生", "translation": "压力（七杀）转化为动力（印星），适合管理、军警、技术攻坚，压力越大成就越高" }
+  ]
+}
+```
+
+---
+
+04_cases/：命例库（可选）
+
+文件 内容 用途
+classic.json 《袁氏命谱》《滴天髓阐微》等经典命例 验证规则、提供参考
+anonymized.json 脱敏用户案例 长期积累，优化规则
+
+每个命例字段：bazi, gender, pattern, strength, liked_gods, key_events, source, confidence
+
+---
+
+05_assets/：提示词辅助资源
+
+文件 内容
+output_examples.json 语气锚点示例（总览/聚焦/决策模式）
+routing_examples.json 用户输入 → 模式识别示例
+
+---
+
+三、规则调用流程（智能体 Phase 2 执行）
+
+```
+输入：命局四柱、大运、流年
+    ↓
+1. 格局识别（按 priority.json 顺序）
+   - 化气格？→ 是 → special_logic/hua_qi.json
+   - 专旺格？→ 是 → special_logic/zhuan_wang.json
+   - 两气成象格？→ 是 → special_logic/liang_qi.json
+   - 从格？→ 是 → special_logic/cong.json
+   - 否 → normal_logic/（正格）
+    ↓
+2. 调用对应逻辑库
+   - 调候：tiaohou.json
+   - 病药：bingyao.json
+   - 通关：tongguan.json
+   - 十神交互：shishen_interact.json
+   - 六亲：liuqin.json
+    ↓
+3. 大运流年动态计算（suiyun/）
+   - 识别作用关系（relation_types.json）
+   - 裁决优先级（priority.json）
+   - 应用年运规则（yearly.json）
+   - 若需月度：应用月运规则（monthly.json）
+   - 检查特殊应期（special_periods.json）
+    ↓
+4. 输出前翻译（terminology/glossary.json）
+    ↓
+5. 按 Phase 3 模式输出
+```
+
+---
+
+四、版本管理与维护建议
+
+层级 更新频率 触发条件
+01_basic/ 极少 发现错误时
+02_rules/ 按需 新规则入库、经典引用补充
+03_terminology/ 持续 新术语添加、翻译优化
+04_cases/ 持续 新命例积累
+05_assets/ 按需 提示词优化时
+
+版本号格式：v{major}.{minor}.{patch}，如 v1.0.0
+
+· major：架构变更
+· minor：新规则库加入
+· patch：条目增删改
+
+---
+
+五、总结
+
+模块 文件数 是否必须 说明
+基础数据 10 ✅ 必须 静态表
+格局识别 7 ✅ 必须 含优先级和各类变格识别
+正格逻辑 5 ✅ 必须 扶抑/调候/病药/通关/十神/六亲
+变格逻辑 4 ✅ 必须 喜忌与正格不同
+大运流年 5 ✅ 必须 动态计算规则
+术语解释 1 ✅ 建议 提升输出自然度
+命例库 2 ⚠️ 可选 长期积累
+提示词资产 2 ⚠️ 可选 辅助优化
+
+本架构覆盖了命理智能体所需的全部知识类型，并区分了静态规则与动态计算，可直接落地实施。如需某一子库的详细条目模板或示例数据，请告知。

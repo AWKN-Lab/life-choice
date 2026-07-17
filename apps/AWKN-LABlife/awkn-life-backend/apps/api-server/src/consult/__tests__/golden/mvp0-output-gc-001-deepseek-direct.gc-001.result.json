@@ -1,0 +1,43 @@
+{
+  "caseId": "gc-001",
+  "segmentsFound": [
+    "事实层",
+    "解读层",
+    "推演层",
+    "建议层",
+    "点睛层",
+    "我的判断",
+    "前提",
+    "代价",
+    "推理轨迹",
+    "分值",
+    "观察期",
+    "红线",
+    "三窗口",
+    "落一句最实在的话"
+  ],
+  "segmentsMissing": [],
+  "segmentsCount": 14,
+  "isComplete": true,
+  "score": 58,
+  "scoreInRange": false,
+  "riskLevel": "high",
+  "riskMatch": true,
+  "keywordsHit": [
+    "子午冲",
+    "夫妻宫",
+    "壬子",
+    "丙午"
+  ],
+  "keywordsHitCount": 4,
+  "keywordsPassed": true,
+  "redLinesFound": [
+    "不共同贷款"
+  ],
+  "redLinesPassed": true,
+  "passed": false,
+  "failureReasons": [
+    "分值 58 超出预期区间 60-70"
+  ],
+  "rawOutputLength": 1311
+}

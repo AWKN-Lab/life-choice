@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHERIA - 双语预览 | Bilingual Preview</title>
+  <style>
+    :root {
+      --primary: #dacf98;
+      --secondary: #d7baff;
+      --surface: #10141a;
+      --surface-light: #1c2026;
+      --on-surface: #dfe2eb;
+      --outline: #99907c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+    }
+    
+    /* 顶部控制栏 */
+    .control-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #beb47e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #1a1a0f;
+      font-weight: 700;
+    }
+    
+    .logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+    }
+    
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    /* 语言切换 */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .lang-toggle button.active {
+      background: rgba(218,207,152,0.2);
+      color: var(--primary);
+    }
+    
+    .lang-toggle button:hover:not(.active) {
+      color: #fff;
+    }
+    
+    /* 设备切换 */
+    .device-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 4px;
+    }
+    
+    .device-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: none;
+      background: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .device-btn.active {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    
+    .device-btn:hover:not(.active) {
+      color: #fff;
+    }
+    
+    .device-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* 页面切换 */
+    .page-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 4px;
+    }
+    
+    .page-btn {
+      padding: 8px 16px;
+      border: none;
+      background: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .page-btn.active {
+      background: rgba(218,207,152,0.2);
+      color: var(--primary);
+    }
+    
+    .page-btn:hover:not(.active) {
+      color: #fff;
+    }
+    
+    /* 预览区域 */
+    .preview-area {
+      padding-top: 70px;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background: #1a1a1a;
+      padding-bottom: 40px;
+    }
+    
+    .preview-frame-wrapper {
+      padding: 24px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .preview-frame {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+    
+    /* 手机尺寸 */
+    .preview-frame.mobile {
+      width: 375px;
+      height: 812px;
+    }
+    
+    /* 平板尺寸 */
+    .preview-frame.tablet {
+      width: 768px;
+      height: 1024px;
+    }
+    
+    /* 桌面尺寸 */
+    .preview-frame.desktop {
+      width: 100%;
+      max-width: 1280px;
+      height: 900px;
+    }
+    
+    .preview-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* 缩放提示 */
+    .scale-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: rgba(255,255,255,0.6);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .scale-hint.visible {
+      opacity: 1;
+    }
+    
+    /* 语言显示控制 */
+    html.lang-zh .zh { display: inline !important; }
+    html.lang-zh .en { display: none !important; }
+    html.lang-en .zh { display: none !important; }
+    html.lang-en .en { display: inline !important; }
+    
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .control-bar {
+        padding: 10px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      
+      .logo-text {
+        display: none;
+      }
+      
+      .device-toggle .btn-text,
+      .page-toggle .btn-text {
+        display: none;
+      }
+      
+      .device-btn, .page-btn {
+        padding: 8px 12px;
+      }
+      
+      .preview-area {
+        padding-top: 60px;
+      }
+      
+      .preview-frame-wrapper {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 顶部控制栏 -->
+<div class="control-bar">
+  <div class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">AETHERIA 预览</span>
+  </div>
+  
+  <div class="controls">
+    <!-- 页面切换 -->
+    <div class="page-toggle">
+      <button class="page-btn active" data-page="1">
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </button>
+      <button class="page-btn" data-page="2">
+        <span class="zh">先知</span>
+        <span class="en">Oracle</span>
+      </button>
+    </div>
+    
+    <!-- 设备切换 -->
+    <div class="device-toggle">
+      <button class="device-btn" data-device="mobile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+        <span class="btn-text">
+          <span class="zh">手机</span>
+          <span class="en">Mobile</span>
+        </span>
+      </button>
+      <button class="device-btn" data-device="tablet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+        <span class="btn-text">
+          <span class="zh">平板</span>
+          <span class="en">Tablet</span>
+        </span>
+      </button>
+      <button class="device-btn active" data-device="desktop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span class="btn-text">
+          <span class="zh">桌面</span>
+          <span class="en">Desktop</span>
+        </span>
+      </button>
+    </div>
+    
+    <!-- 语言切换 -->
+    <div class="lang-toggle">
+      <button class="active" data-lang="zh">中</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- 预览区域 -->
+<div class="preview-area">
+  <div class="preview-frame-wrapper">
+    <div class="preview-frame desktop" id="previewFrame">
+      <iframe id="previewIframe" src="_1/code.html" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- 缩放提示 -->
+<div class="scale-hint" id="scaleHint">
+  <span class="zh">提示：设备已缩放以适应屏幕</span>
+  <span class="en">Note: Device scaled to fit screen</span>
+</div>
+
+<script>
+  // 语言切换
+  function setLang(lang) {
+    document.documentElement.className = 'dark lang-' + lang;
+    document.querySelectorAll('.lang-toggle button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    localStorage.setItem('aetheria_lang', lang);
+    
+    // 通知 iframe 也切换语言
+    var iframe = document.getElementById('previewIframe');
+    if (iframe && iframe.contentWindow && iframe.contentWindow.setLang) {
+      iframe.contentWindow.setLang(lang);
+    }
+  }
+  
+  // 初始化语言
+  var savedLang = localStorage.getItem('aetheria_lang') || 'zh';
+  setLang(savedLang);
+  
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setLang(btn.dataset.lang);
+    });
+  });
+  
+  // 设备切换
+  var currentDevice = 'desktop';
+  var currentPage = '1';
+  
+  function setDevice(device) {
+    currentDevice = device;
+    var frame = document.getElementById('previewFrame');
+    frame.className = 'preview-frame ' + device;
+    
+    document.querySelectorAll('.device-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.device === device);
+    });
+    
+    // 显示缩放提示
+    var hint = document.getElementById('scaleHint');
+    hint.classList.add('visible');
+    setTimeout(function() {
+      hint.classList.remove('visible');
+    }, 2000);
+  }
+  
+  // 页面切换
+  function setPage(page) {
+    currentPage = page;
+    var iframe = document.getElementById('previewIframe');
+    iframe.src = '_' + page + '/code.html';
+    
+    document.querySelectorAll('.page-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.page === page);
+    });
+  }
+  
+  // 设备按钮事件
+  document.querySelectorAll('.device-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setDevice(this.dataset.device);
+    });
+  });
+  
+  // 页面按钮事件
+  document.querySelectorAll('.page-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setPage(this.dataset.page);
+    });
+  });
+  
+  // iframe 加载完成后，同步语言设置
+  document.getElementById('previewIframe').addEventListener('load', function() {
+    try {
+      if (this.contentWindow.setLang) {
+        this.contentWindow.setLang(savedLang);
+      }
+    } catch(e) {
+      // 跨域限制，忽略
+    }
+  });
+</script>
+
+</body>
+</html>

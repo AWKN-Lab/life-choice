@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Test
+coverage/
+
+# Prisma
+prisma/migrations/
+prisma/*.bak-*
+
+# Turbo
+.turbo/
+
+# Misc
+*.tgz
+.cache/
+
+# ---- 生产备份目录（2026-07-04 新增） ----
+dist.old*/
+logs/
+*.bak-20260703
+*.bak-20260704
+package-lock.json.bak-*
+package.json.bak-*
+*.bak_*

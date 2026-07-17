@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/__tests__/**",
+    "src/consult/orchestrator.service.ts",
+    "src/consult/zhangbanshan-scheduler.service.ts",
+    "src/consult/quming-agent/**/*.spec.ts",
+    "src/quming-agent/**/*.spec.ts",
+    "src/consult/dto/naming-contract.spec.ts",
+    "src/analytics/**/*.spec.ts",
+    "src/analytics/api-metrics-collector.service.spec.ts",
+    "src/analytics/api-metrics-collector.service.ts"
+  ]
+}

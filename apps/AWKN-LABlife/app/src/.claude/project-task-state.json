@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "created_at": "2026-06-13T16:15:57.610392Z",
+  "updated_at": "2026-06-13T16:15:57.610449Z",
+  "sessions": [
+    {
+      "session_id": "unknown",
+      "date": "2026-06-13",
+      "started_at": "2026-06-13T16:15:57.610449Z",
+      "current_task": "",
+      "completed_tasks": [
+        {
+          "description": "completed: 'COMPLETED',\\n};\\n\\n// ──────────────────────────────────────────────",
+          "completed_at": "2026-06-13T16:15:57.610437Z"
+        }
+      ],
+      "remaining_tasks": [
+        {
+          "description": "remaining",
+          "status": "pending"
+        }
+      ],
+      "note": "auto-save from Stop hook, 400 transcript lines"
+    }
+  ],
+  "project": "src",
+  "project_dir": "C:\\Users\\10919\\Desktop\\AWKN-Lab\\人生决策宗师\\apps\\AWKN-LABlife\\app\\src"
+}

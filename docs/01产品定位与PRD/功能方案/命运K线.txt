@@ -1,0 +1,567 @@
+**命运K线 V2 工程文档：四线数据化与玩法升级**
+
+⚠️ **前置条件**：依赖 V1 (PLAN15.md) 完成
+
+**1. 工程目标**
+把现有 `module=kline` 从单一“人生K线图”升级为四线可切换的“命运K线”：
+
+```text
+总势K线 overall
+事业K线 career
+财运K线 wealth
+情感K线 relationship
+```
+
+本阶段不接 Kronos 模型、不新增数据库、不重写八字算法。  
+只在现有 `calc_result + generateKlineContent + ResultPage + LifeKLineChart` 上做结构扩展。
+
+---
+
+**2. 当前基础**
+当前已有：
+
+- 前端类型：[lifekline.ts](C:/Users/10919/Desktop/AWKN-Lab/人生决策宗师/AWKN-LABlife/app/src/types/lifekline.ts)
+- 前端结果页：[ResultPage.tsx](C:/Users/10919/Desktop/AWKN-Lab/人生决策宗师/AWKN-LABlife/app/src/pages/ResultPage.tsx)
+- K线图组件：[LifeKLineChart.tsx](C:/Users/10919/Desktop/AWKN-Lab/人生决策宗师/AWKN-LABlife/app/src/components/LifeKLineChart.tsx)
+- K线海报：[KLineImageGenerator.tsx](C:/Users/10919/Desktop/AWKN-Lab/人生决策宗师/AWKN-LABlife/app/src/components/KLineImageGenerator.tsx)
+- 后端 K线生成：[consult.service.ts](C:/Users/10919/Desktop/AWKN-Lab/人生决策宗师/AWKN-LABlife/awkn-life-backend/apps/api-server/src/consult/consult.service.ts)
+
+当前 `KLinePoint` 已有：
+
+```ts
+age
+year
+open
+high
+low
+close
+score
+reason
+evidenceTags
+confidence
+trend
+advice
+```
+
+所以 V2 不推倒，只补字段。
+
+---
+
+**3. 数据模型设计**
+扩展 `KLinePoint`：
+
+```ts
+export type KlineAspect = 'overall' | 'career' | 'wealth' | 'relationship';
+
+export interface KlineSignal {
+  id:
+    | 'rise_cross'
+    | 'noble_volume'
+    | 'wealth_breakout'
+    | 'relationship_shift'
+    | 'void_pullback'
+    | 'conflict_breakdown'
+    | 'useful_god_return';
+  label: string;
+  level: 'positive' | 'warning' | 'neutral';
+  description: string;
+  evidenceTags: string[];
+}
+
+export interface KlineFactorBreakdown {
+  baseChart: number;
+  daYun: number;
+  yearly: number;
+  aspect: number;
+  knowledge: number;
+  riskPenalty: number;
+}
+
+export interface KLinePoint {
+  age: number;
+  year: number;
+  aspect?: KlineAspect;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  score: number;
+  volume?: number;
+  opportunityScore?: number;
+  riskPenalty?: number;
+  factorBreakdown?: KlineFactorBreakdown;
+  signals?: KlineSignal[];
+  reason: string;
+  advice?: string;
+  evidenceTags?: string[];
+}
+```
+
+新增聚合结构：
+
+```ts
+export interface DestinyKlineBundle {
+  version: 'destiny-kline-v2';
+  currentYear: number;
+  currentAge: number;
+  aspects: Record<KlineAspect, KLinePoint[]>;
+  currentStage: {
+    aspect: KlineAspect;
+    stageName: string;
+    score: number;
+    description: string;
+    action: string;
+    risk: string;
+  };
+  keyWindows: {
+    best: KLinePoint;
+    risk: KLinePoint;
+    turning?: KLinePoint;
+  };
+  signals: KlineSignal[];
+}
+```
+
+兼容策略：
+
+- 后端返回 `aspects` 时，前端优先用 `aspects[activeAspect]`。
+- 后端未返回时，前端用现有 `chartData` 当作 `overall`。
+- 不破坏旧 `chartData/yearData/monthlyData`。
+
+---
+
+**4. OHLCV 映射规则**
+命运K线的 OHLCV 定义：
+
+```text
+open：周期开始势能
+high：本周期机会上限
+low：本周期风险下探
+close：综合落点
+score：默认等于 close
+volume：事件激活度
+```
+
+基础公式：
+
+```ts
+close =
+  baseChart * 0.20
+  + daYun * 0.25
+  + yearly * 0.25
+  + aspect * 0.20
+  + knowledge * 0.10
+  - riskPenalty;
+```
+
+边界：
+
+```ts
+score = clamp(close, 5, 95)
+high = clamp(close + opportunityScore * 0.35 + volume * 0.12, score, 100)
+low = clamp(close - riskPenalty * 0.7 - volume * 0.08, 0, score)
+open = previousClose * 0.65 + currentBase * 0.35
+```
+
+`volume` 计算：
+
+```ts
+volume =
+  conflictCount * 10
+  + combinationCount * 6
+  + shenShaHitCount * 5
+  + knowledgeHitCount * 8
+  + daYunChangeBonus
+```
+
+解释：
+
+- `volume` 不是成交量，是“事件激活度”。
+- 分数高但 volume 低：顺，但未必有大事。
+- 分数中等但 volume 高：容易出现变化、机会或冲突。
+- `high` 高、`close` 低：机会看得到，但落地不稳。
+
+---
+
+**5. 四线评分因子**
+**overall 总势**
+
+```text
+日主强弱
+用神到位
+大运顺逆
+流年扶抑
+五行流通
+冲合刑害密度
+贵人/空亡/桃花等辅助因子
+```
+
+**career 事业**
+
+```text
+官杀：职位、压力、规则、上级
+印星：资质、学习、贵人、组织保护
+食伤：作品、表达、技术、创业
+驿马、文昌、将星、天乙
+大运流年是否扶事业相关十神
+```
+
+**wealth 财运**
+
+```text
+正财/偏财
+食伤生财
+比劫夺财
+财星透干/藏支
+财库、冲库、开库
+风险：劫财、空亡、财星被合走
+```
+
+**relationship 情感**
+
+```text
+男命财星、女命官杀
+夫妻宫状态
+桃花、红鸾、天喜、咸池
+日支冲合刑害
+关系宫被流年触发
+```
+
+---
+
+**6. 规则因子结构**
+先不做知识库大迁移，内置核心规则因子。
+
+```ts
+export interface KlineRuleFactor {
+  sourceId: string;
+  title: string;
+  appliesTo: KlineAspect[];
+  direction: 'positive' | 'negative' | 'mixed';
+  weight: number;
+  volatility: number;
+  confidence: number;
+  evidenceTag: string;
+  explanation: string;
+}
+```
+
+首批规则：
+
+```text
+ZP-WEALTH-001 食伤生财
+ZP-WEALTH-002 比劫夺财
+ZP-WEALTH-003 财星透出
+ZP-CAREER-001 官印相生
+ZP-CAREER-002 食伤制杀
+ZP-CAREER-003 文昌助业
+ZP-REL-001 桃花触发
+ZP-REL-002 夫妻宫冲动
+ZP-REL-003 红鸾天喜
+ZP-RISK-001 空亡回撤
+ZP-RISK-002 冲刑破位
+ZP-OVERALL-001 用神回归
+```
+
+建议新增文件：
+
+```text
+app/src/lib/destinyKline/ruleFactors.ts
+app/src/lib/destinyKline/deriveDestinyKline.ts
+```
+
+如果后端实现：
+
+```text
+awkn-life-backend/apps/api-server/src/consult/kline/kline-rule-factors.ts
+awkn-life-backend/apps/api-server/src/consult/kline/destiny-kline.service.ts
+```
+
+V2 推荐先前端派生，后端后置，降低风险。
+
+---
+
+**7. 前端实现方案**
+新增模块：
+
+```text
+app/src/lib/destinyKline/types.ts
+app/src/lib/destinyKline/ruleFactors.ts
+app/src/lib/destinyKline/deriveDestinyKline.ts
+```
+
+`deriveDestinyKline(calcResult, existingChartData)` 输出：
+
+```ts
+DestinyKlineBundle
+```
+
+输入来源：
+
+```text
+1. result.module_content.aspects
+2. result.module_content.chartData
+3. result.calc_result
+4. local fallback
+```
+
+`ResultPage` 改造：
+
+```text
+新增 activeAspect state：
+overall / career / wealth / relationship
+
+新增顶部四线切换：
+总势 / 事业 / 财运 / 情感
+
+LifeKLineChart data 改为：
+bundle.aspects[activeAspect]
+```
+
+保留原 tabs：
+
+```text
+year
+month
+wuxing
+fortune
+celebrity
+```
+
+新增一个“信号区”：
+
+```text
+当前信号：
+启势金叉
+贵人放量
+空亡回撤
+```
+
+---
+
+**8. 图表交互**
+图表上方新增：
+
+```text
+当前阶段
+当前分数
+主信号
+机会窗口
+风险窗口
+```
+
+四线切换：
+
+```text
+总势：人生整体走势
+事业：职业/创业/升迁/项目
+财运：现金流/投资/副业/守财
+情感：亲密关系/桃花/关系波动
+```
+
+年份 tooltip 改成：
+
+```text
+2029 · 事业线
+分数：82
+信号：启势金叉
+适合：推进事业扩张、谈资源合作
+谨慎：高杠杆、情绪化跳槽
+依据：官印相生、用神到位、大运抬升
+```
+
+---
+
+**9. 均线设计**
+V2 保留现有 MA5 / MA10，不强改 UI。
+
+V2.5 再做命名升级：
+
+```text
+3日快线：短期气感
+11日旬线：旬级趋势
+30日月线：月度节律
+100日季线：季度趋势
+365日年线：年度主线
+10年大运线：人生主线
+```
+
+本轮只预留类型：
+
+```ts
+movingAverages?: {
+  ma3?: number;
+  ma11?: number;
+  ma30?: number;
+  ma100?: number;
+}
+```
+
+---
+
+**10. 信号规则**
+首批信号：
+
+```text
+启势金叉：
+短期均线向上，当前 close > 前一年 close，volume 增强。
+
+贵人放量：
+天乙、文昌、将星等正向因子命中，volume 明显抬升。
+
+财星突破：
+财运线 close 高于近五年均值，并命中财星/食伤生财。
+
+关系异动：
+情感线 volume 抬升，命中桃花/红鸾/夫妻宫冲合。
+
+空亡回撤：
+机会分高，但空亡/落空因子强，high 高 close 低。
+
+冲刑破位：
+冲刑害破集中，low 明显下探，riskPenalty 高。
+
+用神回归：
+用神相关五行/十神在大运或流年中重新增强。
+```
+
+信号输出：
+
+```ts
+{
+  id: 'wealth_breakout',
+  label: '财星突破',
+  level: 'positive',
+  description: '财运线突破近期均值，适合关注变现与资源转化。',
+  evidenceTags: ['食伤生财', '财星透出']
+}
+```
+
+---
+
+**11. 后端接口策略**
+V2 首选：不新增接口。
+
+沿用：
+
+```http
+GET /api/v1/consult/result/:recordId?module=kline
+```
+
+响应兼容：
+
+```ts
+{
+  module_content: {
+    chartData: KLinePoint[],
+    yearData: KLinePoint[],
+    destinyKline?: DestinyKlineBundle
+  }
+}
+```
+
+前端处理优先级：
+
+```ts
+const bundle =
+  moduleContent.destinyKline
+  ?? deriveDestinyKline(result.calc_result, moduleContent.chartData)
+```
+
+后续 V3 再考虑新增：
+
+```http
+GET /api/v1/consult/records/:recordId/kline
+```
+
+---
+
+**12. 数据流程图**
+```mermaid
+flowchart TD
+  A["用户进入命运K线"] --> B["获取 consult result"]
+  B --> C{"module_content.destinyKline 是否存在"}
+  C -->|是| D["直接渲染四线K线"]
+  C -->|否| E["读取 calc_result + chartData"]
+  E --> F["deriveDestinyKline 派生四线"]
+  F --> G["总势/事业/财运/情感"]
+  G --> H["LifeKLineChart 渲染"]
+  G --> I["信号区/年份解读/海报"]
+  I --> J["用户分享/解锁/回看"]
+```
+
+---
+
+**13. 测试用例**
+| 编号 | 场景 | 输入 | 预期 |
+|---|---|---|---|
+| KLINE-001 | 老数据兼容 | 只有 `chartData` | 显示总势线，其他线用派生数据或禁用态 |
+| KLINE-002 | 四线切换 | destinyKline 有四线 | 总势/事业/财运/情感切换正常 |
+| KLINE-003 | 当前年份 | chartData 包含当前年 | 当前阶段取当前年点 |
+| KLINE-004 | 无当前年份 | chartData 不含当前年 | 使用当前年龄附近点兜底 |
+| KLINE-005 | 财运信号 | 命中食伤生财/财星透出 | 出现“财星突破”或财运正向解释 |
+| KLINE-006 | 情感风险 | 夫妻宫冲动/桃花高 volume | 出现“关系异动” |
+| KLINE-007 | 空数据 | 无 calc_result 无 chartData | 显示空状态，不白屏 |
+| KLINE-008 | 海报 | 四线数据存在 | 海报不显示完整出生信息 |
+| KLINE-009 | 多语言 | 英文模式 | 不出现中文主文案残留 |
+| KLINE-010 | 构建 | npm run build | 前端构建通过 |
+
+---
+
+**14. 实施顺序**
+1. 新增 `destinyKline` 类型与派生工具。
+2. 把现有 `chartData` 包装成 `overall`。
+3. 派生 `career/wealth/relationship` 三条线。
+4. 在 `ResultPage` 增加四线切换。
+5. 在 K线页顶部增加当前阶段与信号区。
+6. 修改 tooltip 文案和依据展示。
+7. 海报支持当前 activeAspect。
+8. 补齐中英文泰文案。
+9. 前端 build。
+10. 后端如未改，无需部署后端；如后端也生成 `destinyKline`，再跑后端 build。
+
+---
+
+**15. 明确不做**
+本轮不做：
+
+```text
+不接 Kronos 模型
+不训练模型
+不新增数据库表
+不做回看验证
+不做 3日/11日/30日/100日真实短周期
+不重写八字计算器
+不改会员系统
+不影响 awkn.cn 根主页
+```
+
+---
+
+**16. 下一阶段**
+V2.5：
+
+```text
+3日快线
+11日旬线
+30日月线
+100日季线
+近期断事 K线
+```
+
+V3：
+
+```text
+回看验证
+命中率统计
+用户个人校准参数
+知识库规则因子后台管理
+```
+
+V4：
+
+```text
+基于真实回看数据训练命运时间序列模型
+```
+
+这版是可执行工程文档：先把 K线从“一条图”变成“四条可解释的术数时间序列”，但仍然保持最小改动和现有系统兼容。

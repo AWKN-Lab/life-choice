@@ -1,0 +1,161 @@
+{
+  "input_files": 24,
+  "skipped_files": [
+    "东方术数/六壬/六壬神课金口诀现代实例精解.md",
+    "东方术数/六壬/大六壬神课研究应用课程讲义.md",
+    "东方术数/六壬/大六壬择日精要_pipeline/大六壬择日精要/auto/大六壬择日精要.md",
+    "东方术数/奇门/彩票与奇门.md",
+    "东方术数/于城道人天目奇门.md",
+    "东方术数/紫薇/紫微斗数断命法.md",
+    "东方术数/八字命理/子平推命/图解子平真诠 干支密码(3) (沈孝瞻) (z-library.sk, 1lib.sk, z-lib.sk).md"
+  ],
+  "skipped_count": 7,
+  "processed_books": 17,
+  "total_passages_added": 7193,
+  "by_category": {
+    "liuren": 3415,
+    "liuyao": 360,
+    "qimen": 2073,
+    "quming": 230,
+    "daoism": 1115
+  },
+  "per_file_stats": [
+    {
+      "book": "六壬大全",
+      "system_type": "liuren",
+      "total_split": 807,
+      "new_added": 807,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/六壬大全.md"
+    },
+    {
+      "book": "六壬捷录新解",
+      "system_type": "liuren",
+      "total_split": 435,
+      "new_added": 435,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/六壬捷录新解.md"
+    },
+    {
+      "book": "六壬神课初学详解",
+      "system_type": "liuren",
+      "total_split": 71,
+      "new_added": 71,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/六壬神课初学详解 .md"
+    },
+    {
+      "book": "大六壬神课金口诀分类解断",
+      "system_type": "liuren",
+      "total_split": 1,
+      "new_added": 1,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/大六壬神课金口诀分类解断.md"
+    },
+    {
+      "book": "大六壬高级预测学",
+      "system_type": "liuren",
+      "total_split": 567,
+      "new_added": 567,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/_processed_md/大六壬高级预测学.md"
+    },
+    {
+      "book": "六壬指南例题解",
+      "system_type": "liuren",
+      "total_split": 404,
+      "new_added": 404,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/_processed_md/六壬指南例题解.md"
+    },
+    {
+      "book": "六壬断案详解",
+      "system_type": "liuren",
+      "total_split": 582,
+      "new_added": 582,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/六壬/_processed_md/六壬断案详解.md"
+    },
+    {
+      "book": "六爻正道",
+      "system_type": "liuyao",
+      "total_split": 474,
+      "new_added": 360,
+      "dup_with_existing": 114,
+      "source": "_archive/东方术数/六壬/六爻正道.md"
+    },
+    {
+      "book": "不吹牛第一届奇门遁甲培训班讲义",
+      "system_type": "qimen",
+      "total_split": 2124,
+      "new_added": 2029,
+      "dup_with_existing": 95,
+      "source": "_archive/东方术数/奇门/不吹牛第一届奇门遁甲培训班讲义.md"
+    },
+    {
+      "book": "妙派奇门遁甲使用方法",
+      "system_type": "qimen",
+      "total_split": 120,
+      "new_added": 44,
+      "dup_with_existing": 76,
+      "source": "_archive/东方术数/奇门/妙派奇门遁甲使用方法.md"
+    },
+    {
+      "book": "中州派紫微斗数初级讲义",
+      "system_type": "ziwei",
+      "total_split": 541,
+      "new_added": 0,
+      "dup_with_existing": 541,
+      "source": "_archive/东方术数/紫薇/中州派紫微斗数初级讲义.md"
+    },
+    {
+      "book": "依婷紫微斗数讲课记录",
+      "system_type": "ziwei",
+      "total_split": 1358,
+      "new_added": 0,
+      "dup_with_existing": 1358,
+      "source": "_archive/东方术数/紫薇/依婷紫微斗数讲课记录.md"
+    },
+    {
+      "book": "紫微斗数精奥",
+      "system_type": "ziwei",
+      "total_split": 437,
+      "new_added": 0,
+      "dup_with_existing": 437,
+      "source": "_archive/东方术数/紫薇/紫微斗数精奥.md"
+    },
+    {
+      "book": "名至实归：姓名与人生的关系 (周德元)",
+      "system_type": "quming",
+      "total_split": 416,
+      "new_added": 230,
+      "dup_with_existing": 186,
+      "source": "_archive/东方术数/名至实归：姓名与人生的关系 (周德元) (z-library.sk, 1lib.sk, z-lib.sk).md"
+    },
+    {
+      "book": "理解《道德经》",
+      "system_type": "daoism",
+      "total_split": 1115,
+      "new_added": 1115,
+      "dup_with_existing": 0,
+      "source": "_archive/东方术数/理解《道德经》.md"
+    },
+    {
+      "book": "大六壬入门",
+      "system_type": "liuren",
+      "total_split": 78,
+      "new_added": 78,
+      "dup_with_existing": 0,
+      "source": "_archive/奇门遁甲/ZhouYiLab/docs/大六壬入门.md"
+    },
+    {
+      "book": "大六壬快速入门完整",
+      "system_type": "liuren",
+      "total_split": 470,
+      "new_added": 470,
+      "dup_with_existing": 0,
+      "source": "_archive/奇门遁甲/ZhouYiLab/docs/大六壬快速入门完整.md"
+    }
+  ],
+  "dedup_strategy": "SHA256(text.strip()) vs existing classics_index.jsonl"
+}

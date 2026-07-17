@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-03-21T12:30:37.075808",
+  "total_files": 12,
+  "total_cases": 200,
+  "total_imported": 200,
+  "total_skipped": 0,
+  "details": [
+    {
+      "source": "吕文艺八字命理",
+      "filename": "吕文艺-八字命理全集.docx",
+      "paragraphs": 13023,
+      "cases_found": 12,
+      "cases_unique": 10,
+      "imported": 10,
+      "skipped": 0
+    },
+    {
+      "source": "穷通宝鉴评注",
+      "filename": "四库存目 子平汇刊 5 穷通宝鉴评注 (（清）徐乐吾注) (Z-Library).docx",
+      "paragraphs": 799,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "滴天髓阐微",
+      "filename": "四库存目子平汇刊 4 秘授滴天髓阐微 (（宋）京图，（明）刘基，（清）任铁樵撰) (Z-Library).docx",
+      "paragraphs": 678,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "神峰通考",
+      "filename": "四库存目子平汇刊 6 神峰通考命理正宗 ([明]张楠) (Z-Library).docx",
+      "paragraphs": 5302,
+      "cases_found": 179,
+      "cases_unique": 177,
+      "imported": 177,
+      "skipped": 0
+    },
+    {
+      "source": "命理金鉴",
+      "filename": "四库存目子平汇刊 3 命理金鉴 附李虚中命书 ([清] 志于道 著) (Z-Library).docx",
+      "paragraphs": 3274,
+      "cases_found": 13,
+      "cases_unique": 13,
+      "imported": 13,
+      "skipped": 0
+    },
+    {
+      "source": "命理探原",
+      "filename": "四库存目子平汇刊 7 新校命理探原 (（清）袁树珊撰) (Z-Library).docx",
+      "paragraphs": 778,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "袁氏命谱",
+      "filename": "四库存目子平汇刊 8 重校绘图袁氏命谱 (（清）袁树珊撰) (Z-Library) (1).docx",
+      "paragraphs": 891,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "渊海子平",
+      "filename": "图解渊海子平 [图解干支密码 (1)]. ((宋)徐子平) (Z-Library).docx",
+      "paragraphs": 9233,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "滴天髓今注",
+      "filename": "滴天髓 子平真詮 今註 (梁湘潤, 沈孝瞻) (Z-Library).docx",
+      "paragraphs": 3893,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "中国古代术数滴天髓",
+      "filename": "中国古代术数全书 滴天髓 (（宋）京图撰；（明）刘基注；（清）任铁樵疏；孙正治点校, Jing Tu zhuan etc.) (Z-Library).docx",
+      "paragraphs": 752,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "子平精粹1",
+      "filename": "子平精粹 1 五行大义·渊海子平 (（隋）萧吉，（宋）徐子平，徐升著, Xiao Ji zhu etc.) (Z-Library) (1).docx",
+      "paragraphs": 839,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    },
+    {
+      "source": "滴天髓图解上",
+      "filename": "图解古代天人学滴天髓 上 八字格局 白话图解本 (（宋）京图著, (宋)京图原著 , (清)任铁樵注 , 唐建钧编译, 京图, 任铁樵, 唐建钧 etc.) (Z-Library).docx",
+      "paragraphs": 873,
+      "cases_found": 0,
+      "cases_unique": 0,
+      "imported": 0,
+      "skipped": 0
+    }
+  ]
+}

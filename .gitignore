@@ -1,27 +1,154 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# ============================================
+# 人生决策宗师 — Git Ignore Rules
+# ============================================
 
-node_modules
-dist
-dist-ssr
-*.local
+# ---- 依赖与构建 ----
+node_modules/
+dist/
+.next/
+build/
+*.tsbuildinfo
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.vercel
+# ---- 环境变量（含密钥） ----
 .env
-.env*.local
+.env.local
+.env.production
+.env.*
+*.env
+!.env.example
+
+# ---- 备份与快照文件（防密钥泄露） ----
+*.bak
+*.bak-*
+*.backup
+*.production-snapshot
+*.prellm
+
+# ---- 数据库文件 ----
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# ---- IDE 与编辑器 ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---- Python 环境 ----
+.mineru-env/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+.ruff_cache/
+
+# ---- 大文件目录（知识库 PDF/DOCX） ----
+knowledge/eastern-metaphysics/**/*.pdf
+knowledge/eastern-metaphysics/**/*.docx
+knowledge/eastern-metaphysics/**/*.epub
+references/materials/**/*.pdf
+references/materials/**/*.docx
+references/projects/legacy-unknown/**/*.png
+
+# ---- 知识库产物（向量/索引，超 100MB 不入 git） ----
+knowledge/processed/**/*.npy
+knowledge/processed/classics_index*.jsonl*
+knowledge/processed/_*_import.jsonl
+knowledge/processed/idf_cache.pkl
+knowledge/asset-ledger/source-lineage.jsonl
+knowledge/services/chroma_db/
+knowledge/**/*.bin
+
+# ---- 部署包与归档 ----
+.deploy/
+_archive/
+deploy-package.tar.gz
+*.tgz
+*.tar.gz
+
+# ---- 系统与临时文件 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+nul
+*.log
+~$*.docx
+~$*.pptx
+~$*.xlsx
+*.bak_*
+
+# ---- 测试与覆盖率 ----
+coverage/
+.nyc_output/
+test-results/
+
+# ---- PM2 与部署 ----
+.pm2/
+logs/
+
+# ---- Supabase 本地 ----
+.supabase/
+
+# ---- QoderWork 工作区 ----
+.qoder/
+
+# ---- Trae IDE ----
+.trae
+.trae/
+.memory/
+
+# ---- 子项目的 node_modules 与构建产物 ----
+**/node_modules/
+**/dist/
+
+# ---- 顶层独立项目（不纳入主仓库） ----
+/ziwei-doushu/
+
+# ---- 临时输出文件 ----
+test-output.txt
+
+# ---- 临时探测与恢复文件（P0-1清理） ----
+_tmp_*
+_dangling_probe/
+_recovered_assets/
+test-write-probe.txt
+.husky/*.bak.*
+
+# ---- 临时分析目录（2026-07-03 新增） ----
+_prod_review/
+backend-backups/
+dangling-probe-analysis/
+*.bin
+_probe*
+
+# ---- G3 知识资产治理（2026-07-03 新增） ----
+knowledge/processed/backup-*/
+knowledge/processed/_backup*/
+knowledge/processed/*-log-*.txt
+knowledge/processed/_embed_log_*.txt
+*.zip
+
+# ---- P0-② (2026-07-06) turbo 缓存 ----
+.turbo/
+**/.turbo/
+
+# ---- 项目目录治理（2026-07-11） ----
+.pytest_cache/
+_tmp_runtime_logs/
+_backup_chroma_db_*/
+server-backups/
+*.err
+*.out
+
+# 根目录跨项目与一次性生成物
+/--css
+/gen_magazine.js
+/lingyang-investment-deck/
+/lingyang-investment-deck-v2/
+/凌扬运动_*.pptx

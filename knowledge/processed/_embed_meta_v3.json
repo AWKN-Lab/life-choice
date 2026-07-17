@@ -1,0 +1,16 @@
+{
+  "model": "bge-small-zh-v1.5",
+  "dim": 512,
+  "count": 329577,
+  "elapsed_sec": 1814.5,
+  "resumed_from": 298016,
+  "passages_per_sec": 17.4,
+  "index_file": "knowledge/processed/classics_index.jsonl",
+  "embed_file": "knowledge/processed/embeddings_v3.npy",
+  "first_passage_id": "三命通会 ([明]万明英 撰  陈明  王胜恩 注释)::p00000",
+  "last_passage_id": "大六壬快速入门完整::l7p00469",
+  "version": "v3.0",
+  "generated_at": "2026-07-10",
+  "downgrade_note": "原计划 bge-large-zh-v1.5(1024维),沙箱无法访问 huggingface,降级为 bge-small-zh-v1.5(512维)。三次续跑完成: 0-280000(首次中断) + 280000-298016(二次中断) + 298016-329577(完成).",
+  "note": "meta 文件由 inline 修复脚本生成(原脚本 line 160 del embeddings bug 导致 meta 写入崩溃)。memmap 文件本身已正确编码,仅 meta 文件缺失。"
+}

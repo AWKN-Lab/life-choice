@@ -1,0 +1,402 @@
+{
+  "name": "liuren-jinkoujue",
+  "version": "v1",
+  "description": "大六壬金口诀规则引擎，涵盖起课规则（地分/月将/贵神/人元）、五位生克判断、八种课体吉凶、分类占断（财运/婚姻/官非/出行/疾病），供规则引擎自动起课与断课",
+  "qiKe": {
+    "description": "金口诀起课四步法：地分→月将→贵神→人元",
+    "diFen": {
+      "description": "地分定法：以方位、属相、时辰或随机数取地分",
+      "methods": [
+        {
+          "name": "方位法",
+          "rule": "来人方位对应地支：子北、丑东北、寅东北、卯东、辰东南、巳东南、午南、未西南、申西南、酉西、戌西北、亥西北"
+        },
+        {
+          "name": "属相法",
+          "rule": "以来人生肖对应地支：子鼠、丑牛、寅虎、卯兔、辰龙、巳蛇、午马、未羊、申猴、酉鸡、戌狗、亥猪"
+        },
+        {
+          "name": "时辰法",
+          "rule": "以当前时辰地支为地分：子时23-1、丑时1-3、寅时3-5、卯时5-7、辰时7-9、巳时9-11、午时11-13、未时13-15、申时15-17、酉时17-19、戌时19-21、亥时21-23"
+        },
+        {
+          "name": "随机法",
+          "rule": "随机取1-12对应地支：1子、2丑、3寅、4卯、5辰、6巳、7午、8未、9申、10酉、11戌、12亥"
+        }
+      ]
+    },
+    "yueJiang": {
+      "description": "月将起法：以太阳过宫定月将，正月亥登明、二月戌河魁、三月酉从魁、四月申传送、五月未小吉、六月午胜光、七月巳太乙、八月辰天罡、九月卯太冲、十月寅功曹、十一月丑大吉、十二月子神后",
+      "months": [
+        { "month": 1, "name": "正月", "yueJiang": "亥", "shenName": "登明", "solarTerm": "雨水~春分" },
+        { "month": 2, "name": "二月", "yueJiang": "戌", "shenName": "河魁", "solarTerm": "春分~谷雨" },
+        { "month": 3, "name": "三月", "yueJiang": "酉", "shenName": "从魁", "solarTerm": "谷雨~小满" },
+        { "month": 4, "name": "四月", "yueJiang": "申", "shenName": "传送", "solarTerm": "小满~夏至" },
+        { "month": 5, "name": "五月", "yueJiang": "未", "shenName": "小吉", "solarTerm": "夏至~大暑" },
+        { "month": 6, "name": "六月", "yueJiang": "午", "shenName": "胜光", "solarTerm": "大暑~处暑" },
+        { "month": 7, "name": "七月", "yueJiang": "巳", "shenName": "太乙", "solarTerm": "处暑~秋分" },
+        { "month": 8, "name": "八月", "yueJiang": "辰", "shenName": "天罡", "solarTerm": "秋分~霜降" },
+        { "month": 9, "name": "九月", "yueJiang": "卯", "shenName": "太冲", "solarTerm": "霜降~小雪" },
+        { "month": 10, "name": "十月", "yueJiang": "寅", "shenName": "功曹", "solarTerm": "小雪~冬至" },
+        { "month": 11, "name": "十一月", "yueJiang": "丑", "shenName": "大吉", "solarTerm": "冬至~大寒" },
+        { "month": 12, "name": "十二月", "yueJiang": "子", "shenName": "神后", "solarTerm": "大寒~雨水" }
+      ],
+      "calculationRule": "以地分顺数至月将所在，月将为将神（第二爻）。例如正月亥为月将，地分若为子，则子顺数至亥为12位，将神为亥"
+    },
+    "guiShen": {
+      "description": "贵神定法：以日干定贵人，分昼夜顺逆",
+      "dayNightRule": "卯酉为昼夜分界：卯时至酉时（5-19点）为昼，用昼贵人顺行；酉时至卯时（19-5点）为夜，用夜贵人逆行",
+      "guiRenTable": {
+        "甲": { "day": "丑", "night": "未" },
+        "乙": { "day": "子", "night": "申" },
+        "丙": { "day": "亥", "night": "酉" },
+        "丁": { "day": "酉", "night": "亥" },
+        "戊": { "day": "未", "night": "丑" },
+        "己": { "day": "申", "night": "子" },
+        "庚": { "day": "丑", "night": "未" },
+        "辛": { "day": "午", "night": "寅" },
+        "壬": { "day": "巳", "night": "卯" },
+        "癸": { "day": "卯", "night": "巳" }
+      },
+      "twelveGuiShen": [
+        { "order": 1, "name": "贵人", "element": "土", "nature": "吉" },
+        { "order": 2, "name": "螣蛇", "element": "火", "nature": "凶" },
+        { "order": 3, "name": "朱雀", "element": "火", "nature": "凶" },
+        { "order": 4, "name": "六合", "element": "木", "nature": "吉" },
+        { "order": 5, "name": "勾陈", "element": "土", "nature": "凶" },
+        { "order": 6, "name": "青龙", "element": "木", "nature": "吉" },
+        { "order": 7, "name": "天空", "element": "土", "nature": "凶" },
+        { "order": 8, "name": "白虎", "element": "金", "nature": "凶" },
+        { "order": 9, "name": "太常", "element": "土", "nature": "吉" },
+        { "order": 10, "name": "玄武", "element": "水", "nature": "凶" },
+        { "order": 11, "name": "太阴", "element": "金", "nature": "吉" },
+        { "order": 12, "name": "天后", "element": "水", "nature": "吉" }
+      ],
+      "calculationRule": "以日干取贵人所在，以贵人顺数（昼）或逆数（夜）至地分，所得即为贵神（第三爻）"
+    },
+    "renYuan": {
+      "description": "人元定法：以日干遁五子元遁法起人元",
+      "fiveRatEscape": {
+        "甲己": "甲子",
+        "乙庚": "丙子",
+        "丙辛": "戊子",
+        "丁壬": "庚子",
+        "戊癸": "壬子"
+      },
+      "calculationRule": "以日干定五子遁，从子时起遁，顺数至贵神地支，所得天干即为人元（第一爻）。例如甲日贵神为寅，甲己起甲子，子为甲、丑为乙、寅为丙，人元为丙"
+    }
+  },
+  "wuWeiShengKe": {
+    "description": "五位生克：人元（天干）、贵神（地支）、将神（地支）、地分（地支），加日干共五位，以五行生克论吉凶",
+    "fivePositions": [
+      { "position": "人元", "label": "天", "type": "天干", "meaning": "外应、环境、上级、天时" },
+      { "position": "贵神", "label": "神", "type": "地支", "meaning": "吉凶之主、贵人、神煞之力" },
+      { "position": "将神", "label": "将", "type": "地支", "meaning": "事体本身、妻财、行动" },
+      { "position": "地分", "label": "方", "type": "地支", "meaning": "方位、根基、下属、田宅" },
+      { "position": "日干", "label": "身", "type": "天干", "meaning": "问事者本人" }
+    ],
+    "shengKeRules": [
+      {
+        "id": "sk-renshengjiang",
+        "name": "人元生将神",
+        "judgment": "吉，主外来之喜、上司赏识、贵人相助",
+        "score": 15
+      },
+      {
+        "id": "sk-renkejiang",
+        "name": "人元克将神",
+        "judgment": "凶，主外来压力、上级压制、环境不利",
+        "score": -15
+      },
+      {
+        "id": "sk-jiangshengren",
+        "name": "将神生人元",
+        "judgment": "泄气，主付出多回报少、劳而无功",
+        "score": -5
+      },
+      {
+        "id": "sk-jiangkefen",
+        "name": "将神克人元",
+        "judgment": "半吉，主自身能力强可制外、但易得罪人",
+        "score": 5
+      },
+      {
+        "id": "sk-renshengtong",
+        "name": "人元与将神同",
+        "judgment": "平和，主内外一致、表里如一",
+        "score": 10
+      },
+      {
+        "id": "sk-guishengjiang",
+        "name": "贵神生将神",
+        "judgment": "吉，主神助其事、吉神护佑",
+        "score": 15
+      },
+      {
+        "id": "sk-guikejiang",
+        "name": "贵神克将神",
+        "judgment": "凶，主神阻其事、凶神作祟",
+        "score": -15
+      },
+      {
+        "id": "sk-jiangshenggui",
+        "name": "将神生贵神",
+        "judgment": "泄气，主自身助神、付出多",
+        "score": -5
+      },
+      {
+        "id": "sk-jiangkegui",
+        "name": "将神克贵神",
+        "judgment": "半吉，主自身可制神煞、但需防反噬",
+        "score": 5
+      },
+      {
+        "id": "sk-guijiangtong",
+        "name": "贵神与将神同",
+        "judgment": "大吉，主神将合一、事必成",
+        "score": 20
+      },
+      {
+        "id": "sk-jiangshendifen",
+        "name": "将神生地分",
+        "judgment": "吉，主事有根基、利于田宅",
+        "score": 10
+      },
+      {
+        "id": "sk-jiangkefen2",
+        "name": "将神克地分",
+        "judgment": "半凶，主事伤根基、需防破财",
+        "score": -10
+      },
+      {
+        "id": "sk-difenshengjiang",
+        "name": "地分生将神",
+        "judgment": "吉，主根基生事、地利人和",
+        "score": 10
+      },
+      {
+        "id": "sk-difenkejiang",
+        "name": "地分克将神",
+        "judgment": "凶，主根基坏、事难成",
+        "score": -15
+      },
+      {
+        "id": "sk-jiangdifentong",
+        "name": "将神与地分同",
+        "judgment": "吉，主事与方合、事半功倍",
+        "score": 15
+      },
+      {
+        "id": "sk-ganjiangxianghe",
+        "name": "日干与将神相合",
+        "judgment": "吉，主自身与事契合、心想事成",
+        "score": 20
+      },
+      {
+        "id": "sk-ganjiangxiangke",
+        "name": "日干与将神相克",
+        "judgment": "凶，主自身与事不合、强求反伤",
+        "score": -20
+      }
+    ]
+  },
+  "keTiRules": {
+    "description": "金口诀八种课体吉凶规则，根据五位生克格局判定整体吉凶",
+    "rules": [
+      {
+        "id": "keti-1",
+        "name": "鬼合课",
+        "condition": "人元克将神且将神与地分同",
+        "judgment": "凶中有解，外有压力但自身有根基可抗",
+        "level": "中平",
+        "score": -5
+      },
+      {
+        "id": "keti-2",
+        "name": "官合课",
+        "condition": "将神克人元且人元与贵神同",
+        "judgment": "自身主动出击，可制外敌但消耗大",
+        "level": "中平",
+        "score": 0
+      },
+      {
+        "id": "keti-3",
+        "name": "奇合课",
+        "condition": "贵神生将神、将神生地分、地分生日干",
+        "judgment": "大吉大利，三传递生，万事顺遂",
+        "level": "大吉",
+        "score": 30
+      },
+      {
+        "id": "keti-4",
+        "name": "奇鬼课",
+        "condition": "贵神克将神、将神克地分、地分克日干",
+        "judgment": "大凶，三传递克，万事不顺",
+        "level": "大凶",
+        "score": -30
+      },
+      {
+        "id": "keti-5",
+        "name": "连茹课",
+        "condition": "将神与地分为相连地支（如子丑、寅卯）",
+        "judgment": "事有牵连、循序渐进、不宜急躁",
+        "level": "小吉",
+        "score": 10
+      },
+      {
+        "id": "keti-6",
+        "name": "朝元课",
+        "condition": "人元生贵神、贵神生将神、将神生地分",
+        "judgment": "自上而下生扶，主得上级赏识、贵人相助",
+        "level": "大吉",
+        "score": 25
+      },
+      {
+        "id": "keti-7",
+        "name": "截命课",
+        "condition": "贵神为凶神（螣蛇/朱雀/白虎/玄武）且克将神",
+        "judgment": "凶神当头，事有阻碍，宜暂缓不宜强行",
+        "level": "凶",
+        "score": -20
+      },
+      {
+        "id": "keti-8",
+        "name": "四绝课",
+        "condition": "人元、贵神、将神、地分各居绝地",
+        "judgment": "四爻皆绝，万事不宜，宜守不宜动",
+        "level": "大凶",
+        "score": -35
+      }
+    ]
+  },
+  "zhanDuan": {
+    "description": "金口诀分类占断规则，按财/婚/官/行/病五类组织",
+    "categories": [
+      {
+        "id": "jkj-wealth",
+        "category": "财运",
+        "classShen": ["青龙", "六合", "太常"],
+        "goodSignals": [
+          "青龙临将神且旺相",
+          "将神为财爻且不空",
+          "人元生将神（财来找我）",
+          "贵神生将神（神助财运）",
+          "将神与青龙同宫"
+        ],
+        "badSignals": [
+          "玄武临将神（破财）",
+          "将神逢空亡",
+          "白虎临将神（财来财去）",
+          "将神克人元（求财辛苦）",
+          "将神入墓（财被锁）"
+        ],
+        "timing": [
+          "青龙临将则近期得财",
+          "将神临月建则当月有财",
+          "将神逢合则待冲开得财",
+          "将神入墓则待冲墓得财"
+        ]
+      },
+      {
+        "id": "jkj-marriage",
+        "category": "婚姻",
+        "classShen": ["六合", "天后", "青龙"],
+        "goodSignals": [
+          "六合临将神且旺相",
+          "天后临贵神",
+          "将神与日干相合",
+          "贵神为青龙或六合",
+          "将神生地分（有根基）"
+        ],
+        "badSignals": [
+          "将神克日干（婚不利己）",
+          "六合逢空亡",
+          "天后乘螣蛇（女方多变）",
+          "将神入墓（婚事拖延）",
+          "贵神为玄武（婚中有诈）"
+        ],
+        "timing": [
+          "六合临将则近期可成",
+          "天后临贵则当月有媒",
+          "将神临月建则当月可婚",
+          "将神逢合则待冲开成婚"
+        ]
+      },
+      {
+        "id": "jkj-legal",
+        "category": "官非",
+        "classShen": ["朱雀", "勾陈", "白虎", "贵人"],
+        "goodSignals": [
+          "贵人临将神或贵神",
+          "朱雀逢空亡",
+          "将神生日干",
+          "贵神为青龙",
+          "将神克朱雀"
+        ],
+        "badSignals": [
+          "朱雀临将神且旺相",
+          "勾陈临贵神",
+          "白虎临将神克日干",
+          "将神被贵神克",
+          "朱雀乘螣蛇"
+        ],
+        "timing": [
+          "朱雀临将则当月事发",
+          "贵人临将则三个月可解",
+          "朱雀逢空则旬内自消",
+          "将神临白虎则年内需慎"
+        ]
+      },
+      {
+        "id": "jkj-travel",
+        "category": "出行",
+        "classShen": ["驿马", "青龙", "白虎"],
+        "goodSignals": [
+          "驿马临将神",
+          "青龙临将神或贵神",
+          "将神旺相不受伤",
+          "人元生将神",
+          "将神与日干相合"
+        ],
+        "badSignals": [
+          "白虎临将神",
+          "将神逢空亡",
+          "将神入墓",
+          "将神克日干",
+          "贵神为螣蛇"
+        ],
+        "timing": [
+          "驿马临将则当日可发",
+          "青龙临将则辰时出发吉",
+          "将神临月建则当月出行",
+          "将神逢合则待冲开出发"
+        ]
+      },
+      {
+        "id": "jkj-health",
+        "category": "疾病",
+        "classShen": ["白虎", "病符", "天医", "生气"],
+        "goodSignals": [
+          "天医临将神或贵神",
+          "生气临将神",
+          "将神旺相且生日干",
+          "白虎不克日干",
+          "贵神为青龙或太常"
+        ],
+        "badSignals": [
+          "白虎临将神克日干",
+          "将神入墓",
+          "病符临将神",
+          "死气临将神",
+          "将神逢空亡（虚病难治）"
+        ],
+        "timing": [
+          "天医临将则服药三日内效",
+          "生气临将则本月好转",
+          "白虎临将则当月病重",
+          "将神逢合则待冲开好转"
+        ]
+      }
+    ]
+  }
+}

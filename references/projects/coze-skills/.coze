@@ -1,0 +1,6 @@
+[skill]
+  skill_package = "ren-sheng-jue-ce-ming-pan.skill"
+  name = "ren-sheng-jue-ce-ming-pan"
+  description = "人生战略决策系统 - 东方命理×博弈论算法，在不确定的世界寻找确定性。提供出生设置解析、天赋赛道定位、演算沙推预测，输出标准化决策分析报告。使用现代通识语言（商业逻辑、战略思维、风险管理），将传统命理转化为理性决策工具。"
+  project_name = "人生决策命盘"
+  project_description = "人生战略决策系统"

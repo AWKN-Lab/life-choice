@@ -1,0 +1,403 @@
+/* 配置驱动状态机样式 */
+
+.container {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: #e2e8f0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.presetSelect {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #e2e8f0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.presetSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+/* 可视化区域 */
+.visualization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.miniViz {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.eventButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 280px;
+}
+
+.eventButton {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #60a5fa;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eventButton:hover {
+  background: rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.resetButton {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: #f87171;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resetButton:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+.codeButton {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: #34d399;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.codeButton:hover {
+  background: rgba(16, 185, 129, 0.4);
+}
+
+/* 右侧面板 */
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 配置面板 */
+.configPanel {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.configTabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.configTabs button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: #94a3b8;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.configTabs button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+}
+
+.configTabs button.active {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.configContent {
+  padding: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* 状态列表 */
+.stateList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stateItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.stateDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.stateName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.stateType {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.finalBadge {
+  margin-left: auto;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* 事件列表 */
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eventItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.eventName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.eventDesc {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* 转换列表 */
+.transitionList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transitionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.fromState, .toState {
+  font-weight: 500;
+}
+
+.arrow {
+  color: #60a5fa;
+}
+
+/* 运行时信息 */
+.runtimeInfo {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.runtimeInfo h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.contextInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contextItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.label {
+  color: #64748b;
+}
+
+.value {
+  font-weight: 500;
+}
+
+/* 代码面板 */
+.codePanel {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.codeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.codeHeader h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.codeInfo {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.codeFiles {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.codeFile {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.codeFilename {
+  padding: 8px 12px;
+  background: rgba(59, 130, 246, 0.2);
+  font-size: 12px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  color: #60a5fa;
+}
+
+.codeContent {
+  margin: 0;
+  padding: 16px;
+  font-size: 11px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  line-height: 1.6;
+  overflow-x: auto;
+  max-height: 300px;
+  color: #a5b4fc;
+}
+
+/* 时间线 */
+.timeline {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.timelineTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.timelineTrack::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #1e1e2e;
+}
+
+.timelineContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timelineState {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.timelineIndex {
+  font-size: 11px;
+  color: #64748b;
+}

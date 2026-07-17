@@ -1,0 +1,18 @@
+{
+  "meta": {"description": "地支藏干表（人元）", "version": "1.0.0"},
+  "note": "主气决定月令格局，中气次之，余气再次",
+  "zanggan": [
+    {"di_zhi": "子", "main": "癸", "middle": null, "residual": null, "element": "水"},
+    {"di_zhi": "丑", "main": "己", "middle": "辛", "residual": "癸", "element": "土"},
+    {"di_zhi": "寅", "main": "甲", "middle": "丙", "residual": "戊", "element": "木"},
+    {"di_zhi": "卯", "main": "乙", "middle": null, "residual": null, "element": "木"},
+    {"di_zhi": "辰", "main": "戊", "middle": "乙", "residual": "癸", "element": "土"},
+    {"di_zhi": "巳", "main": "丙", "middle": "庚", "residual": "戊", "element": "火"},
+    {"di_zhi": "午", "main": "丁", "middle": "己", "residual": null, "element": "火"},
+    {"di_zhi": "未", "main": "己", "middle": "丁", "residual": "乙", "element": "土"},
+    {"di_zhi": "申", "main": "庚", "middle": "壬", "residual": "戊", "element": "金"},
+    {"di_zhi": "酉", "main": "辛", "middle": null, "residual": null, "element": "金"},
+    {"di_zhi": "戌", "main": "戊", "middle": "辛", "residual": "丁", "element": "土"},
+    {"di_zhi": "亥", "main": "壬", "middle": "甲", "residual": null, "element": "水"}
+  ]
+}

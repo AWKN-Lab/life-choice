@@ -1,0 +1,32 @@
+{
+  "name": "人生决策宗师",
+  "short_name": "决策宗师",
+  "description": "东方术数专家张半山，帮你看清每条路的代价——选择，你自己做。",
+  "start_url": "/life/",
+  "scope": "/life/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#10141a",
+  "theme_color": "#10141a",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "images/agents/zhangbanshan-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/agents/zhangbanshan-64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

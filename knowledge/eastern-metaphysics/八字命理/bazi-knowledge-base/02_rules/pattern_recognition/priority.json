@@ -1,0 +1,12 @@
+{
+  "meta": {"description": "格局判定优先级，数字越小越优先", "version": "1.0.0"},
+  "order": [
+    {"priority": 1, "type": "hua_qi", "name": "化气格", "reason": "化气格为最高级变格，天干合化改变五行本性"},
+    {"priority": 2, "type": "zhuan_wang", "name": "专旺格", "reason": "五行专旺，气势归一，不可逆"},
+    {"priority": 3, "type": "liang_qi", "name": "两气成象格", "reason": "两行成象，气势分明"},
+    {"priority": 4, "type": "cong", "name": "从格", "reason": "日主无根，从旺势而行"},
+    {"priority": 5, "type": "normal", "name": "正格（含建禄阳刃）", "reason": "标准格局，以月令主气定格"}
+  ],
+  "flow": "按优先级从高到低逐一检测，命中即停止，进入对应逻辑库",
+  "note": "变格条件非常严格，稍有杂气即降为正格判断"
+}

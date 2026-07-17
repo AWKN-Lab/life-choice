@@ -1,0 +1,73 @@
+{
+  "meta": {"description": "化气格识别规则", "version": "1.0.0", "source": "渊海子平、三命通会"},
+  "pattern_name": "化气格",
+  "common_conditions": {
+    "tian_gan_he": "日干与月干（或时干）五合",
+    "month_support": "月令为化神五行之地",
+    "chen_zi": "命局见辰字（辰为化神元神库）",
+    "no_zheng_he": "无争合妒合（如两甲合一己）"
+  },
+  "sub_types": [
+    {
+      "name": "甲己化土",
+      "day_master": "甲",
+      "he_gan": "己",
+      "hua_shen": "土",
+      "month": ["辰","戌","丑","未"],
+      "preferences": {"xi": ["火","土"], "ji": ["木","水"]},
+      "yun_preferences": "喜行火土运，忌行木水运",
+      "life_reading": "主人信实厚重，利房地产、农业",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "乙庚化金",
+      "day_master": "乙",
+      "he_gan": "庚",
+      "hua_shen": "金",
+      "month": ["申","酉"],
+      "preferences": {"xi": ["土","金"], "ji": ["火","木"]},
+      "yun_preferences": "喜行土金运，忌行火木运",
+      "life_reading": "主人刚毅果断，利金融法律",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "丙辛化水",
+      "day_master": "丙",
+      "he_gan": "辛",
+      "hua_shen": "水",
+      "month": ["亥","子"],
+      "preferences": {"xi": ["金","水"], "ji": ["土","木"]},
+      "yun_preferences": "喜行金水运，忌行土木运",
+      "life_reading": "主人聪慧灵活，利学术商贸",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "丁壬化木",
+      "day_master": "丁",
+      "he_gan": "壬",
+      "hua_shen": "木",
+      "month": ["寅","卯"],
+      "preferences": {"xi": ["水","木"], "ji": ["金","土"]},
+      "yun_preferences": "喜行水木运，忌行金土运",
+      "life_reading": "主人仁慈文雅，利教育文化",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "戊癸化火",
+      "day_master": "戊",
+      "he_gan": "癸",
+      "hua_shen": "火",
+      "month": ["巳","午"],
+      "preferences": {"xi": ["木","火"], "ji": ["水","土"]},
+      "yun_preferences": "喜行木火运，忌行水土运",
+      "life_reading": "主人热情显达，利政治军事",
+      "source": "《渊海子平》"
+    }
+  ],
+  "tian_gan_wu_he": [
+    {"pair": ["甲","己"], "hua": "土"}, {"pair": ["乙","庚"], "hua": "金"},
+    {"pair": ["丙","辛"], "hua": "水"}, {"pair": ["丁","壬"], "hua": "木"},
+    {"pair": ["戊","癸"], "hua": "火"}
+  ],
+  "false_hua_qi": "化气条件极为严格，稍有不合即按正格论"
+}

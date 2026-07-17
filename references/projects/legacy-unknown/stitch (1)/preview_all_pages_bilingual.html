@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>><span class="zh">人生决策宗师</span><span class="en" style="display:none">Life Decision Master< - 页面预览</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans SC', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+
+    /* ===== 顶部导航 ===== */
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.95); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-nav .logo { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #c9a962; }
+    .top-nav .logo-icon { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,#c9a962,#8b7355); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .top-nav .nav-links { display: flex; gap: 4px; }
+    .top-nav .nav-links button { background: none; border: none; color: rgba(255,255,255,0.45); font-size: 13px; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .top-nav .nav-links button:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .top-nav .nav-links button.active { color: #c9a962; background: rgba(201,169,98,0.1); }
+
+    /* ===== 页面容器 ===== */
+    .page-container { padding-top: 60px; min-height: 100vh; position: relative; overflow: hidden; }
+    .page { display: none; min-height: calc(100vh - 60px); }
+    .page.active { display: block; }
+
+    /* ===== 底图 ===== */
+    .bg-layer {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: url('images/hero-chart.jpg') center top / cover no-repeat;
+    }
+    .bg-overlay {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 55% at 50% 45%, rgba(6,6,12,0.65) 0%, rgba(6,6,12,0.82) 50%, rgba(6,6,12,0.95) 100%);
+    }
+    .bg-glow {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 40% at 50% 25%, rgba(201,169,98,0.07) 0%, transparent 65%);
+    }
+
+    /* ===== 首页 ===== */
+    .home-content { position: relative; z-index: 1; padding: 80px 20px 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 60px); text-align: center; }
+    .home-content h1 { font-size: 24px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+    .home-content h1 span { color: #c9a962; }
+    .home-content p { font-size: 14px; color: rgba(255,255,255,0.45); max-width: 300px; line-height: 1.6; margin-bottom: 40px; }
+    .btn-gold { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg,#c9a962,#e8d5a3,#c9a962); color: #000; font-size: 15px; font-weight: 600; padding: 14px 40px; border-radius: 12px; border: none; cursor: pointer; width: 100%; max-width: 280px; justify-content: center; margin-bottom: 40px; font-family: inherit; box-shadow: 0 0 30px rgba(201,169,98,0.25); }
+    .home-note { font-size: 12px; color: rgba(255,255,255,0.32); line-height: 1.8; letter-spacing: 0.03em; max-width: 300px; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 0; }
+
+    /* ===== 开始咨询弹窗 ===== */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); }
+    .modal-overlay.active { display: flex; align-items: flex-end; justify-content: center; }
+    .modal-sheet { background: #0e0e0e; border-radius: 24px 24px 0 0; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; padding: 20px; }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .modal-header h3 { font-size: 16px; font-weight: 700; }
+    .modal-close { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; padding: 8px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: flex; align-items: center; gap: 6px; font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+    .form-label .icon { width: 16px; height: 16px; color: #c9a962; }
+    .form-input { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(201,169,98,0.25); border-radius: 10px; padding: 12px 16px; color: #fff; font-size: 14px; font-family: inherit; }
+    .form-input:focus { outline: none; border-color: #c9a962; box-shadow: 0 0 20px rgba(201,169,98,0.15); }
+    .form-input::placeholder { color: rgba(255,255,255,0.35); }
+    textarea.form-input { resize: none; }
+    select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23c9a962' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; color-scheme: dark; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { padding: 4px 10px; border-radius: 100px; font-size: 12px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); cursor: pointer; }
+    .tag.active { background: rgba(201,169,98,0.15); border-color: rgba(201,169,98,0.4); color: #c9a962; }
+
+    /* ===== 底部导航 ===== */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-top: 1px solid rgba(255,255,255,0.05); padding: 8px 0; display: flex; }
+    .bottom-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; color: rgba(255,255,255,0.4); font-size: 11px; cursor: pointer; transition: all 0.2s; }
+    .bottom-nav-item .nav-icon { font-size: 22px; }
+    .bottom-nav-item.active { color: #c9a962; }
+
+    /* ===== 咨询页 ===== */
+    .consult-content { position: relative; z-index: 1; padding: 40px 20px 120px; max-width: 480px; margin: 0 auto; }
+    .consult-content h1 { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .consult-content .subtitle { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+    .quick-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+    .quick-tag { padding: 8px 16px; border-radius: 100px; font-size: 13px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; }
+    .quick-tag:hover { border-color: #c9a962; color: #c9a962; }
+
+    /* ===== 历史记录页 ===== */
+    .history-content { position: relative; z-index: 1; padding: 40px 20px 120px; max-width: 480px; margin: 0 auto; }
+    .history-content h1 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .record-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+    .record-card .record-q { font-size: 14px; color: #fff; margin-bottom: 8px; }
+    .record-card .record-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.35); }
+    .record-card .record-tag { padding: 2px 8px; background: rgba(201,169,98,0.15); color: #c9a962; border-radius: 4px; font-size: 11px; }
+
+    /* ===== 个人中心页 ===== */
+    .profile-content { position: relative; z-index: 1; padding: 40px 20px 120px; max-width: 480px; margin: 0 auto; }
+    .profile-content h1 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .profile-card { background: linear-gradient(135deg,rgba(201,169,98,0.08),rgba(0,0,0,0.5)); border: 1px solid rgba(201,169,98,0.2); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+    .profile-card .user-info { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .profile-card .avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#c9a962,#8b7355); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; }
+    .profile-card .username { font-size: 16px; font-weight: 600; }
+    .profile-card .useremail { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .profile-card .membership { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgba(201,169,98,0.1); font-size: 12px; }
+    .profile-card .membership-label { color: rgba(255,255,255,0.4); }
+    .profile-card .membership-value { color: #c9a962; }
+    .section-title { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
+    .menu-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+    .menu-item:hover { border-color: rgba(201,169,98,0.3); }
+    .menu-item-left { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); }
+    .menu-item-icon { font-size: 18px; }
+    .menu-item-arrow { color: rgba(255,255,255,0.3); font-size: 16px; }
+
+    /* ===== 未登录状态 ===== */
+    .login-card { background: linear-gradient(135deg,rgba(201,169,98,0.08),rgba(0,0,0,0.5)); border: 1px solid rgba(201,169,98,0.2); border-radius: 20px; padding: 32px 24px; text-align: center; }
+    .login-card .login-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(201,169,98,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; }
+    .login-card p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .btn-login { width: 100%; padding: 14px; background: linear-gradient(135deg,#c9a962,#8b7355); color: #fff; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; }
+
+    /* ===== 结果页 ===== */
+    .result-content { position: relative; z-index: 1; padding: 20px 20px 120px; max-width: 480px; margin: 0 auto; }
+    .result-header { text-align: center; padding: 20px 0 30px; }
+    .result-header .engine-tag { display: inline-block; padding: 4px 12px; background: rgba(201,169,98,0.15); border: 1px solid rgba(201,169,98,0.3); color: #c9a962; border-radius: 100px; font-size: 12px; margin-bottom: 20px; }
+    .result-header h1 { font-family: 'Noto Serif SC', serif; font-size: 26px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+    .result-header .summary { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 340px; margin: 0 auto 24px; }
+    .result-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+    .result-card h3 { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .result-card p { font-size: 15px; color: #fff; line-height: 1.7; }
+    .result-time { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center; margin: 16px 0; }
+    .result-time-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 8px; }
+    .result-time-item .num { font-size: 22px; font-weight: 700; color: #c9a962; }
+    .result-time-item .label { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .risk-item, .action-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: rgba(255,255,255,0.7); }
+    .risk-item:last-child, .action-item:last-child { border-bottom: none; }
+    .risk-icon { color: #ef4444; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .action-icon { color: #22c55e; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ===== 弹窗遮罩 ===== */
+    .backdrop { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.6); display: none; }
+    .backdrop.active { display: block; }
+
+    /* ===== 语言切换 ===== */
+    .lang-toggle { display: flex; align-items: center; gap: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2px; margin-right: 6px; }
+    .lang-toggle button { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .lang-toggle button.active { background: rgba(201,169,98,0.2); color: #c9a962; }
+    .lang-toggle button:hover:not(.active) { color: #fff; }
+    html.lang-en .zh { display: none !important; }
+    html.lang-en .en { display: inline !important; }
+    html.lang-zh .en { display: none !important; }
+    html.lang-zh .zh { display: inline !important; }
+  </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="top-nav">
+  <div class="logo">
+    <div class="logo-icon">✦</div>
+    人生决策宗师
+  </div>
+  <div class="nav-links">
+    <div class="lang-toggle">
+      <button class="active" data-lang="zh">中</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <button class="active" data-page="home"><span class="zh">>首页<</span><span class="en" style="display:none">>Home<</button>
+    <button data-page="consult"><span class="zh">>咨询<</span><span class="en" style="display:none">>Consult<</button>
+    <button data-page="history"><span class="zh">>历史<</span><span class="en" style="display:none">>Records<</button>
+    <button data-page="profile"><span class="zh">>我的<</span><span class="en" style="display:none">>Profile<</button>
+  </div>
+</div>
+
+<!-- 背景层 -->
+<div class="bg-layer"></div>
+<div class="bg-overlay"></div>
+<div class="bg-glow"></div>
+
+<!-- ===== 首页 ===== -->
+<div class="page active" id="page-home">
+  <div class="page-container">
+    <div class="home-content">
+      <h1>><span class="zh">命运没有标准答案<br>但<span>博弈有最优解</span></span><span class="en" style="display:none">Fate Has No Standard Answer<br>But <span>Game Theory Has Optimal Solutions</span><</h1>
+      <p>><span class="zh">在不确定的世界里，为你交付一套确定的坐标系</span><span class="en" style="display:none">Delivering a definitive coordinate system in an uncertain world<</p>
+      <button class="btn-gold" onclick="openModal()">><span class="zh">✦ 开始咨询</span><span class="en" style="display:none">✦ Start Consultation<</button>
+      <p class="home-note">><span class="zh">为您提供关键节点的决策支持<br>帮助你在对的时间，做更有胜算的选择</span><span class="en" style="display:none">Decision support at critical turning points<br>Helping you make smarter choices at the right moment<</p>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-item active"><span class="nav-icon">⌂</span>首页</div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')"><span class="nav-icon">✎</span><span class="zh">>开始咨询<</span><span class="en" style="display:none">>Start Consultation<</div>
+      <div class="bottom-nav-item" onclick="switchPage('history')"><span class="nav-icon">☰</span><span class="zh">>咨询记录<</span><span class="en" style="display:none">>Consultation Records<</div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')"><span class="nav-icon">⊙</span>我的</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 咨询页 ===== -->
+<div class="page" id="page-consult">
+  <div class="page-container">
+    <div class="consult-content">
+      <h1>✦ 开始咨询</h1>
+      <p class="subtitle">><span class="zh">描述你的问题，AI 将为你智能分流</span><span class="en" style="display:none">Describe your question — AI will intelligently route it<</p>
+      <div class="form-group">
+        <label class="form-label"><span class="icon">◈</span><span class="zh">>您想问什么？<</span><span class="en" style="display:none">>What would you like to ask?<</label>
+        <textarea class="form-input" rows="4" ><span class="zh">placeholder="比如：这件事能不能成？今年运势如何？给宝宝起个名字..."</span><span class="en" style="display:none">placeholder="e.g. Will this work out? How is my fortune this year? Baby name suggestions..."<></textarea>
+      </div>
+      <div class="quick-tags">
+        <span class="quick-tag"><span class="zh">>能不能成<</span><span class="en" style="display:none">>Will it succeed?<</span>
+        <span class="quick-tag"><span class="zh">>会不会发生<</span><span class="en" style="display:none">>Will it happen?<</span>
+        <span class="quick-tag"><span class="zh">>要不要做<</span><span class="en" style="display:none">>Should I do it?<</span>
+        <span class="quick-tag"><span class="zh">>何时发生<</span><span class="en" style="display:none">>When will it happen?<</span>
+        <span class="quick-tag"><span class="zh">>今年运势<</span><span class="en" style="display:none">>This year's fortune<</span>
+        <span class="quick-tag"><span class="zh">>事业运<</span><span class="en" style="display:none">>Career fortune<</span>
+      </div>
+      <button class="btn-gold">✦ 确定</button>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')"><span class="nav-icon">⌂</span>首页</div>
+      <div class="bottom-nav-item active"><span class="nav-icon">✎</span>开始咨询</div>
+      <div class="bottom-nav-item" onclick="switchPage('history')"><span class="nav-icon">☰</span>咨询记录</div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')"><span class="nav-icon">⊙</span>我的</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 历史记录页 ===== -->
+<div class="page" id="page-history">
+  <div class="page-container">
+    <div class="history-content">
+      <h1>咨询记录</h1>
+      <div class="record-card">
+        <p class="record-q"><span class="zh">>这个合作还能不能继续推进<</span><span class="en" style="display:none">>Can this partnership continue to move forward?<</p>
+        <div class="record-meta">
+          <span class="record-tag">大六壬</span>
+          <span>2026-04-07</span>
+          <span>15:23</span>
+        </div>
+      </div>
+      <div class="record-card">
+        <p class="record-q"><span class="zh">>今年事业运怎么样<</span><span class="en" style="display:none">>How is my career fortune this year?<</p>
+        <div class="record-meta">
+          <span class="record-tag">子平命理</span>
+          <span>2026-04-06</span>
+          <span>09:12</span>
+        </div>
+      </div>
+      <div class="record-card">
+        <p class="record-q"><span class="zh">>宝宝起名有什么推荐<</span><span class="en" style="display:none">>Any recommendations for baby name suggestions?<</p>
+        <div class="record-meta">
+          <span class="record-tag">八字取名</span>
+          <span>2026-04-05</span>
+          <span>21:08</span>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')"><span class="nav-icon">⌂</span>首页</div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')"><span class="nav-icon">✎</span>开始咨询</div>
+      <div class="bottom-nav-item active"><span class="nav-icon">☰</span>咨询记录</div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')"><span class="nav-icon">⊙</span>我的</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 个人中心页 ===== -->
+<div class="page" id="page-profile">
+  <div class="page-container">
+    <div class="profile-content">
+      <h1>我的</h1>
+      <!-- 已登录状态 -->
+      <div class="profile-card">
+        <div class="user-info">
+          <div class="avatar">陈</div>
+          <div>
+            <div class="username">陈婷</div>
+            <div class="useremail">10919669@qq.com</div>
+          </div>
+        </div>
+        <div class="membership">
+          <span class="membership-label"><span class="zh">>当前身份<</span><span class="en" style="display:none">>Membership<</span>
+          <span class="membership-value"><span class="zh">>轻陪伴会员<</span><span class="en" style="display:none">>Light Companion Member<</span>
+        </div>
+      </div>
+
+      <h2 class="section-title"><span class="zh">>订单记录<</span><span class="en" style="display:none">>Order History<</h2>
+      <div class="menu-item">
+        <div class="menu-item-left"><span class="menu-item-icon">📋</span><span class="zh">>查看订单<</span><span class="en" style="display:none">>View Orders<</div>
+        <span class="menu-item-arrow">›</span>
+      </div>
+
+      <h2 class="section-title"><span class="zh">>我的信息<</span><span class="en" style="display:none">>My Information<</h2>
+      <div class="menu-item">
+        <div class="menu-item-left"><span class="menu-item-icon">⊙</span><span class="zh">>邮箱<</span><span class="en" style="display:none">>Email<</div>
+        <span class="menu-item-arrow">10919669@qq.com ›</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left"><span class="menu-item-icon">⊙</span><span class="zh">>手机<</span><span class="en" style="display:none">>Phone<</div>
+        <span class="menu-item-arrow">未绑定 ›</span>
+      </div>
+
+      <h2 class="section-title" style="margin-top:16px"><span class="zh">>其他<</span><span class="en" style="display:none">>Other<</h2>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-icon">📜</span>咨询记录</div><span class="menu-item-arrow">›</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-icon">⚙</span><span class="zh">>设置<</span><span class="en" style="display:none">>Settings<</div><span class="menu-item-arrow">›</span></div>
+      <div class="menu-item"><div class="menu-item-left"><span class="menu-item-icon">❓</span><span class="zh">>帮助与反馈<</span><span class="en" style="display:none">>Help & Feedback<</div><span class="menu-item-arrow">›</span></div>
+      <div class="menu-item" style="border-color:rgba(239,68,68,0.2);color:#ef4444;margin-top:16px"><div class="menu-item-left"><span class="menu-item-icon">↩</span><span class="zh">>退出登录<</span><span class="en" style="display:none">>Log Out<</div></div>
+    </div>
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')"><span class="nav-icon">⌂</span>首页</div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')"><span class="nav-icon">✎</span>开始咨询</div>
+      <div class="bottom-nav-item" onclick="switchPage('history')"><span class="nav-icon">☰</span>咨询记录</div>
+      <div class="bottom-nav-item active"><span class="nav-icon">⊙</span>我的</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 开始咨询弹窗 ===== -->
+<div class="modal-overlay" id="modal-form">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <h3>开始咨询</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="icon">◈</span>您想问什么？</label>
+      <textarea class="form-input" rows="3" placeholder="比如：这件事能不能成？今年运势如何？给宝宝起个名字..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="icon">◈</span><span class="zh">>出生日期<</span><span class="en" style="display:none">>Date of Birth<</label>
+      <input type="date" class="form-input" style="color-scheme:dark">
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="icon">◈</span><span class="zh">>出生时辰<</span><span class="en" style="display:none">>Birth Hour<</label>
+      <div class="grid-2">
+        <select class="form-input"><option>00 时</option><option>01 时</option><option>02 时</option><option>03 时</option><option>04 时</option><option>05 时</option><option>06 时</option><option>07 时</option><option>08 时</option><option>09 时</option><option>10 时</option><option>11 时</option><option>12 时</option><option>13 时</option><option>14 时</option><option>15 时</option><option>16 时</option><option>17 时</option><option>18 时</option><option>19 时</option><option>20 时</option><option>21 时</option><option>22 时</option><option>23 时</option></select>
+        <select class="form-input"><option>00 分</option><option>15 分</option><option>30 分</option><option>45 分</option></select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="icon">◈</span><span class="zh">>性别<</span><span class="en" style="display:none">>Gender<</label>
+      <div class="grid-2">
+        <button class="form-input" style="cursor:pointer;background:rgba(201,169,98,0.1);border-color:rgba(201,169,98,0.4);color:#c9a962">♂ 男</button>
+        <button class="form-input" style="cursor:pointer">♀ 女</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label"><span class="icon">◈</span>><span class="zh">所在城市（真太阳时校正）</span><span class="en" style="display:none">City (Solar Time Correction)<</label>
+      <input type="text" class="form-input" ><span class="zh">placeholder="如：北京、上海..."</span><span class="en" style="display:none">placeholder="e.g. Beijing, Shanghai..."< style="color-scheme:dark">
+      <div class="tag-list">
+        <span class="tag active">北京</span>
+        <span class="tag">上海</span>
+        <span class="tag">广州</span>
+        <span class="tag">深圳</span>
+        <span class="tag">杭州</span>
+        <span class="tag">成都</span>
+        <span class="tag">武汉</span>
+        <span class="tag">南京</span>
+      </div>
+    </div>
+    <button class="btn-gold">✦ 确定</button>
+  </div>
+</div>
+
+<script>
+  function switchPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.bottom-nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelector(`.nav-links button[data-page="${name}"]`)?.classList.add('active');
+    // 背景跟随页面：首页/咨询/历史显示底图，我的隐藏
+    const bgPages = ['home','consult','history'];
+    document.querySelector('.bg-layer').style.display = bgPages.includes(name) ? 'block' : 'none';
+    document.querySelector('.bg-overlay').style.display = bgPages.includes(name) ? 'block' : 'none';
+    document.querySelector('.bg-glow').style.display = bgPages.includes(name) ? 'block' : 'none';
+  }
+
+  function openModal() {
+    document.getElementById('modal-form').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-form').classList.remove('active');
+  }
+
+  // 顶部导航点击
+  document.querySelectorAll('.nav-links button').forEach(btn => {
+    btn.addEventListener('click', () => switchPage(btn.dataset.page));
+  });
+
+  // 标签切换
+  document.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      tag.closest('.tag-list').querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+      tag.classList.add('active');
+      tag.closest('.form-group').querySelector('input').value = tag.textContent;
+    });
+  });
+
+  // 点击遮罩关闭弹窗
+  document.getElementById('modal-form').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+
+<script>
+  var currentLang = localStorage.getItem('lang'); 'zh';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); });
+    localStorage.setItem('lang', lang);
+  }
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){ setLang(btn.dataset.lang); });
+  });
+  setLang(currentLang);
+</script>
+</body>
+</html>

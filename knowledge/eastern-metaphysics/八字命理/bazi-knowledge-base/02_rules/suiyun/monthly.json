@@ -1,0 +1,10 @@
+{
+  "meta": {"description": "流月细化规则", "version": "1.0.0"},
+  "rules": [
+    {"name": "流月冲大运", "conditions": "流月地支与大运地支相冲", "judgment": "当月易有突发变动", "advice": "当月谨慎行事"},
+    {"name": "流月合喜用", "conditions": "流月地支与喜用神所在柱相合", "judgment": "当月顺遂，有贵人", "advice": "积极行动"},
+    {"name": "流月入墓", "conditions": "流月地支为喜用神之墓库", "judgment": "当月喜用神受困，事倍功半", "advice": "不宜强求"},
+    {"name": "流月冲日支", "conditions": "流月地支与日支相冲", "judgment": "当月感情/合作易有波折", "advice": "注意沟通"},
+    {"name": "流月三合喜用", "conditions": "流月与命局喜用神三合成局", "judgment": "当月运势大好", "advice": "把握时机"}
+  ]
+}

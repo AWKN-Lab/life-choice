@@ -1,0 +1,71 @@
+# ==========================================
+# 人生决策宗师 - docker-compose 部署
+# ==========================================
+#
+# 说明：
+#   生产环境推荐使用 PM2（ecosystem.config.js）部署，而非 docker-compose。
+#   本文件主要用于本地 Docker 部署 / 测试 / 备选方案。
+#
+# 环境变量加载方式：
+#   - 生产环境：由 PM2 ecosystem.config.js 启动时通过 dotenv 自动加载
+#     .env.prod（路径：/opt/awkn-life/awkn-life-backend/apps/api-server/.env.prod）
+#   - 本地 Docker：将 .env.prod 放到 ./awkn-life-backend/apps/api-server/.env.prod
+#     或通过 docker-compose override 文件注入 environment
+#   - 详见：docs/05审核与质量/密钥管理SOP.md
+#
+# 注意：
+#   原先此处通过 env_file 引用 ./awkn-life-backend/apps/api-server/.env.prod，
+#   但该文件不应作为 docker-compose 的依赖（生产用 PM2），已移除引用。
+#   如需本地 Docker 部署，请使用 docker-compose.override.yml 注入环境变量。
+#
+# 数据库说明：
+#   当前使用 SQLite 单实例（数据持久化通过 backend 服务的 prisma-data 卷）。
+#   不再使用伪数据库容器（原 backend-db alpine + tail -f /dev/null 占位已移除）。
+#   SQLite 单实例约束详见 DEPLOY.md「SQLite 单实例约束」章节。
+
+version: '3.9'
+
+services:
+  # ---- Nginx 反向代理 + 静态托管 ----
+  nginx:
+    image: nginx:alpine
+    container_name: awkn-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro  # 可选：HTTPS证书
+      - ./app/dist:/usr/share/nginx/html:ro  # 前端静态文件
+    depends_on:
+      - backend
+    networks:
+      - awkn-net
+
+  # ---- 后端 API 服务 ----
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: awkn-backend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    # env 由 PM2 ecosystem.config.js 管理，不在 docker-compose 中引用 .env.prod
+    # 如需本地 Docker 部署，请创建 docker-compose.override.yml 注入环境变量：
+    #   environment:
+    #     - DATABASE_URL=file:/app/awkn-life-backend/apps/api-server/prisma/dev.db
+    #     - JWT_SECRET=your_secret
+    #     - ...
+    volumes:
+      - ./logs:/app/logs
+      - ./prisma-data:/app/awkn-life-backend/apps/api-server/prisma  # 持久化数据库
+    networks:
+      - awkn-net
+
+networks:
+  awkn-net:
+    driver: bridge

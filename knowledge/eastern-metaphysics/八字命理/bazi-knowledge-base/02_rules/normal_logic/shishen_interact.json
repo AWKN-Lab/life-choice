@@ -1,0 +1,90 @@
+{
+  "meta": {"description": "十神组合断语（经典十神交互格局）", "version": "1.0.0", "source": "子平真诠、渊海子平"},
+  "interactions": [
+    {
+      "name": "杀印相生",
+      "combination": "七杀 + 正印",
+      "judgment": "压力转化为动力，化杀为权",
+      "reading": "适合管理、军警、技术攻坚，压力越大成就越高",
+      "condition": "印星在杀与日主之间，能化杀生身",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "财官相生",
+      "combination": "财星 + 正官",
+      "judgment": "因财生官，名利双收",
+      "reading": "利仕途，有经济头脑又有管理能力",
+      "condition": "财生官，官卫财",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "食神生财",
+      "combination": "食神 + 财星",
+      "judgment": "才华变现，靠技能赚钱",
+      "reading": "利商业、技术创业、专业服务",
+      "condition": "食神有力生财，财有根",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "伤官佩印",
+      "combination": "伤官 + 正印",
+      "judgment": "才华有制，傲气收敛",
+      "reading": "利学术、教育、高端技术，有创新能力又不失稳重",
+      "condition": "印星制伤官但不伤食神",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "伤官见官",
+      "combination": "伤官 + 正官",
+      "judgment": "为祸百端，主是非、官非、婚变",
+      "reading": "容易与上级冲突、法律纠纷、婚姻不顺",
+      "condition": "伤官与正官同时透干或并见",
+      "exception": "伤官用印（印星制伤护官）可解",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "财多身弱",
+      "combination": "财星多 + 日主弱",
+      "judgment": "富屋贫人，财多压身",
+      "reading": "看着有钱实际压力大，需比劫帮身",
+      "condition": "财星力量远超日主",
+      "solution": "行比劫运可翻身",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "官杀混杂",
+      "combination": "正官 + 七杀",
+      "judgment": "管理混乱，压力多重",
+      "reading": "事业多变动，感情多纠葛",
+      "condition": "正官七杀同时出现",
+      "solution": "食神制杀或印星化杀可解",
+      "source": "《子平真诠》"
+    },
+    {
+      "name": "枭神夺食",
+      "combination": "偏印 + 食神",
+      "judgment": "才华被压制，事业多阻碍",
+      "reading": "容易半途而废，有始无终",
+      "condition": "偏印紧贴克制食神",
+      "solution": "财星制枭可解",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "贪财坏印",
+      "combination": "财星 + 正印",
+      "judgment": "因利忘义，失去贵人",
+      "reading": "容易为钱损害名誉、学历、信用",
+      "condition": "财星克制印星，印星无力",
+      "solution": "比劫帮身可担财",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "身旺任财",
+      "combination": "日主旺 + 财星有根",
+      "judgment": "身财两停，富命",
+      "reading": "有赚钱能力也有赚钱机会",
+      "condition": "日主与财星力量均衡",
+      "source": "《滴天髓》"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "_meta": {
+    "caseId": "gc-012",
+    "description": "样例 evidencePackage，基于 gc-012（男方 1989-08-20 06:00 广西柳州 + 女方 1993-07-24 12:00 广西河池）双命合婚数据生成",
+    "generatedBy": "EvidenceComposerService",
+    "note": "本样例为示例输出，实际生产由 compose() 实时生成；matchedRules 来自 RuleMatcherService，ruleBasedScore 由 computeScore() 计算"
+  },
+  "chartSnapshot": {
+    "male": {
+      "yearPillar": "己巳",
+      "monthPillar": "壬申",
+      "dayPillar": "壬子",
+      "hourPillar": "癸卯",
+      "yearShishen": "正官",
+      "monthShishen": "比肩",
+      "dayShishen": "日主",
+      "hourShishen": "劫财",
+      "wuxing": { "wood": 0.3, "fire": 0.3, "earth": 0.65, "metal": 0.5, "water": 1.55 },
+      "daYun": [
+        { "index": 4, "gan": "戊", "zhi": "辰", "full": "戊辰", "startAge": 34, "endAge": 43 }
+      ],
+      "liuNian": [
+        { "year": 2026, "ganZhi": "丙午", "shishen": "偏财" }
+      ],
+      "xingChongHeHai": {
+        "he": [{ "pillars": ["年柱", "月柱"], "relation": "巳申合" }],
+        "chong": [{ "pillars": ["日柱", "流年"], "relation": "子午冲" }],
+        "hai": [],
+        "xing": []
+      }
+    },
+    "female": {
+      "yearPillar": "癸酉",
+      "monthPillar": "己未",
+      "dayPillar": "丙午",
+      "hourPillar": "甲午",
+      "yearShishen": "正官",
+      "monthShishen": "伤官",
+      "dayShishen": "日主",
+      "hourShishen": "偏印",
+      "wuxing": { "wood": 0.5, "fire": 1.15, "earth": 1.05, "metal": 0.3, "water": 0.35 },
+      "daYun": [
+        { "index": 3, "gan": "壬", "zhi": "戌", "full": "壬戌", "startAge": 24, "endAge": 33 }
+      ],
+      "liuNian": [
+        { "year": 2026, "ganZhi": "丙午", "shishen": "比肩" }
+      ],
+      "xingChongHeHai": {
+        "he": [],
+        "chong": [{ "pillars": ["日柱", "时柱"], "relation": "午午自刑" }],
+        "hai": [],
+        "xing": [{ "pillars": ["日柱", "时柱"], "relation": "午午自刑" }]
+      }
+    }
+  },
+  "matchedRules": {
+    "high": [
+      {
+        "ruleId": "R001",
+        "ruleName": "夫妻宫冲",
+        "severity": "high",
+        "evidence": "男方日支子 ↔ 女方日支午，子午相冲",
+        "pillar": "日柱",
+        "source": "cross_ref"
+      },
+      {
+        "ruleId": "R002",
+        "ruleName": "子午冲",
+        "severity": "high",
+        "evidence": "原局子午冲（pillars: 日柱+流年）",
+        "source": "bazi"
+      }
+    ],
+    "medium": [
+      {
+        "ruleId": "R008",
+        "ruleName": "财星引动",
+        "severity": "medium",
+        "evidence": "男方当前流年2026丙午，偏财引动，妻星进入强窗口",
+        "source": "bazi"
+      },
+      {
+        "ruleId": "R012",
+        "ruleName": "大运引动夫妻宫",
+        "severity": "medium",
+        "evidence": "男方当前流年丙午，午冲子，引动夫妻宫",
+        "pillar": "日柱",
+        "source": "bazi"
+      },
+      {
+        "ruleId": "R019",
+        "ruleName": "价值观冲突",
+        "severity": "medium",
+        "evidence": "男方日主壬水克女方日主丙火，价值观存在根本差异",
+        "source": "cross_ref"
+      },
+      {
+        "ruleId": "R020",
+        "ruleName": "决策方式冲突",
+        "severity": "medium",
+        "evidence": "女方伤官见官，男方官杀重，决策方式冲突",
+        "source": "cross_ref"
+      }
+    ],
+    "low": []
+  },
+  "knowledgeFragments": [
+    {
+      "ruleId": "R001",
+      "fragments": [
+        {
+          "source": "滴天髓阐微·六亲论",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(六亲论).md",
+          "fragment": "夫妻宫冲，主配偶性情不合，宜缓不宜急",
+          "status": "placeholder"
+        },
+        {
+          "source": "渊海子平·六亲篇",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(六亲篇).md",
+          "fragment": "日支为夫妻宫，逢冲主离，宜详参大运流年",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "ruleId": "R002",
+      "fragments": [
+        {
+          "source": "渊海子平·六亲篇",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(六亲篇).md",
+          "fragment": "子午相冲，水火不交，主夫妻口舌",
+          "status": "placeholder"
+        },
+        {
+          "source": "三命通会·卷五",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/三命通会/三命通会(卷五).md",
+          "fragment": "子午为天地之冲，水火相战，关乎婚配之离合",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "ruleId": "R008",
+      "fragments": [
+        {
+          "source": "渊海子平·十神篇",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(十神篇).md",
+          "fragment": "男命财星即妻星，财星引动则婚缘至",
+          "status": "placeholder"
+        },
+        {
+          "source": "滴天髓阐微·六亲论",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(六亲论).md",
+          "fragment": "财星透出大运流年，妻星入命，婚事可期",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "ruleId": "R012",
+      "fragments": [
+        {
+          "source": "滴天髓阐微·通神论",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(通神论).md",
+          "fragment": "大运引动夫妻宫，逢冲合皆主婚缘变动",
+          "status": "placeholder"
+        },
+        {
+          "source": "命理约言·上",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/命理约言/命理约言-上.md",
+          "fragment": "运冲运合，皆系夫妻宫之动，应于婚配之事",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "ruleId": "R019",
+      "fragments": [
+        {
+          "source": "滴天髓阐微·通神论",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(通神论).md",
+          "fragment": "日主天干五行相克，性情难合，宜审其根本",
+          "status": "placeholder"
+        },
+        {
+          "source": "格局章",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/格局章.md",
+          "fragment": "五行相克之局，主价值观差异，宜互补不宜强合",
+          "status": "placeholder"
+        }
+      ]
+    },
+    {
+      "ruleId": "R020",
+      "fragments": [
+        {
+          "source": "渊海子平·女命篇",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(女命篇).md",
+          "fragment": "女命伤官见，主刚强难驯，与官杀重者多冲突",
+          "status": "placeholder"
+        },
+        {
+          "source": "神峰通考·卷二",
+          "filePath": "knowledge/eastern-metaphysics/八字命理/神峰通考/神峰通考(卷二).md",
+          "fragment": "官杀主规矩，伤官主表达，二者相见于婚配主决策之争",
+          "status": "placeholder"
+        }
+      ]
+    }
+  ],
+  "userContext": {
+    "background": "男方 1989 + 女方 1993 双命合婚咨询",
+    "concerns": ["是否适合结婚", "价值观是否兼容"]
+  },
+  "ruleBasedScore": {
+    "evidenceCompleteness": 0.98,
+    "decisionConfidence": 0.75,
+    "riskLevel": "high",
+    "decisionBias": "stop"
+  },
+  "meta": {
+    "versions": {
+      "prompt": "v2.0",
+      "rules": "v1.0",
+      "knowledge": "v1.0-l2"
+    },
+    "createdAt": "2026-06-27T00:00:00.000Z"
+  }
+}

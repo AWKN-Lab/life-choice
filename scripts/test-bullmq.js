@@ -1,0 +1,10 @@
+const p = require("./node_modules/bullmq/package.json");
+console.log("bullmq:", p.version);
+const Redis = require("ioredis");
+const { Worker } = require("bullmq");
+const connection = new Redis({ host: "127.0.0.1", port: 6379, maxRetriesPerRequest: null });
+const w = new Worker("test-queue", async () => {}, { connection });
+w.on("completed", () => { console.log("Worker OK"); process.exit(0); });
+w.on("failed", (j, err) => { console.log("Worker FAIL:", err.message); process.exit(1); });
+w.on("error", (err) => { console.log("Worker ERROR:", err.message); process.exit(1); });
+setTimeout(() => { console.log("Worker timeout - likely OK (no jobs)"); process.exit(0); }, 3000);

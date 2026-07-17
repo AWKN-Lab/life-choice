@@ -1,0 +1,86 @@
+{
+  "meta": {"description": "两气成象格识别规则", "version": "1.0.0", "source": "滴天髓、子平真诠"},
+  "pattern_name": "两气成象格",
+  "common_conditions": "命局中两种五行各占约一半力量，其余五行极弱或无",
+  "sub_types": [
+    {
+      "name": "木火通明",
+      "elements": ["木","火"],
+      "ratio": "各占一半左右",
+      "relation": "相生",
+      "need_tongguan": false,
+      "preferences": {"xi": ["木","火"], "ji": ["金","水"]},
+      "yun_preferences": "喜行木火运",
+      "life_reading": "主人聪慧文雅，利文职教育学术",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "火土相资",
+      "elements": ["火","土"],
+      "ratio": "各占一半左右",
+      "relation": "相生",
+      "need_tongguan": false,
+      "preferences": {"xi": ["火","土"], "ji": ["水","木"]},
+      "yun_preferences": "喜行火土运",
+      "life_reading": "主人厚重务实，利实业管理",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "土金相生",
+      "elements": ["土","金"],
+      "ratio": "各占一半左右",
+      "relation": "相生",
+      "need_tongguan": false,
+      "preferences": {"xi": ["土","金"], "ji": ["火","木"]},
+      "yun_preferences": "喜行土金运",
+      "life_reading": "主人坚毅果决，利金融法律",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "金白水清",
+      "elements": ["金","水"],
+      "ratio": "各占一半左右",
+      "relation": "相生",
+      "need_tongguan": false,
+      "preferences": {"xi": ["金","水"], "ji": ["土","火"]},
+      "yun_preferences": "喜行金水运",
+      "life_reading": "主人聪慧清秀，利学术技艺",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "水木清华",
+      "elements": ["水","木"],
+      "ratio": "各占一半左右",
+      "relation": "相生",
+      "need_tongguan": false,
+      "preferences": {"xi": ["水","木"], "ji": ["土","金"]},
+      "yun_preferences": "喜行水木运",
+      "life_reading": "主人仁慈聪慧，利教育文化",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "金木相成",
+      "elements": ["金","木"],
+      "ratio": "各占一半左右",
+      "relation": "相战",
+      "need_tongguan": true,
+      "tongguan_element": "水",
+      "preferences": {"xi": ["水"], "ji": ["火","土"]},
+      "yun_preferences": "喜行水运通关",
+      "life_reading": "主人刚柔并济，需有调和之力",
+      "source": "《滴天髓》"
+    },
+    {
+      "name": "水火既济",
+      "elements": ["水","火"],
+      "ratio": "各占一半左右",
+      "relation": "相战",
+      "need_tongguan": true,
+      "tongguan_element": "木",
+      "preferences": {"xi": ["木"], "ji": ["土","金"]},
+      "yun_preferences": "喜行木运通关",
+      "life_reading": "主人智慧通达，需有调停之能",
+      "source": "《滴天髓》"
+    }
+  ]
+}

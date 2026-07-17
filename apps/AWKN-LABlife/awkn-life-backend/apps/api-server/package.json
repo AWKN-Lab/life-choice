@@ -1,0 +1,61 @@
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "人生决策宗师 API 服务",
+  "dependencies": {
+    "@nestjs/bullmq": "^11.0.4",
+    "@nestjs/common": "^10.3.0",
+    "@nestjs/config": "^3.1.0",
+    "@nestjs/core": "^10.3.0",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/passport": "^10.0.3",
+    "@nestjs/platform-express": "^10.3.0",
+    "@nestjs/platform-socket.io": "^10.3.0",
+    "@nestjs/websockets": "^10.3.0",
+    "@prisma/client": "^5.10.0",
+    "@sentry/node": "^8.55.2",
+    "bcryptjs": "^2.4.3",
+    "bullmq": "^5.78.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "dayjs": "^1.11.10",
+    "gpt-tokenizer": "^2.9.0",
+    "openai": "^4.26.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "reflect-metadata": "^0.2.1",
+    "rxjs": "^7.8.1",
+    "stripe": "^14.14.0",
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^3.25.76"
+  },
+  "scripts": {
+    "build": "nest build && node scripts/copy-assets.js && node scripts/verify-build.js",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "lint": "echo \"lint: api-server eslint not configured yet (placeholder)\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.3.0",
+    "@nestjs/testing": "^10.3.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.11.0",
+    "@types/passport-jwt": "^4.0.1",
+    "jest": "^29.7.0",
+    "prisma": "^5.10.0",
+    "ts-jest": "^29.1.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  }
+}

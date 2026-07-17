@@ -1,0 +1,39 @@
+{
+  "caseId": "gc-011",
+  "segmentsFound": [
+    "事实层",
+    "解读层",
+    "推演层",
+    "建议层",
+    "点睛层",
+    "我的判断",
+    "前提",
+    "代价",
+    "推理轨迹",
+    "分值",
+    "观察期",
+    "红线",
+    "三窗口",
+    "落一句最实在的话"
+  ],
+  "segmentsMissing": [],
+  "segmentsCount": 14,
+  "isComplete": true,
+  "score": 68,
+  "scoreInRange": true,
+  "riskLevel": "high",
+  "riskMatch": false,
+  "keywordsHit": [
+    "甲辰",
+    "丙寅"
+  ],
+  "keywordsHitCount": 2,
+  "keywordsPassed": true,
+  "redLinesFound": [],
+  "redLinesPassed": false,
+  "passed": false,
+  "failureReasons": [
+    "风险等级 high ≠ 预期 low"
+  ],
+  "rawOutputLength": 1848
+}

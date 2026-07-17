@@ -1,0 +1,47 @@
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1520 50%, #0d1117 100%);
+  padding: 40rpx 32rpx;
+  box-sizing: border-box;
+
+  .hero {
+    text-align: center;
+    padding: 60rpx 0;
+
+    .title {
+      font-size: 48rpx;
+      font-weight: bold;
+      color: #c9a962;
+      margin-bottom: 16rpx;
+    }
+    .subtitle {
+      font-size: 28rpx;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20rpx;
+    margin: 40rpx 0;
+
+    .action-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1rpx solid rgba(201, 169, 98, 0.15);
+      border-radius: 20rpx;
+      padding: 32rpx;
+      text-align: center;
+      transition: all 0.2s;
+
+      .icon { font-size: 48rpx; margin-bottom: 12rpx; }
+      .label { font-size: 26rpx; color: rgba(255, 255, 255, 0.8); }
+    }
+  }
+
+  .section-title {
+    font-size: 30rpx;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 40rpx 0 20rpx;
+  }
+}

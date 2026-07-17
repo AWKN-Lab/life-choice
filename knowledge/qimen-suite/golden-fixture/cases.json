@@ -1,0 +1,148 @@
+{
+  "description": "奇门遁甲 Golden Fixture 测试用例 — 10 个已知日期，用于交叉验证 JS/C++/Go 三套实现",
+  "version": "2026-06-16-v1",
+  "method": "时家",
+  "type": "四柱",
+  "cases": [
+    {
+      "id": "gf-001",
+      "date": "2024-02-10T08:00:00+08:00",
+      "description": "2024年春节（甲辰年正月初一）辰时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "丙寅",
+        "dayGanZhi": "甲辰",
+        "hourGanZhi": "戊辰",
+        "jushu": "阳遁八局",
+        "yuan": "上元",
+        "season": "立春"
+      }
+    },
+    {
+      "id": "gf-002",
+      "date": "2024-06-21T12:00:00+08:00",
+      "description": "夏至 午时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "庚午",
+        "dayGanZhi": "丙辰",
+        "hourGanZhi": "甲午",
+        "jushu": "阴遁九局",
+        "yuan": "上元",
+        "season": "夏至"
+      }
+    },
+    {
+      "id": "gf-003",
+      "date": "2024-12-21T00:00:00+08:00",
+      "description": "冬至 子时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "丙子",
+        "dayGanZhi": "己未",
+        "hourGanZhi": "甲子",
+        "jushu": "阳遁一局",
+        "yuan": "上元",
+        "season": "冬至"
+      }
+    },
+    {
+      "id": "gf-004",
+      "date": "2024-03-20T06:00:00+08:00",
+      "description": "春分 卯时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "丁卯",
+        "dayGanZhi": "癸未",
+        "hourGanZhi": "乙卯",
+        "jushu": "阳遁三局",
+        "yuan": "上元",
+        "season": "春分"
+      }
+    },
+    {
+      "id": "gf-005",
+      "date": "2024-09-22T18:00:00+08:00",
+      "description": "秋分 酉时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "癸酉",
+        "dayGanZhi": "己丑",
+        "hourGanZhi": "癸酉",
+        "jushu": "阴遁七局",
+        "yuan": "上元",
+        "season": "秋分"
+      }
+    },
+    {
+      "id": "gf-006",
+      "date": "2024-01-01T10:00:00+08:00",
+      "description": "元旦 巳时",
+      "expected": {
+        "yearGanZhi": "癸卯",
+        "monthGanZhi": "甲子",
+        "dayGanZhi": "甲子",
+        "hourGanZhi": "己巳",
+        "jushu": "阳遁一局",
+        "yuan": "上元",
+        "season": "冬至"
+      }
+    },
+    {
+      "id": "gf-007",
+      "date": "2024-05-05T14:00:00+08:00",
+      "description": "立夏 未时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "己巳",
+        "dayGanZhi": "己巳",
+        "hourGanZhi": "辛未",
+        "jushu": "阳遁四局",
+        "yuan": "上元",
+        "season": "立夏"
+      }
+    },
+    {
+      "id": "gf-008",
+      "date": "2024-08-07T04:00:00+08:00",
+      "description": "立秋 寅时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "壬申",
+        "dayGanZhi": "癸卯",
+        "hourGanZhi": "甲寅",
+        "jushu": "阴遁二局",
+        "yuan": "上元",
+        "season": "立秋"
+      }
+    },
+    {
+      "id": "gf-009",
+      "date": "2024-11-07T20:00:00+08:00",
+      "description": "立冬 戌时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "乙亥",
+        "dayGanZhi": "乙亥",
+        "hourGanZhi": "丙戌",
+        "jushu": "阴遁六局",
+        "yuan": "上元",
+        "season": "立冬"
+      }
+    },
+    {
+      "id": "gf-010",
+      "date": "2024-04-04T16:00:00+08:00",
+      "description": "清明 申时",
+      "expected": {
+        "yearGanZhi": "甲辰",
+        "monthGanZhi": "丁卯",
+        "dayGanZhi": "戊戌",
+        "hourGanZhi": "庚申",
+        "jushu": "阳遁四局",
+        "yuan": "上元",
+        "season": "清明"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHERIA - 命运圣所 | Oracle Chamber</title>
+  <meta name="description" content="AETHERIA Oracle - 寻求命运之神的指引，让星辰为你照亮前路。">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* AETHERIA 设计系统 */
+      --primary: #dacf98;
+      --primary-dim: #beb47e;
+      --primary-glow: rgba(218,207,152,0.3);
+      --secondary: #d7baff;
+      --secondary-dim: #5b3196;
+      --tertiary: #00eab2;
+      --surface: #10141a;
+      --surface-light: #1c2026;
+      --surface-lighter: #262a31;
+      --surface-lowest: #0a0e14;
+      --on-surface: #dfe2eb;
+      --on-surface-dim: #d0c5af;
+      --outline: #99907c;
+      --outline-dim: #4d4635;
+      
+      /* 字体 */
+      --font-serif: 'Noto Serif SC', 'Source Han Serif SC', serif;
+      --font-sans: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+      
+      /* 过渡 */
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--surface);
+      color: var(--on-surface);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* 中文优化 */
+    .text-zh {
+      font-family: var(--font-serif);
+      letter-spacing: 0.02em;
+      font-weight: 500;
+    }
+    
+    .text-en {
+      font-family: var(--font-body);
+    }
+    
+    /* 语言切换 */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 3px;
+      margin-right: 16px;
+    }
+    
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+    }
+    
+    .lang-toggle button.active {
+      background: rgba(218,207,152,0.2);
+      color: var(--primary);
+    }
+    
+    .lang-toggle button:hover:not(.active) {
+      color: #fff;
+    }
+    
+    /* 语言显示 */
+    html.lang-zh .zh { display: inline !important; }
+    html.lang-zh .en { display: none !important; }
+    html.lang-en .zh { display: none !important; }
+    html.lang-en .en { display: inline !important; }
+    
+    /* 顶部导航 */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 80px;
+      background: rgba(16,20,26,0.8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(77,70,53,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+    }
+    
+    .logo {
+      font-family: var(--font-body);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 20px rgba(218,207,152,0.5);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .nav-link {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+      letter-spacing: 0.05em;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .nav-link.active {
+      color: var(--primary);
+      background: rgba(218,207,152,0.1);
+    }
+    
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: var(--transition-smooth);
+    }
+    
+    .material-symbols-outlined:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--outline-dim);
+      overflow: hidden;
+    }
+    
+    .user-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* 主布局 */
+    .main-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* 侧边栏 */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 256px;
+      background: var(--surface);
+      border-right: 1px solid rgba(77,70,53,0.15);
+      padding: 100px 0 32px;
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+    }
+    
+    .sidebar-header {
+      text-align: center;
+      padding: 0 24px 32px;
+    }
+    
+    .sidebar-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--surface-light);
+      border: 1px solid var(--outline-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    
+    .sidebar-avatar .material-symbols-outlined {
+      font-size: 28px;
+    }
+    
+    .sidebar-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    
+    .sidebar-subtitle {
+      font-size: 10px;
+      color: var(--outline);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-family: var(--font-body);
+    }
+    
+    .sidebar-nav {
+      flex: 1;
+      padding: 0 16px;
+    }
+    
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 24px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border-radius: 0 12px 12px 0;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+      margin-bottom: 4px;
+    }
+    
+    .sidebar-link:hover {
+      color: rgba(255,255,255,0.85);
+      transform: translateX(4px);
+    }
+    
+    .sidebar-link.active {
+      color: var(--primary);
+      background: rgba(218,207,152,0.1);
+      font-weight: 700;
+    }
+    
+    .sidebar-link .material-symbols-outlined {
+      font-size: 20px;
+    }
+    
+    .sidebar-cta {
+      padding: 0 24px;
+    }
+    
+    .btn-upgrade {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%);
+      color: #373108;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+      box-shadow: 0 10px 30px rgba(218,207,152,0.2);
+    }
+    
+    .btn-upgrade:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(218,207,152,0.3);
+    }
+    
+    /* 主内容区 */
+    .main-content {
+      flex: 1;
+      margin-left: 256px;
+      padding: 120px 48px 80px;
+      max-width: 800px;
+    }
+    
+    /* 英雄区域 */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(218,207,152,0.2);
+      background: rgba(218,207,152,0.1);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+      font-family: var(--font-body);
+    }
+    
+    .hero-badge .material-symbols-outlined {
+      font-size: 14px;
+    }
+    
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+    
+    .hero-title .highlight {
+      color: var(--primary);
+    }
+    
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--on-surface-dim);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    
+    /* 表单区域 */
+    .form-section {
+      margin-bottom: 48px;
+    }
+    
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .section-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-lighter);
+      border: 1px solid var(--outline-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: var(--font-body);
+    }
+    
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--outline);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-family: var(--font-body);
+    }
+    
+    /* 领域选择 */
+    .domain-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .domain-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 100px;
+      border: 1px solid var(--outline-dim);
+      background: var(--surface-light);
+      color: var(--on-surface-dim);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+    
+    .domain-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(218,207,152,0.05);
+    }
+    
+    .domain-btn.active {
+      border-color: var(--primary);
+      background: rgba(218,207,152,0.1);
+      color: var(--primary);
+    }
+    
+    .domain-btn .material-symbols-outlined {
+      font-size: 20px;
+    }
+    
+    /* 文本域 */
+    .textarea-wrapper {
+      position: relative;
+    }
+    
+    .form-textarea {
+      width: 100%;
+      background: var(--surface-lowest);
+      border: 1px solid var(--outline-dim);
+      border-radius: 16px;
+      padding: 24px;
+      color: var(--on-surface);
+      font-size: 16px;
+      font-family: var(--font-sans);
+      resize: none;
+      min-height: 140px;
+      transition: var(--transition-smooth);
+      line-height: 1.7;
+    }
+    
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(218,207,152,0.15);
+    }
+    
+    .form-textarea::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    
+    .textarea-hint {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      font-size: 10px;
+      color: var(--outline);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-family: var(--font-body);
+    }
+    
+    /* 情绪标签 */
+    .emotion-card {
+      background: var(--surface-light);
+      border: 1px solid rgba(77,70,53,0.1);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    
+    .emotion-hint {
+      font-size: 13px;
+      color: var(--on-surface-dim);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    
+    .emotion-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .emotion-tag {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+      border: 1px solid transparent;
+    }
+    
+    .emotion-tag.purple {
+      background: rgba(91,49,150,0.2);
+      border-color: rgba(91,49,150,0.3);
+      color: #cba8ff;
+    }
+    
+    .emotion-tag.green {
+      background: rgba(0,203,154,0.15);
+      border-color: rgba(0,203,154,0.25);
+      color: var(--tertiary);
+    }
+    
+    .emotion-tag.neutral {
+      background: var(--surface-lighter);
+      border-color: rgba(77,70,53,0.5);
+      color: var(--on-surface-dim);
+    }
+    
+    .emotion-tag:hover {
+      transform: scale(1.05);
+    }
+    
+    .emotion-tag.active.purple {
+      background: rgba(91,49,150,0.35);
+    }
+    
+    .emotion-tag.active.green {
+      background: rgba(0,203,154,0.25);
+    }
+    
+    .emotion-tag.active.neutral {
+      background: rgba(218,207,152,0.15);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    
+    /* 提交按钮 */
+    .submit-section {
+      text-align: center;
+      padding-top: 48px;
+    }
+    
+    .btn-consult {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      border-radius: 100px;
+      border: none;
+      background: linear-gradient(135deg, var(--secondary-dim) 0%, var(--secondary) 100%);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(215,186,255,0.2);
+    }
+    
+    .btn-consult::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--secondary-dim) 0%, var(--secondary) 100%);
+      opacity: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 0.8; }
+    }
+    
+    .btn-consult:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(215,186,255,0.3);
+    }
+    
+    .btn-consult:active {
+      transform: scale(0.98);
+    }
+    
+    .btn-consult .material-symbols-outlined {
+      color: #fff;
+      font-size: 20px;
+    }
+    
+    .submit-hint {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--outline);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-family: var(--font-body);
+    }
+    
+    /* 背景光效 */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .glow-1 {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(218,207,152,0.05) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+    
+    .glow-2 {
+      position: absolute;
+      bottom: -10%;
+      left: -10%;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(91,49,150,0.1) 0%, transparent 70%);
+      filter: blur(60px);
+    }
+    
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .sidebar {
+        display: none;
+      }
+      
+      .main-content {
+        margin-left: 0;
+        padding: 100px 24px 60px;
+      }
+      
+      .hero-title {
+        font-size: 36px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 0 16px;
+        height: 64px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .main-content {
+        padding: 84px 16px 100px;
+      }
+      
+      .hero-title {
+        font-size: 28px;
+      }
+      
+      .hero-subtitle {
+        font-size: 15px;
+      }
+      
+      .domain-grid {
+        gap: 8px;
+      }
+      
+      .domain-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+    }
+    
+    /* 移动端底部导航 */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(77,70,53,0.2);
+      padding: 8px 0;
+      padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+      z-index: 100;
+    }
+    
+    @media (max-width: 1024px) {
+      .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.4);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    
+    .mobile-nav-item .material-symbols-outlined {
+      font-size: 24px;
+    }
+    
+    .mobile-nav-item.active {
+      color: var(--secondary);
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- 背景光效 -->
+<div class="bg-glow">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+</div>
+
+<!-- 顶部导航 -->
+<nav class="top-nav">
+  <div class="logo">AETHERIA</div>
+  <div class="nav-links">
+    <a href="#" class="nav-link">
+      <span class="zh">圣所</span>
+      <span class="en">Sanctuary</span>
+    </a>
+    <a href="#" class="nav-link active">
+      <span class="zh">先知</span>
+      <span class="en">Oracle</span>
+    </a>
+    <a href="#" class="nav-link">
+      <span class="zh">典藏</span>
+      <span class="en">Archive</span>
+    </a>
+  </div>
+  <div class="user-area">
+    <div class="lang-toggle">
+      <button class="active" data-lang="zh">中</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <span class="material-symbols-outlined">notifications</span>
+    <span class="material-symbols-outlined">settings</span>
+    <div class="user-avatar">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="User Avatar">
+    </div>
+  </div>
+</nav>
+
+<!-- 主布局 -->
+<div class="main-layout">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-avatar">
+        <span class="material-symbols-outlined">auto_fix_high</span>
+      </div>
+      <h4 class="sidebar-title text-zh">
+        <span class="zh">新晋先知</span>
+        <span class="en">Novice Seer</span>
+      </h4>
+      <p class="sidebar-subtitle">
+        <span class="zh">14级炼金术士</span>
+        <span class="en">Level 14 Alchemist</span>
+      </p>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </a>
+      <a href="#" class="sidebar-link active">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+        <span class="zh">解读</span>
+        <span class="en">Readings</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span class="material-symbols-outlined">auto_fix_high</span>
+        <span class="zh">仪式</span>
+        <span class="en">Rituals</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span class="material-symbols-outlined">groups</span>
+        <span class="zh">会社</span>
+        <span class="en">Coven</span>
+      </a>
+      <a href="#" class="sidebar-link">
+        <span class="material-symbols-outlined">lock</span>
+        <span class="zh">宝库</span>
+        <span class="en">Vault</span>
+      </a>
+    </nav>
+    
+    <div class="sidebar-cta">
+      <button class="btn-upgrade">
+        <span class="zh">立即升级</span>
+        <span class="en">Ascend Now</span>
+      </button>
+    </div>
+  </aside>
+  
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 英雄区域 -->
+    <header class="hero-section">
+      <div class="hero-badge">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span class="zh">星辰咨询</span>
+        <span class="en">Celestial Consultation</span>
+      </div>
+      
+      <h1 class="hero-title text-zh">
+        <span class="zh">寻求<span class="highlight">先知</span>的指引</span>
+        <span class="en" style="display:none">Seek the <span class="highlight">Oracle's</span> Guidance</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        <span class="zh">阐述你的道路，星辰的排列将揭示你下一个重大决策的几何图形。</span>
+        <span class="en" style="display:none">Articulate your path, and the celestial alignment shall reveal the geometry of your next major decision.</span>
+      </p>
+    </header>
+    
+    <!-- 表单区域 -->
+    <div class="form-wrapper">
+      <!-- 领域选择 -->
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h3 class="section-title">
+            <span class="zh">定义领域</span>
+            <span class="en">Define the Realm</span>
+          </h3>
+        </div>
+        
+        <div class="domain-grid">
+          <button class="domain-btn active" data-domain="career">
+            <span class="material-symbols-outlined">work</span>
+            <span class="zh">职业发展</span>
+            <span class="en">Career Path</span>
+          </button>
+          <button class="domain-btn" data-domain="relations">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="zh">人际关系</span>
+            <span class="en">Relationships</span>
+          </button>
+          <button class="domain-btn" data-domain="wealth">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+            <span class="zh">财富</span>
+            <span class="en">Wealth</span>
+          </button>
+          <button class="domain-btn" data-domain="relocation">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="zh">迁徙</span>
+            <span class="en">Relocation</span>
+          </button>
+          <button class="domain-btn" data-domain="purpose">
+            <span class="material-symbols-outlined">self_improvement</span>
+            <span class="zh">人生使命</span>
+            <span class="en">Purpose</span>
+          </button>
+        </div>
+      </section>
+      
+      <!-- 问题输入 -->
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h3 class="section-title">
+            <span class="zh">低语你的问题</span>
+            <span class="en">Whisper your Question</span>
+          </h3>
+        </div>
+        
+        <div class="textarea-wrapper">
+          <textarea class="form-textarea" rows="4" placeholder="">
+            <span class="zh">例如：我是否应该在下一个太阴周期转换到领导岗位，还是留在我的创意圣地？</span>
+            <span class="en" style="display:none">Ex: Should I transition to a leadership role in the next lunar cycle, or remain in my creative sanctuary?</span>
+          </textarea>
+          <span class="textarea-hint">最少 50 字</span>
+        </div>
+      </section>
+      
+      <!-- 情绪共鸣 -->
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h3 class="section-title">
+            <span class="zh">情绪共鸣</span>
+            <span class="en">Emotional Resonance</span>
+          </h3>
+        </div>
+        
+        <div class="emotion-card">
+          <p class="emotion-hint">
+            <span class="zh">选择与这个决定产生共鸣的振动：</span>
+            <span class="en" style="display:none">Select the vibrations that currently resonate with this decision:</span>
+          </p>
+          
+          <div class="emotion-tags">
+            <span class="emotion-tag purple" data-emotion="apprehension">
+              <span class="zh">忧虑</span>
+              <span class="en">Apprehension</span>
+            </span>
+            <span class="emotion-tag green" data-emotion="manifestation">
+              <span class="zh">显现</span>
+              <span class="en">Manifestation</span>
+            </span>
+            <span class="emotion-tag neutral" data-emotion="urgency">
+              <span class="zh">紧迫</span>
+              <span class="en">Urgency</span>
+            </span>
+            <span class="emotion-tag neutral" data-emotion="longterm">
+              <span class="zh">长期专注</span>
+              <span class="en">Long-term Focus</span>
+            </span>
+            <span class="emotion-tag purple" data-emotion="legacy">
+              <span class="zh">传承</span>
+              <span class="en">Legacy Building</span>
+            </span>
+            <span class="emotion-tag neutral" data-emotion="risk">
+              <span class="zh">风险评估</span>
+              <span class="en">Risk Assessment</span>
+            </span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 提交 -->
+      <section class="submit-section">
+        <button class="btn-consult">
+          <span class="zh">咨询典藏</span>
+          <span class="en">Consult the Archive</span>
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flare</span>
+        </button>
+        <p class="submit-hint">
+          <span class="zh">预计处理时间：12 秒</span>
+          <span class="en">Estimated processing: 12 seconds</span>
+        </p>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- 移动端底部导航 -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-item">
+    <span class="material-symbols-outlined">temple_hindu</span>
+    <span class="zh">圣所</span>
+    <span class="en">Home</span>
+  </div>
+  <div class="mobile-nav-item active">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flare</span>
+    <span class="zh">先知</span>
+    <span class="en">Oracle</span>
+  </div>
+  <div class="mobile-nav-item">
+    <span class="material-symbols-outlined">book_2</span>
+    <span class="zh">典藏</span>
+    <span class="en">Archive</span>
+  </div>
+  <div class="mobile-nav-item">
+    <span class="material-symbols-outlined">person</span>
+    <span class="zh">我的</span>
+    <span class="en">Profile</span>
+  </div>
+</nav>
+
+<script>
+  // 语言切换
+  function setLang(lang) {
+    document.documentElement.className = 'dark lang-' + lang;
+    document.querySelectorAll('.lang-toggle button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    localStorage.setItem('aetheria_lang', lang);
+  }
+  
+  // 初始化
+  var savedLang = localStorage.getItem('aetheria_lang') || 'zh';
+  setLang(savedLang);
+  
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setLang(btn.dataset.lang);
+    });
+  });
+  
+  // 领域按钮
+  document.querySelectorAll('.domain-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.domain-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      this.classList.add('active');
+    });
+  });
+  
+  // 情绪标签
+  document.querySelectorAll('.emotion-tag').forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>

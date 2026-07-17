@@ -1,0 +1,104 @@
+{
+  "name": "liuyao-duangua",
+  "version": "v1",
+  "rules": [
+    {
+      "id": "duangua-yongshen-wang",
+      "category": "pattern",
+      "priority": 20,
+      "source": "增删卜易-用神旺衰",
+      "condition": {
+        "yongShenMonth": { "op": "in", "value": ["旺", "相"] }
+      },
+      "then": {
+        "name": "用神旺相",
+        "judgment": "用神旺相，谋事可成。月建生合用神则根基稳固，日辰生合用神则当下顺利",
+        "level": "吉"
+      }
+    },
+    {
+      "id": "duangua-yongshen-shuai",
+      "category": "pattern",
+      "priority": 20,
+      "source": "增删卜易-用神旺衰",
+      "condition": {
+        "yongShenMonth": { "op": "in", "value": ["休", "囚", "死"] }
+      },
+      "then": {
+        "name": "用神衰弱",
+        "judgment": "用神衰弱，谋事多阻。月建克用神则根基不稳，日辰克用神则当下不顺",
+        "level": "凶"
+      }
+    },
+    {
+      "id": "duangua-shidong",
+      "category": "pattern",
+      "priority": 15,
+      "source": "增删卜易-世应",
+      "condition": {
+        "shiYaoActive": { "op": "eq", "value": "true" }
+      },
+      "then": {
+        "name": "世爻发动",
+        "judgment": "世爻发动主自身有变动、有行动力，但需看变爻吉凶",
+        "level": "动"
+      }
+    },
+    {
+      "id": "duangua-liuhe",
+      "category": "pattern",
+      "priority": 15,
+      "source": "增删卜易-六合",
+      "condition": {
+        "guaType": { "op": "eq", "value": "六合卦" }
+      },
+      "then": {
+        "name": "六合卦",
+        "judgment": "六合卦主事情缠绵、合作可成、关系融洽，但事态进展较慢",
+        "level": "吉"
+      }
+    },
+    {
+      "id": "duangua-liuchong",
+      "category": "pattern",
+      "priority": 15,
+      "source": "增删卜易-六冲",
+      "condition": {
+        "guaType": { "op": "eq", "value": "六冲卦" }
+      },
+      "then": {
+        "name": "六冲卦",
+        "judgment": "六冲卦主事情快速变化、冲散分离，宜速决不宜久拖",
+        "level": "凶"
+      }
+    },
+    {
+      "id": "duangua-youshen",
+      "category": "pattern",
+      "priority": 12,
+      "source": "增删卜易-游魂归魂",
+      "condition": {
+        "guaType": { "op": "eq", "value": "游魂卦" }
+      },
+      "then": {
+        "name": "游魂卦",
+        "judgment": "游魂卦主心神不定、漂泊在外，出行则宜，安居则不宜",
+        "level": "动"
+      }
+    },
+    {
+      "id": "duangua-guihun",
+      "category": "pattern",
+      "priority": 12,
+      "source": "增删卜易-游魂归魂",
+      "condition": {
+        "guaType": { "op": "eq", "value": "归魂卦" }
+      },
+      "then": {
+        "name": "归魂卦",
+        "judgment": "归魂卦主回归、安定，不宜远行，宜守成",
+        "level": "静"
+      }
+    }
+  ]
+}

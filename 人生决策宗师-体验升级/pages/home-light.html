@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生决策宗师 - 首页</title>
+    <style id="theme-vars">
+/* ===== 人生决策宗师 — Decision OS Design Tokens ===== */
+/* Based on AETHERIA Neo-Mysticism System */
+/* Semantic shift: "精密仪器" not "玄学神坛" */
+
+:root {
+  /* Brand Colors - HSL */
+  --primary: 53 73% 76%;
+  --primary-light: 48 70% 84%;
+  --primary-dim: 42 45% 55%;
+  --secondary: 265 100% 86%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 52%;
+
+  /* Surface Hierarchy */
+  --surface-base: 220 20% 7%;
+  --surface-container: 220 15% 13%;
+  --surface-container-low: 220 15% 10%;
+  --surface-container-lowest: 220 25% 5%;
+  --surface-container-high: 220 14% 17%;
+
+  /* On-Surface */
+  --on-surface: 220 12% 91%;
+  --on-surface-variant: 35 27% 77%;
+  --on-primary: 0 0% 0%;
+  --on-secondary: 0 0% 0%;
+
+  /* Utility */
+  --outline: 35 16% 56%;
+  --outline-variant: 35 18% 30%;
+  --error: 5 100% 86%;
+
+  /* Border & Ring */
+  --border: 220 14% 17%;
+  --input: 220 14% 17%;
+  --ring: 53 73% 76%;
+
+  /* Background & Foreground */
+  --background: 220 20% 7%;
+  --foreground: 220 12% 91%;
+
+  /* Muted */
+  --muted: 220 15% 13%;
+  --muted-foreground: 35 15% 55%;
+
+  /* Popover */
+  --popover: 220 15% 10%;
+  --popover-foreground: 220 12% 91%;
+
+  /* Card */
+  --card: 220 15% 10%;
+  --card-foreground: 220 12% 91%;
+
+  /* Destructive */
+  --destructive: 5 100% 86%;
+  --destructive-foreground: 0 0% 0%;
+
+  /* Radius */
+  --radius: 12px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Primary container */
+  --primary-container: 53 50% 40%;
+
+  /* Extended palette */
+  --shumiyuan-deep: 220 35% 8%;
+  --shumiyuan-graphite: 220 12% 12%;
+  --shumiyuan-ink: 220 20% 5%;
+  --shumiyuan-gold-glow: 53 73% 76%;
+  --shumiyuan-violet-glow: 265 100% 86%;
+  --shumiyuan-risk: 5 80% 65%;
+  --shumiyuan-safe: 163 60% 45%;
+  --shumiyuan-warn: 35 90% 60%;
+
+  /* Decision OS semantic colors */
+  --phase-expand: 163 60% 45%;
+  --phase-explore: 220 80% 60%;
+  --phase-repair: 35 90% 60%;
+  --phase-contract: 5 80% 65%;
+
+  /* Dimension colors */
+  --dim-time: 220 80% 60%;
+  --dim-position: 163 60% 45%;
+  --dim-mind: 265 100% 86%;
+
+  /* State */
+  --state-success: 163 100% 52%;
+  --state-warning: 35 90% 60%;
+  --state-error: 5 80% 65%;
+  --state-info: 220 80% 60%;
+
+  /* Typography */
+  --font-display: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Manrope', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes */
+  --text-hero: 2rem;
+  --text-h1: 1.5rem;
+  --text-h2: 1.25rem;
+  --text-h3: 1.125rem;
+  --text-body: 0.875rem;
+  --text-small: 0.75rem;
+  --text-caption: 0.6875rem;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px hsl(var(--surface-base) / 0.5);
+  --shadow-elevated: 0 4px 12px hsl(var(--surface-base) / 0.3);
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --primary: 211 100% 50%;
+  --primary-light: 211 100% 60%;
+  --primary-dim: 211 80% 40%;
+  --secondary: 265 65% 60%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 40%;
+
+  --surface-base: 0 0% 100%;
+  --surface-container: 0 0% 96%;
+  --surface-container-low: 0 0% 98%;
+  --surface-container-lowest: 0 0% 92%;
+  --surface-container-high: 0 0% 90%;
+
+  --on-surface: 0 0% 12%;
+  --on-surface-variant: 240 2% 54%;
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 240 5% 64%;
+  --outline-variant: 240 5% 88%;
+  --error: 3 100% 59%;
+
+  --border: 240 5% 84%;
+  --input: 240 5% 84%;
+  --ring: 211 100% 50%;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 12%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 240 2% 54%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 12%;
+
+  --destructive: 3 100% 59%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 12px;
+
+  --primary-container: 211 100% 90%;
+
+  --shumiyuan-deep: 220 10% 95%;
+  --shumiyuan-graphite: 220 8% 90%;
+  --shumiyuan-ink: 220 8% 96%;
+  --shumiyuan-gold-glow: 211 100% 50%;
+  --shumiyuan-violet-glow: 265 65% 60%;
+  --shumiyuan-risk: 3 100% 59%;
+  --shumiyuan-safe: 163 100% 40%;
+  --shumiyuan-warn: 39 100% 55%;
+
+  --phase-expand: 163 100% 40%;
+  --phase-explore: 220 80% 50%;
+  --phase-repair: 39 100% 55%;
+  --phase-contract: 3 100% 59%;
+
+  --dim-time: 220 80% 50%;
+  --dim-position: 163 100% 40%;
+  --dim-mind: 265 65% 60%;
+
+  --state-success: 163 100% 40%;
+  --state-warning: 39 100% 55%;
+  --state-error: 3 100% 59%;
+  --state-info: 220 80% 50%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--on-primary);
+    --color-secondary: var(--on-secondary);
+  }
+  @layer base {
+    body { background: var(--on-surface); color: var(--on-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="pb-20">
+      <!-- Section 1: Hero Banner -->
+      <section class="relative px-4 pt-12 pb-8 overflow-hidden" style="background: linear-gradient(180deg, hsl(var(--surface-container-low)) 0%, hsl(var(--background)) 100%);">
+        <div class="relative z-10 max-w-md mx-auto">
+          <p class="text-xs font-medium tracking-wider uppercase mb-3" style="color: hsl(var(--primary));">Decision OS v0.1</p>
+          <h1 class="font-serif leading-tight mb-3" style="font-size: var(--text-hero); color: hsl(var(--foreground)); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+            你的人生，<br>值得一套操作系统
+          </h1>
+          <p class="text-sm leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+            命运可编码、可跟踪、可追溯——你的每个决定都有坐标
+          </p>
+          <button class="inline-flex items-center justify-center rounded-lg px-6 py-2.5 text-sm font-medium transition-colors" style="background: hsl(var(--primary)); color: hsl(var(--on-primary));">
+            开始使用
+          </button>
+        </div>
+      </section>
+
+      <!-- Section 2: System Status Card -->
+      <section class="px-4 pb-6">
+        <div class="rounded-lg p-4 max-w-md mx-auto" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-block w-2 h-2 rounded-full" style="background: hsl(var(--state-success));"></span>
+            <span class="text-xs font-medium" style="color: hsl(var(--state-success));">扩张期</span>
+            <span class="text-xs ml-auto" style="color: hsl(var(--muted-foreground));">2026-Q3</span>
+          </div>
+          <!-- Dimension Bars -->
+          <div class="space-y-2.5 mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="text-xs font-medium w-4 shrink-0" style="color: hsl(var(--dim-time));">时</span>
+              <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--muted));">
+                <div class="h-full rounded-full" style="width: 72%; background: hsl(var(--dim-time));"></div>
+              </div>
+              <span class="text-xs shrink-0" style="color: hsl(var(--muted-foreground));">72</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-xs font-medium w-4 shrink-0" style="color: hsl(var(--dim-position));">位</span>
+              <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--muted));">
+                <div class="h-full rounded-full" style="width: 58%; background: hsl(var(--dim-position));"></div>
+              </div>
+              <span class="text-xs shrink-0" style="color: hsl(var(--muted-foreground));">58</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-xs font-medium w-4 shrink-0" style="color: hsl(var(--dim-mind));">心</span>
+              <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--muted));">
+                <div class="h-full rounded-full" style="width: 85%; background: hsl(var(--dim-mind));"></div>
+              </div>
+              <span class="text-xs shrink-0" style="color: hsl(var(--muted-foreground));">85</span>
+            </div>
+          </div>
+          <p class="text-xs leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            当前处于战略扩张期，宜主动出击、扩大影响力。心的维度表现突出，建议在关系与情感决策中发挥优势。
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Decision Scenarios -->
+      <section class="px-4 pb-6">
+        <h2 class="text-sm font-semibold mb-3 max-w-md mx-auto" style="color: hsl(var(--foreground));">决策场景</h2>
+        <div class="space-y-3 max-w-md mx-auto">
+          <!-- Card 1: Career -->
+          <div class="rounded-lg p-3.5 flex items-start gap-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border)); border-left: 3px solid hsl(var(--dim-time));">
+            <div class="shrink-0 mt-0.5">
+              <i data-lucide="briefcase" class="w-5 h-5" style="color: hsl(var(--dim-time));"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-sm font-semibold truncate" style="color: hsl(var(--foreground));">职业判断</h3>
+              <p class="text-xs mt-1 line-clamp-2" style="color: hsl(var(--muted-foreground));">跳槽、转型、创业时机——用数据驱动职业路径选择</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 shrink-0 mt-1" style="color: hsl(var(--outline));"></i>
+          </div>
+          <!-- Card 2: Relationships -->
+          <div class="rounded-lg p-3.5 flex items-start gap-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border)); border-left: 3px solid hsl(var(--dim-mind));">
+            <div class="shrink-0 mt-0.5">
+              <i data-lucide="heart" class="w-5 h-5" style="color: hsl(var(--dim-mind));"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-sm font-semibold truncate" style="color: hsl(var(--foreground));">关系决策</h3>
+              <p class="text-xs mt-1 line-clamp-2" style="color: hsl(var(--muted-foreground));">合作、合伙、亲密关系——量化关系投入产出比</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 shrink-0 mt-1" style="color: hsl(var(--outline));"></i>
+          </div>
+          <!-- Card 3: Timing -->
+          <div class="rounded-lg p-3.5 flex items-start gap-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border)); border-left: 3px solid hsl(var(--dim-position));">
+            <div class="shrink-0 mt-0.5">
+              <i data-lucide="clock" class="w-5 h-5" style="color: hsl(var(--dim-position));"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-sm font-semibold truncate" style="color: hsl(var(--foreground));">时机选择</h3>
+              <p class="text-xs mt-1 line-clamp-2" style="color: hsl(var(--muted-foreground));">买入、卖出、出手——在正确的时间做正确的动作</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 shrink-0 mt-1" style="color: hsl(var(--outline));"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Engine Features (2x3 grid) -->
+      <section class="px-4 pb-6">
+        <h2 class="text-sm font-semibold mb-3 max-w-md mx-auto" style="color: hsl(var(--foreground));">引擎能力</h2>
+        <div class="grid grid-cols-2 gap-2.5 max-w-md mx-auto">
+          <!-- Feature 1 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="radar" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">潮汐雷达</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">T = f(t, L, P)</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="trending-up" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">决策K线</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">K = Sum(Di x Wi)</p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="book-open" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">决策账本</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">ROI = R / C</p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="compass" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">相位罗盘</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">Phi = g(Cur, Tgt)</p>
+          </div>
+          <!-- Feature 5 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="scan" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">校准系统</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">Err = Pred - Actual</p>
+          </div>
+          <!-- Feature 6 -->
+          <div class="rounded-lg p-3" style="background: hsl(var(--card)); box-shadow: var(--shadow-card); border: 1px solid hsl(var(--border));">
+            <i data-lucide="layers" class="w-5 h-5 mb-2" style="color: hsl(var(--primary));"></i>
+            <h3 class="text-xs font-semibold truncate" style="color: hsl(var(--foreground));">三维模型</h3>
+            <p class="text-xs mt-1 font-mono truncate" style="color: hsl(var(--muted-foreground));">V = T + P + M</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Calibration Progress -->
+      <section class="px-4 pb-6">
+        <div class="rounded-lg p-4 max-w-md mx-auto" style="background: hsl(var(--muted));">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-sm font-semibold" style="color: hsl(var(--foreground));">校准进度</h2>
+            <span class="text-xs" style="color: hsl(var(--muted-foreground));">3 / 10 完成</span>
+          </div>
+          <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--surface-container-high));">
+            <div class="h-full rounded-full" style="width: 30%; background: hsl(var(--primary));"></div>
+          </div>
+          <p class="text-xs mt-2 leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            完成更多校准题，引擎将更精准地匹配你的决策风格。
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 6: Engine Note -->
+      <section class="px-4 pb-4">
+        <p class="text-center text-xs max-w-md mx-auto" style="color: hsl(var(--outline));">
+          Decision OS Engine v0.1 — 所有决策数据仅存储于本地设备
+        </p>
+      </section>
+
+      <!-- Bottom Navigation (fixed) -->
+      <nav class="fixed bottom-0 inset-x-0 z-40" style="background: hsl(var(--background)); border-top: 1px solid hsl(var(--border));">
+        <div class="flex items-center justify-around h-14 max-w-md mx-auto">
+          <button class="flex flex-col items-center gap-0.5 px-3 py-1">
+            <i data-lucide="home" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            <span class="text-xs font-medium" style="color: hsl(var(--primary));">首页</span>
+          </button>
+          <button class="flex flex-col items-center gap-0.5 px-3 py-1">
+            <i data-lucide="waves" class="w-5 h-5" style="color: hsl(var(--outline));"></i>
+            <span class="text-xs" style="color: hsl(var(--muted-foreground));">潮汐</span>
+          </button>
+          <button class="flex flex-col items-center gap-0.5 px-3 py-1">
+            <i data-lucide="bar-chart-2" class="w-5 h-5" style="color: hsl(var(--outline));"></i>
+            <span class="text-xs" style="color: hsl(var(--muted-foreground));">K线</span>
+          </button>
+          <button class="flex flex-col items-center gap-0.5 px-3 py-1">
+            <i data-lucide="notebook-pen" class="w-5 h-5" style="color: hsl(var(--outline));"></i>
+            <span class="text-xs" style="color: hsl(var(--muted-foreground));">账本</span>
+          </button>
+          <button class="flex flex-col items-center gap-0.5 px-3 py-1">
+            <i data-lucide="user" class="w-5 h-5" style="color: hsl(var(--outline));"></i>
+            <span class="text-xs" style="color: hsl(var(--muted-foreground));">我的</span>
+          </button>
+        </div>
+        <!-- Safe area bottom spacer -->
+        <div class="h-[env(safe-area-inset-bottom,0px)]" style="background: hsl(var(--background));"></div>
+      </nav>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

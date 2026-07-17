@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-03-22T07:55:43.215896",
+  "total_stats": {
+    "files_processed": 11,
+    "cases_found": 520,
+    "inserted": 0,
+    "duplicates": 520,
+    "errors": 0
+  },
+  "file_results": [
+    {
+      "source": "三命通会",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "滴天髓阐微",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "神峰通考",
+      "found": 4,
+      "inserted": 0,
+      "duplicates": 4,
+      "errors": 0
+    },
+    {
+      "source": "命理金鉴",
+      "found": 1,
+      "inserted": 0,
+      "duplicates": 1,
+      "errors": 0
+    },
+    {
+      "source": "穷通宝鉴",
+      "found": 514,
+      "inserted": 0,
+      "duplicates": 514,
+      "errors": 0
+    },
+    {
+      "source": "渊海子平",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "子平真诠",
+      "found": 1,
+      "inserted": 0,
+      "duplicates": 1,
+      "errors": 0
+    },
+    {
+      "source": "袁氏命谱",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "命理探原",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "千里命稿",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    },
+    {
+      "source": "滴天髓",
+      "found": 0,
+      "inserted": 0,
+      "duplicates": 0,
+      "errors": 0
+    }
+  ]
+}

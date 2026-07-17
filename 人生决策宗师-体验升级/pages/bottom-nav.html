@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BottomNav</title>
+    <style id="theme-vars">
+/* ===== 人生决策宗师 — Decision OS Design Tokens ===== */
+/* Based on AETHERIA Neo-Mysticism System */
+/* Semantic shift: "精密仪器" not "玄学神坛" */
+
+:root {
+  /* Brand Colors - HSL */
+  --primary: 53 73% 76%;
+  --primary-light: 48 70% 84%;
+  --primary-dim: 42 45% 55%;
+  --secondary: 265 100% 86%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 52%;
+
+  /* Surface Hierarchy */
+  --surface-base: 220 20% 7%;
+  --surface-container: 220 15% 13%;
+  --surface-container-low: 220 15% 10%;
+  --surface-container-lowest: 220 25% 5%;
+  --surface-container-high: 220 14% 17%;
+
+  /* On-Surface */
+  --on-surface: 220 12% 91%;
+  --on-surface-variant: 35 27% 77%;
+  --on-primary: 0 0% 0%;
+  --on-secondary: 0 0% 0%;
+
+  /* Utility */
+  --outline: 35 16% 56%;
+  --outline-variant: 35 18% 30%;
+  --error: 5 100% 86%;
+
+  /* Border & Ring */
+  --border: 220 14% 17%;
+  --input: 220 14% 17%;
+  --ring: 53 73% 76%;
+
+  /* Background & Foreground */
+  --background: 220 20% 7%;
+  --foreground: 220 12% 91%;
+
+  /* Muted */
+  --muted: 220 15% 13%;
+  --muted-foreground: 35 15% 55%;
+
+  /* Popover */
+  --popover: 220 15% 10%;
+  --popover-foreground: 220 12% 91%;
+
+  /* Card */
+  --card: 220 15% 10%;
+  --card-foreground: 220 12% 91%;
+
+  /* Destructive */
+  --destructive: 5 100% 86%;
+  --destructive-foreground: 0 0% 0%;
+
+  /* Radius */
+  --radius: 12px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Primary container */
+  --primary-container: 53 50% 40%;
+
+  /* Extended palette */
+  --shumiyuan-deep: 220 35% 8%;
+  --shumiyuan-graphite: 220 12% 12%;
+  --shumiyuan-ink: 220 20% 5%;
+  --shumiyuan-gold-glow: 53 73% 76%;
+  --shumiyuan-violet-glow: 265 100% 86%;
+  --shumiyuan-risk: 5 80% 65%;
+  --shumiyuan-safe: 163 60% 45%;
+  --shumiyuan-warn: 35 90% 60%;
+
+  /* Decision OS semantic colors */
+  --phase-expand: 163 60% 45%;
+  --phase-explore: 220 80% 60%;
+  --phase-repair: 35 90% 60%;
+  --phase-contract: 5 80% 65%;
+
+  /* Dimension colors */
+  --dim-time: 220 80% 60%;
+  --dim-position: 163 60% 45%;
+  --dim-mind: 265 100% 86%;
+
+  /* State */
+  --state-success: 163 100% 52%;
+  --state-warning: 35 90% 60%;
+  --state-error: 5 80% 65%;
+  --state-info: 220 80% 60%;
+
+  /* Typography */
+  --font-display: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Manrope', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes */
+  --text-hero: 2rem;
+  --text-h1: 1.5rem;
+  --text-h2: 1.25rem;
+  --text-h3: 1.125rem;
+  --text-body: 0.875rem;
+  --text-small: 0.75rem;
+  --text-caption: 0.6875rem;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px hsl(var(--surface-base) / 0.5);
+  --shadow-elevated: 0 4px 12px hsl(var(--surface-base) / 0.3);
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --primary: 211 100% 50%;
+  --primary-light: 211 100% 60%;
+  --primary-dim: 211 80% 40%;
+  --secondary: 265 65% 60%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 40%;
+
+  --surface-base: 0 0% 100%;
+  --surface-container: 0 0% 96%;
+  --surface-container-low: 0 0% 98%;
+  --surface-container-lowest: 0 0% 92%;
+  --surface-container-high: 0 0% 90%;
+
+  --on-surface: 0 0% 12%;
+  --on-surface-variant: 240 2% 54%;
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 240 5% 64%;
+  --outline-variant: 240 5% 88%;
+  --error: 3 100% 59%;
+
+  --border: 240 5% 84%;
+  --input: 240 5% 84%;
+  --ring: 211 100% 50%;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 12%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 240 2% 54%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 12%;
+
+  --destructive: 3 100% 59%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 12px;
+
+  --primary-container: 211 100% 90%;
+
+  --shumiyuan-deep: 220 10% 95%;
+  --shumiyuan-graphite: 220 8% 90%;
+  --shumiyuan-ink: 220 8% 96%;
+  --shumiyuan-gold-glow: 211 100% 50%;
+  --shumiyuan-violet-glow: 265 65% 60%;
+  --shumiyuan-risk: 3 100% 59%;
+  --shumiyuan-safe: 163 100% 40%;
+  --shumiyuan-warn: 39 100% 55%;
+
+  --phase-expand: 163 100% 40%;
+  --phase-explore: 220 80% 50%;
+  --phase-repair: 39 100% 55%;
+  --phase-contract: 3 100% 59%;
+
+  --dim-time: 220 80% 50%;
+  --dim-position: 163 100% 40%;
+  --dim-mind: 265 65% 60%;
+
+  --state-success: 163 100% 40%;
+  --state-warning: 39 100% 55%;
+  --state-error: 3 100% 59%;
+  --state-info: 220 80% 50%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--on-primary);
+    --color-secondary: var(--on-secondary);
+  }
+  @layer base {
+    body { background: var(--on-surface); color: var(--on-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="max-w-md mx-auto px-4 py-8">
+
+      <!-- Page Title -->
+      <h1 class="text-lg font-semibold mb-6" style="color: hsl(var(--on-surface));">BottomNav 导航组件</h1>
+
+      <!-- Dark State -->
+      <section class="mb-8">
+        <h2 class="text-sm font-medium mb-3" style="color: hsl(var(--on-surface-variant));">暗色模式</h2>
+        <div class="rounded-lg overflow-hidden" style="background: hsl(var(--surface-container));">
+          <div class="flex items-center justify-around px-2 pt-2 pb-1">
+            <!-- 首页 (active) -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="home" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+              <span class="text-xs" style="color: hsl(var(--primary)); font-weight: 600;">首页</span>
+              <span class="w-1 h-1 rounded-full" style="background: hsl(var(--primary));"></span>
+            </div>
+            <!-- 潮汐 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="waves" class="w-5 h-5" style="color: hsl(var(--on-surface-variant));"></i>
+              <span class="text-xs" style="color: hsl(var(--on-surface-variant));">潮汐</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- K线 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="bar-chart-3" class="w-5 h-5" style="color: hsl(var(--on-surface-variant));"></i>
+              <span class="text-xs" style="color: hsl(var(--on-surface-variant));">K线</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- 账本 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="book-open" class="w-5 h-5" style="color: hsl(var(--on-surface-variant));"></i>
+              <span class="text-xs" style="color: hsl(var(--on-surface-variant));">账本</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- 我的 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="user" class="w-5 h-5" style="color: hsl(var(--on-surface-variant));"></i>
+              <span class="text-xs" style="color: hsl(var(--on-surface-variant));">我的</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+          </div>
+          <!-- Safe area padding -->
+          <div class="h-4" style="background: hsl(var(--surface-container));"></div>
+        </div>
+      </section>
+
+      <!-- Light State -->
+      <section class="mb-8">
+        <h2 class="text-sm font-medium mb-3" style="color: hsl(var(--on-surface-variant));">亮色模式</h2>
+        <div class="rounded-lg overflow-hidden border" style="background: hsl(var(--background, 0 0% 100%)); border-color: hsl(var(--outline-variant, 240 5% 88%));">
+          <div data-theme="light" class="flex items-center justify-around px-2 pt-2 pb-1" style="background: hsl(0 0% 100%);">
+            <!-- 首页 (active) -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="home" class="w-5 h-5" style="color: hsl(211 100% 50%);"></i>
+              <span class="text-xs" style="color: hsl(211 100% 50%); font-weight: 600;">首页</span>
+              <span class="w-1 h-1 rounded-full" style="background: hsl(211 100% 50%);"></span>
+            </div>
+            <!-- 潮汐 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="waves" class="w-5 h-5" style="color: hsl(240 2% 54%);"></i>
+              <span class="text-xs" style="color: hsl(240 2% 54%);">潮汐</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- K线 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="bar-chart-3" class="w-5 h-5" style="color: hsl(240 2% 54%);"></i>
+              <span class="text-xs" style="color: hsl(240 2% 54%);">K线</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- 账本 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="book-open" class="w-5 h-5" style="color: hsl(240 2% 54%);"></i>
+              <span class="text-xs" style="color: hsl(240 2% 54%);">账本</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+            <!-- 我的 -->
+            <div class="flex flex-col items-center gap-1 py-1 px-3">
+              <i data-lucide="user" class="w-5 h-5" style="color: hsl(240 2% 54%);"></i>
+              <span class="text-xs" style="color: hsl(240 2% 54%);">我的</span>
+              <span class="w-1 h-1 rounded-full opacity-0" style="background: transparent;"></span>
+            </div>
+          </div>
+          <!-- Safe area padding -->
+          <div class="h-4" style="background: hsl(0 0% 100%);"></div>
+        </div>
+      </section>
+
+      <!-- Annotation -->
+      <section class="rounded-lg p-4" style="background: hsl(var(--surface-container-low));">
+        <h2 class="text-sm font-semibold mb-2" style="color: hsl(var(--on-surface));">组件说明</h2>
+        <ul class="space-y-2 text-xs" style="color: hsl(var(--on-surface-variant));">
+          <li class="flex items-start gap-2">
+            <span class="w-1.5 h-1.5 rounded-full mt-1 shrink-0" style="background: hsl(var(--primary));"></span>
+            <span>激活态使用主题色 + 圆点指示器</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="w-1.5 h-1.5 rounded-full mt-1 shrink-0" style="background: hsl(var(--on-surface-variant));"></span>
+            <span>非激活态使用弱化文字色，无圆点指示器</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="w-1.5 h-1.5 rounded-full mt-1 shrink-0" style="background: hsl(var(--on-surface-variant));"></span>
+            <span>底部预留安全区域高度 (safe-area-inset-bottom)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="w-1.5 h-1.5 rounded-full mt-1 shrink-0" style="background: hsl(var(--on-surface-variant));"></span>
+            <span>暗色/亮色模式下图标与文字颜色自动跟随主题 Token</span>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

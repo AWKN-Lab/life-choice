@@ -1,2 +1,62 @@
-# Auto detect text files and perform LF normalization
+# 人生决策宗师｜跨平台文本与二进制规则
+# 当前脏工作区仅新增规则，不执行 git add --renormalize。
+
 * text=auto
+
+# 源码、配置、文档统一使用 LF
+*.js text eol=lf
+*.cjs text eol=lf
+*.mjs text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.env.example text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.sql text eol=lf
+*.prisma text eol=lf
+*.py text eol=lf
+*.rb text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.xml text eol=lf
+
+# Windows 原生命令脚本
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制与制品
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
+*.zip binary
+*.gz binary
+*.tgz binary
+*.tar binary
+*.7z binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+*.npy binary
+*.npz binary
+*.pkl binary
+*.bin binary
+*.woff binary
+*.woff2 binary
+*.ttf binary

@@ -1,0 +1,121 @@
+# 场景调度规则（从 zhangbanshan-scheduler.service.ts 迁移）
+# 修改此文件后调用 POST /admin/rules/reload 即可热更新
+
+scenarios:
+  - id: 1
+    name: "现在该不该动"
+    keywords: ["跳槽", "辞职", "出国", "要不要走", "离职", "换工作", "换个城市", "该不该", "要不要动"]
+    primary_agent: liuren
+    secondary_agent: qimen
+    clarifying_question: "你是想动还是想等？"
+    schedule_reason: "六壬最擅长时机判断——问「该不该动」本质是问时机对不对。奇门作为佐调，提供空间维度。"
+    priority: 5
+
+  - id: 2
+    name: "两个方向选哪个"
+    keywords: ["选A还是选B", "选", "哪个更", "抉择", "两条路", "两个方向", "纠结", "不知道选哪个", "还是"]
+    primary_agent: qimen
+    secondary_agent: liuren
+    clarifying_question: "两个方向你最怕哪个结果？"
+    schedule_reason: "奇门擅长空间/方向抉择——问「选哪个」是空间问题。六壬作为佐调，看时间窗口。"
+    priority: 6
+
+  - id: 3
+    name: "考研/创业/人生转折"
+    keywords: ["考研", "创业", "转行", "考公", "考编", "人生转折", "要不要搏一把", "深造"]
+    primary_agent: ziping
+    secondary_agent: ziwei
+    clarifying_question: "你现在最担心的是什么？"
+    schedule_reason: "八字看格局——考研/创业这类人生转折本质是格局问题。紫微看性格匹配。"
+    priority: 4
+
+  - id: 4
+    name: "感情要不要继续"
+    keywords: ["分手", "离婚", "感情", "关系", "要不要继续", "该不该分", "爱不爱", "累了", "寒了"]
+    primary_agent: meihua
+    secondary_agent: ziwei
+    clarifying_question: "你是累了还是寒了？——累了是消耗，寒了是关系本身的温度变了，这是两件事。"
+    schedule_reason: "梅花易数看感情体用生克，紫微看关系结构。"
+    priority: 3
+
+  - id: 5
+    name: "整体命运如何"
+    keywords: ["命运", "命盘", "命中注定", "整体运势", "这辈子", "格局", "命格"]
+    primary_agent: ziping
+    secondary_agent: liuren
+    clarifying_question: "你想看哪一段？最近一年、未来三年、还是整体格局？"
+    schedule_reason: "八字看长线——整体命运是格局问题，看大运走势。六壬看关键时间节点。"
+    priority: 8
+
+  - id: 6
+    name: "一件事成不成"
+    keywords: ["能不能", "成不成", "行不行", "成功概率", "有没有戏", "靠谱吗"]
+    primary_agent: liuyao
+    secondary_agent: qimen
+    clarifying_question: "这事是你想做的还是该做的？——想知道结果和想知道应该不应该，调度策略不同。"
+    schedule_reason: "六爻擅长一事一问——「这件事成不成」是六爻的核心场景。奇门看外围环境。"
+    priority: 2
+
+  - id: 7
+    name: "想知道时机"
+    keywords: ["什么时候", "时机", "该不该现在", "等还是不等", "还要多久", "还要等", "多久", "择日", "择时", "方位", "方向"]
+    primary_agent: liuren
+    secondary_agent: qimen
+    clarifying_question: "你等的是时机还是勇气？——时机不对可以等，勇气不够等也没用。"
+    schedule_reason: "六壬看时间窗口——「什么时候」是六壬的核心场景。奇门看空间方位。"
+    priority: 7
+
+  - id: 8
+    name: "重大决策"
+    keywords: ["人生大事", "重大决定", "改变人生", "一辈子的事", "不可逆", "无法回头"]
+    primary_agent: liuren
+    secondary_agent: ziping
+    clarifying_question: "你现在这个情况，不止一个维度在拉扯你。我需要同时从几个角度帮你看——会比平时慢一点，但会更全面。你愿意等吗？"
+    schedule_reason: "重大决策涉及多个维度交叉。MVP阶段限制为2 Agent并行（六壬+八字）。"
+    priority: 1
+
+# 问题分类关键词
+classifications:
+  - type: "事业"
+    keywords: ["跳槽", "辞职", "创业", "考研", "考公", "考编", "转行", "升职", "工作", "事业", "职业", "面试", "离职", "换工作", "深造"]
+  - type: "婚姻"
+    keywords: ["结婚", "离婚", "感情", "恋爱", "对象", "分手", "相亲", "婚姻", "老公", "老婆", "伴侣", "另一半", "该不该分"]
+  - type: "财运"
+    keywords: ["财运", "投资", "赚钱", "破财", "理财", "股票", "基金", "买房"]
+  - type: "健康"
+    keywords: ["健康", "身体", "生病", "手术", "疾病", "住院"]
+  - type: "时机"
+    keywords: ["择日", "择时", "何时", "时机", "该不该现在", "等还是不等", "还要多久", "什么时候", "方位", "方向", "出行", "搬家", "开业"]
+  - type: "综合"
+    keywords: ["命运", "命盘", "运势", "格局", "命格", "人生", "整体"]
+
+# 分类→工具组合映射
+combo_map:
+  "事业": career
+  "婚姻": marriage
+  "财运": comprehensive
+  "健康": comprehensive
+  "时机": timing
+  "综合": comprehensive
+
+# 工具组合定义
+tool_combos:
+  - name: career
+    description: "事业决策组合：日主强弱 + 十神分析 + 大运阶段 + 命宫 + 事业适配 + 交叉验证"
+    category: "事业"
+    tool_names: ["rizhu-strength", "shishen-analysis", "dayun-stage", "minggong-master", "career-fit", "cross-validate"]
+  - name: marriage
+    description: "婚姻感情组合：日主强弱 + 五行平衡 + 冲合 + 宫位组合 + 关系适配 + 交叉验证"
+    category: "婚姻"
+    tool_names: ["rizhu-strength", "wuxing-balance", "chong-he", "palace-combination", "relationship-fit", "cross-validate"]
+  - name: timing
+    description: "时机方向组合：日主强弱 + 大运阶段 + 决策时机 + 交叉验证（奇门主调）"
+    category: "时机"
+    tool_names: ["rizhu-strength", "dayun-stage", "decision-timing", "cross-validate"]
+  - name: comprehensive
+    description: "综合决策组合：日主强弱 + 五行平衡 + 十神分析 + 大运阶段 + 决策时机 + 决策风险 + 交叉验证"
+    category: "综合"
+    tool_names: ["rizhu-strength", "wuxing-balance", "shishen-analysis", "dayun-stage", "decision-timing", "decision-risk", "cross-validate"]
+
+# 依赖出生信息的 Agent 列表
+birth_dependent_agents: ["ziping", "ziwei", "quming"]

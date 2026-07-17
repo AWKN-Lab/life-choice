@@ -1,0 +1,4 @@
+#!/bin/sh
+# P1.3 (2026-06-26): post-commit 归档提醒（不阻塞 commit）
+# 触发 remind-archive.ps1，若归档索引 >7 天未更新则输出黄色提醒
+powershell -ExecutionPolicy Bypass -File scripts/remind-archive.ps1

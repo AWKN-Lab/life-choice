@@ -1,0 +1,1038 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.1.x", "windows"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String?   @unique
+  phone         String?   @unique
+  wxOpenId      String?   @unique
+  password      String?
+  nickname      String?
+  gender        String?
+  birthDate     DateTime?
+  birthTime     String?
+  birthPlace    String?
+  timezone      String?
+  isAdmin       Boolean   @default(false) // 管理员标识
+  creditBalance Int       @default(0) // 测试/体验积分余额
+  freeTrialUsed Boolean   @default(false) // P2-1: 限免1次是否已用
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // 八字命理档案
+  baZiProfile      BaZiProfile?
+  // 咨询记录
+  records          ConsultRecord[]
+  // 人物档案
+  personProfiles   PersonProfile[]
+  // 订单和会员
+  orders           Order[]
+  memberships      Membership[]
+  creditLedgers    CreditLedger[]
+  // 会话和邀请
+  sessions         Session[]
+  invites          Invite[]
+  // 用户行为追踪
+  pageVisits       PageVisit[]
+  activities       UserActivity[]
+  // 人生枢密院 — 通鉴记录
+  chronicleEntries ChronicleEntry[]
+  // 人生枢密院 — 用户画像
+  insightProfile   UserInsightProfile?
+  // 用户长期记忆
+  memories         UserMemory[]
+  // P3-1: 回访记录
+  followUps        ConsultFollowUp[]
+  // P4-1: 多轮对话记录
+  namingResults    NamingResult[]
+  // P03: 取名三表（Phase 7）
+  namingProjects   NamingProject[]
+  dialogues        ConsultDialogue[]
+  // 命例库（Week 1 Day 1）
+  savedCases       SavedCase[]
+}
+
+model CreditLedger {
+  id           String   @id @default(uuid())
+  userId       String
+  amount       Int
+  reason       String
+  moduleId     String?
+  recordId     String?
+  balanceAfter Int
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserMemory {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 兼容字段（旧 4 JSON 字段，保留）
+  chartHistory   String? @default("{}")
+  consultHistory String? @default("{}")
+  timelineEvents String? @default("{}")
+  insights       String? @default("{}")
+
+  // P2-1: 7 type enum 扩展字段（可选，旧数据为 null）
+  // type 取值：major_issue / time_anchor / person_anchor / bottom_line / repeat_pattern / mood_signal / feedback
+  memoryId       String?   @default(cuid())
+  issueId        String?
+  type           String?
+  content        String?
+  sourceQuote    String?
+  confidence     Float?    @default(0.5)
+  weight         Float?    @default(1.0)
+  expiresAt      DateTime?
+  lastAccessedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([expiresAt])
+  @@index([lastAccessedAt])
+}
+
+model BaZiProfile {
+  id          String @id @default(uuid())
+  userId      String @unique
+  birthYear   Int
+  birthMonth  Int
+  birthDay    Int
+  birthHour   Int
+  birthMinute Int    @default(0)
+  gender      String // male/female
+
+  // 八字四柱
+  yearGanZhi  String
+  monthGanZhi String
+  dayGanZhi   String
+  timeGanZhi  String
+
+  // 五行分布
+  wuXingDist String @default("{}") // JSON: {木: 3, 火: 2, ...}
+
+  // 身旺判断
+  shenWang      String // 身旺/身弱/中和
+  shenWangScore Int    @default(50)
+
+  // 喜忌用神
+  xiYongShen String @default("{}") // JSON: {xi: [...], yong: [...], ji: [...]}
+
+  // 十神
+  shiShen String @default("{}") // JSON
+
+  // 神煞
+  shenSha String @default("{}") // JSON
+
+  // 大运起运
+  qiYunAge  Int     @default(0)
+  isShunYun Boolean @default(true)
+
+  // 胎元命宫
+  taiYuan  String?
+  mingGong String?
+
+  // 纳音五行
+  naYinYear  String?
+  naYinMonth String?
+  naYinDay   String?
+  naYinTime  String?
+
+  // 真太阳时校正
+  correctedHour Int?
+  city          String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ConsultRecord {
+  id        String  @id @default(uuid())
+  userId    String?
+  sessionId String? @unique @default(uuid())
+  question  String
+  routeType String // liuren/ziping/liuyao/qimen/shumiyuan
+
+  // 人生枢密院流程状态：speaking/spreading/bottomed/chronicled/reviewed
+  // 传统命理状态：pending/analyzing/completed/failed
+  status     String  @default("pending")
+  flowStatus String? // speaking/spreading/bottomed/chronicled/reviewed (枢密院专用)
+  inputData  String  @default("{}") // 用户输入的原始数据
+
+  // 计算结果
+  calcResult String? // 八字计算结果（JSON）
+
+  // AI 分析结果
+  llmResult    String? // LLM 返回的原始 JSON
+  summaryScore Int?    @default(0)
+  summaryLine  String? // 一句话总结
+
+  // 详细分析（结构化）
+  analysisData String? @default("{}") // 完整的分析结果 JSON
+
+  // 枢密院摆开数据（JSON: {stuckPoint, people, fearedResult, desiredResult, regretPoint}）
+  spreadData String?
+
+  // 枢密院这事底结果（JSON: {stuckPoint, people, risks, threeWays, minStep, reviewPoint}）
+  bottomData String?
+
+  // 分析耗时
+  calcDuration Int? // 计算耗时（毫秒）
+  llmDuration  Int? // LLM 调用耗时（毫秒）
+
+  // 调用模型
+  modelUsed String? // kimimini_v2 / minimax-01
+
+  isSaved   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // v1.5 新增：后端原子资产留存
+  anonymousId       String? // 匿名用户标识（deviceId/sessionId/fingerprint）
+  structuredInput   String?   @default("{}") // 结构化输入快照 JSON
+  coreChartSnapshot String? // 核心命盘快照 JSON（四柱/五行/十神/神煞）
+  resultSummary     String? // 结果摘要（summary_line）
+  lastViewedAt      DateTime? // 最后查看时间
+  deletedAt         DateTime? // 软删除时间
+
+  sourceEntry       String? // 'kline' | 'naming' | 'question'
+  namingType        String? // 'baby' | 'adult' | 'brand'
+  namingPreferences String? // JSON
+  questionIntent    String? // 问事意图分类结果
+  klineType         String? // Q3 P2-4: K线类型 'monthly' | 'yearly' | 'decade'
+  unlockStatus      String? // 'preview' | 'unlocked_partial' | 'unlocked_full'
+  shareGenerated    Boolean @default(false)
+  shareCount        Int     @default(0) // Q3 P2-4: 分享次数
+  retryCount        Int     @default(0) // Q3 P2-4: 重试次数
+  consultationId    String? @unique // Q3 P2-2: 统一事项主键
+
+  // 情绪快照（3维命理情绪：gravity/warmth/caution）
+  emotionSnapshot String? // JSON
+
+  // P1-2: 提取出的事实（JSON: ExtractedFact[]）
+  extractedFacts String?
+
+  // P1.5: 高风险标记（危机/重大决策/情绪困扰等）
+  isHighRisk Boolean @default(false)
+
+  // P2-3: 代价确认环
+  costConfirmationPrompt String? // 代价确认提示语
+  costUserRestated       String? // 用户复述的代价
+  costConfirmedAt        DateTime? // 确认时间
+
+  // P3-1: 闭环结果
+  closedLoopResult String? // JSON: { userReflection, actualOutcome, accuracyCheck }
+
+  user                 User?                 @relation(fields: [userId], references: [id])
+  personProfileRecords PersonProfileRecord[]
+  // 关联的通鉴记录
+  chronicleEntries     ChronicleEntry[]
+  // P2-2: 专家标注反馈
+  feedbacks            ConsultFeedback[]
+  // P3-1: 回访记录
+  followUps            ConsultFollowUp[]
+  // P4-1: 多轮对话
+  dialogue             ConsultDialogue?
+  // 命例库 — 从咨询记录一键收藏为命例
+  savedCases           SavedCase[]
+  // 取名结果
+  namingResult         NamingResult?
+}
+
+/// 取名结果 — 独立于 ConsultRecord 的结构化存储
+model NamingResult {
+  id              String   @id @default(uuid())
+  userId          String
+  consultRecordId String   @unique
+  names           String // JSON: [{name, score, analysis}]
+  wuge            String? // JSON: 五行分析 {tian, ren, di, wai, zong}
+  sancai          String? // JSON: 三才分析 {tian, ren, di}
+  createdAt       DateTime @default(now())
+
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  consultRecord ConsultRecord @relation(fields: [consultRecordId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([consultRecordId])
+}
+
+/// P03: 取名项目（Phase 7）— 一次取名请求
+/// namingType: baby（新生宝宝）/ brand（品牌）/ adult（成人改名）
+/// status: active（进行中）/ completed（已完成）/ archived（已归档）
+model NamingProject {
+  id                String   @id @default(uuid())
+  userId            String
+  namingType        String // baby / brand / adult
+  surname           String? // 姓氏
+  stylePreference   String? // JSON 数组字符串，如 ["文雅","大气"]
+  industry          String? // 行业（brand）
+  targetAudience    String? // 目标受众（brand）
+  originalName      String? // 原名（adult 改名场景）
+  customDescription String? // 自定义描述
+  status            String   @default("active") // active / completed / archived
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  candidates NamingCandidate[]
+  iterations NamingIteration[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+/// P03: 候选名（Phase 7）— 每个候选名一条记录
+/// status 状态机：pending → favorited → selected, pending → eliminated, favorited → eliminated
+model NamingCandidate {
+  id               String   @id @default(uuid())
+  projectId        String
+  name             String // 候选名
+  score            Float    @default(0) // 评分 0-100
+  analysis         String? // 分析 JSON
+  status           String   @default("pending") // pending / favorited / eliminated / selected
+  candidateVersion Int      @default(1) // 版本号（同名迭代）
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  project NamingProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([status])
+  @@index([name])
+}
+
+/// P03: 迭代记录（Phase 7）— 每次 LLM 调用一条
+/// 用途：追溯"这个名字是哪一轮用什么 prompt 生成的"
+model NamingIteration {
+  id             String   @id @default(uuid())
+  projectId      String
+  iterationNo    Int // 第几轮迭代
+  promptSnapshot String? // Prompt 快照
+  modelUsed      String? // 模型名
+  generatedAt    DateTime @default(now()) // 生成时间
+  createdAt      DateTime @default(now())
+
+  project NamingProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}
+
+/// P2-2: 专家标注闭环（学自真本事）
+/// - 用户对咨询结果给出评价
+/// - 专家可补充事实校准、修正结论
+/// - 定期复盘：基于 feedback 调高/调低 scenario 关键词权重
+model ConsultFeedback {
+  id         String  @id @default(uuid())
+  recordId   String
+  userId     String?
+  reviewerId String? // 专家用户 ID（admin 角色）
+
+  // 评价维度
+  rating      Int // 1-5
+  accuracy    Int? // 1-5 准确性
+  helpfulness Int? // 1-5 有用性
+  tone        Int? // 1-5 语气
+  comment     String? // 文字评价
+
+  // 校准项（专家填）
+  isJudgmentCorrect Boolean? // 结论是否正确
+  calibrationTag    String? // 'scenario_misclass' | 'agent_unfit' | 'tone_off' | 'evidence_insufficient' | 'cost_missing' | 'other'
+  calibrationNote   String? // 校准说明
+
+  // 是否已被复盘任务采纳
+  appliedAt       DateTime?
+  appliedByCronId String? // 复盘 cron 任务 ID
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  record ConsultRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
+
+  @@index([recordId])
+  @@index([userId])
+  @@index([appliedAt])
+}
+
+model PersonProfile {
+  id        String  @id @default(uuid())
+  userId    String?
+  sessionId String?
+
+  // 出生信息（用于聚合）
+  birthDate  String? // YYYY-MM-DD
+  birthTime  String? // HH:mm
+  gender     String? // male/female
+  birthPlace String? // 出生地
+
+  // 姓名（可选）
+  name String?
+
+  // 聚合信息（冗余存储，加速查询）
+  yearPillar  String? // 如 "甲子"
+  monthPillar String?
+  dayPillar   String?
+  hourPillar  String?
+  naYin       String? // 纳音 JSON {year,month,day,hour}
+  kongWang    String? // 空亡 JSON string[]
+
+  // 人生枢密院 — 星图扩展字段
+  relationType      String? // 关系类型：家人/朋友/同事/合作伙伴/陌生人/其他
+  importance        String? @default("normal") // 重要程度：critical/high/normal/low
+  currentStatus     String? // 当前状态：活跃/疏远/冲突/观察中
+  riskTags          String? @default("[]") // 风险标签 JSON string[]
+  recentInteraction String? // 最近互动记录
+  currentAdvice     String? // 当前建议：推进/观察/试探/设边界/暂缓/止损
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user             User?                  @relation(fields: [userId], references: [id], onDelete: SetNull)
+  records          PersonProfileRecord[]
+  // 八维看人数据
+  eightDimensions  PersonEightDimensions?
+  // 相关事项
+  relatedCases     PersonRelatedCase[]
+  // 关联的通鉴记录
+  chronicleEntries ChronicleEntry[]
+}
+
+model PersonProfileRecord {
+  id              String @id @default(uuid())
+  personProfileId String
+  consultRecordId String
+
+  createdAt DateTime @default(now())
+
+  personProfile PersonProfile @relation(fields: [personProfileId], references: [id], onDelete: Cascade)
+  consultRecord ConsultRecord @relation(fields: [consultRecordId], references: [id], onDelete: Cascade)
+
+  @@unique([personProfileId, consultRecordId])
+}
+
+model PageVisit {
+  id         String    @id @default(uuid())
+  userId     String?
+  sessionId  String?
+  pageName   String // home/consult/result/history/profile/membership/info/growth
+  pageUrl    String?
+  referrer   String?
+  deviceInfo String? // User-Agent 解析结果
+  screenSize String? // 屏幕分辨率
+  ipCountry  String? // IP 国家
+  ipCity     String? // IP 城市
+  entryTime  DateTime  @default(now())
+  exitTime   DateTime?
+  duration   Int?      @default(0) // 停留时长（秒）
+  source     String? // UTM source（poster/kline/question）
+  medium     String? // UTM medium（wechat/moments/qq）
+  campaign   String? // UTM campaign（kline_v1/naming_launch）
+  qrCodeId   String? // 关联的 QR 码标识
+  createdAt  DateTime  @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model UserActivity {
+  id           String   @id @default(uuid())
+  userId       String?
+  sessionId    String?
+  activityType String // page_view/click/consult/submit/search/share
+  activityData String   @default("{}") // JSON: {page: 'home', element: 'btn-1', ...}
+  duration     Int? // 活动耗时（毫秒）
+  timestamp    DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String
+  refreshToken String   @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Membership {
+  id         String    @id @default(uuid())
+  userId     String
+  type       String
+  status     String    @default("active")
+  startDate  DateTime  @default(now())
+  expireDate DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id            String   @id @default(uuid())
+  userId        String
+  productType   String
+  productId     String
+  amount        Int
+  currency      String   @default("usd")
+  status        String   @default("pending")
+  paymentMethod String?
+  paymentId     String?
+  metadata      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Invite {
+  id         String   @id @default(uuid())
+  code       String   @unique
+  userId     String
+  usedCount  Int      @default(0)
+  rewardTier String   @default("newbie")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  referrals Referral[]
+}
+
+model Referral {
+  id               String   @id @default(uuid())
+  inviteId         String
+  inviteCode       String
+  referredUserId   String?
+  parentReferralId String? // P2-3: 上级邀请记录ID（3级链路）
+  source           String?
+  medium           String?
+  campaign         String?
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
+
+  invite Invite @relation(fields: [inviteId], references: [id], onDelete: Cascade)
+}
+
+model GrowthOffer {
+  id          String   @id @default(uuid())
+  offerType   String   @unique
+  title       String
+  subtitle    String
+  description String
+  badge       String
+  badgeColor  String   @default("red")
+  ctaText     String
+  action      String
+  discount    String?
+  startAt     DateTime
+  expireAt    DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model LiurenCase {
+  id        String @id @default(uuid())
+  source    String
+  question  String
+  askTime   String
+  eventType String
+
+  lessonData String
+
+  judgment     String
+  verification String?
+  keyPoints    String
+
+  keTi        String?
+  tags        String
+  shenshaList String
+  biFaList    String
+
+  createdAt DateTime @default(now())
+}
+
+model EvidencePacket {
+  id         String   @id @default(uuid())
+  recordId   String
+  routeType  String
+  version    String
+  inputHash  String
+  packetJson String   @default("{}")
+  warnings   String   @default("[]")
+  createdAt  DateTime @default(now())
+
+  @@index([recordId])
+  @@index([routeType, createdAt])
+}
+
+model GenerationRun {
+  id               String   @id @default(uuid())
+  recordId         String
+  moduleId         String
+  status           String   @default("pending")
+  provider         String?
+  model            String?
+  promptVersion    String
+  evidenceId       String?
+  rawOutput        String?
+  finalJson        String?
+  qualityScore     Int      @default(0)
+  errorCode        String?
+  errorMessage     String?
+  durationMs       Int?
+  reasoningContent String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([recordId, moduleId])
+  @@index([status, createdAt])
+}
+
+model KnowledgeHit {
+  id         String   @id @default(uuid())
+  runId      String
+  sourceId   String
+  sourceType String
+  title      String?
+  snippet    String
+  score      Int
+  createdAt  DateTime @default(now())
+
+  @@index([runId])
+  @@index([sourceId])
+}
+
+model InteractionEvent {
+  id        String   @id @default(uuid())
+  userId    String?
+  sessionId String?
+  recordId  String?
+  eventType String
+  eventJson String   @default("{}")
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([recordId, createdAt])
+}
+
+model ConsultPreview {
+  id          String   @id @default(uuid())
+  module      String
+  inputData   String? // JSON
+  calcResult  String? // JSON
+  freeContent String // JSON { title, summary, chartUrl?, snippet }
+  lang        String   @default("zh-CN")
+  userId      String?
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+
+  @@index([module, createdAt])
+  @@index([userId, createdAt])
+}
+
+model BenchmarkRun {
+  id              String   @id @default(uuid())
+  year            Int
+  provider        String
+  model           String
+  useCot          Boolean  @default(false)
+  useAstro        Boolean  @default(false)
+  shuffleOptions  Boolean  @default(false)
+  maxWorkers      Int      @default(1)
+  totalQuestions  Int
+  correctCount    Int
+  accuracy        Float
+  avgDurationMs   Int
+  resultsJson     String
+  categoryStats   String?
+  detailedResults String?
+  createdAt       DateTime @default(now())
+
+  @@index([provider, createdAt])
+  @@index([year, createdAt])
+}
+
+// ============================================
+// 人生枢密院 2.0 — 新增数据模型
+// ============================================
+
+// 八维看人 — 人物多维度评估
+model PersonEightDimensions {
+  id       String @id @default(uuid())
+  personId String @unique
+
+  // 八维度 JSON 数据
+  role         String? // 角色维度：他在关系中扮演什么角色
+  relationship String? // 关系维度：你们的关系实质是什么
+  motivation   String? // 动机维度：他想要什么/驱动力
+  ability      String? // 能力维度：他有没有能力做到
+  resources    String? // 资源维度：他掌握什么资源
+  credit       String? // 信用维度：承诺与行为是否一致
+  behavior     String? // 行为维度：过去的行为模式
+  risk         String? // 风险维度：可能的风险点
+
+  // 完整度与观察项
+  completeness        Float   @default(0) // 已填写维度数 / 8
+  pendingObservations String? @default("[]") // 待观察项 JSON
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  person PersonProfile @relation(fields: [personId], references: [id], onDelete: Cascade)
+}
+
+// 相关事项 — 人物参与过的事项记录
+model PersonRelatedCase {
+  id       String @id @default(uuid())
+  personId String
+
+  // 事项信息
+  caseTitle        String // 事项标题
+  hisRole          String? // 他在事项中的角色
+  whatHeSaid       String? // 他说过什么（承诺/表态）
+  whatHeDid        String? // 后来做了什么（实际行动）
+  result           String? // 结果如何
+  impactOnJudgment String? // 对判断的影响
+  needsReview      Boolean @default(false) // 是否待回看
+
+  // 关联
+  consultRecordId  String? // 关联的咨询记录
+  chronicleEntryId String? // 关联的通鉴记录
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  person PersonProfile @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([personId, createdAt])
+}
+
+// 通鉴记录 — 人生决策编年史
+model ChronicleEntry {
+  id     String  @id @default(uuid())
+  userId String?
+
+  // 关联信息
+  consultRecordId String? // 关联的咨询记录
+  personId        String? // 关联的人物
+
+  // 记录内容
+  title   String // 记录标题
+  content String // 记录内容
+
+  // 回看数据
+  initialView  String? // 当时怎么看（初始判断）
+  whatHappened String? // 后来发生什么（实际结果）
+  gotRight     String? // 看准了什么
+  gotWrong     String? // 看错了什么
+  nextReminder String? // 下次提醒
+  reviewAt     DateTime? // 计划回看时间
+  reviewedAt   DateTime? // 实际回看时间
+
+  // 记录类型
+  entryType String @default("case") // case/person/review
+
+  // 庙算关联
+  miaoSuanId String? // 关联的庙算记录
+
+  isSaved   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user          User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  consultRecord ConsultRecord? @relation(fields: [consultRecordId], references: [id], onDelete: SetNull)
+  person        PersonProfile? @relation(fields: [personId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([entryType, createdAt])
+  @@index([reviewAt])
+}
+
+// 用户画像 — 基于通鉴回看生成的个人洞察
+model UserInsightProfile {
+  id     String @id @default(uuid())
+  userId String @unique
+
+  // 洞察数据
+  commonStuckPoints   String? @default("[]") // 常见卡点 JSON
+  riskPreference      String? // 风险偏好
+  relationshipHabits  String? @default("[]") // 关系判断习惯 JSON
+  misjudgmentPatterns String? @default("[]") // 误判模式 JSON
+  commonTriggers      String? @default("[]") // 常见上头场景 JSON
+  longTermTrend       String? // 长期变化趋势
+
+  // 统计
+  totalEntries Int    @default(0) // 总记录数
+  totalReviews Int    @default(0) // 总回看数
+  accuracyRate Float? // 看准率
+
+  // 自动生成标记
+  autoGenerated Boolean   @default(false)
+  generatedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ============================================
+// 人生K线 + 潮汐图 — 阶段一数据模型（2026-06-09）
+// ============================================
+
+/// 月度K线Bar：七条人生线 + OHLCV
+/// 对应 D-004 K线归口V0.6 + E-101 DDL V0.2
+model KlineBar {
+  id         String @id @default(uuid())
+  userId     String
+  year       Int
+  month      Int
+  monthLabel String // "2023-01"
+
+  // 七条人生线 OHLCV（JSON: {open, high, low, close, volume}）
+  career       String @default("{}")
+  wealth       String @default("{}")
+  health       String @default("{}")
+  relationship String @default("{}")
+  growth       String @default("{}")
+  freedom      String @default("{}")
+  buffer       String @default("{}")
+
+  // 综合生命资本分
+  compositeCapital Float @default(0)
+
+  // 波动率（七线标准差均值）
+  volatility Float @default(0)
+
+  // P01: 数据来源可追溯（Phase 6）
+  source      String   @default("unknown") // real | simulated | llm_inferred | fallback | unknown
+  dataVersion String   @default("v1")
+  generatedAt DateTime @default(now())
+
+  createdAt DateTime @default(now())
+
+  // P1-04 (2026-07-12): 关联 KlineSnapshot，旧数据为 null
+  snapshotId String?
+
+  @@unique([userId, year, month])
+  @@index([userId, year])
+  @@index([snapshotId])
+}
+
+/// 月度状态快照：12维状态向量 + 相位象限
+/// 对应 S-000 母文档V0.2 §5.2 + S-003 内核研究计划
+model StateSnapshot {
+  id     String @id @default(uuid())
+  userId String
+  year   Int
+  month  Int
+  date   String // "2025-01"
+
+  // 12维状态向量（0-100）
+  energy      Float @default(50)
+  recovery    Float @default(50)
+  emotion     Float @default(50)
+  clarity     Float @default(50)
+  liquidity   Float @default(50)
+  momentum    Float @default(50)
+  support     Float @default(50)
+  agency      Float @default(50)
+  order       Float @default(50)
+  growth      Float @default(50)
+  optionality Float @default(50)
+  buffer      Float @default(50)
+
+  // V0.7 时·位·心 三组聚合
+  timeGroup     Float? // 时：avg(liquidity, momentum, optionality)
+  positionGroup Float? // 位：avg(support, agency, order, growth, buffer)
+  mindGroup     Float? // 心：avg(energy, recovery, emotion, clarity)
+
+  // 衍生指标
+  capacity Float  @default(50)
+  entropy  Float  @default(50)
+  quadrant String @default("prosperous")
+
+  // P01: 数据来源可追溯（Phase 6）
+  source      String   @default("unknown") // real | simulated | llm_inferred | fallback | unknown
+  dataVersion String   @default("v1")
+  generatedAt DateTime @default(now())
+
+  createdAt DateTime @default(now())
+
+  // P1-04 (2026-07-12): 关联 KlineSnapshot，旧数据为 null
+  snapshotId String?
+
+  @@unique([userId, year, month])
+  @@index([userId, year])
+  @@index([quadrant, createdAt])
+  @@index([snapshotId])
+}
+
+/// P1-04 (2026-07-12): K线快照 — 版本、来源、证据、持久化
+/// 对应 TECHNICAL-REFERENCE-P01 §2.2
+model KlineSnapshot {
+  id               String   @id @default(uuid())
+  userId           String
+  profileId        String? // 八字档案 ID
+  generatedAt      DateTime @default(now())
+  dataVersion      String   @default("v1.1")
+  algorithmVersion String   @default("alg-v1")
+  status           String   @default("active") // active | superseded | archived
+  sourceSummary    String   @default("[]") // JSON: ["calculated","user_reported"]
+  confidence       Float? // 0-1
+  degradedReason   String?
+  supersedesId     String? // 上一版本 snapshotId
+  payload          String   @default("{}") // JSON: KlineProductViewModelV2
+
+  createdAt DateTime @default(now())
+
+  @@index([userId, status])
+  @@index([profileId])
+}
+
+/// P1-04 (2026-07-12): K线节点 — 关键月份的事件/风险/转折点
+/// 对应 TECHNICAL-REFERENCE-P01 §2.3
+model KlineNode {
+  id              String    @id @default(uuid())
+  snapshotId      String // FK -> KlineSnapshot.id
+  monthLabel      String // "YYYY-MM"
+  nodeType        String // opportunity | risk | turn
+  score           Float
+  summary         String
+  evidenceRefs    String    @default("[]") // JSON: ["rule:solar-term-2026-10","input:birth-date"]
+  confidence      Float // 0-1
+  consultRecordId String? // 关联 ConsultRecord
+  askedAt         DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([snapshotId])
+  @@index([nodeType])
+}
+
+/// P1-04 (2026-07-12): K线节点结果回写 — 用户实际经历与原始判断对比
+/// 对应 TECHNICAL-REFERENCE-P01 §2.4
+model KlineOutcome {
+  id          String   @id @default(uuid())
+  nodeId      String // FK -> KlineNode.id
+  userId      String
+  reportedAt  DateTime @default(now())
+  result      String // occurred | not_occurred | partial
+  actualScore Float?
+  notes       String?
+  source      String   @default("user_reported")
+
+  createdAt DateTime @default(now())
+
+  @@index([nodeId])
+  @@index([userId])
+}
+
+/// P3-1: 回访系统 — 咨询完成 7 天后自动回访，记录实际结果与原始判断对比
+model ConsultFollowUp {
+  id          String    @id @default(uuid())
+  recordId    String
+  userId      String
+  scheduledAt DateTime
+  completedAt DateTime?
+  result      String? // JSON: { userReflection, actualOutcome, accuracyCheck }
+  status      String    @default("pending") // pending/sent/completed/skipped
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // P2-3: 5 triggerType 扩展字段
+  // triggerType 取值：key_date_before / contract_eve / action_window / quarter_review / silent_user
+  triggerType     String?
+  messageTemplate String?
+  issueId         String?
+
+  record ConsultRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  user   User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, scheduledAt])
+  @@index([status, scheduledAt])
+  @@index([triggerType])
+}
+
+/// P4-1: 多轮对话 — 张半山反问-观察-判断闭环
+/// 6 态状态机：IDLE → SCHEDULING → CLARIFYING/GENERATING → RESPONDING → COMPLETED
+/// 与 ConsultRecord 是 1:1 关系（一个咨询记录最多关联一个对话）
+model ConsultDialogue {
+  id       String  @id @default(uuid())
+  userId   String
+  recordId String? @unique
+
+  // 6 态状态机
+  state       String @default("IDLE") // IDLE/SCHEDULING/CLARIFYING/GENERATING/RESPONDING/COMPLETED
+  currentNode Int    @default(0) // 对话节点编号 0-6
+
+  // 对话数据
+  turns               String  @default("[]") // JSON: DialogueTurn[]
+  collectedBackground String? // JSON: 背景收集结果
+  costConfirmed       Boolean @default(false)
+  costUserRestated    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  record ConsultRecord? @relation(fields: [recordId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([state, createdAt])
+}
+
+/// 命例库 MVP — 用户收藏的命盘/卦例/案例（Week 1 Day 1）
+/// 核心设计：每个人有自己的命例池，可选关联到一次咨询记录；
+/// 快照字段固化断事/卦象结果，避免原咨询记录修改/删除后命例失真；
+/// visibility 控制未来会员分享与公共案例库的反哺路径。
+model SavedCase {
+  id         String   @id @default(uuid())
+  userId     String
+  recordId   String? // 可选：关联的咨询记录（从咨询记录导入）
+  name       String // 命例名称（用户自命名）
+  category   String? // 命例分类：八字/六壬/奇门/六爻/易隐（自由文本，便于扩展）
+  tags       String   @default("[]") // JSON 文本，存标签数组
+  notes      String? // 自由备注
+  snapshot   String   @default("{}") // 命盘快照 JSON（断事/卦象/奇门盘等的固化版本）
+  visibility String   @default("private") // private | public
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  record ConsultRecord? @relation(fields: [recordId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt]) // 个人列表按时间倒序
+  @@index([userId, category]) // 按分类筛选
+  @@index([visibility]) // 公开/会员可见案例池
+  @@index([userId, visibility]) // 复合：我的+可见范围
+}
+
+/// P0-5: 补全 model 定义（对齐 migration 20260703184000_add_memory_embedding）
+model MemoryEmbedding {
+  id        String   @id @default(uuid())
+  memoryId  String
+  userId    String
+  content   String
+  embedding String // JSON number[]
+  dim       Int      @default(256)
+  createdAt DateTime @default(now())
+
+  @@index([memoryId])
+  @@index([userId])
+}

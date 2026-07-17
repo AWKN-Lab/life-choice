@@ -1,0 +1,88 @@
+-- ============================================================
+-- P2-4: 手工迁移 SQL - 给 ConsultRecord 添加 v1.5 字段
+-- 日期：2026-06-12
+-- 作者：AWKN-Lab 自动化
+--
+-- 背景：
+--   schema.prisma 第 178-184 行定义的新增字段未应用到数据库
+--   错误信息：`The column 'anonymousId' does not exist in the current database`
+--
+-- 使用方法：
+--   1. 确认数据库类型（MySQL / PostgreSQL）
+--   2. 选择对应章节执行
+--   3. 执行后运行 `npx prisma generate` 重新生成 client
+--
+-- 字段清单（v1.5 新增）：
+--   anonymousId       String?    -- 匿名用户标识
+--   structuredInput   String?    -- 结构化输入快照 JSON
+--   coreChartSnapshot String?    -- 核心命盘快照 JSON
+--   resultSummary     String?    -- 结果摘要
+--   lastViewedAt      DateTime?  -- 最后查看时间
+--   deletedAt         DateTime?  -- 软删除时间
+-- ============================================================
+
+-- ============================================================
+-- MySQL 版本
+-- ============================================================
+-- ALTER TABLE `ConsultRecord`
+--   ADD COLUMN `anonymousId`       VARCHAR(191) NULL COMMENT '匿名用户标识(deviceId/sessionId/fingerprint)',
+--   ADD COLUMN `structuredInput`   MEDIUMTEXT   NULL,
+--   ADD COLUMN `coreChartSnapshot` MEDIUMTEXT   NULL,
+--   ADD COLUMN `resultSummary`     VARCHAR(512) NULL,
+--   ADD COLUMN `lastViewedAt`      DATETIME     NULL,
+--   ADD COLUMN `deletedAt`         DATETIME     NULL,
+--   ADD INDEX `idx_consult_anonymous_id` (`anonymousId`),
+--   ADD INDEX `idx_consult_deleted_at`  (`deletedAt`);
+
+-- ============================================================
+-- PostgreSQL 版本
+-- ============================================================
+-- ALTER TABLE "ConsultRecord"
+--   ADD COLUMN "anonymousId"       VARCHAR(255),
+--   ADD COLUMN "structuredInput"   TEXT,
+--   ADD COLUMN "coreChartSnapshot" TEXT,
+--   ADD COLUMN "resultSummary"     VARCHAR(512),
+--   ADD COLUMN "lastViewedAt"      TIMESTAMP(3),
+--   ADD COLUMN "deletedAt"         TIMESTAMP(3);
+--
+-- CREATE INDEX "idx_consult_anonymous_id" ON "ConsultRecord"("anonymousId");
+-- CREATE INDEX "idx_consult_deleted_at"  ON "ConsultRecord"("deletedAt");
+
+-- ============================================================
+-- 验证脚本（执行 ALTER 后跑一次）
+-- ============================================================
+-- MySQL:
+-- SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_DEFAULT
+-- FROM INFORMATION_SCHEMA.COLUMNS
+-- WHERE TABLE_SCHEMA = DATABASE()
+--   AND TABLE_NAME = 'ConsultRecord'
+--   AND COLUMN_NAME IN ('anonymousId','structuredInput','coreChartSnapshot',
+--                       'resultSummary','lastViewedAt','deletedAt');
+
+-- PostgreSQL:
+-- SELECT column_name, data_type, is_nullable
+-- FROM information_schema.columns
+-- WHERE table_name = 'ConsultRecord'
+--   AND column_name IN ('anonymousId','structuredInput','coreChartSnapshot',
+--                       'resultSummary','lastViewedAt','deletedAt');
+
+-- ============================================================
+-- 回滚（万一需要）
+-- ============================================================
+-- MySQL:
+-- ALTER TABLE `ConsultRecord`
+--   DROP COLUMN `anonymousId`,
+--   DROP COLUMN `structuredInput`,
+--   DROP COLUMN `coreChartSnapshot`,
+--   DROP COLUMN `resultSummary`,
+--   DROP COLUMN `lastViewedAt`,
+--   DROP COLUMN `deletedAt`;
+
+-- PostgreSQL:
+-- ALTER TABLE "ConsultRecord"
+--   DROP COLUMN "anonymousId",
+--   DROP COLUMN "structuredInput",
+--   DROP COLUMN "coreChartSnapshot",
+--   DROP COLUMN "resultSummary",
+--   DROP COLUMN "lastViewedAt",
+--   DROP COLUMN "deletedAt";

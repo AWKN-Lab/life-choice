@@ -1,0 +1,33 @@
+{
+  "db_count": 589,
+  "db_sha_count": 589,
+  "imported_sha_count": 602,
+  "sha_overlap_count": 544,
+  "sha_db_only_count": 45,
+  "index_books_count": 1126,
+  "db_normal_title_count": 553,
+  "title_overlap_count": 43,
+  "conclusion": "sha_overlap + title_overlap = 已在索引中的数量",
+  "db_only_sample": [
+    {
+      "title": "若道 202111-202207 PT3",
+      "sha": "6d44260b3aca"
+    },
+    {
+      "title": "若道 201708-201806 PT1",
+      "sha": "6b93f1fc88fa"
+    },
+    {
+      "title": "若道 201806-201903 PT2",
+      "sha": "9d6577c2cdd1"
+    },
+    {
+      "title": "秘义之光公众号文章 2022.10",
+      "sha": "86a8feb410f4"
+    },
+    {
+      "title": "太阳系行星意识",
+      "sha": "80ad926e1ef5"
+    }
+  ]
+}

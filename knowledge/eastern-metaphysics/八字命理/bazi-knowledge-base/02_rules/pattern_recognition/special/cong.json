@@ -1,0 +1,84 @@
+{
+  "meta": {"description": "从格识别规则", "version": "1.0.0", "source": "子平真诠、渊海子平"},
+  "pattern_name": "从格",
+  "common_conditions": {
+    "day_master_weak": "日主无根（无禄无刃无长生帝旺），或根轻被冲克合化",
+    "no_yin_bi": "无比肩劫财帮扶，或比劫被合化冲克",
+    "no_yin": "无印星生扶，或印星被财星克制"
+  },
+  "sub_types": [
+    {
+      "name": "从财格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "cai_star_strong": "财星得令或成方成局",
+        "cai_star_count": "财星力量占命局绝对优势"
+      },
+      "preferences": {
+        "xi": ["财","食伤"],
+        "ji": ["比劫","印星"],
+        "note": "喜财食生财，忌比劫分财、印星克食伤"
+      },
+      "yun_preferences": "喜行财食运，忌行比劫印运",
+      "life_reading": "利经商、金融、贸易，不适合公职、合伙",
+      "source": "《子平真诠》论从格"
+    },
+    {
+      "name": "从官杀格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "guan_sha_strong": "官杀得令或成方成局",
+        "guan_sha_count": "官杀力量占命局绝对优势"
+      },
+      "preferences": {
+        "xi": ["官杀","财星"],
+        "ji": ["食伤","比劫"],
+        "note": "喜官杀财星，忌食伤制杀、比劫抗杀"
+      },
+      "yun_preferences": "喜行官杀财运，忌行食伤比劫运",
+      "life_reading": "利公职、管理、军警、法律，适合体制内",
+      "source": "《子平真诠》论从格"
+    },
+    {
+      "name": "从儿格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "shi_shang_strong": "食伤得令或成方成局",
+        "shi_shang_count": "食伤力量占命局绝对优势"
+      },
+      "preferences": {
+        "xi": ["食伤","财星"],
+        "ji": ["印星","比劫"],
+        "note": "喜食伤生财，忌印星克食伤"
+      },
+      "yun_preferences": "喜行食伤财运，忌行印运",
+      "life_reading": "利文艺、技术、创意、口才生财",
+      "source": "《子平真诠》论从格"
+    },
+    {
+      "name": "从势格",
+      "conditions": {
+        "day_master_weak": true,
+        "no_root": true,
+        "no_yin_bi": true,
+        "cai_guan_shi_mixed": "财官食伤混杂，无单一主导",
+        "no_single_dominant": "各力量分散但均不利于日主"
+      },
+      "preferences": {
+        "xi": ["财","官杀","食伤"],
+        "ji": ["比劫","印星"],
+        "note": "顺势而行，忌逆势帮扶"
+      },
+      "yun_preferences": "喜行旺势运，忌行比劫印运",
+      "life_reading": "需看具体旺势偏向，灵活适应",
+      "source": "《子平真诠》论从格"
+    }
+  ],
+  "false_cong_conditions": "若日主虽弱但有根（如余气藏干）、有印星生扶、或比劫虽弱但未被完全克合，则为'假从'，需降格按正格扶抑论"
+}

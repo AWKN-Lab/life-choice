@@ -1,0 +1,147 @@
+{
+  "ok": 7,
+  "empty": 0,
+  "no_text": 16,
+  "error": 0,
+  "elapsed": 12.112311840057373,
+  "files": [
+    {
+      "file": "三天学会算八字.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 281
+    },
+    {
+      "file": "八字入门捉用神.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 241
+    },
+    {
+      "file": "八字命理学动态分析教程.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 436
+    },
+    {
+      "file": "八字命理学基础教程.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 308
+    },
+    {
+      "file": "八字命理学进阶教程.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 329
+    },
+    {
+      "file": "八字秘法1.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 211
+    },
+    {
+      "file": "八字秘法2.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 235
+    },
+    {
+      "file": "八宅明镜.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 356
+    },
+    {
+      "file": "滴天髓 子平真詮 今註 (梁湘潤, 沈孝瞻) (z-library.sk, 1lib.sk, z-lib.sk) (1).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 123
+    },
+    {
+      "file": "滴天髓 子平真詮 今註 (梁湘潤, 沈孝瞻) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 123
+    },
+    {
+      "file": "现代八字命理学纲要.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 225
+    },
+    {
+      "file": "三命通会\\图解三命通会（第1部）：八字神煞 (万民英) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 508
+    },
+    {
+      "file": "三命通会\\图解三命通会：第二部：吉凶推断 (许颐平) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 675
+    },
+    {
+      "file": "子平推命\\中国古代术数经典 子平真诠评注 (（清）沈孝瞻) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 512
+    },
+    {
+      "file": "子平推命\\四库存目 子平汇刊 5 穷通宝鉴评注 (（清）徐乐吾注) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 336
+    },
+    {
+      "file": "子平推命\\四库存目子平汇刊 3 命理金鉴 附李虚中命书 ([清] 志于道 著) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 188
+    },
+    {
+      "file": "子平推命\\四库存目子平汇刊 4 秘授滴天髓阐微 (（宋）京图，（明）刘基，（清）任铁樵撰) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 296
+    },
+    {
+      "file": "子平推命\\四库存目子平汇刊 6 神峰通考命理正宗 ([明]张楠) (z-library.sk, 1lib.sk, z-lib.sk) (1).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 262
+    },
+    {
+      "file": "子平推命\\四库存目子平汇刊 6 神峰通考命理正宗 ([明]张楠) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 262
+    },
+    {
+      "file": "子平推命\\四库存目子平汇刊 8 重校绘图袁氏命谱 (（清）袁树珊撰) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 415
+    },
+    {
+      "file": "子平推命\\图解子平真诠 干支密码(3) (沈孝瞻) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 159
+    },
+    {
+      "file": "子平推命\\子平精粹 1 五行大义·渊海子平 (（隋）萧吉，（宋）徐子平，徐升著, Xiao Ji zhu etc.) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "status": "ok",
+      "method": "pymupdf",
+      "pages": 413
+    },
+    {
+      "file": "子平推命\\子平说秘：披露生肖论命的实战秘诀.pdf",
+      "status": "no_text",
+      "method": "scan_skip",
+      "pages": 253
+    }
+  ]
+}

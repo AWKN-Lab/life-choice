@@ -1,0 +1,13 @@
+{"system_type": "other", "books_count": 144, "passages_count": 55278, "avg_passage_len": 69.3}
+{"system_type": "qimen", "books_count": 76, "passages_count": 26739, "avg_passage_len": 231.0}
+{"system_type": "bazi", "books_count": 113, "passages_count": 19093, "avg_passage_len": 96.9}
+{"system_type": "ziwei", "books_count": 27, "passages_count": 17099, "avg_passage_len": 112.1}
+{"system_type": "liuren", "books_count": 64, "passages_count": 9841, "avg_passage_len": 104.2}
+{"system_type": "zhouyi", "books_count": 39, "passages_count": 4513, "avg_passage_len": 53.2}
+{"system_type": "liuyao", "books_count": 40, "passages_count": 4238, "avg_passage_len": 46.7}
+{"system_type": "xiangshu", "books_count": 38, "passages_count": 2377, "avg_passage_len": 142.2}
+{"system_type": "fengshui", "books_count": 31, "passages_count": 1970, "avg_passage_len": 42.4}
+{"system_type": "quming", "books_count": 5, "passages_count": 1014, "avg_passage_len": 227.1}
+{"system_type": "meihua", "books_count": 5, "passages_count": 403, "avg_passage_len": 57.3}
+{"system_type": "daoism", "books_count": 3, "passages_count": 186, "avg_passage_len": 63.3}
+{"system_type": "yuyan", "books_count": 1, "passages_count": 56, "avg_passage_len": 60.7}

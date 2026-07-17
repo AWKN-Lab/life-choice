@@ -1,0 +1,405 @@
+有，老板。现在 PR 任务单已经能排开发了，但还需要补一层**“工程防呆代码”**，否则开发能做出来，但上线容易出现：月份对不上、事件重复写、接口路径错、空数据报错、命理副证抢主图、反馈丢失这些问题。
+
+当前技术底座里，`/tide` 已承载 K线与潮汐，`/kline-tide/package` 可返回 `klineBars / stateSnapshots / phasePoints`，并且已有 `/consult/records/:id/behavior` 行为记录接口；前端 API 还有生产环境 `/life/api/v1` 与本地 `localhost:30001` 的路径差异，所以这些细节代码要补在**数据适配、路径封装、事件去重、异常兜底、行为重试**上。
+
+# 一、还需要补 8 类细节代码
+
+## 1. API 基础路径封装
+
+避免不同文件里手写：
+
+```ts
+fetch('/kline-tide/package')
+fetch('/consult/records/:id/behavior')
+```
+
+应统一走 `apiClient`。
+
+```ts
+// app/src/api/httpClient.ts
+
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD ? '/life/api/v1' : 'http://localhost:30001/api/v1');
+
+export async function apiGet<T>(path: string, query?: Record<string, unknown>): Promise<T> {
+  const url = new URL(`${API_BASE}${path}`, window.location.origin);
+
+  Object.entries(query ?? {}).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== '') {
+      url.searchParams.set(key, String(value));
+    }
+  });
+
+  const response = await fetch(url.toString());
+
+  if (!response.ok) {
+    throw new Error(`GET ${path} failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+export async function apiPost<T>(
+  path: string,
+  body: Record<string, unknown>
+): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`POST ${path} failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+```
+
+然后：
+
+```ts
+// app/src/services/klineTideApi.ts
+
+import { apiGet } from '../api/httpClient';
+import type { TidePackage } from '../types/tideClosedLoop';
+
+export const klineTideApi = {
+  fetchPackage(params = {}) {
+    return apiGet<TidePackage>('/kline-tide/package', params);
+  },
+};
+```
+
+---
+
+## 2. 数据包标准化 Adapter
+
+后端返回字段一旦有空值，前端图表容易崩。
+要补一个 `normalizeTidePackage()`，所有页面只吃标准化后的数据。
+
+```ts
+// app/src/utils/normalizeTidePackage.ts
+
+import type { TidePackage } from '../types/tideClosedLoop';
+
+export function normalizeTidePackage(raw: Partial<TidePackage>): TidePackage {
+  return {
+    klineBars: Array.isArray(raw.klineBars) ? raw.klineBars : [],
+    stateSnapshots: Array.isArray(raw.stateSnapshots) ? raw.stateSnapshots : [],
+    phasePoints: Array.isArray(raw.phasePoints) ? raw.phasePoints : [],
+    metaphysicsHint: raw.metaphysicsHint,
+  };
+}
+```
+
+接到 Hook 里：
+
+```ts
+const result = await klineTideApi.fetchPackage(params);
+setData(normalizeTidePackage(result));
+```
+
+---
+
+## 3. 月份标准化函数
+
+现在最大隐患是：
+
+```text
+monthLabel = 2026年6月
+date = 2026-06
+query.month = 2026-6
+```
+
+这些格式不统一会导致 K线、雷达、相位无法对齐。
+
+```ts
+// app/src/utils/monthKey.ts
+
+export function toMonthKey(input: string | number, month?: number): string {
+  if (typeof input === 'number' && typeof month === 'number') {
+    return `${input}-${String(month).padStart(2, '0')}`;
+  }
+
+  const str = String(input).trim();
+
+  const matched = str.match(/(\d{4})\D?(\d{1,2})/);
+  if (!matched) return str;
+
+  const year = matched[1];
+  const m = matched[2].padStart(2, '0');
+
+  return `${year}-${m}`;
+}
+```
+
+所有比较统一：
+
+```ts
+toMonthKey(kline.monthLabel) === toMonthKey(snapshot.date)
+```
+
+---
+
+## 4. 图表点击事件防重复
+
+Recharts 点击事件容易重复触发。
+必须补一个简单去重。
+
+```ts
+// app/src/hooks/useEventDedup.ts
+
+import { useRef } from 'react';
+
+export function useEventDedup(delay = 500) {
+  const lastKeyRef = useRef('');
+  const lastTimeRef = useRef(0);
+
+  return function shouldSkip(key: string) {
+    const now = Date.now();
+
+    if (lastKeyRef.current === key && now - lastTimeRef.current < delay) {
+      return true;
+    }
+
+    lastKeyRef.current = key;
+    lastTimeRef.current = now;
+    return false;
+  };
+}
+```
+
+使用：
+
+```ts
+const shouldSkip = useEventDedup();
+
+function handleMonthClick(month: string) {
+  const eventKey = `click_kline_month:${month}`;
+
+  if (shouldSkip(eventKey)) return;
+
+  onSelectMonth(month);
+  setDrawerOpen(true);
+  track(...);
+}
+```
+
+---
+
+## 5. 行为记录本地失败队列
+
+现在写行为失败只 `console.warn`，还不够。
+至少补一个本地队列，防止反馈丢失。
+
+```ts
+// app/src/utils/behaviorQueue.ts
+
+const STORAGE_KEY = 'life_state_behavior_queue';
+
+export function enqueueBehavior(event: unknown) {
+  const list = getBehaviorQueue();
+  list.push(event);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-100)));
+}
+
+export function getBehaviorQueue(): unknown[] {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+export function clearBehaviorQueue() {
+  localStorage.removeItem(STORAGE_KEY);
+}
+```
+
+在 `useBehaviorTracking` 里：
+
+```ts
+try {
+  await consultApi.saveBehavior(recordId, body);
+} catch (error) {
+  enqueueBehavior({ recordId, body });
+  console.warn('[behavior-track-queued]', eventType, error);
+}
+```
+
+后续再补 `flushBehaviorQueue()`。
+
+---
+
+## 6. 命理副证冲突降级规则
+
+命理副证不能跟主状态硬冲。
+比如命理说“事业机会”，但状态图显示 `capacity低 + entropy高`，前台要自动降级表达。
+
+```ts
+// app/src/utils/metaphysicsConflict.ts
+
+import type { PhasePoint } from '../types/lifekline';
+import type { MetaphysicsHint } from '../types/tideClosedLoop';
+
+export function downgradeMetaphysicsIfConflict(
+  hint: MetaphysicsHint | undefined,
+  phasePoint?: PhasePoint
+): MetaphysicsHint | undefined {
+  if (!hint?.show || !phasePoint) return hint;
+
+  const highRiskPhase = phasePoint.quadrant === 'adjusting';
+
+  if (!highRiskPhase) return hint;
+
+  return {
+    ...hint,
+    confidence: Math.min(hint.confidence, 60),
+    hintText: `命理副线仅作观察提示。当前现实状态处于调整区，主建议以降负荷和修复底盘为先。`,
+  };
+}
+```
+
+---
+
+## 7. 文案安全扫描函数
+
+上线前要自动扫一遍文案，避免“命运上涨、必有机会、注定”等词漏出去。
+
+```ts
+// app/src/utils/safetyCopyCheck.ts
+
+const FORBIDDEN_WORDS = [
+  '命运上涨',
+  '命运下跌',
+  '必有机会',
+  '必有风险',
+  '注定',
+  '一定会',
+  '大灾',
+  '凶灾',
+];
+
+export function checkUnsafeCopy(text: string): string[] {
+  return FORBIDDEN_WORDS.filter(word => text.includes(word));
+}
+```
+
+在测试里：
+
+```ts
+expect(checkUnsafeCopy(exchangeSummary)).toHaveLength(0);
+```
+
+---
+
+## 8. 后端 event_type 白名单
+
+后端不能什么事件都收。
+要补白名单，否则脏数据会进库。
+
+```ts
+// server/src/consult/behavior/behavior-event.types.ts
+
+export const ALLOWED_BEHAVIOR_EVENTS = [
+  'view_kline',
+  'click_kline_month',
+  'view_state_radar',
+  'view_phase_chart',
+  'click_tide_from_result',
+  'claim_confirmed',
+  'claim_partial',
+  'claim_rejected',
+  'action_executed',
+  'action_partial',
+  'action_skipped',
+  'view_metaphysics_hint',
+  'hide_metaphysics_hint',
+] as const;
+
+export type BehaviorEventType = typeof ALLOWED_BEHAVIOR_EVENTS[number];
+
+export function isAllowedBehaviorEvent(value: string): value is BehaviorEventType {
+  return ALLOWED_BEHAVIOR_EVENTS.includes(value as BehaviorEventType);
+}
+```
+
+Service 里：
+
+```ts
+if (!isAllowedBehaviorEvent(dto.event_type)) {
+  throw new BadRequestException(`Unsupported behavior event: ${dto.event_type}`);
+}
+```
+
+---
+
+# 二、建议补一个 PR-13：工程防呆补丁
+
+## PR-13｜闭环防呆、异常与安全文案补丁
+
+### 目标
+
+补齐上线最容易踩坑的工程细节。
+
+### 新增文件
+
+```text
+app/src/api/httpClient.ts
+app/src/utils/normalizeTidePackage.ts
+app/src/utils/monthKey.ts
+app/src/hooks/useEventDedup.ts
+app/src/utils/behaviorQueue.ts
+app/src/utils/metaphysicsConflict.ts
+app/src/utils/safetyCopyCheck.ts
+server/src/consult/behavior/behavior-event.types.ts
+```
+
+### 修改文件
+
+```text
+app/src/services/klineTideApi.ts
+app/src/services/consultApi.ts
+app/src/hooks/useTidePackage.ts
+app/src/hooks/useBehaviorTracking.ts
+app/src/components/tide/StateKlineTab.tsx
+app/src/components/tide/ExchangeDrawer.tsx
+server/src/consult/behavior/behavior.service.ts
+```
+
+### 验收标准
+
+| 项目       | 标准                               |
+| -------- | -------------------------------- |
+| API 路径统一 | 不再手写裸路径                          |
+| 数据包安全    | 空数组不崩                            |
+| 月份对齐     | `2026-6 / 2026-06 / 2026年6月` 可统一 |
+| 点击防重     | 快速点击不重复写事件                       |
+| 反馈不丢     | 接口失败进入本地队列                       |
+| 命理降级     | 调整相位下命理提示自动变弱                    |
+| 文案安全     | 禁词测试通过                           |
+| 事件白名单    | 后端拒绝未知 event_type                |
+
+---
+
+# 三、最终判断
+
+现在不是再补大功能，而是补**上线可靠性代码**。
+
+最该补的就是这 8 个：
+
+```text
+API 路径封装
+数据包标准化
+月份标准化
+点击去重
+行为失败队列
+命理冲突降级
+文案安全扫描
+后端事件白名单
+```
+
+补完 PR-13 后，第一阶段闭环就会更稳：**能展示、能解释、能反馈、能记录，并且不容易因为格式、接口、重复点击和文案风险翻车。**

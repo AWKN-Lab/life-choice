@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+# 向量检索与 embedding（v2 升级，2026-06-18）
+sentence-transformers==3.0.1
+chromadb==0.5.5
+numpy==1.26.4

@@ -1,0 +1,134 @@
+{
+  "name": "liuren-zhanduan",
+  "version": "v1",
+  "rules": [
+    {
+      "id": "zhanduan-marriage",
+      "category": "zhanduan",
+      "priority": 15,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["婚姻", "感情", "恋爱", "相亲", "结婚"] }
+      },
+      "then": {
+        "coreLeiShen": ["天后", "六合", "青龙"],
+        "judgment": "后合占婚岂用媒；干支相合两心齐",
+        "mainJudgment": "婚姻之事看天后（女方）、六合（媒人）、青龙（男方或喜事），干支相合则两情相悦",
+        "actionDo": ["看干支是否相合判断感情基础", "看天后青龙是否旺相判断双方状态"],
+        "actionDont": ["不要只看单一神煞忽略课传生克", "不要忽略三传中的变数"]
+      }
+    },
+    {
+      "id": "zhanduan-health",
+      "category": "zhanduan",
+      "priority": 15,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["健康", "疾病", "身体", "看病", "手术"] }
+      },
+      "then": {
+        "coreLeiShen": ["日鬼", "白虎", "病符", "死气", "生气"],
+        "judgment": "受虎克神为病症；金日逢丁凶祸动",
+        "mainJudgment": "病看白虎日鬼，白虎克干为急症，病符主旧病，生气主康复希望",
+        "actionDo": ["看白虎是否克干判断病情轻重", "看生气是否出现判断康复可能"],
+        "actionDont": ["不要仅凭单一凶煞就断生死", "不要忽略天医、生气等吉神"]
+      }
+    },
+    {
+      "id": "zhanduan-travel",
+      "category": "zhanduan",
+      "priority": 12,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["出行", "旅行", "出差", "远行", "搬家"] }
+      },
+      "then": {
+        "coreLeiShen": ["驿马", "天马", "青龙", "贵人"],
+        "judgment": "太阳照武宜擒贼；驿马动则出行速",
+        "mainJudgment": "出行看驿马天马，驿马临传则必行，青龙贵人护送则平安",
+        "actionDo": ["看驿马是否入传判断出行时机", "看是否有贵人护送判断安全"],
+        "actionDont": ["驿马逢空则不宜出行", "白虎临路则需改期"]
+      }
+    },
+    {
+      "id": "zhanduan-career",
+      "category": "zhanduan",
+      "priority": 15,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["事业", "升迁", "工作", "求职", "面试", "官运"] }
+      },
+      "then": {
+        "coreLeiShen": ["官鬼", "禄神", "青龙", "天吏", "天城", "皇书"],
+        "judgment": "催官使者赴官期；旺禄临身徒妄作",
+        "mainJudgment": "官运看官鬼是否克干，克干则有压力但有机会；禄神旺相则职位稳固",
+        "actionDo": ["看官鬼旺衰判断升迁时机", "看青龙是否护干判断贵人助力"],
+        "actionDont": ["官鬼过旺克身则压力过大需谨慎", "禄神逢空则职位不稳"]
+      }
+    },
+    {
+      "id": "zhanduan-wealth",
+      "category": "zhanduan",
+      "priority": 15,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["财运", "投资", "求财", "赚钱", "生意", "理财"] }
+      },
+      "then": {
+        "coreLeiShen": ["财神", "青龙", "天财"],
+        "judgment": "水日逢丁财动之；传财化鬼财休觅",
+        "mainJudgment": "求财看财神（日干所克之五行）是否旺相，青龙临财则大利，传财化鬼则财中有险",
+        "actionDo": ["看财神旺衰判断财运好坏", "看是否有青龙天财判断财源稳定"],
+        "actionDont": ["传财化鬼时不要贪财冒进", "财神逢空则不宜大额投资"]
+      }
+    },
+    {
+      "id": "zhanduan-property",
+      "category": "zhanduan",
+      "priority": 10,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["房产", "买房", "卖房", "搬家", "装修", "土地"] }
+      },
+      "then": {
+        "coreLeiShen": ["支辰", "勾陈", "太常"],
+        "judgment": "支乘墓虎有伏尸；太阳射宅屋光辉",
+        "mainJudgment": "田宅看支辰（日支）状态，支上乘吉神则宅吉，乘墓虎则宅有隐患",
+        "actionDo": ["看支辰上神判断宅运好坏", "看太阳是否照宅判断时机"],
+        "actionDont": ["支乘墓虎时不宜入宅", "支上逢空则不宜成交"]
+      }
+    },
+    {
+      "id": "zhanduan-legal",
+      "category": "zhanduan",
+      "priority": 12,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["官司", "法律", "诉讼", "纠纷", "仲裁"] }
+      },
+      "then": {
+        "coreLeiShen": ["朱雀", "白虎", "官符", "病符"],
+        "judgment": "朱雀主口舌；白虎主刑伤；官符主官非",
+        "mainJudgment": "官司看朱雀（口舌是非）、白虎（刑伤）、官符（官方介入），三者俱现则事态严重",
+        "actionDo": ["看朱雀是否临干判断是非对自身影响", "看有无贵人化解判断结果走向"],
+        "actionDont": ["白虎临干时不要硬碰硬", "朱雀逢空则口舌自消，不宜主动挑起"]
+      }
+    },
+    {
+      "id": "zhanduan-cooperation",
+      "category": "zhanduan",
+      "priority": 15,
+      "source": "大六壬指南-分类占断",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["合作", "合伙", "签约", "合同", "协议"] }
+      },
+      "then": {
+        "coreLeiShen": ["六合", "青龙", "财神"],
+        "judgment": "干支相合两心齐；传财化鬼财休觅",
+        "mainJudgment": "合作看干支是否相合，六合临传则合作可成，但需防传财化鬼",
+        "actionDo": ["看干支相合程度判断合作基础", "看财神状态判断盈利前景", "先小规模试跑验证"],
+        "actionDont": ["干支相克不宜深度绑定", "传财化鬼时不要重仓投入", "不要在分润机制未锁死前大量投入"]
+      }
+    }
+  ]
+}

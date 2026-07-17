@@ -1,0 +1,14 @@
+{
+  "name": "@awkn-lab/shared-types",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AWKN-Lab 前后端共享类型定义",
+  "main": "index.ts",
+  "types": "index.ts",
+  "files": [
+    "*.ts"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

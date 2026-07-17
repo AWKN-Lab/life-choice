@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token</title>
+    <style id="theme-vars">
+/* ===== 人生决策宗师 — Decision OS Design Tokens ===== */
+/* Based on AETHERIA Neo-Mysticism System */
+/* Semantic shift: "精密仪器" not "玄学神坛" */
+
+:root {
+  /* Brand Colors - HSL */
+  --primary: 53 73% 76%;
+  --primary-light: 48 70% 84%;
+  --primary-dim: 42 45% 55%;
+  --secondary: 265 100% 86%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 52%;
+
+  /* Surface Hierarchy */
+  --surface-base: 220 20% 7%;
+  --surface-container: 220 15% 13%;
+  --surface-container-low: 220 15% 10%;
+  --surface-container-lowest: 220 25% 5%;
+  --surface-container-high: 220 14% 17%;
+
+  /* On-Surface */
+  --on-surface: 220 12% 91%;
+  --on-surface-variant: 35 27% 77%;
+  --on-primary: 0 0% 0%;
+  --on-secondary: 0 0% 0%;
+
+  /* Utility */
+  --outline: 35 16% 56%;
+  --outline-variant: 35 18% 30%;
+  --error: 5 100% 86%;
+
+  /* Border & Ring */
+  --border: 220 14% 17%;
+  --input: 220 14% 17%;
+  --ring: 53 73% 76%;
+
+  /* Background & Foreground */
+  --background: 220 20% 7%;
+  --foreground: 220 12% 91%;
+
+  /* Muted */
+  --muted: 220 15% 13%;
+  --muted-foreground: 35 15% 55%;
+
+  /* Popover */
+  --popover: 220 15% 10%;
+  --popover-foreground: 220 12% 91%;
+
+  /* Card */
+  --card: 220 15% 10%;
+  --card-foreground: 220 12% 91%;
+
+  /* Destructive */
+  --destructive: 5 100% 86%;
+  --destructive-foreground: 0 0% 0%;
+
+  /* Radius */
+  --radius: 12px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Primary container */
+  --primary-container: 53 50% 40%;
+
+  /* Extended palette */
+  --shumiyuan-deep: 220 35% 8%;
+  --shumiyuan-graphite: 220 12% 12%;
+  --shumiyuan-ink: 220 20% 5%;
+  --shumiyuan-gold-glow: 53 73% 76%;
+  --shumiyuan-violet-glow: 265 100% 86%;
+  --shumiyuan-risk: 5 80% 65%;
+  --shumiyuan-safe: 163 60% 45%;
+  --shumiyuan-warn: 35 90% 60%;
+
+  /* Decision OS semantic colors */
+  --phase-expand: 163 60% 45%;
+  --phase-explore: 220 80% 60%;
+  --phase-repair: 35 90% 60%;
+  --phase-contract: 5 80% 65%;
+
+  /* Dimension colors */
+  --dim-time: 220 80% 60%;
+  --dim-position: 163 60% 45%;
+  --dim-mind: 265 100% 86%;
+
+  /* State */
+  --state-success: 163 100% 52%;
+  --state-warning: 35 90% 60%;
+  --state-error: 5 80% 65%;
+  --state-info: 220 80% 60%;
+
+  /* Typography */
+  --font-display: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Manrope', 'Noto Sans SC', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes */
+  --text-hero: 2rem;
+  --text-h1: 1.5rem;
+  --text-h2: 1.25rem;
+  --text-h3: 1.125rem;
+  --text-body: 0.875rem;
+  --text-small: 0.75rem;
+  --text-caption: 0.6875rem;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px hsl(var(--surface-base) / 0.5);
+  --shadow-elevated: 0 4px 12px hsl(var(--surface-base) / 0.3);
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --primary: 211 100% 50%;
+  --primary-light: 211 100% 60%;
+  --primary-dim: 211 80% 40%;
+  --secondary: 265 65% 60%;
+  --secondary-container: 265 60% 50%;
+  --tertiary: 163 100% 40%;
+
+  --surface-base: 0 0% 100%;
+  --surface-container: 0 0% 96%;
+  --surface-container-low: 0 0% 98%;
+  --surface-container-lowest: 0 0% 92%;
+  --surface-container-high: 0 0% 90%;
+
+  --on-surface: 0 0% 12%;
+  --on-surface-variant: 240 2% 54%;
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 240 5% 64%;
+  --outline-variant: 240 5% 88%;
+  --error: 3 100% 59%;
+
+  --border: 240 5% 84%;
+  --input: 240 5% 84%;
+  --ring: 211 100% 50%;
+
+  --background: 0 0% 100%;
+  --foreground: 0 0% 12%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 240 2% 54%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 12%;
+
+  --destructive: 3 100% 59%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 12px;
+
+  --primary-container: 211 100% 90%;
+
+  --shumiyuan-deep: 220 10% 95%;
+  --shumiyuan-graphite: 220 8% 90%;
+  --shumiyuan-ink: 220 8% 96%;
+  --shumiyuan-gold-glow: 211 100% 50%;
+  --shumiyuan-violet-glow: 265 65% 60%;
+  --shumiyuan-risk: 3 100% 59%;
+  --shumiyuan-safe: 163 100% 40%;
+  --shumiyuan-warn: 39 100% 55%;
+
+  --phase-expand: 163 100% 40%;
+  --phase-explore: 220 80% 50%;
+  --phase-repair: 39 100% 55%;
+  --phase-contract: 3 100% 59%;
+
+  --dim-time: 220 80% 50%;
+  --dim-position: 163 100% 40%;
+  --dim-mind: 265 65% 60%;
+
+  --state-success: 163 100% 40%;
+  --state-warning: 39 100% 55%;
+  --state-error: 3 100% 59%;
+  --state-info: 220 80% 50%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--on-primary);
+    --color-secondary: var(--on-secondary);
+  }
+  @layer base {
+    body { background: var(--on-surface); color: var(--on-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="max-w-lg mx-auto px-4 py-8 pb-20">
+
+      <!-- Page Title -->
+      <h1 class="text-lg font-semibold mb-6" style="color: hsl(var(--on-surface));">设计 Token 总览</h1>
+
+      <!-- ===== Section 1: Color Palette ===== -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold mb-4" style="color: hsl(var(--on-surface));">基础色板</h2>
+        <div class="grid grid-cols-4 gap-3">
+          <!-- Primary -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--primary));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--primary</span>
+          </div>
+          <!-- Primary Light -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--primary-light));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--primary-light</span>
+          </div>
+          <!-- Primary Dim -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--primary-dim));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--primary-dim</span>
+          </div>
+          <!-- Secondary -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--secondary));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--secondary</span>
+          </div>
+          <!-- Secondary Container -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--secondary-container));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--secondary-container</span>
+          </div>
+          <!-- Tertiary -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--tertiary));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--tertiary</span>
+          </div>
+          <!-- Surface Base -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg border" style="background: hsl(var(--surface-base)); border-color: hsl(var(--outline));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--surface-base</span>
+          </div>
+          <!-- Surface Container -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg border" style="background: hsl(var(--surface-container)); border-color: hsl(var(--outline));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--surface-container</span>
+          </div>
+          <!-- Surface Container Low -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg border" style="background: hsl(var(--surface-container-low)); border-color: hsl(var(--outline));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--surface-container-low</span>
+          </div>
+          <!-- Surface Container High -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg border" style="background: hsl(var(--surface-container-high)); border-color: hsl(var(--outline));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--surface-container-high</span>
+          </div>
+          <!-- On Surface -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--on-surface));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--on-surface</span>
+          </div>
+          <!-- On Surface Variant -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--on-surface-variant));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--on-surface-variant</span>
+          </div>
+          <!-- Error -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--error));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--error</span>
+          </div>
+          <!-- Destructive -->
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 rounded-lg" style="background: hsl(var(--destructive));"></div>
+            <span class="text-[10px] truncate w-full text-center" style="color: hsl(var(--on-surface-variant));">--destructive</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 2: Decision OS Semantic Colors ===== -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold mb-1" style="color: hsl(var(--on-surface));">决策系统语义色</h2>
+
+        <!-- Phase Colors -->
+        <h3 class="text-xs font-medium mt-3 mb-2" style="color: hsl(var(--on-surface-variant));">阶段色</h3>
+        <div class="grid grid-cols-4 gap-3 mb-4">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--phase-expand));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">扩展</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--phase-expand</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--phase-explore));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">探索</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--phase-explore</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--phase-repair));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">修复</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--phase-repair</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--phase-contract));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">收缩</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--phase-contract</span>
+          </div>
+        </div>
+
+        <!-- Dimension Colors -->
+        <h3 class="text-xs font-medium mt-3 mb-2" style="color: hsl(var(--on-surface-variant));">维度色</h3>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--dim-time));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">时间</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--dim-time</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--dim-position));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">位置</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--dim-position</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--dim-mind));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">心理</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--dim-mind</span>
+          </div>
+        </div>
+
+        <!-- State Colors -->
+        <h3 class="text-xs font-medium mt-3 mb-2" style="color: hsl(var(--on-surface-variant));">状态色</h3>
+        <div class="grid grid-cols-4 gap-3">
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--state-success));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">成功</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--state-success</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--state-warning));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">警告</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--state-warning</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--state-error));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">错误</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--state-error</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-10 h-10 rounded-lg" style="background: hsl(var(--state-info));"></div>
+            <span class="text-[10px]" style="color: hsl(var(--on-surface-variant));">信息</span>
+            <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">--state-info</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 3: Typography ===== -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold mb-4" style="color: hsl(var(--on-surface));">字体系统</h2>
+
+        <!-- Display -->
+        <div class="rounded-lg p-4 mb-3" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-1" style="color: hsl(var(--muted-foreground));">Display --font-display</span>
+          <p class="truncate" style="font-family: var(--font-display); font-size: var(--text-hero); color: hsl(var(--on-surface));">人生决策操作系统</p>
+        </div>
+
+        <!-- Body -->
+        <div class="rounded-lg p-4 mb-3" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-1" style="color: hsl(var(--muted-foreground));">Body --font-body</span>
+          <p class="truncate" style="font-family: var(--font-body); font-size: var(--text-h2); color: hsl(var(--on-surface));">命运的每个节点都可以被计算</p>
+        </div>
+
+        <!-- Mono -->
+        <div class="rounded-lg p-4 mb-3" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-1" style="color: hsl(var(--muted-foreground));">Mono --font-mono</span>
+          <p class="truncate" style="font-family: var(--font-mono); font-size: var(--text-body); color: hsl(var(--on-surface));">LifeClose&#x209C; = &#x03A3; w&#x1D62; &#xB7; z(Line&#x1D62;,&#x209C;)</p>
+        </div>
+
+        <!-- Size Scale -->
+        <div class="rounded-lg p-4" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-3" style="color: hsl(var(--muted-foreground));">字号阶梯</span>
+          <div class="space-y-2">
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-hero); color: hsl(var(--on-surface));" class="truncate">Hero</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">2rem</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-h1); color: hsl(var(--on-surface));" class="truncate">H1 标题</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">1.5rem</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-h2); color: hsl(var(--on-surface));" class="truncate">H2 副标题</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">1.25rem</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-h3); color: hsl(var(--on-surface));" class="truncate">H3 小标题</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">1.125rem</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-body); color: hsl(var(--on-surface));" class="truncate">Body 正文</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">0.875rem</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span style="font-size: var(--text-small); color: hsl(var(--on-surface));" class="truncate">Small 辅助</span>
+              <span class="text-[10px] shrink-0 ml-2" style="color: hsl(var(--muted-foreground));">0.75rem</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 4: Spacing & Radius ===== -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold mb-4" style="color: hsl(var(--on-surface));">间距与圆角</h2>
+
+        <!-- Spacing Ruler -->
+        <div class="rounded-lg p-4 mb-3" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-3" style="color: hsl(var(--muted-foreground));">间距 Token</span>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">xs</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-xs); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">4px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">sm</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-sm); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">8px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">md</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-md); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">12px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">lg</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-lg); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">16px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">xl</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-xl); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">24px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">2xl</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-2xl); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">32px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] w-10 shrink-0 text-right" style="color: hsl(var(--on-surface-variant));">3xl</span>
+              <div class="h-3 rounded-sm" style="width: var(--space-3xl); background: hsl(var(--primary));"></div>
+              <span class="text-[10px]" style="color: hsl(var(--muted-foreground));">48px</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radius Samples -->
+        <div class="rounded-lg p-4" style="background: hsl(var(--surface-container-low));">
+          <span class="text-[10px] block mb-3" style="color: hsl(var(--muted-foreground));">圆角 Token</span>
+          <div class="flex items-end gap-3">
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-10 h-10" style="background: hsl(var(--primary)); border-radius: var(--radius-sm);"></div>
+              <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">sm 4px</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-10 h-10" style="background: hsl(var(--primary)); border-radius: var(--radius-md);"></div>
+              <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">md 8px</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-10 h-10" style="background: hsl(var(--primary)); border-radius: var(--radius-lg);"></div>
+              <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">lg 12px</span>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <div class="w-10 h-10" style="background: hsl(var(--primary)); border-radius: var(--radius-full);"></div>
+              <span class="text-[9px]" style="color: hsl(var(--muted-foreground));">full</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section 5: K-line Color Token Mapping ===== -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold mb-4" style="color: hsl(var(--on-surface));">K线颜色 Token 映射表</h2>
+        <div class="rounded-lg overflow-hidden" style="background: hsl(var(--surface-container-low));">
+          <table class="w-full text-xs">
+            <thead>
+              <tr style="border-bottom: 1px solid hsl(var(--outline-variant));">
+                <th class="text-left p-3 font-medium" style="color: hsl(var(--on-surface));">旧 HEX</th>
+                <th class="text-left p-3 font-medium" style="color: hsl(var(--on-surface));">Token 变量</th>
+                <th class="text-left p-3 font-medium" style="color: hsl(var(--on-surface));">语义名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid hsl(var(--outline-variant));">
+                <td class="p-3 flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-sm shrink-0 inline-block" style="background: #8bb8e0;"></span>
+                  <span class="truncate" style="color: hsl(var(--on-surface));">#8bb8e0</span>
+                </td>
+                <td class="p-3 truncate" style="color: hsl(var(--primary)); font-family: var(--font-mono);">--dim-time</td>
+                <td class="p-3 truncate" style="color: hsl(var(--on-surface-variant));">时间维度</td>
+              </tr>
+              <tr style="border-bottom: 1px solid hsl(var(--outline-variant));">
+                <td class="p-3 flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-sm shrink-0 inline-block" style="background: #22c55e;"></span>
+                  <span class="truncate" style="color: hsl(var(--on-surface));">#22c55e</span>
+                </td>
+                <td class="p-3 truncate" style="color: hsl(var(--primary)); font-family: var(--font-mono);">--shumiyuan-safe</td>
+                <td class="p-3 truncate" style="color: hsl(var(--on-surface-variant));">安全/正向</td>
+              </tr>
+              <tr style="border-bottom: 1px solid hsl(var(--outline-variant));">
+                <td class="p-3 flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-sm shrink-0 inline-block" style="background: #a855f7;"></span>
+                  <span class="truncate" style="color: hsl(var(--on-surface));">#a855f7</span>
+                </td>
+                <td class="p-3 truncate" style="color: hsl(var(--primary)); font-family: var(--font-mono);">--dim-mind</td>
+                <td class="p-3 truncate" style="color: hsl(var(--on-surface-variant));">心理维度</td>
+              </tr>
+              <tr style="border-bottom: 1px solid hsl(var(--outline-variant));">
+                <td class="p-3 flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-sm shrink-0 inline-block" style="background: #e0c97a;"></span>
+                  <span class="truncate" style="color: hsl(var(--on-surface));">#e0c97a</span>
+                </td>
+                <td class="p-3 truncate" style="color: hsl(var(--primary)); font-family: var(--font-mono);">--primary</td>
+                <td class="p-3 truncate" style="color: hsl(var(--on-surface-variant));">主要强调</td>
+              </tr>
+              <tr>
+                <td class="p-3 flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-sm shrink-0 inline-block border" style="background: #1a1a2e; border-color: hsl(var(--outline));"></span>
+                  <span class="truncate" style="color: hsl(var(--on-surface));">#1a1a2e</span>
+                </td>
+                <td class="p-3 truncate" style="color: hsl(var(--primary)); font-family: var(--font-mono);">--surface-container</td>
+                <td class="p-3 truncate" style="color: hsl(var(--on-surface-variant));">容器背景</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

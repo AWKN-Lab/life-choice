@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files (NEVER bake secrets into image)
+.env
+.env.*
+*.env
+
+# Version control
+.git/
+.gitignore
+
+# Logs
+logs/
+*.log
+
+# Build artifacts (rebuilt in Docker)
+dist/
+**/dist/
+.next/
+build/
+
+# Deploy configs
+.deploy/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives
+_archive/
+*.tgz
+*.tar.gz
+
+# Test & coverage
+coverage/
+test-results/
+
+# Python
+__pycache__/
+*.pyc

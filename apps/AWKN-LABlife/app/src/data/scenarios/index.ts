@@ -1,0 +1,248 @@
+/**
+ * L1 内容线 — 对话样例（20 个）
+ *
+ * 按八字/紫微/六壬/取名分类，每种 5 个样例。
+ * 覆盖 4 种用户状态：genuine / casual / repeating / validating。
+ */
+
+import { ConversationScenario } from './types';
+
+const scenarios: ConversationScenario[] = [
+  // ═══════════════════════════════════════════
+  // 八字 (bazi) — 5 个样例
+  // ═══════════════════════════════════════════
+  {
+    id: 'bazi-001',
+    category: 'bazi',
+    userState: 'genuine',
+    userMessage: '男，1990年3月15日上午9点出生，想看看今年事业运势如何？',
+    expectedRoute: 'ziping',
+    expectedJudgment: '日主甲木生于卯月得令，身旺喜金土火，今年癸卯年劫财透干，事业易有竞争与变动，宜稳守待机',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '八字事业运势咨询',
+  },
+  {
+    id: 'bazi-002',
+    category: 'bazi',
+    userState: 'genuine',
+    userMessage: '女，1985年农历七月初八未时，这几年财运一直不好，想看看什么时候能好转？',
+    expectedRoute: 'ziping',
+    expectedJudgment: '日主乙木生于申月官星当令，身弱喜水木印比，今明两年甲辰乙巳流年木旺扶身，财运有望回暖',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '八字财运分析',
+  },
+  {
+    id: 'bazi-003',
+    category: 'bazi',
+    userState: 'genuine',
+    userMessage: '我1992年5月20日中午12点出生，男朋友是1991年9月8日晚上8点，想看看我们的八字合不合？',
+    expectedRoute: 'ziping',
+    expectedJudgment: '女方日主丙火得午月旺地，男方日主庚金逢酉月，火金相克但有情，合婚需看双方日柱和夫妻宫的具体配置',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '八字婚姻配对',
+  },
+  {
+    id: 'bazi-004',
+    category: 'bazi',
+    userState: 'validating',
+    userMessage: '上次说我是水土相克，但另一个师傅说我其实是火土相生，到底哪个准？',
+    expectedRoute: 'ziping',
+    expectedJudgment: '不同师傅从不同五行层面解读，并非绝对矛盾。需以您的实际出生时间重新排盘确认，我帮您再仔细看一看',
+    hasBirthInfo: false,
+    hasAskTime: false,
+    note: '验证型用户复问八字',
+  },
+  {
+    id: 'bazi-005',
+    category: 'bazi',
+    userState: 'repeating',
+    userMessage: '八字里说我今年有桃花，是不是真的？',
+    expectedRoute: 'ziping',
+    expectedJudgment: '这个问题您之前问过，根据您的八字，今年流年桃花星确实有显现，但具体还要看您是否主动把握',
+    hasBirthInfo: false,
+    hasAskTime: false,
+    note: '重复型用户追问八字细节',
+  },
+
+  // ═══════════════════════════════════════════
+  // 紫微 (ziwei) — 5 个样例
+  // ═══════════════════════════════════════════
+  {
+    id: 'ziwei-001',
+    category: 'ziwei',
+    userState: 'genuine',
+    userMessage: '女，1988年5月20日酉时出生，麻烦分析一下事业宫',
+    expectedRoute: 'mixed',
+    expectedJudgment: '命宫天机星，事业宫太阴化禄，适合文书、财务类工作，今年流年破军化权入事业，有职位提升机会',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '紫微斗数事业宫分析',
+  },
+  {
+    id: 'ziwei-002',
+    category: 'ziwei',
+    userState: 'genuine',
+    userMessage: '男，1995年腊月二十晚上十点，帮我看看婚姻和感情',
+    expectedRoute: 'mixed',
+    expectedJudgment: '夫妻宫天同星，配偶性格温和，但三方四正有擎羊火星，感情中易有口舌争执，需注意沟通方式',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '紫微斗数夫妻宫分析',
+  },
+  {
+    id: 'ziwei-003',
+    category: 'ziwei',
+    userState: 'genuine',
+    userMessage: '1982年正月初五寅时，想问一下财运和投资方向',
+    expectedRoute: 'mixed',
+    expectedJudgment: '财帛宫武曲化权，天生有理财能力，但官禄宫贪狼，不宜投机，建议以稳健投资为主，今年流年财帛有偏财星显现',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '紫微斗数财帛宫分析',
+  },
+  {
+    id: 'ziwei-004',
+    category: 'ziwei',
+    userState: 'genuine',
+    userMessage: '1990年九月初九午时，想看看今年流年运势整体怎么样',
+    expectedRoute: 'mixed',
+    expectedJudgment: '今年流年命宫太阳化禄，事业宫天梁，整体运势上扬，人际关系有贵人相助，但需注意健康宫见煞星，勿过度劳累',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '紫微斗数流年分析',
+  },
+  {
+    id: 'ziwei-005',
+    category: 'ziwei',
+    userState: 'genuine',
+    userMessage: '女，1998年3月28日早上6点，能不能帮我全面分析一下命盘？',
+    expectedRoute: 'mixed',
+    expectedJudgment: '命宫紫微天府，天生领导格局，三方四正无煞星冲破，福气深厚。夫妻宫天相，配偶有贵气，事业适合公职或管理岗位',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '紫微斗数命宫综合分析',
+  },
+
+  // ═══════════════════════════════════════════
+  // 六壬 (liuren) — 5 个样例
+  // ═══════════════════════════════════════════
+  {
+    id: 'liuren-001',
+    category: 'liuren',
+    userState: 'genuine',
+    userMessage: '最近想换工作，有两个offer不好选，想问问哪个方向更合适？',
+    expectedRoute: 'liuren',
+    expectedJudgment: '课传见青龙临日干，东南方向有利，三传初传见朱雀，需注意沟通表达，中传见太常吉神，最终选择能得贵人扶持',
+    hasBirthInfo: false,
+    hasAskTime: true,
+    note: '大六壬事业决策咨询',
+  },
+  {
+    id: 'liuren-002',
+    category: 'liuren',
+    userState: 'genuine',
+    userMessage: '下个月要出差去外地，路上一路平安吗？',
+    expectedRoute: 'liuren',
+    expectedJudgment: '课体见白虎，路上需注意交通安全，但朱雀在末传，最终能平安抵达。建议出发时间避开申时',
+    hasBirthInfo: false,
+    hasAskTime: true,
+    note: '大六壬出行吉凶',
+  },
+  {
+    id: 'liuren-003',
+    category: 'liuren',
+    userState: 'genuine',
+    userMessage: '朋友想拉我一起做个小生意，看看这个合作能不能成？',
+    expectedRoute: 'liuren',
+    expectedJudgment: '支上见六合，合作基础良好，但干上乘天空，对方可能有些承诺难以兑现，建议白纸黑字立好协议',
+    hasBirthInfo: false,
+    hasAskTime: true,
+    note: '大六壬合作合伙占断',
+  },
+  {
+    id: 'liuren-004',
+    category: 'liuren',
+    userState: 'genuine',
+    userMessage: '犹豫要不要向喜欢的人表白，时机合适吗？',
+    expectedRoute: 'liuren',
+    expectedJudgment: '青龙临卯，春意盎然，课传见太阴，对方可能也有好感。但初传见勾陈，建议先多了解，不要操之过急',
+    hasBirthInfo: false,
+    hasAskTime: true,
+    note: '大六壬感情占断',
+  },
+  {
+    id: 'liuren-005',
+    category: 'liuren',
+    userState: 'genuine',
+    userMessage: '最近身体不太舒服，想看看健康方面需要注意什么？',
+    expectedRoute: 'liuren',
+    expectedJudgment: '课传见白虎临日，需重视身体信号，可能与脾胃、消化系统有关，建议近期安排体检，注意饮食作息规律',
+    hasBirthInfo: false,
+    hasAskTime: true,
+    note: '大六壬健康占断',
+  },
+
+  // ═══════════════════════════════════════════
+  // 取名 (naming) — 5 个样例
+  // ═══════════════════════════════════════════
+  {
+    id: 'naming-001',
+    category: 'naming',
+    userState: 'genuine',
+    userMessage: '宝宝2024年6月15日上午10点出生，男孩，姓王，想取个好名字',
+    expectedRoute: 'mixed',
+    expectedJudgment: '宝宝日主丙火生于午月得令，身旺，取名宜用金水偏旁补益，推荐：王浩宇、王泽楷、王润之',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '新生儿取名',
+  },
+  {
+    id: 'naming-002',
+    category: 'naming',
+    userState: 'genuine',
+    userMessage: '我1987年农历三月初五卯时出生，姓刘，这几年运气不好，想改个名字转转运',
+    expectedRoute: 'mixed',
+    expectedJudgment: '日主甲木生于辰月，身弱喜水木，原名五行不利，建议改名补木补水，推荐：刘柏霖、刘梓涵、刘沐恩',
+    hasBirthInfo: true,
+    hasAskTime: false,
+    note: '成人改名',
+  },
+  {
+    id: 'naming-003',
+    category: 'naming',
+    userState: 'genuine',
+    userMessage: '想注册一家科技公司，主要做人工智能方向，帮我起个公司名',
+    expectedRoute: 'mixed',
+    expectedJudgment: '公司名讲究五行相生与行业匹配，科技属金，建议：智汇星辰、启明科技、云枢智能',
+    hasBirthInfo: false,
+    hasAskTime: false,
+    note: '公司取名',
+  },
+  {
+    id: 'naming-004',
+    category: 'naming',
+    userState: 'genuine',
+    userMessage: '准备开一个茶饮品牌，要年轻化、有辨识度，帮我想几个品牌名',
+    expectedRoute: 'mixed',
+    expectedJudgment: '茶饮属水木，建议取清新灵动之名，可选：沁园春、茶里茶气、煮叶、一叶知秋',
+    hasBirthInfo: false,
+    hasAskTime: false,
+    note: '品牌取名',
+  },
+  {
+    id: 'naming-005',
+    category: 'naming',
+    userState: 'genuine',
+    userMessage: '想做知识付费，帮我起一个好听又有内涵的笔名',
+    expectedRoute: 'mixed',
+    expectedJudgment: '知识付费讲究文星与文昌，笔名宜有书卷气，建议：砚秋、知非、墨白、半山居士',
+    hasBirthInfo: false,
+    hasAskTime: false,
+    note: '网名/笔名取名',
+  },
+];
+
+export default scenarios;

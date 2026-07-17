@@ -1,0 +1,28 @@
+// 人生决策宗师 - 全局样式
+page {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  height: 100%;
+}
+
+view, scroll-view, swiper, movable-view, icon, text, progress, rich-text, editor, form, label, picker, picker-view, input, textarea {
+  box-sizing: border-box;
+}
+
+page-container {
+  background: #0a0a0a;
+}
+
+.gold-shimmer {
+  background: linear-gradient(135deg, #c9a962 0%, #e8d5a3 50%, #c9a962 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(201, 169, 98, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}

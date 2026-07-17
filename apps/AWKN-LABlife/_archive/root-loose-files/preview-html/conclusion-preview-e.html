@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方案E - 黑金版式 + 新中式叠加</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --surface: #10141a;
+      --surface-low: #181c22;
+      --surface-container: #1c2026;
+      --surface-high: #262a31;
+      --primary: #dacf98;
+      --primary-light: #efe3aa;
+      --secondary: #d7baff;
+      --tertiary: #00eab2;
+      --on-surface: #dfe2eb;
+      --on-surface-variant: #d0c5af;
+      --outline: #99907c;
+      --outline-variant: #4d4635;
+    }
+    
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--surface);
+      color: var(--on-surface);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .font-serif-sc { font-family: 'Noto Serif SC', serif; }
+    
+    /* 黑金五行色 */
+    .wu-xing-wood { color: #00eab2; }
+    .wu-xing-fire { color: #ffb4ab; }
+    .wu-xing-earth { color: #dacf98; }
+    .wu-xing-metal { color: #dfe4ea; }
+    .wu-xing-water { color: #d7baff; }
+    
+    /* 卡片悬浮 */
+    .card-float {
+      background: var(--surface-low);
+      transition: all 0.3s ease;
+    }
+    .card-float:hover {
+      background: var(--surface-high);
+    }
+    
+    /* 渐入动画 */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+    .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+    .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+    .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+    .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+    .stagger-5 { animation-delay: 0.5s; opacity: 0; }
+    
+    /* 虚线边框（新中式） */
+    .border-dashed-new {
+      border: 1px dashed rgba(218, 207, 152, 0.3);
+    }
+    
+    /* 金色渐变边框 */
+    .border-gold-gradient {
+      border: 1px solid transparent;
+      background: linear-gradient(var(--surface-low), var(--surface-low)) padding-box,
+                  linear-gradient(135deg, var(--primary), transparent 50%) border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen pb-24">
+    
+    <!-- 顶部 - 新中式云纹装饰 + 黑金标题 -->
+    <div class="px-4 pt-8 pb-6 animate-fade-in-up">
+      <div class="flex items-center justify-center gap-3">
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent to-[#4d4635]"></div>
+        <div class="text-center">
+          <!-- 新中式云纹 + 黑金标题 -->
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-[#dacf98]/40 text-lg">☁</span>
+            <h1 class="text-xl font-serif-sc text-[#dacf98] tracking-wider">初步结论</h1>
+            <span class="text-[#dacf98]/40 text-lg">☁</span>
+          </div>
+          <!-- 新中式点睛 -->
+          <div class="flex items-center justify-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#dacf98]"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#dacf98]/50"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#dacf98]/25"></span>
+          </div>
+        </div>
+        <div class="h-px flex-1 bg-gradient-to-l from-transparent to-[#4d4635]"></div>
+      </div>
+    </div>
+
+    <!-- 四柱展示 - 黑金版式 + 新中式印章 -->
+    <div class="mx-4 mb-6 animate-fade-in-up stagger-1">
+      <div class="card-float rounded-2xl p-5 border-dashed-new">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-sm text-[#d0c5af]">四柱八字</div>
+          <!-- 新中式印章 -->
+          <div class="w-10 h-10 border-2 border-[#dacf98] rounded flex items-center justify-center rotate-12">
+            <span class="text-[#dacf98] text-xs font-serif-sc font-bold">命</span>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-3">
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-1 font-medium uppercase tracking-wider">年柱</div>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-serif-sc font-medium wu-xing-wood">甲</span>
+              <span class="text-[#4d4635]">·</span>
+              <span class="text-xl font-serif-sc font-medium wu-xing-wood">寅</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-1 font-medium uppercase tracking-wider">月柱</div>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-serif-sc font-medium wu-xing-fire">丙</span>
+              <span class="text-[#4d4635]">·</span>
+              <span class="text-xl font-serif-sc font-medium wu-xing-earth">辰</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-1 font-medium uppercase tracking-wider">日柱</div>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-serif-sc font-medium wu-xing-metal">壬</span>
+              <span class="text-[#4d4635]">·</span>
+              <span class="text-xl font-serif-sc font-medium wu-xing-water">子</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-1 font-medium uppercase tracking-wider">时柱</div>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-serif-sc font-medium wu-xing-earth">戊</span>
+              <span class="text-[#4d4635]">·</span>
+              <span class="text-xl font-serif-sc font-medium wu-xing-fire">午</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心指标 -->
+    <div class="grid grid-cols-3 gap-3 mx-4 mb-6 animate-fade-in-up stagger-2">
+      <div class="card-float rounded-xl p-4 text-center border-gold-gradient">
+        <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">综合评分</div>
+        <div class="text-2xl font-bold text-[#dacf98]">8.2</div>
+        <div class="text-[10px] text-[#4d4635] mt-1">分</div>
+      </div>
+      <div class="card-float rounded-xl p-4 text-center border-gold-gradient shadow-[0_0_15px_rgba(0,234,178,0.15)]">
+        <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">日主</div>
+        <div class="text-xl font-bold text-[#00eab2]">身旺</div>
+      </div>
+      <div class="card-float rounded-xl p-4 text-center border-gold-gradient">
+        <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">格局</div>
+        <div class="text-lg font-bold text-[#dfe2eb]">正官格</div>
+      </div>
+    </div>
+
+    <!-- 五行分布 - 黑金霓虹条 + 新中式标注 -->
+    <div class="mx-4 mb-6 animate-fade-in-up stagger-3">
+      <div class="card-float rounded-xl p-5 border-dashed-new">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-sm text-[#d0c5af]">五行分布</span>
+          <span class="material-symbols-outlined text-[#00eab2]" style="font-size: 16px">eco</span>
+        </div>
+        <div class="flex h-7 rounded-full overflow-hidden">
+          <div class="bg-[#00eab2] flex items-center justify-center text-white text-xs font-bold" style="width: 44%">木</div>
+          <div class="bg-[#ffb4ab] flex items-center justify-center text-white text-xs font-bold" style="width: 22%">火</div>
+          <div class="bg-[#dacf98] flex items-center justify-center text-[#373108] text-xs font-bold" style="width: 11%">土</div>
+          <div class="bg-[#dfe4ea] flex items-center justify-center text-[#373108] text-xs font-bold" style="width: 11%">金</div>
+          <div class="bg-[#d7baff] flex items-center justify-center text-white text-xs font-bold" style="width: 12%">水</div>
+        </div>
+        <div class="flex justify-between mt-2.5 text-xs">
+          <span class="wu-xing-wood">木: 4</span>
+          <span class="wu-xing-fire">火: 2</span>
+          <span class="wu-xing-earth">土: 1</span>
+          <span class="wu-xing-metal">金: 1</span>
+          <span class="wu-xing-water">水: 2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 命理总评 -->
+    <div class="mx-4 mb-6 animate-fade-in-up stagger-4">
+      <div class="card-float rounded-xl p-5 border-dashed-new">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="material-symbols-outlined text-[#dacf98]" style="font-size: 16px">auto_stories</span>
+          <span class="text-sm text-[#d0c5af]">命理总评</span>
+        </div>
+        <p class="text-sm text-[#dfe2eb]/80 leading-relaxed">
+          日主甲木，生于寅月，得令而旺。木气过盛，宜泄不宜克。格局为正官格，官星清透，有贵气。事业上宜往东方发展，忌西方金旺之地。
+        </p>
+      </div>
+    </div>
+
+    <!-- 喜忌用神 -->
+    <div class="mx-4 mb-6 animate-fade-in-up stagger-5">
+      <div class="card-float rounded-xl p-5 border-dashed-new">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="material-symbols-outlined text-[#dacf98]" style="font-size: 16px">spa</span>
+          <span class="text-sm text-[#d0c5af]">喜忌用神</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">用神</div>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold bg-[#dfe4ea]">金</div>
+          </div>
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">喜神</div>
+            <div class="flex gap-2">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium border-2 border-[#ffb4ab] text-[#ffb4ab]">火</div>
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium border-2 border-[#dacf98] text-[#dacf98]">土</div>
+            </div>
+          </div>
+          <div class="h-10 w-px bg-[#4d4635]/30"></div>
+          <div class="text-center">
+            <div class="text-[10px] text-[#99907c] mb-2 font-medium uppercase tracking-wider">忌神</div>
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium bg-[#2a2a2a] text-[#666] line-through">水</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大运提示 -->
+    <div class="mx-4 animate-fade-in-up stagger-5">
+      <div class="rounded-xl p-4 bg-gradient-to-r from-[#00eab2]/10 to-[#dacf98]/10 border border-[#4d4635]/30">
+        <div class="flex items-center gap-3">
+          <div class="w-1 h-10 rounded-full bg-gradient-to-b from-[#00eab2] to-[#dacf98]"></div>
+          <div>
+            <div class="text-[10px] text-[#99907c] font-medium uppercase tracking-wider">大运提示</div>
+            <div class="text-sm text-[#dfe2eb] mt-0.5">37岁起运，逢兔、虎年大吉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部 - 新中式竹叶意象 -->
+    <div class="mt-8 text-center">
+      <div class="inline-flex items-center gap-3">
+        <span class="text-[#00eab2]/40 text-lg">▎</span>
+        <span class="text-[#4d4635] text-xs tracking-widest">虚怀若谷 · 顺势而为</span>
+        <span class="text-[#00eab2]/40 text-lg">▎</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部说明 -->
+  <div class="fixed bottom-0 left-0 right-0 bg-[#10141a]/90 backdrop-blur border-t border-[#4d4635]/30 p-4">
+    <div class="max-w-md mx-auto text-center">
+      <div class="text-sm font-medium text-[#dacf98] mb-1">方案E · 黑金版式 + 新中式叠加</div>
+      <div class="text-xs text-[#99907c]">黑金版式 + 云纹/印章/竹叶等新中式元素</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "meta": {"description": "专旺格识别规则", "version": "1.0.0", "source": "渊海子平、穷通宝鉴"},
+  "pattern_name": "专旺格",
+  "common_conditions": "日主极旺，满盘皆日主五行或生助日主五行，无克泄耗",
+  "sub_types": [
+    {
+      "name": "曲直仁寿格",
+      "day_master": ["甲","乙"],
+      "di_zhi_conditions": "寅卯辰全或亥卯未全",
+      "avoid": "庚辛申酉（金克木）",
+      "preferences": {"xi": ["水","木"], "ji": ["金","土"]},
+      "yun_preferences": "喜行水木运，忌行金土运",
+      "life_reading": "主人仁慈、高寿、利文职教育",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "炎上格",
+      "day_master": ["丙","丁"],
+      "di_zhi_conditions": "巳午未全或寅午戌全",
+      "avoid": "壬癸亥子（水克火）",
+      "preferences": {"xi": ["木","火"], "ji": ["水","土"]},
+      "yun_preferences": "喜行木火运，忌行水土运",
+      "life_reading": "主人热情、显达、利政治军事",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "稼穑格",
+      "day_master": ["戊","己"],
+      "di_zhi_conditions": "辰戌丑未全",
+      "avoid": "甲乙寅卯（木克土）",
+      "preferences": {"xi": ["火","土"], "ji": ["木","水"]},
+      "yun_preferences": "喜行火土运，忌行木水运",
+      "life_reading": "主人厚重、守信、利农业地产",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "从革格",
+      "day_master": ["庚","辛"],
+      "di_zhi_conditions": "申酉戌全或巳酉丑全",
+      "avoid": "丙丁巳午（火克金）",
+      "preferences": {"xi": ["土","金"], "ji": ["火","木"]},
+      "yun_preferences": "喜行土金运，忌行火木运",
+      "life_reading": "主人刚毅、果断、利军警法律",
+      "source": "《渊海子平》"
+    },
+    {
+      "name": "润下格",
+      "day_master": ["壬","癸"],
+      "di_zhi_conditions": "亥子丑全或申子辰全",
+      "avoid": "戊己辰戌丑未（土克水）",
+      "preferences": {"xi": ["金","水"], "ji": ["土","木"]},
+      "yun_preferences": "喜行金水运，忌行土木运",
+      "life_reading": "主人聪慧、灵活、利学术商贸",
+      "source": "《渊海子平》"
+    }
+  ],
+  "false_zhuanwang": "若方局不全或夹杂克泄，则为'假专旺'，需降格按正格论"
+}

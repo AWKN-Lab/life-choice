@@ -1,0 +1,114 @@
+{
+  "name": "liuyao-yongshen",
+  "version": "v1",
+  "rules": [
+    {
+      "id": "yongshen-career",
+      "category": "yongshen",
+      "priority": 15,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["事业", "工作", "求职", "升迁", "官运"] }
+      },
+      "then": {
+        "yongShen": "官鬼",
+        "yuanShen": "妻财",
+        "jiShen": "子孙",
+        "chouShen": "兄弟",
+        "judgment": "官鬼为用神，旺相则事业有成；妻财生官鬼为原神，财旺则官旺；子孙克官鬼为忌神，子孙动则事业受阻",
+        "actionDo": ["看官鬼爻是否旺相", "看妻财爻是否生助官鬼"],
+        "actionDont": ["子孙爻发动时不宜求升迁"]
+      }
+    },
+    {
+      "id": "yongshen-wealth",
+      "category": "yongshen",
+      "priority": 15,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["财运", "投资", "求财", "赚钱", "生意"] }
+      },
+      "then": {
+        "yongShen": "妻财",
+        "yuanShen": "子孙",
+        "jiShen": "兄弟",
+        "chouShen": "父母",
+        "judgment": "妻财为用神，旺相则财利可得；子孙生妻财为原神，福神旺则财源广；兄弟克妻财为忌神，兄弟动则破财",
+        "actionDo": ["看妻财爻是否旺相", "看子孙爻是否生助妻财"],
+        "actionDont": ["兄弟爻发动时不宜投资", "妻财逢空则财不实"]
+      }
+    },
+    {
+      "id": "yongshen-relationship",
+      "category": "yongshen",
+      "priority": 15,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["感情", "婚姻", "恋爱", "相亲"] }
+      },
+      "then": {
+        "yongShen": "妻财（男）/ 官鬼（女）",
+        "yuanShen": "子孙（男）/ 妻财（女）",
+        "jiShen": "兄弟（男）/ 子孙（女）",
+        "chouShen": "父母",
+        "judgment": "男占婚以妻财为用神，女占婚以官鬼为用神；用神旺相则姻缘可成",
+        "actionDo": ["看用神爻是否旺相", "看应爻与世爻关系"],
+        "actionDont": ["用神逢空则缘分未到", "忌神发动则需谨慎推进"]
+      }
+    },
+    {
+      "id": "yongshen-health",
+      "category": "yongshen",
+      "priority": 15,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["健康", "疾病", "身体", "看病"] }
+      },
+      "then": {
+        "yongShen": "世爻（自身）/ 官鬼（病症）",
+        "yuanShen": "父母（医药）",
+        "jiShen": "妻财",
+        "chouShen": "子孙（医生）",
+        "judgment": "自占病以世爻为用神，官鬼为病症；世爻旺相则无大碍，官鬼旺则病重",
+        "actionDo": ["看世爻是否旺相判断身体状况", "看子孙爻（医生）是否克制官鬼（病症）"],
+        "actionDont": ["官鬼爻旺相克世时需及时就医"]
+      }
+    },
+    {
+      "id": "yongshen-exam",
+      "category": "yongshen",
+      "priority": 12,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["考试", "学业", "面试", "考证"] }
+      },
+      "then": {
+        "yongShen": "父母",
+        "yuanShen": "官鬼",
+        "jiShen": "妻财",
+        "chouShen": "子孙",
+        "judgment": "父母为用神（文书成绩），旺相则考试顺利；官鬼生父母为原神",
+        "actionDo": ["看父母爻是否旺相", "看官鬼爻是否生助父母"],
+        "actionDont": ["妻财爻发动克父母则成绩不理想"]
+      }
+    },
+    {
+      "id": "yongshen-travel",
+      "category": "yongshen",
+      "priority": 10,
+      "source": "增删卜易",
+      "condition": {
+        "questionCategory": { "op": "in", "value": ["出行", "旅行", "远行"] }
+      },
+      "then": {
+        "yongShen": "世爻（自身）",
+        "yuanShen": "父母（车船）",
+        "jiShen": "官鬼（灾祸）",
+        "chouShen": "子孙（平安）",
+        "judgment": "出行以世爻为自身安全，官鬼为路上灾祸，子孙为解神",
+        "actionDo": ["看世爻是否旺相判断出行状态", "看子孙爻是否发动判断平安"],
+        "actionDont": ["官鬼爻发动克世则不宜出行"]
+      }
+    }
+  ]
+}

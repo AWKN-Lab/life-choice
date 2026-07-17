@@ -1,0 +1,15 @@
+{
+  "meta": {"description": "通关规则（两行相战时的通关之神）", "version": "1.0.0", "source": "滴天髓"},
+  "note": "通关者，在两行相战之间引入第三行，化解冲突",
+  "tongguan_rules": [
+    {"conflict": "金木相战", "tongguan": "水", "reason": "金生水、水生木，水为通关之神", "source": "《滴天髓》"},
+    {"conflict": "木土相战", "tongguan": "火", "reason": "木生火、火生土，火为通关之神", "source": "《滴天髓》"},
+    {"conflict": "水火相战", "tongguan": "木", "reason": "水生木、木生火，木为通关之神", "source": "《滴天髓》"},
+    {"conflict": "火金相战", "tongguan": "土", "reason": "火生土、土生金，土为通关之神", "source": "《滴天髓》"},
+    {"conflict": "土水相战", "tongguan": "金", "reason": "土生金、金生水，金为通关之神", "source": "《滴天髓》"}
+  ],
+  "examples": [
+    {"scenario": "命局金旺木弱，金木交战", "solution": "若有水透干或支有申子辰，水可通关", "source": "《滴天髓》"},
+    {"scenario": "命局水火相克，水旺火弱", "solution": "若有木透干或支有寅卯，木可通关", "source": "《滴天髓》"}
+  ]
+}

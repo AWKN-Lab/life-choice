@@ -1,0 +1,101 @@
+[
+  {
+    "id": "ziping-001",
+    "routeType": "ziping",
+    "source": "docs/子平a案例.txt",
+    "focus": "命局骨架与当前大运",
+    "requiredFields": ["summaryLine", "summaryBody", "classicAnalysis", "daYunTheme", "keyYearPhenomenon", "modulesRating", "decisionAudit", "mvpPlan", "stopDoingList"],
+    "requiredSignals": ["日主", "月令", "大运", "流年"],
+    "requiredSourceIds": ["[ZP-TH-01]", "[ZP-GJ-01]"]
+  },
+  {
+    "id": "ziping-002",
+    "routeType": "ziping",
+    "source": "docs/子平a案例.txt",
+    "focus": "月度节奏与最佳/风险窗口",
+    "requiredFields": ["monthlyFortune", "bestMonths", "worstMonths", "timeRhythm", "futureYearsRhythm"],
+    "requiredSignals": ["节气", "流月", "建议"],
+    "requiredSourceIds": ["[ZP-CH-01]"]
+  },
+  {
+    "id": "ziping-003",
+    "routeType": "ziping",
+    "source": "命理案例.txt",
+    "focus": "事业财运与决策审计",
+    "requiredFields": ["modules", "modulesRating", "decisionAudit", "mvpPlan", "actions", "risks"],
+    "requiredSignals": ["财", "风险", "动作"],
+    "requiredSourceIds": ["[ZP-CAI-01]"]
+  },
+  {
+    "id": "ziping-004",
+    "routeType": "ziping",
+    "source": "命理案例.txt",
+    "focus": "反巴纳姆人物画像",
+    "requiredFields": ["oneLineConclusion", "characterPortrait", "label", "ranking", "testScenarios"],
+    "requiredSignals": ["适合", "不适合", "验证"],
+    "requiredSourceIds": ["[ZP-GJ-01]"]
+  },
+  {
+    "id": "liuren-001",
+    "routeType": "liuren",
+    "source": "命理案例.txt",
+    "focus": "核心推导与课体证据",
+    "requiredFields": ["summaryLine", "summaryBody", "coreReasoning", "keySignals", "evidenceTags", "timeWindows"],
+    "requiredSignals": ["课体", "三传", "合局"],
+    "requiredSourceIds": ["[LR-BF-01]", "[LR-KT-01]"]
+  },
+  {
+    "id": "liuren-002",
+    "routeType": "liuren",
+    "source": "命理案例.txt",
+    "focus": "合作/谈判推进策略",
+    "requiredFields": ["counterpartPortrait", "actionStrategy", "phasedCalendar", "scripts", "proposalVersions"],
+    "requiredSignals": ["对方", "试点", "边界"],
+    "requiredSourceIds": ["[LR-BM-01]"]
+  },
+  {
+    "id": "liuren-003",
+    "routeType": "liuren",
+    "source": "命理案例.txt",
+    "focus": "风险与禁忌",
+    "requiredFields": ["currentRisks", "nowDoThis", "nowDoNotDo", "successSignals", "failureSignals"],
+    "requiredSignals": ["不要", "如果", "信号"],
+    "requiredSourceIds": ["[LR-SS-01]"]
+  },
+  {
+    "id": "kline-001",
+    "routeType": "kline",
+    "source": "子平a案例.txt",
+    "focus": "K线确定性与证据字段",
+    "requiredFields": ["chartData", "confidence", "evidenceTags", "volatility", "currentAge", "currentDaYun"],
+    "requiredSignals": ["大运", "流年", "参考强度"],
+    "requiredSourceIds": []
+  },
+  {
+    "id": "quming-001",
+    "routeType": "quming",
+    "source": "docs/取名案例.txt",
+    "focus": "五行补缺+喜用神取名",
+    "requiredFields": ["suggestions", "wuxingAnalysis", "xiYongShen"],
+    "requiredSignals": ["喜用神", "五行", "补缺"],
+    "requiredSourceIds": ["QM-WX-01"]
+  },
+  {
+    "id": "quming-002",
+    "routeType": "quming",
+    "source": "docs/取名案例.txt",
+    "focus": "三格五格配置+生肖配合",
+    "requiredFields": ["suggestions", "sanCaiConfig", "shengXiaoMatch"],
+    "requiredSignals": ["三格", "五格", "生肖", "笔画"],
+    "requiredSourceIds": ["QM-SG-01", "QM-SX-01"]
+  },
+  {
+    "id": "quming-003",
+    "routeType": "quming",
+    "source": "docs/取名案例.txt",
+    "focus": "综合取名+典故引用",
+    "requiredFields": ["suggestions", "nayinAnalysis", "allusionSource"],
+    "requiredSignals": ["纳音", "诗经", "楚辞", "寓意"],
+    "requiredSourceIds": ["QM-NY-01", "QM-DG-01"]
+  }
+]

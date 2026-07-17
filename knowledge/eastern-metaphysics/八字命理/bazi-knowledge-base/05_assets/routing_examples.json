@@ -1,0 +1,47 @@
+{
+  "meta": {"description": "用户输入 → 分析模式路由识别示例", "version": "1.0.0"},
+  "routes": [
+    {
+      "user_input_patterns": ["帮我看下今年的运势", "今年运气怎么样", "2026年整体运势", "全年运势分析"],
+      "route": "overview",
+      "mode_name": "总览模式",
+      "required_info": ["出生年月日时", "性别", "出生地"],
+      "output_scope": "全年四大板块 + 每月运势 + 关键时间节点"
+    },
+    {
+      "user_input_patterns": ["我最近事业不顺", "工作方面怎么看", "要不要换工作", "升职机会大吗"],
+      "route": "focus",
+      "mode_name": "聚焦模式-事业",
+      "required_info": ["出生年月日时", "性别", "出生地", "当前大运"],
+      "output_scope": "事业专项深度分析"
+    },
+    {
+      "user_input_patterns": ["我和他合不合适", "感情运怎么样", "什么时候能结婚", "婚姻方面怎么看"],
+      "route": "focus",
+      "mode_name": "聚焦模式-感情",
+      "required_info": ["出生年月日时", "性别", "出生地"],
+      "output_scope": "感情/婚姻专项分析"
+    },
+    {
+      "user_input_patterns": ["这个项目能不能投", "要不要买房", "借钱给朋友行不行", "签这个合同好不好"],
+      "route": "decision",
+      "mode_name": "决策模式",
+      "required_info": ["出生年月日时", "性别", "出生地", "具体决策内容"],
+      "output_scope": "明确的做/不做建议 + 时机窗口"
+    },
+    {
+      "user_input_patterns": ["我身体怎么样", "健康方面要注意什么", "今年会不会有病"],
+      "route": "focus",
+      "mode_name": "聚焦模式-健康",
+      "required_info": ["出生年月日时", "性别", "出生地"],
+      "output_scope": "健康预警 + 养生建议"
+    },
+    {
+      "user_input_patterns": ["下个月运势", "5月怎么样", "这个月有什么要注意的"],
+      "route": "focus",
+      "mode_name": "聚焦模式-流月",
+      "required_info": ["出生年月日时", "性别", "出生地", "目标月份"],
+      "output_scope": "单月运势详细分析"
+    }
+  ]
+}

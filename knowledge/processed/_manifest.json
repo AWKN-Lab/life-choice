@@ -1,0 +1,22 @@
+{
+  "count": 329577,
+  "books": 1135,
+  "categories": {
+    "bazi": 51107,
+    "other": 119035,
+    "zhouyi": 5989,
+    "qimen": 28812,
+    "yuyan": 1677,
+    "ziwei": 63288,
+    "liuren": 19753,
+    "liuyao": 27663,
+    "meihua": 2760,
+    "quming": 1714,
+    "daoism": 3256,
+    "fengshui": 1973,
+    "xiangshu": 2550
+  },
+  "generated_at": "2026-07-10 11:46:39",
+  "source": "classics_index.jsonl + re-check after P0-1",
+  "version": "v1.3-l7-recheck"
+}

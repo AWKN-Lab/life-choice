@@ -1,0 +1,170 @@
+[
+  {
+    "ruleId": "R001",
+    "fragments": [
+      {
+        "source": "滴天髓阐微·六亲论",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(六亲论).md",
+        "fragment": "丙午日元，生于卯月，局中木火两旺，官坐伤位，一点财星劫尽，谓财劫官伤。壬运虽得一衿，贫乏不堪；子运回冲，又逢未破克妻",
+        "status": "confirmed",
+        "sourceSha256": "1ee4720251f5127da8dc2dc043f3797980d3a0d359dbedd07ad9992ebba5e82d",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "渊海子平·六亲篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(六亲篇).md",
+        "fragment": "日支为夫妻宫，逢冲主离，宜详参大运流年",
+        "status": "placeholder",
+        "sourceSha256": "e4299ccab8e757a1caa73bde890670ea1b8cc34c28b98ca847c4b65ab070db28",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R002",
+    "fragments": [
+      {
+        "source": "渊海子平·六亲篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(六亲篇).md",
+        "fragment": "子午相冲，水火不交，主夫妻口舌",
+        "status": "placeholder",
+        "sourceSha256": "f75dc6af8b2461e49b86b00cb6d81dd52756c69b93ae67ac62e5b882daaa53dc",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "三命通会·卷五",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/三命通会/三命通会(卷五).md",
+        "fragment": "子午为天地之冲，水火相战，关乎婚配之离合",
+        "status": "placeholder",
+        "sourceSha256": "bccac924101a414d6b8ab6a78ad56bdc4d632dbf6671fe521fb430493cc91b7e",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R003",
+    "fragments": [
+      {
+        "source": "渊海子平·六亲篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(六亲篇).md",
+        "fragment": "卯酉相冲，金木相克，主情缘反复",
+        "status": "placeholder",
+        "sourceSha256": "9271f115577daae901baf0e94c52fd884e63a52cab40e7cc0d2fd19eddd470ac",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "神峰通考·卷二",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/神峰通考/神峰通考(卷二).md",
+        "fragment": "盖酉字冲去卯中乙木之病也",
+        "status": "confirmed",
+        "sourceSha256": "559de3ad1ec7553db8ad073fdfd260fb7813079d667f891d3b7964776e19974e",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R007",
+    "fragments": [
+      {
+        "source": "子平真诠·上",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/子平真诠(上).md",
+        "fragment": "伤官见官，为格之忌，透财而地位配置合宜，则伤官生财来生官，反可以解",
+        "status": "confirmed",
+        "sourceSha256": "26705d639d9d4e4d7d77e2095011fdc5afc8ac7c4ebe2fa0be5e0085cad1b10c",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "渊海子平·十神篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(十神篇).md",
+        "fragment": "伤官务要伤尽；伤之不尽，官来乘旺，其祸不可胜言。伤官见官，为祸百端。",
+        "status": "confirmed",
+        "sourceSha256": "70642705aee5ab0676d5a6b761c311072a7a363bd153977891280bde168afa14",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R008",
+    "fragments": [
+      {
+        "source": "渊海子平·十神篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(十神篇).md",
+        "fragment": "何谓之正财？犹如正官之意；是阴见阳财，阳见阴财。大抵正财，吾妻之财也。",
+        "status": "confirmed",
+        "sourceSha256": "1cbd852b5e72c1aa2449482bb6d0004695ba0f536b6fb0400efeba3dfd87799f",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "滴天髓阐微·六亲论",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(六亲论).md",
+        "fragment": "财即是妻，可以通论也。若清财妻美，浊财家富，其理虽正，尚未深论之也。",
+        "status": "confirmed",
+        "sourceSha256": "2608b5c477ea43f516f87a89ebfdbe99db7b22762d558cb19270b6697009536d",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R012",
+    "fragments": [
+      {
+        "source": "滴天髓阐微·通神论",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(通神论).md",
+        "fragment": "大运引动夫妻宫，逢冲合皆主婚缘变动",
+        "status": "placeholder",
+        "sourceSha256": "dd5321b9037e017a2e1ac17f69ce4d3ccfab09156643b19e3e296f19439460cf",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "命理约言·上",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/命理约言/命理约言-上.md",
+        "fragment": "运冲运合，皆系夫妻宫之动，应于婚配之事",
+        "status": "placeholder",
+        "sourceSha256": "8f24608269a80f7cc6112a8db8be6004df0814e1447d98f4914212c59b00a819",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R019",
+    "fragments": [
+      {
+        "source": "滴天髓阐微·通神论",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/滴天髓/滴天髓阐微(通神论).md",
+        "fragment": "庚金刚健，刚又逢刚，势不两立。此虽举五行而论，然世事人情，何莫不然！",
+        "status": "confirmed",
+        "sourceSha256": "119853f1612dbe807aee50751fa3fb78774eaf69abaa9c995e71f024ec94e4a6",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "格局章",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/格局章.md",
+        "fragment": "大体原则为金主义、木主仁、土主信、水主智、火主礼。看其旺衰，细推。",
+        "status": "confirmed",
+        "sourceSha256": "d006f23b727358813be803ae855b5bdb3a63a23f118972f7ba9708255ca88018",
+        "edition": "v1-20260704"
+      }
+    ]
+  },
+  {
+    "ruleId": "R020",
+    "fragments": [
+      {
+        "source": "渊海子平·女命篇",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/子平推命/渊海子平(女命篇).md",
+        "fragment": "伤官太重必妨夫，且是为人性重。",
+        "status": "confirmed",
+        "sourceSha256": "8c93b123ffe76cdebb1b36f596ba9480b4f6ab3804195e839ca7286ef516c333",
+        "edition": "v1-20260704"
+      },
+      {
+        "source": "神峰通考·卷二",
+        "filePath": "knowledge/eastern-metaphysics/八字命理/神峰通考/神峰通考(卷二).md",
+        "fragment": "盖人之身，以官星为管我之官，如府县官之类也。出入动作，皆要循守规矩，不敢妄为。今则伤官者，则是伤杀其官，不服官管",
+        "status": "confirmed",
+        "sourceSha256": "42b6c1afada1eff964a5540998baf6503049e99302db085336572643d9f517c8",
+        "edition": "v1-20260704"
+      }
+    ]
+  }
+]

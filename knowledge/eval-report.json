@@ -1,0 +1,470 @@
+{
+  "total_queries": 25,
+  "pass_count": 7,
+  "avg_recall@10": 0.473,
+  "avg_precision@10": 0.344,
+  "threshold": {
+    "recall@10": 0.7,
+    "precision@10": 0.6
+  },
+  "overall_pass": false,
+  "decision": "g6_required",
+  "results": [
+    {
+      "query": "日主身弱如何取用神",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "三命通会",
+        "子平",
+        "穷通"
+      ],
+      "recall@10": 0.5,
+      "precision@10": 0.4,
+      "passed": false,
+      "returned_titles": [
+        "千里命稿(卷八)",
+        "命理约言-上",
+        "子平真诠(上)",
+        "命理约言-下",
+        "滴天髓阐微(六亲论)"
+      ]
+    },
+    {
+      "query": "七杀格的成格条件",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "子平",
+        "三命通会"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "八字基础知识",
+        "八字基础知识",
+        "八字命理学动态分析教程_校正版",
+        "八字基础知识",
+        "千里命稿(卷八)"
+      ]
+    },
+    {
+      "query": "财星破印是什么意思",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "三命通会"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "八宅明镜",
+        "八字案例分析",
+        "命理探源",
+        "八字案例分析",
+        "子平真诠(上)"
+      ]
+    },
+    {
+      "query": "伤官见官的化解方法",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "子平"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.3,
+      "passed": false,
+      "returned_titles": [
+        "八字基础知识",
+        "渊海子平(十神篇)",
+        "滴天髓阐微(通神论)",
+        "三命通会(卷六)",
+        "八字命理学动态分析教程_校正版"
+      ]
+    },
+    {
+      "query": "地支三合局的力量",
+      "expected_system": "bazi",
+      "expected_books": [
+        "三命通会",
+        "渊海",
+        "滴天髓"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "八字基础知识",
+        "八字理论进阶版",
+        "八字理论进阶版",
+        "八字基础知识",
+        "八字基础知识"
+      ]
+    },
+    {
+      "query": "羊刃冲合的影响",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "三命通会"
+      ],
+      "recall@10": 0.5,
+      "precision@10": 0.1,
+      "passed": false,
+      "returned_titles": [
+        "命理探源",
+        "八字命理学动态分析教程_校正版",
+        "子平管见",
+        "神煞大全",
+        "八宅明镜_校正版"
+      ]
+    },
+    {
+      "query": "偏印夺食的判断",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "子平"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "九龙道长八字",
+        "八字命理学动态分析教程_校正版",
+        "五行精纪(下)",
+        "八字命理学动态分析教程_校正版",
+        "八字命理学动态分析教程_校正版"
+      ]
+    },
+    {
+      "query": "调候用神的选取",
+      "expected_system": "bazi",
+      "expected_books": [
+        "滴天髓",
+        "穷通",
+        "宝鉴"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "八字命理学动态分析教程_校正版",
+        "八字命理学动态分析教程_校正版",
+        "八字命理学动态分析教程_校正版",
+        "LLM命理分析闭环流程文档",
+        "八字命理学动态分析教程_校正版"
+      ]
+    },
+    {
+      "query": "贼克法如何取三传",
+      "expected_system": "liuren",
+      "expected_books": [
+        "六壬",
+        "毕法"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 1.0,
+      "passed": true,
+      "returned_titles": [
+        "《大六壬银河棹正附集》",
+        "六壬粹言(卷二)",
+        "六壬神煞总览",
+        "六壬大全(卷八)",
+        "毕法赋-上"
+      ]
+    },
+    {
+      "query": "毕法赋的十干课运",
+      "expected_system": "liuren",
+      "expected_books": [
+        "六壬",
+        "毕法"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.9,
+      "passed": true,
+      "returned_titles": [
+        "六壬毕法赋",
+        "毕法赋-上",
+        "毕法赋-中",
+        "毕法赋-上",
+        "毕法赋-上"
+      ]
+    },
+    {
+      "query": "四课三传的排法",
+      "expected_system": "liuren",
+      "expected_books": [
+        "六壬",
+        "大六壬"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.7,
+      "passed": true,
+      "returned_titles": [
+        "注解大六壬指南(卷三)-中",
+        "六壬粹言(卷八)",
+        "毕法赋-下",
+        "注解大六壬指南(卷三)-下",
+        "六壬粹言(卷二)"
+      ]
+    },
+    {
+      "query": "天将腾蛇的象征意义",
+      "expected_system": "liuren",
+      "expected_books": [
+        "六壬",
+        "大六壬"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.7,
+      "passed": true,
+      "returned_titles": [
+        "注解大六壬指南(卷一)",
+        "六壬大全(卷五)",
+        "大六壬探原(集说篇)",
+        "六壬大全(卷五)",
+        "注解大六壬指南(卷一)"
+      ]
+    },
+    {
+      "query": "紫微星在命宫的意义",
+      "expected_system": "ziwei",
+      "expected_books": [
+        "斗数",
+        "紫微",
+        "太微"
+      ],
+      "recall@10": 0.667,
+      "precision@10": 1.0,
+      "passed": false,
+      "returned_titles": [
+        "依婷紫微斗数讲课记录",
+        "依婷紫微斗数讲课记录",
+        "中州派紫微斗数深造讲义上",
+        "图解紫微斗数下推理卷",
+        "图解紫微斗数下推理卷"
+      ]
+    },
+    {
+      "query": "十四主星的吉凶",
+      "expected_system": "ziwei",
+      "expected_books": [
+        "斗数",
+        "紫微"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.5,
+      "passed": false,
+      "returned_titles": [
+        "开馆人紫微斗数3",
+        "图解紫微斗数下推理卷",
+        "奇门星象绝学",
+        "叶鸿生：我用遁甲",
+        "图解奇门遁甲大全一"
+      ]
+    },
+    {
+      "query": "化禄化权的含义",
+      "expected_system": "ziwei",
+      "expected_books": [
+        "斗数",
+        "紫微"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 1.0,
+      "passed": true,
+      "returned_titles": [
+        "依婷紫微斗数讲课记录",
+        "中州派紫微斗数深造讲义上",
+        "中州派紫微斗数深造讲义下",
+        "依婷紫微斗数讲课记录",
+        "图解紫微斗数下推理卷"
+      ]
+    },
+    {
+      "query": "奇门遁甲的八门排法",
+      "expected_system": "qimen",
+      "expected_books": [
+        "奇门"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 1.0,
+      "passed": true,
+      "returned_titles": [
+        "图解奇门遁甲大全二",
+        "图解奇门遁甲大全一",
+        "图解奇门遁甲大全一",
+        "图解奇门遁甲大全三",
+        "图解奇门遁甲大全一"
+      ]
+    },
+    {
+      "query": "九星的吉凶判断",
+      "expected_system": "qimen",
+      "expected_books": [
+        "奇门"
+      ],
+      "recall@10": 1.0,
+      "precision@10": 0.7,
+      "passed": true,
+      "returned_titles": [
+        "八字命理学动态分析教程_校正版",
+        "八字命理学动态分析教程_校正版",
+        "图解奇门遁甲大全一",
+        "奇门堪舆学",
+        "奇门堪舆学"
+      ]
+    },
+    {
+      "query": "周易乾卦的卦辞解读",
+      "expected_system": "zhouyi",
+      "expected_books": [
+        "周易",
+        "易经"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "名至实归：姓名与人生的关系 (周德元)",
+        "简单易懂全能开运姓名学",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "图解奇门遁甲大全一"
+      ]
+    },
+    {
+      "query": "六爻占卜的装卦方法",
+      "expected_system": "liuyao",
+      "expected_books": [
+        "断易",
+        "卜易"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "合并完成报告",
+        "易林补遗(卷一)-下",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)"
+      ]
+    },
+    {
+      "query": "葬经的寻龙点穴",
+      "expected_system": "fengshui",
+      "expected_books": [
+        "葬经",
+        "撼龙",
+        "青囊"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "六甲法术奇门高级面授班讲义",
+        "卜筮全书(卷十一)-下",
+        "六甲法术奇门高级面授班讲义",
+        "博山篇",
+        "卜筮正宗(黄金策)-卷五"
+      ]
+    },
+    {
+      "query": "阳宅三要的布局",
+      "expected_system": "fengshui",
+      "expected_books": [
+        "阳宅",
+        "宅经"
+      ],
+      "recall@10": 0.5,
+      "precision@10": 0.1,
+      "passed": false,
+      "returned_titles": [
+        "不吹牛奇门遁甲讲义五",
+        "梅花易数(卷二)",
+        "梅花易数(卷二)",
+        "不吹牛奇门遁甲教案第六版",
+        "八宅明镜_校正版"
+      ]
+    },
+    {
+      "query": "面相五官的吉凶",
+      "expected_system": "xiangshu",
+      "expected_books": [
+        "麻衣",
+        "神相",
+        "太清"
+      ],
+      "recall@10": 0.333,
+      "precision@10": 0.1,
+      "passed": false,
+      "returned_titles": [
+        "图解奇门遁甲大全一",
+        "六壬大全(卷九)-下",
+        "六壬大全",
+        "六壬大全(卷九)-上",
+        "注解大六壬指南(卷一)"
+      ]
+    },
+    {
+      "query": "手相生命线的解读",
+      "expected_system": "xiangshu",
+      "expected_books": [
+        "麻衣",
+        "神相"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "周纳羽实用阴盘奇门",
+        "依婷紫微斗数讲课记录",
+        "凤麟易理案例精解",
+        "奇门星象绝学",
+        "斗数卦理应用三"
+      ]
+    },
+    {
+      "query": "梅花易数的起卦方法",
+      "expected_system": "meihua",
+      "expected_books": [
+        "梅花"
+      ],
+      "recall@10": 0.0,
+      "precision@10": 0.0,
+      "passed": false,
+      "returned_titles": [
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)",
+        "名至实归：姓名与人生的关系 (周德元)"
+      ]
+    },
+    {
+      "query": "六爻断卦的用神选取",
+      "expected_system": "liuyao",
+      "expected_books": [
+        "增删",
+        "断易",
+        "卜易"
+      ],
+      "recall@10": 0.333,
+      "precision@10": 0.1,
+      "passed": false,
+      "returned_titles": [
+        "卜筮正宗(黄金策)-卷一",
+        "易林补遗(卷一)-下",
+        "易隐(卷首)",
+        "合并完成报告",
+        "易冒(卷六)"
+      ]
+    }
+  ]
+}

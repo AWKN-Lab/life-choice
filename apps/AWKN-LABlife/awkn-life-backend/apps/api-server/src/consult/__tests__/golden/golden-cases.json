@@ -1,0 +1,461 @@
+{
+  "version": "1.0.0",
+  "description": "张半山闭环工程化 golden case 数据 - 20 条端到端回归测试用例（含 v2 跨模块迁移 8 条）",
+  "source": "案例.docx (10条 zp-011~020) + 智能体提示词立春测试用例 (1条) + 合婚多轮 (1条 gc-012) + 跨模块迁移 (8条 gc-013~020)",
+  "baselineCase": "gc-001 (案例.docx 婚姻咨询, 预期分值 60-70, 实际 61)",
+  "totalCases": 20,
+  "cases": [
+    {
+      "id": "gc-001",
+      "sourceRef": "案例.docx + zp-011",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我和女方八字合不合？夫妻宫相冲，还有必要继续下去吗？是继续此段感情，还是再等下一段合适的出现？",
+      "expectedScoreRange": [60, 70],
+      "expectedKeywords": ["子午冲", "夫妻宫", "壬子", "丙午", "水火", "规则", "三个月"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": ["不冲动领证", "不共同贷款", "不在情绪高点决定婚期"],
+      "notes": "案例基准 case。男方日支子 vs 女方日支午，含伤官见官（高风险信号）。score-engine 实际输出 61/100。"
+    },
+    {
+      "id": "gc-002",
+      "sourceRef": "案例.docx + zp-012",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "如果我和女方长期发展，家庭背景和生活安排的冲突（卯酉冲）会怎么演变？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["卯酉冲", "家庭背景", "生活安排", "子女教育", "居住城市"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在没谈清家庭边界时结婚", "不让双方父母直接介入冲突"],
+      "notes": "卯酉冲不在夫妻宫而在家庭与生活安排，含子未害（中风险信号）。"
+    },
+    {
+      "id": "gc-003",
+      "sourceRef": "案例.docx + zp-013",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我和女方是水火型姻缘，这种互补型关系能成就吗？需要什么条件？",
+      "expectedScoreRange": [60, 75],
+      "expectedKeywords": ["水火既济", "互补", "吸引", "规则", "成就"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不把强烈吸引误判为天然适合过日子", "不裸奔式进入婚姻"],
+      "notes": "水火型姻缘强互补强吸引，但需规则。男方水旺女方火旺。"
+    },
+    {
+      "id": "gc-004",
+      "sourceRef": "案例.docx + zp-014",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我命中申子辰三合水局，水势极旺，这对婚姻关系意味着什么？",
+      "expectedScoreRange": [50, 65],
+      "expectedKeywords": ["申子辰", "三合水局", "水旺", "暖局", "情绪", "冷处理"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不用冷处理解决亲密关系问题", "不因能扛就忽视伴侣情绪需求"],
+      "notes": "申子辰三合水局水势极旺需火土暖局。男方水旺易冷处理。"
+    },
+    {
+      "id": "gc-005",
+      "sourceRef": "案例.docx + zp-015",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我嘴上总是挑剔对方，是不是伤官见官？这种命局对婚姻有什么影响？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["伤官见官", "挑剔", "高标准", "验证", "安全感"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": ["不用翻旧账验证感情", "不用高标准压对方到对方撤退"],
+      "notes": "女方丙火日主己土克癸水，伤官见官（高风险信号）。内心要稳定但嘴上挑剔。"
+    },
+    {
+      "id": "gc-006",
+      "sourceRef": "案例.docx + zp-016",
+      "scenario": "事业",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我现走戊辰大运，这十年事业压力会怎么变？需要怎么应对？",
+      "expectedScoreRange": [50, 65],
+      "expectedKeywords": ["戊辰", "大运", "申子辰", "引动", "压力", "控制欲"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不把外面的压力带回家用硬话解决", "不因事业压力大忽视伴侣情绪"],
+      "notes": "戊辰大运引动申子辰水局，十年压力与控制欲增强。"
+    },
+    {
+      "id": "gc-007",
+      "sourceRef": "案例.docx + zp-017",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "2026丙午年我的姻缘会怎样？财星显但冲子，该怎么把握？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["丙午", "2026", "财星", "姻缘", "冲子", "宜谈不宜绑"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": ["不在2026年内冲动领证", "不共同贷款"],
+      "notes": "丙午年财星显姻缘动，但午冲子水夫妻宫，宜谈不宜绑。含子午冲（高风险信号）。"
+    },
+    {
+      "id": "gc-008",
+      "sourceRef": "案例.docx + zp-018",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "2027丁未年午未相合宜推进，但子未害暗藏什么风险？我该怎么准备？",
+      "expectedScoreRange": [60, 75],
+      "expectedKeywords": ["丁未", "2027", "午未相合", "子未害", "推进", "暗耗"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不忽视子未害的暗耗", "不在没谈清三方边界时强行推进"],
+      "notes": "丁未年午未相合宜推进，但子未害暗藏钱房父母暗耗。含子未害（中风险信号）。"
+    },
+    {
+      "id": "gc-009",
+      "sourceRef": "案例.docx + zp-019",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "2028年后我的大运转水运夫星显，这是不是意味着前期磨合熬过反而易定？",
+      "expectedScoreRange": [60, 75],
+      "expectedKeywords": ["2028", "大运", "水运", "夫星", "熬过", "易定"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "low",
+      "expectedRedLines": ["不在前期没规则时拖到后期被催婚", "不忽视水火冲突在后期会更明显"],
+      "notes": "2028后女方夫星更明显，熬过前期磨合反而易定。无高风险信号。"
+    },
+    {
+      "id": "gc-010",
+      "sourceRef": "案例.docx + zp-020",
+      "scenario": "婚姻",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "askTime": "2026-06-26T15:05:00+08:00",
+      "question": "今天起念问姻缘，六壬起课是伏吟局，这意味着什么？我该怎么解？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["伏吟", "反复", "不改规则", "重复", "原地"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在伏吟局强行做决定", "不误判为'没缘'而放弃"],
+      "notes": "2026-06-26 15:05 起念，月将未加占时未，Shift=0，伏吟局。同一问题必重复。"
+    },
+    {
+      "id": "gc-011",
+      "sourceRef": "智能体提示词.txt 立春测试用例",
+      "scenario": "事业",
+      "birthInfo": {
+        "year": 2024,
+        "month": 2,
+        "day": 4,
+        "hour": 17,
+        "gender": "male",
+        "birthPlace": "北京"
+      },
+      "question": "2024年2月4日17:00出生，问未来事业发展。",
+      "expectedScoreRange": [60, 80],
+      "expectedKeywords": ["甲辰", "丙寅", "立春", "16:27", "子平真诠", "定格"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "low",
+      "expectedRedLines": ["不做超出能力边界的决策", "不在忌神年份做重大承诺"],
+      "notes": "立春测试用例。17:00 > 16:27 立春，进入甲辰年丙寅月。依据《子平真诠》定格。无高风险信号。"
+    },
+    {
+      "id": "gc-012",
+      "sourceRef": "案例.docx 完整多轮交互流程",
+      "scenario": "合婚多轮",
+      "multiTurn": true,
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "partnerBirthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": null,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我和女方八字合不合？夫妻宫相冲，还有必要继续下去吗？是继续此段感情，还是再等下一段合适的出现？",
+      "rounds": [
+        {
+          "round": 1,
+          "role": "user",
+          "content": "我和女方八字合不合？夫妻宫相冲，还有必要继续下去吗？是继续此段感情，还是再等下一段合适的出现？",
+          "context": "男方1989年8月20日生于广西柳州，时辰不详（默认辰时）；女方1993年农历六月初六生于广西河池，时辰不详。动念时间：2026年6月26日18:50-19:00，南宁。"
+        },
+        {
+          "round": 2,
+          "role": "user",
+          "content": "需要更新一下：男方出生时间 上午6点40 出生地:广西柳州。女方出生地: 广西河池。",
+          "expectedCorrection": "真太阳时校正：柳州经度约109.40°E → 校正后约5:54 → 卯时非辰时。男方四柱从己巳 壬申 壬子 甲辰 改为 己巳 壬申 壬子 癸卯。申子辰三合水局不成立，卯木泄水生火，关系多一条沟通桥梁。分值从60-65微调为66/100。"
+        },
+        {
+          "round": 3,
+          "role": "user",
+          "content": "26年6月26日14点53分起念，两问：1、双方首问为姻缘，那既然夫妻宫相冲，还有必要继续下去吗？2、男方更关注价值观的不合，认为人际关系、生意决策、经济开支、事物的底层逻辑等都需考虑清楚再行动。女方心直口快、行事大刀阔斧、言语带刺，认为这些行为婆婆妈妈、小肚鸡肠。单看男方八字，是继续此段感情，还是再等下一段合适的出现？",
+          "context": "起念时间：2026-06-26 14:53，南宁（经度108.3669°E，真太阳时约14:06，未时）。丙午年甲午月辛未日，月将未加占时未 → 伏吟局。"
+        },
+        {
+          "round": 4,
+          "role": "user",
+          "content": "我预判男方想追问，但我是在北京26年6月26日，15.05，不知道怎么算，男方的天命妻子是什么时候出现？",
+          "context": "北京经度116.4°E，真太阳时约14:50，仍属未时。仍是辛未日未时伏吟局。"
+        }
+      ],
+      "expectedScoreRange": [60, 70],
+      "expectedKeywords": [
+        "子午冲", "夫妻宫", "壬子", "丙午", "水火既济", "伤官见官", "卯酉冲",
+        "伏吟", "真太阳时", "卯时", "癸卯", "申子辰", "三个月", "规则",
+        "天命妻子", "2026丙午", "2027丁未", "2030庚戌", "2037丁巳"
+      ],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "high",
+      "expectedRedLines": [
+        "不冲动领证", "不共同贷款", "不在情绪高点决定婚期",
+        "不因怀孕仓促结婚", "不冷战超24小时", "不翻旧账",
+        "不用分手威胁", "不在2026年内冲动买房"
+      ],
+      "narrativeQuality": {
+        "三层翻译": "每个命理信号必须翻译为：命理术语→心理动机→行为表现",
+        "具体年份": "每个结论必须绑定具体年份+干支，禁止只说'近期/中期/远期'",
+        "可执行动作": "每条建议必须含时间窗口+具体动作+验证标准",
+        "排盘过程": "事实层必须展示真太阳时校正过程，不只给结果",
+        "双向解读": "男方和女方各自独立分析+互动关系分析",
+        "引经据典": "每个核心判断必须标注命理经典出处（《子平真诠》《渊海子平》《三命通会》等）"
+      },
+      "notes": "v2 新增多轮合婚标杆 case。对标案例.docx 完整交互流程（4轮对话）。核心验证：单轮 LLM 能否在 1 次输出中达到 4 轮人类命理师的叙事水准。关键差异：案例.docx 通过多轮交互逐步修正排盘（辰时→卯时）、深化解读（加上伤官见官分析）、扩展维度（天命妻子画像）。单轮 LLM 必须在一次输出中完成所有这些。"
+    },
+    {
+      "id": "gc-013",
+      "sourceRef": "v2跨模块迁移-财运模块",
+      "scenario": "财运",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我最近想投资一个项目，但身边朋友都说时机不对。从命理角度看，我今年适合投资吗？需要注意什么？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["财星", "戊辰", "大运", "申子辰", "水旺", "投资", "时机", "2026丙午", "财来财去"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在朋友怂恿下冲动投资", "不把全部资金投入一个项目", "不在2026年丙午财星冲子时做重大投资决策"],
+      "notes": "v2 财运模块标杆 case。男方壬水日主水旺，申子辰三合水局，财星为火。2026丙午年财星显但冲夫妻宫，投资需谨慎。"
+    },
+    {
+      "id": "gc-014",
+      "sourceRef": "v2跨模块迁移-财运模块",
+      "scenario": "财运",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我过去两年投资连续亏损，是命里注定破财还是我决策有问题？如何避免继续亏？",
+      "expectedScoreRange": [50, 65],
+      "expectedKeywords": ["财星", "火旺", "伤官", "破财", "冲动", "止损", "规则", "验证"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不因亏损焦虑追加投资", "不在情绪化时做财务决策", "不把投资当情绪出口"],
+      "notes": "v2 财运模块标杆 case。女方丙午日主火旺，伤官见官。身强火旺克金为财，但伤官冲动易导致投资决策情绪化。"
+    },
+    {
+      "id": "gc-015",
+      "sourceRef": "v2跨模块迁移-健康模块",
+      "scenario": "健康",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我最近总是失眠、腰酸、精力不济，中医说是肾水过旺。从八字看我的健康需要注意什么？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["水旺", "肾", "膀胱", "五行", "金水", "寒湿", "暖局", "火土", "调理"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不忽视腰酸背痛等身体信号", "不过度熬夜消耗肾精", "不在寒冷潮湿环境久待"],
+      "notes": "v2 健康模块标杆 case。男方壬水日主申子辰三合水局，水势极旺，金水过旺易寒湿，需火土暖局调理。"
+    },
+    {
+      "id": "gc-016",
+      "sourceRef": "v2跨模块迁移-健康模块",
+      "scenario": "健康",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我长期压力大、容易焦虑、心慌，医生说要注意心血管。八字里火旺是不是对心脏不好？该怎么调理？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["火旺", "心", "小肠", "炎上", "水火", "阴虚", "伤官", "焦虑", "调理"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不忽视心慌胸闷等心脏信号", "不过度劳累透支心力", "不在情绪高峰期做重大决定"],
+      "notes": "v2 健康模块标杆 case。女方丙午日主火旺，午午自刑心火亢盛，伤官见官加重焦虑，需水火既济调理。"
+    },
+    {
+      "id": "gc-017",
+      "sourceRef": "v2跨模块迁移-子女模块",
+      "scenario": "子女",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "我和伴侣计划要孩子，从八字看我的子女运如何？什么时候是最佳时机？需要注意什么？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["食伤", "子女宫", "时柱", "癸卯", "卯木", "生育", "2026丙午", "2027丁未"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "low",
+      "expectedRedLines": ["不在水旺流年盲目备孕", "不因年龄焦虑仓促决定", "不忽视双方体检"],
+      "notes": "v2 子女模块标杆 case。男方时柱癸卯，卯木为食伤（子女星），水旺木浮，需火土暖局助木生长。"
+    },
+    {
+      "id": "gc-018",
+      "sourceRef": "v2跨模块迁移-子女模块",
+      "scenario": "子女",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我命里子女宫午午自刑，是不是对生育有影响？什么时候要孩子比较合适？",
+      "expectedScoreRange": [50, 65],
+      "expectedKeywords": ["子女宫", "时柱", "甲午", "午午自刑", "火旺", "食伤", "生育", "时机"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在火旺流年盲目备孕", "不因焦虑过度医疗干预", "不忽视身体调理"],
+      "notes": "v2 子女模块标杆 case。女方时柱甲午，午午自刑火旺克金（子女星），需水调候降火。"
+    },
+    {
+      "id": "gc-019",
+      "sourceRef": "v2跨模块迁移-合作模块",
+      "scenario": "合作",
+      "birthInfo": {
+        "year": 1989,
+        "month": 8,
+        "day": 20,
+        "hour": 6,
+        "gender": "male",
+        "birthPlace": "广西柳州"
+      },
+      "question": "朋友邀我合伙创业，从八字看我的合作运如何？需要注意什么风险？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["比劫", "合伙人", "壬水", "合作", "信任", "分利", "规则", "合同"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不在水旺流年与同属水的人合伙", "不口头约定分利", "不因朋友关系跳过合同"],
+      "notes": "v2 合作模块标杆 case。男方壬水日主水旺，比劫多则合作易起纷争，需明确规则和分利机制。"
+    },
+    {
+      "id": "gc-020",
+      "sourceRef": "v2跨模块迁移-合作模块",
+      "scenario": "合作",
+      "birthInfo": {
+        "year": 1993,
+        "month": 7,
+        "day": 24,
+        "hour": 12,
+        "gender": "female",
+        "birthPlace": "广西河池"
+      },
+      "question": "我在考虑是否加入一个创业团队，但担心团队关系复杂。从八字看我的合作/团队运如何？",
+      "expectedScoreRange": [55, 70],
+      "expectedKeywords": ["伤官", "合作", "团队", "挑剔", "高标准", "规则", "信任", "边界"],
+      "expectedSegments": ["分值", "观察期", "红线", "三窗口", "落一句最实在的话"],
+      "expectedRiskLevel": "medium",
+      "expectedRedLines": ["不因高标准压垮团队关系", "不把挑剔当沟通方式", "不在没谈清分工时加入"],
+      "notes": "v2 合作模块标杆 case。女方丙午日主火旺，伤官见官易挑剔，合作中需注意高质量沟通和边界管理。"
+    }
+  ]
+}

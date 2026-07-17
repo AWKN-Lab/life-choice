@@ -1,0 +1,399 @@
+{
+  "name": "liuren-shensha",
+  "version": "v1",
+  "rules": [
+    {
+      "id": "shensha-taisui",
+      "category": "shensha",
+      "priority": 20,
+      "source": "六壬神煞总览-岁煞",
+      "condition": {
+        "yearZhi": { "op": "eq", "value": "子" },
+        "dayZhi": { "op": "eq", "value": "子" }
+      },
+      "then": {
+        "name": "太岁",
+        "wuxing": "土",
+        "level": "吉",
+        "judgment": "主一年吉凶，临身或入传则事关重大，得之则尊，犯之则凶",
+        "applicable": ["国事", "大计", "官职"]
+      }
+    },
+    {
+      "id": "shensha-suipo",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-岁煞",
+      "condition": {
+        "dayZhi": { "op": "eq", "value": "午" }
+      },
+      "then": {
+        "name": "岁破",
+        "wuxing": "火",
+        "level": "凶",
+        "judgment": "主破败、耗失，不宜远行、签约",
+        "applicable": ["出行", "婚姻", "合作"]
+      }
+    },
+    {
+      "id": "shensha-bingfu",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-岁煞",
+      "condition": {
+        "yearZhi": { "op": "eq", "value": "子" },
+        "dayZhi": { "op": "eq", "value": "亥" }
+      },
+      "then": {
+        "name": "病符",
+        "wuxing": "水",
+        "level": "凶",
+        "judgment": "主旧病复发、陈年旧事纠缠",
+        "applicable": ["疾病", "旧事"]
+      }
+    },
+    {
+      "id": "shensha-yuede",
+      "category": "shensha",
+      "priority": 20,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "in", "value": ["1", "5", "9"] },
+        "dayGan": { "op": "eq", "value": "丙" }
+      },
+      "then": {
+        "name": "月德",
+        "wuxing": "火",
+        "level": "吉",
+        "judgment": "解百凶，增吉庆，遇之则贵人相助",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-yuede-2",
+      "category": "shensha",
+      "priority": 20,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "in", "value": ["2", "6", "10"] },
+        "dayGan": { "op": "eq", "value": "甲" }
+      },
+      "then": {
+        "name": "月德",
+        "wuxing": "木",
+        "level": "吉",
+        "judgment": "解百凶，增吉庆，遇之则贵人相助",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-yuede-3",
+      "category": "shensha",
+      "priority": 20,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "in", "value": ["3", "7", "11"] },
+        "dayGan": { "op": "eq", "value": "壬" }
+      },
+      "then": {
+        "name": "月德",
+        "wuxing": "水",
+        "level": "吉",
+        "judgment": "解百凶，增吉庆，遇之则贵人相助",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-yuede-4",
+      "category": "shensha",
+      "priority": 20,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "in", "value": ["4", "8", "12"] },
+        "dayGan": { "op": "eq", "value": "庚" }
+      },
+      "then": {
+        "name": "月德",
+        "wuxing": "金",
+        "level": "吉",
+        "judgment": "解百凶，增吉庆，遇之则贵人相助",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-yuejian",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "eq", "value": "寅" },
+        "monthNum": { "op": "eq", "value": "1" }
+      },
+      "then": {
+        "name": "月建",
+        "wuxing": "木",
+        "level": "吉",
+        "judgment": "主一月休祥，临事有威权",
+        "applicable": ["月内大事"]
+      }
+    },
+    {
+      "id": "shensha-shengqi",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "eq", "value": "1" },
+        "dayZhi": { "op": "eq", "value": "子" }
+      },
+      "then": {
+        "name": "生气",
+        "wuxing": "水",
+        "level": "吉",
+        "judgment": "主生机、孕育、新事业成就",
+        "applicable": ["生育", "新事", "创业"]
+      }
+    },
+    {
+      "id": "shensha-siqi",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "eq", "value": "1" },
+        "dayZhi": { "op": "eq", "value": "午" }
+      },
+      "then": {
+        "name": "死气",
+        "wuxing": "火",
+        "level": "凶",
+        "judgment": "主死丧、事败",
+        "applicable": ["疾病", "废事"]
+      }
+    },
+    {
+      "id": "shensha-yima",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["寅", "午", "戌"] }
+      },
+      "then": {
+        "name": "驿马",
+        "wuxing": "金",
+        "level": "动",
+        "judgment": "主远行、升迁、信息至",
+        "applicable": ["出行", "变动", "升迁"]
+      }
+    },
+    {
+      "id": "shensha-yima-2",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["巳", "酉", "丑"] }
+      },
+      "then": {
+        "name": "驿马",
+        "wuxing": "水",
+        "level": "动",
+        "judgment": "主远行、升迁、信息至",
+        "applicable": ["出行", "变动", "升迁"]
+      }
+    },
+    {
+      "id": "shensha-jiesha",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["寅", "午", "戌"] }
+      },
+      "then": {
+        "name": "劫煞",
+        "wuxing": "水",
+        "level": "凶",
+        "judgment": "主劫夺、突然灾祸",
+        "applicable": ["防盗", "灾祸"]
+      }
+    },
+    {
+      "id": "shensha-zaisha",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["寅", "午", "戌"] }
+      },
+      "then": {
+        "name": "灾煞",
+        "wuxing": "水",
+        "level": "凶",
+        "judgment": "主血光、横祸",
+        "applicable": ["病灾", "官非"]
+      }
+    },
+    {
+      "id": "shensha-tianzei",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["寅", "午", "戌"] }
+      },
+      "then": {
+        "name": "天贼",
+        "wuxing": "金",
+        "level": "凶",
+        "judgment": "主盗贼、丢失",
+        "applicable": ["失物", "被盗"]
+      }
+    },
+    {
+      "id": "shensha-tianxi",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthSeason": { "op": "eq", "value": "春" }
+      },
+      "then": {
+        "name": "天喜",
+        "wuxing": "土",
+        "level": "吉",
+        "judgment": "主喜庆、生育、升迁",
+        "applicable": ["婚姻", "喜事", "升迁"]
+      }
+    },
+    {
+      "id": "shensha-tianxi-2",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthSeason": { "op": "eq", "value": "夏" }
+      },
+      "then": {
+        "name": "天喜",
+        "wuxing": "土",
+        "level": "吉",
+        "judgment": "主喜庆、生育、升迁",
+        "applicable": ["婚姻", "喜事", "升迁"]
+      }
+    },
+    {
+      "id": "shensha-chengshen",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-月煞",
+      "condition": {
+        "monthNum": { "op": "eq", "value": "1" }
+      },
+      "then": {
+        "name": "成神",
+        "wuxing": "火",
+        "level": "吉",
+        "judgment": "主成功、成就",
+        "applicable": ["谋事", "签约"]
+      }
+    },
+    {
+      "id": "shensha-xunkong",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-旬煞",
+      "condition": {
+        "xunKong": { "op": "contains", "value": "戌" }
+      },
+      "then": {
+        "name": "旬空",
+        "wuxing": "土",
+        "level": "凶",
+        "judgment": "主虚、不实、等待、空忙",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-xunkong-2",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-旬煞",
+      "condition": {
+        "xunKong": { "op": "contains", "value": "亥" }
+      },
+      "then": {
+        "name": "旬空",
+        "wuxing": "水",
+        "level": "凶",
+        "judgment": "主虚、不实、等待、空忙",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-rigui",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-干煞",
+      "condition": {
+        "dayGan": { "op": "eq", "value": "甲" }
+      },
+      "then": {
+        "name": "日德",
+        "wuxing": "木",
+        "level": "吉",
+        "judgment": "主有德、得助，逢寅日德在寅",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-rigui-2",
+      "category": "shensha",
+      "priority": 15,
+      "source": "六壬神煞总览-干煞",
+      "condition": {
+        "dayGan": { "op": "eq", "value": "乙" }
+      },
+      "then": {
+        "name": "日德",
+        "wuxing": "金",
+        "level": "吉",
+        "judgment": "主有德、得助，逢申日德在申",
+        "applicable": ["诸事"]
+      }
+    },
+    {
+      "id": "shensha-zhihai",
+      "category": "shensha",
+      "priority": 10,
+      "source": "六壬神煞总览-支煞",
+      "condition": {
+        "dayZhi": { "op": "eq", "value": "子" }
+      },
+      "then": {
+        "name": "支害（子未害）",
+        "wuxing": "土",
+        "level": "凶",
+        "judgment": "主暗害、不和，子未相害",
+        "applicable": ["人际关系", "合作"]
+      }
+    },
+    {
+      "id": "shensha-huagai",
+      "category": "shensha",
+      "priority": 5,
+      "source": "六壬神煞总览-特殊神煞",
+      "condition": {
+        "dayZhi": { "op": "in", "value": ["寅", "午", "戌"] }
+      },
+      "then": {
+        "name": "华盖",
+        "wuxing": "土",
+        "level": "晦",
+        "judgment": "主孤高、僧道、艺术天赋，适合独立创作，不适合社交合作",
+        "applicable": ["僧道", "艺术", "创作"]
+      }
+    }
+  ]
+}

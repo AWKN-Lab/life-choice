@@ -1,0 +1,6 @@
+0x2f04 expected=乙 got=乙 ok=True
+0x2f90 expected=見 got=見 ok=True
+0x2fc0 expected=魚 got=魚 ok=True
+0x2fd3 expected=龠 got=龠 ok=True
+total: 212 mappings
+char map fixed

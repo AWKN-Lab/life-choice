@@ -1,0 +1,705 @@
+/* ===== UI Style Themes — 5种风格系统 ===== */
+/* 所有风格基于 data-style 属性切换，不影响现有网站代码 */
+
+/* ============================================ */
+/* 风格1：水墨国风 (ink-wash) */
+/* ============================================ */
+[data-style="ink-wash"] {
+  --primary: 30 25% 45%;           /* 赭石棕 #8b7355 */
+  --primary-light: 30 20% 60%;     /* 浅赭 #b8a080 */
+  --primary-dim: 30 30% 35%;       /* 深赭 #6b5a3e */
+  --secondary: 180 15% 40%;        /* 青灰 #5a7a7a */
+  --secondary-container: 180 15% 50%;
+  --tertiary: 0 30% 45%;           /* 朱砂红 #a06060 */
+
+  --surface-base: 40 15% 94%;       /* 宣纸白 #f0ece4 */
+  --surface-container: 40 10% 90%;  /* 米白 #e8e4dc */
+  --surface-container-low: 40 10% 92%;
+  --surface-container-lowest: 40 15% 96%;
+  --surface-container-high: 40 8% 86%;
+
+  --on-surface: 30 20% 18%;         /* 墨黑 #2d2520 */
+  --on-surface-variant: 30 12% 45%; /* 灰褐 #7a6e60 */
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 30 10% 65%;
+  --outline-variant: 30 10% 80%;
+  --error: 0 50% 50%;
+
+  --border: 30 10% 80%;
+  --input: 30 10% 80%;
+  --ring: 30 25% 45%;
+
+  --background: 40 15% 94%;
+  --foreground: 30 20% 18%;
+
+  --muted: 40 10% 90%;
+  --muted-foreground: 30 12% 45%;
+
+  --accent: 40 10% 86%;
+  --accent-foreground: 30 20% 18%;
+
+  --popover: 40 15% 96%;
+  --popover-foreground: 30 20% 18%;
+
+  --card: 40 15% 96%;
+  --card-foreground: 30 20% 18%;
+
+  --destructive: 0 50% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 4px;
+
+  --primary-container: 30 20% 80%;
+
+  --shumiyuan-deep: 40 10% 88%;
+  --shumiyuan-graphite: 40 8% 82%;
+  --shumiyuan-ink: 30 20% 18%;
+  --shumiyuan-gold-glow: 30 25% 45%;
+  --shumiyuan-violet-glow: 180 15% 40%;
+  --shumiyuan-risk: 0 40% 50%;
+  --shumiyuan-safe: 150 30% 40%;
+  --shumiyuan-warn: 35 50% 50%;
+}
+
+[data-style="ink-wash"] body {
+  font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c8b8' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-style="ink-wash"] h1,
+[data-style="ink-wash"] h2,
+[data-style="ink-wash"] h3,
+[data-style="ink-wash"] h4,
+[data-style="ink-wash"] h5,
+[data-style="ink-wash"] h6 {
+  font-family: 'Noto Serif SC', 'STKaiti', 'KaiTi', serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+[data-style="ink-wash"] .card,
+[data-style="ink-wash"] .glass-card {
+  border-radius: 4px;
+  border: 1px solid hsl(var(--outline) / 0.3);
+  box-shadow: 0 2px 8px hsl(var(--shumiyuan-ink) / 0.06);
+}
+
+[data-style="ink-wash"] .gold-shimmer {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dim)) 100%);
+  border-radius: 4px;
+}
+
+/* ============================================ */
+/* 风格2：极简禅意 (zen) */
+/* ============================================ */
+[data-style="zen"] {
+  --primary: 160 20% 40%;           /* 竹青 #527a6b */
+  --primary-light: 160 15% 55%;     /* 浅竹 #8ab3a3 */
+  --primary-dim: 160 25% 30%;       /* 深竹 #3d5c4f */
+  --secondary: 200 10% 50%;         /* 雾蓝 #7a8a94 */
+  --secondary-container: 200 10% 60%;
+  --tertiary: 35 30% 55%;           /* 暖沙 #b8a078 */
+
+  --surface-base: 0 0% 98%;         /* 素白 #fafafa */
+  --surface-container: 0 0% 96%;    /* 浅灰 #f5f5f5 */
+  --surface-container-low: 0 0% 97%;
+  --surface-container-lowest: 0 0% 99%;
+  --surface-container-high: 0 0% 94%;
+
+  --on-surface: 0 0% 20%;           /* 炭灰 #333333 */
+  --on-surface-variant: 0 0% 50%;   /* 中灰 #808080 */
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 0 0% 80%;
+  --outline-variant: 0 0% 90%;
+  --error: 0 40% 55%;
+
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --ring: 160 20% 40%;
+
+  --background: 0 0% 98%;
+  --foreground: 0 0% 20%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 50%;
+
+  --accent: 0 0% 94%;
+  --accent-foreground: 0 0% 20%;
+
+  --popover: 0 0% 99%;
+  --popover-foreground: 0 0% 20%;
+
+  --card: 0 0% 99%;
+  --card-foreground: 0 0% 20%;
+
+  --destructive: 0 40% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 2px;
+
+  --primary-container: 160 15% 85%;
+
+  --shumiyuan-deep: 0 0% 94%;
+  --shumiyuan-graphite: 0 0% 90%;
+  --shumiyuan-ink: 0 0% 20%;
+  --shumiyuan-gold-glow: 160 20% 40%;
+  --shumiyuan-violet-glow: 200 10% 50%;
+  --shumiyuan-risk: 0 35% 50%;
+  --shumiyuan-safe: 160 30% 40%;
+  --shumiyuan-warn: 35 40% 55%;
+}
+
+[data-style="zen"] body {
+  font-family: 'Manrope', 'Noto Sans SC', -apple-system, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+[data-style="zen"] h1,
+[data-style="zen"] h2,
+[data-style="zen"] h3,
+[data-style="zen"] h4,
+[data-style="zen"] h5,
+[data-style="zen"] h6 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+[data-style="zen"] .card,
+[data-style="zen"] .glass-card {
+  border-radius: 2px;
+  border: 1px solid hsl(var(--outline) / 0.15);
+  box-shadow: none;
+}
+
+[data-style="zen"] .card-hover:hover,
+[data-style="zen"] .glass-card:hover {
+  box-shadow: 0 4px 16px hsl(var(--shumiyuan-ink) / 0.04);
+  transform: translateY(-1px);
+}
+
+[data-style="zen"] .gold-shimmer {
+  background: hsl(var(--primary));
+  border-radius: 2px;
+}
+
+[data-style="zen"] .bottom-nav {
+  border-top: 1px solid hsl(var(--outline) / 0.1);
+}
+
+/* ============================================ */
+/* 风格3：赛博命理 (cyber) */
+/* ============================================ */
+[data-style="cyber"] {
+  --primary: 180 100% 50%;          /* 电青 #00ffff */
+  --primary-light: 180 100% 65%;    /* 亮青 #66ffff */
+  --primary-dim: 180 100% 35%;      /* 深青 #00b3b3 */
+  --secondary: 300 100% 60%;        /* 品红 #ff33ff */
+  --secondary-container: 300 100% 50%;
+  --tertiary: 60 100% 50%;          /* 电黄 #ffff00 */
+
+  --surface-base: 220 50% 5%;       /* 深空黑 #060d1a */
+  --surface-container: 220 40% 8%;  /* 暗蓝 #0d1a2d */
+  --surface-container-low: 220 40% 6%;
+  --surface-container-lowest: 220 50% 3%;
+  --surface-container-high: 220 35% 12%;
+
+  --on-surface: 180 30% 90%;        /* 青白 #d4f0f0 */
+  --on-surface-variant: 180 20% 60%; /* 暗青 #7a9999 */
+  --on-primary: 220 50% 5%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 180 30% 30%;
+  --outline-variant: 180 20% 20%;
+  --error: 340 100% 60%;
+
+  --border: 180 30% 20%;
+  --input: 180 30% 20%;
+  --ring: 180 100% 50%;
+
+  --background: 220 50% 5%;
+  --foreground: 180 30% 90%;
+
+  --muted: 220 40% 8%;
+  --muted-foreground: 180 20% 60%;
+
+  --accent: 220 35% 12%;
+  --accent-foreground: 180 30% 90%;
+
+  --popover: 220 40% 6%;
+  --popover-foreground: 180 30% 90%;
+
+  --card: 220 40% 6%;
+  --card-foreground: 180 30% 90%;
+
+  --destructive: 340 100% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 0px;
+
+  --primary-container: 180 50% 30%;
+
+  --shumiyuan-deep: 220 40% 6%;
+  --shumiyuan-graphite: 220 35% 10%;
+  --shumiyuan-ink: 220 50% 3%;
+  --shumiyuan-gold-glow: 180 100% 50%;
+  --shumiyuan-violet-glow: 300 100% 60%;
+  --shumiyuan-risk: 340 100% 60%;
+  --shumiyuan-safe: 160 100% 45%;
+  --shumiyuan-warn: 60 100% 50%;
+}
+
+[data-style="cyber"] body {
+  font-family: 'Manrope', 'Noto Sans SC', monospace, sans-serif;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+[data-style="cyber"] h1,
+[data-style="cyber"] h2,
+[data-style="cyber"] h3,
+[data-style="cyber"] h4,
+[data-style="cyber"] h5,
+[data-style="cyber"] h6 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+[data-style="cyber"] .card,
+[data-style="cyber"] .glass-card {
+  border-radius: 0;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  box-shadow:
+    0 0 10px hsl(var(--primary) / 0.1),
+    inset 0 0 20px hsl(var(--primary) / 0.02);
+  clip-path: polygon(
+    0 8px, 8px 0,
+    calc(100% - 8px) 0, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 0 calc(100% - 8px)
+  );
+}
+
+[data-style="cyber"] .card-hover:hover,
+[data-style="cyber"] .glass-card:hover {
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow:
+    0 0 20px hsl(var(--primary) / 0.2),
+    inset 0 0 30px hsl(var(--primary) / 0.05);
+}
+
+[data-style="cyber"] .gold-shimmer {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  border-radius: 0;
+  clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));
+}
+
+[data-style="cyber"] .input-mystic,
+[data-style="cyber"] .input-shumiyuan {
+  border-radius: 0;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  background: hsl(var(--surface-container) / 0.8);
+}
+
+[data-style="cyber"] .bottom-nav {
+  border-top: 1px solid hsl(var(--primary) / 0.2);
+  background: hsl(var(--surface-container-lowest) / 0.95);
+}
+
+/* ============================================ */
+/* 风格4：新中式轻奢 (luxury) */
+/* ============================================ */
+[data-style="luxury"] {
+  --primary: 30 60% 45%;            /* 鎏金 #b8860b */
+  --primary-light: 40 70% 60%;      /* 亮金 #d4a843 */
+  --primary-dim: 25 50% 35%;        /* 暗金 #8b6914 */
+  --secondary: 350 40% 45%;         /* 胭脂 #a05060 */
+  --secondary-container: 350 40% 55%;
+  --tertiary: 160 30% 40%;          /* 翡翠 #4a7a6a */
+
+  --surface-base: 30 20% 8%;        /* 玄黑 #1a1612 */
+  --surface-container: 30 15% 12%;  /* 墨褐 #241f1a */
+  --surface-container-low: 30 15% 10%;
+  --surface-container-lowest: 30 20% 5%;
+  --surface-container-high: 30 12% 16%;
+
+  --on-surface: 40 30% 90%;         /* 米白 #e8dcc8 */
+  --on-surface-variant: 35 20% 65%; /* 暖灰 #b8a890 */
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 30 20% 35%;
+  --outline-variant: 30 15% 25%;
+  --error: 0 50% 55%;
+
+  --border: 30 15% 20%;
+  --input: 30 15% 20%;
+  --ring: 30 60% 45%;
+
+  --background: 30 20% 8%;
+  --foreground: 40 30% 90%;
+
+  --muted: 30 15% 12%;
+  --muted-foreground: 35 20% 65%;
+
+  --accent: 30 12% 16%;
+  --accent-foreground: 40 30% 90%;
+
+  --popover: 30 15% 10%;
+  --popover-foreground: 40 30% 90%;
+
+  --card: 30 15% 10%;
+  --card-foreground: 40 30% 90%;
+
+  --destructive: 0 50% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 16px;
+
+  --primary-container: 30 40% 30%;
+
+  --shumiyuan-deep: 30 15% 10%;
+  --shumiyuan-graphite: 30 12% 14%;
+  --shumiyuan-ink: 30 20% 5%;
+  --shumiyuan-gold-glow: 30 60% 45%;
+  --shumiyuan-violet-glow: 350 40% 55%;
+  --shumiyuan-risk: 0 45% 50%;
+  --shumiyuan-safe: 160 30% 40%;
+  --shumiyuan-warn: 40 60% 50%;
+}
+
+[data-style="luxury"] body {
+  font-family: 'Noto Serif SC', 'STSong', serif;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, hsl(var(--secondary) / 0.05) 0%, transparent 50%);
+}
+
+[data-style="luxury"] h1,
+[data-style="luxury"] h2,
+[data-style="luxury"] h3,
+[data-style="luxury"] h4,
+[data-style="luxury"] h5,
+[data-style="luxury"] h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+[data-style="luxury"] .card,
+[data-style="luxury"] .glass-card {
+  border-radius: 16px;
+  border: 1px solid hsl(var(--primary) / 0.2);
+  box-shadow:
+    0 4px 24px hsl(var(--shumiyuan-ink) / 0.4),
+    0 0 0 1px hsl(var(--primary) / 0.05);
+}
+
+[data-style="luxury"] .card-hover:hover,
+[data-style="luxury"] .glass-card:hover {
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow:
+    0 8px 40px hsl(var(--shumiyuan-ink) / 0.5),
+    0 0 30px hsl(var(--primary) / 0.1);
+}
+
+[data-style="luxury"] .gold-shimmer {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--primary)) 100%);
+  border-radius: 16px;
+}
+
+[data-style="luxury"] .text-gold-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary-light)) 0%, hsl(var(--primary)) 50%, hsl(var(--primary-dim)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-style="luxury"] .bottom-nav {
+  border-top: 1px solid hsl(var(--primary) / 0.1);
+  background: linear-gradient(180deg, hsl(var(--shumiyuan-ink) / 0.9) 0%, hsl(var(--shumiyuan-deep) / 0.95) 100%);
+}
+
+/* ============================================ */
+/* 风格5：暗黑神秘 (mystic-dark) */
+/* ============================================ */
+[data-style="mystic-dark"] {
+  --primary: 270 60% 55%;           /* 紫晶 #8b5cf6 */
+  --primary-light: 270 70% 70%;     /* 亮紫 #b8a0f8 */
+  --primary-dim: 270 50% 40%;       /* 深紫 #6b3fa0 */
+  --secondary: 320 60% 50%;         /* 玫红 #c040a0 */
+  --secondary-container: 320 60% 55%;
+  --tertiary: 180 60% 45%;          /* 幽蓝 #2d8a8a */
+
+  --surface-base: 260 30% 6%;       /* 深渊 #0f0a1a */
+  --surface-container: 260 25% 10%; /* 暗紫 #1a1426 */
+  --surface-container-low: 260 25% 8%;
+  --surface-container-lowest: 260 30% 4%;
+  --surface-container-high: 260 20% 14%;
+
+  --on-surface: 270 30% 90%;        /* 月白 #d4c8f0 */
+  --on-surface-variant: 270 20% 60%; /* 雾紫 #8a7aaa */
+  --on-primary: 0 0% 100%;
+  --on-secondary: 0 0% 100%;
+
+  --outline: 270 20% 30%;
+  --outline-variant: 270 15% 20%;
+  --error: 340 70% 55%;
+
+  --border: 270 20% 20%;
+  --input: 270 20% 20%;
+  --ring: 270 60% 55%;
+
+  --background: 260 30% 6%;
+  --foreground: 270 30% 90%;
+
+  --muted: 260 25% 10%;
+  --muted-foreground: 270 20% 60%;
+
+  --accent: 260 20% 14%;
+  --accent-foreground: 270 30% 90%;
+
+  --popover: 260 25% 8%;
+  --popover-foreground: 270 30% 90%;
+
+  --card: 260 25% 8%;
+  --card-foreground: 270 30% 90%;
+
+  --destructive: 340 70% 55%;
+  --destructive-foreground: 0 0% 100%;
+
+  --radius: 12px;
+
+  --primary-container: 270 40% 30%;
+
+  --shumiyuan-deep: 260 25% 8%;
+  --shumiyuan-graphite: 260 20% 12%;
+  --shumiyuan-ink: 260 30% 4%;
+  --shumiyuan-gold-glow: 270 60% 55%;
+  --shumiyuan-violet-glow: 320 60% 60%;
+  --shumiyuan-risk: 340 60% 50%;
+  --shumiyuan-safe: 160 50% 40%;
+  --shumiyuan-warn: 35 60% 50%;
+}
+
+[data-style="mystic-dark"] body {
+  font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+  background-image:
+    radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, hsl(var(--tertiary) / 0.03) 0%, transparent 60%);
+}
+
+[data-style="mystic-dark"] h1,
+[data-style="mystic-dark"] h2,
+[data-style="mystic-dark"] h3,
+[data-style="mystic-dark"] h4,
+[data-style="mystic-dark"] h5,
+[data-style="mystic-dark"] h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+[data-style="mystic-dark"] .card,
+[data-style="mystic-dark"] .glass-card {
+  border-radius: 12px;
+  border: 1px solid hsl(var(--primary) / 0.15);
+  background: linear-gradient(135deg, hsl(var(--surface-container) / 0.8) 0%, hsl(var(--surface-container-low) / 0.6) 100%);
+  box-shadow:
+    0 4px 24px hsl(var(--shumiyuan-ink) / 0.5),
+    0 0 0 1px hsl(var(--primary) / 0.05),
+    inset 0 1px 0 hsl(var(--primary) / 0.05);
+}
+
+[data-style="mystic-dark"] .card-hover:hover,
+[data-style="mystic-dark"] .glass-card:hover {
+  border-color: hsl(var(--primary) / 0.35);
+  box-shadow:
+    0 8px 40px hsl(var(--shumiyuan-ink) / 0.6),
+    0 0 30px hsl(var(--primary) / 0.1),
+    inset 0 1px 0 hsl(var(--primary) / 0.1);
+}
+
+[data-style="mystic-dark"] .gold-shimmer {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  border-radius: 12px;
+}
+
+[data-style="mystic-dark"] .text-gold-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary-light)) 0%, hsl(var(--primary)) 50%, hsl(var(--secondary)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-style="mystic-dark"] .bottom-nav {
+  border-top: 1px solid hsl(var(--primary) / 0.08);
+  background: linear-gradient(180deg, hsl(var(--shumiyuan-ink) / 0.9) 0%, hsl(var(--shumiyuan-deep) / 0.95) 100%);
+}
+
+/* ============================================ */
+/* 风格切换器样式 */
+/* ============================================ */
+.style-switcher-trigger {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  color: hsl(var(--on-primary));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px hsl(var(--primary) / 0.3);
+  transition: all 0.3s ease;
+}
+
+.style-switcher-trigger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px hsl(var(--primary) / 0.4);
+}
+
+.style-switcher-trigger:active {
+  transform: scale(0.95);
+}
+
+.style-switcher-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 240px;
+  background: hsl(var(--surface-container) / 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsl(var(--outline) / 0.15);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 16px 48px hsl(var(--shumiyuan-ink) / 0.3);
+}
+
+.style-switcher-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid hsl(var(--outline) / 0.1);
+  font-weight: 600;
+  font-size: 14px;
+  color: hsl(var(--on-surface));
+}
+
+.style-switcher-header .close-btn {
+  background: none;
+  border: none;
+  color: hsl(var(--on-surface-variant));
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.style-switcher-header .close-btn:hover {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--on-surface));
+}
+
+.style-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.style-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  color: hsl(var(--on-surface));
+}
+
+.style-item:hover {
+  background: hsl(var(--primary) / 0.08);
+}
+
+.style-item.active {
+  background: hsl(var(--primary) / 0.12);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.style-item .material-symbols-outlined {
+  font-size: 20px;
+  color: hsl(var(--primary));
+}
+
+.style-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.style-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.style-desc {
+  font-size: 11px;
+  color: hsl(var(--on-surface-variant));
+}
+
+.style-switcher-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid hsl(var(--outline) / 0.1);
+}
+
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: none;
+  border: 1px solid hsl(var(--outline) / 0.15);
+  cursor: pointer;
+  color: hsl(var(--on-surface));
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.mode-toggle:hover {
+  background: hsl(var(--primary) / 0.08);
+  border-color: hsl(var(--primary) / 0.25);
+}
+
+/* ============================================ */
+/* 响应式适配 */
+/* ============================================ */
+@media (max-width: 640px) {
+  .style-switcher-panel {
+    width: 200px;
+    right: -10px;
+  }
+}

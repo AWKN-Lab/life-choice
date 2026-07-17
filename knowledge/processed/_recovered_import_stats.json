@@ -1,0 +1,219 @@
+{
+  "total": 340,
+  "success": 309,
+  "skip": 3,
+  "extract_fail": 0,
+  "too_short": 28,
+  "split_fail": 0,
+  "write_fail": 0,
+  "total_passages": 76612,
+  "elapsed_seconds": 389.23,
+  "type_dist": {
+    "epub_direct": 25,
+    "docx_direct": 311,
+    "unknown": 2,
+    "txt": 1,
+    "error: File is not a zip file": 1
+  },
+  "system_dist": {
+    "ziwei": 6,
+    "liuyao": 188,
+    "other": 62,
+    "liuren": 13,
+    "bazi": 23,
+    "zhouyi": 4,
+    "meihua": 6,
+    "xiangshu": 1,
+    "daoism": 5,
+    "fengshui": 1
+  },
+  "failures_count": 31,
+  "failures_sample": [
+    {
+      "sha": "72245cd9cababc246b42e8013d17df2e40d3a129",
+      "short_sha": "72245cd9caba",
+      "status": "too_short",
+      "reason": "text_length=89"
+    },
+    {
+      "sha": "744dbb5a0aa98d4333698ef4974adb907b3adce7",
+      "short_sha": "744dbb5a0aa9",
+      "status": "too_short",
+      "reason": "text_length=77"
+    },
+    {
+      "sha": "76b4dfc717a334af2eee22c80f09451758507f71",
+      "short_sha": "76b4dfc717a3",
+      "status": "too_short",
+      "reason": "text_length=94"
+    },
+    {
+      "sha": "772fcc76dbbfe225bbbe6795825f0b4f1517f0a5",
+      "short_sha": "772fcc76dbbf",
+      "status": "too_short",
+      "reason": "text_length=0"
+    },
+    {
+      "sha": "7a306b838e24880383db1f7c233f930044382a8a",
+      "short_sha": "7a306b838e24",
+      "status": "too_short",
+      "reason": "text_length=91"
+    },
+    {
+      "sha": "7d587c4f08724d80b9f1a050e543c7a1c2f3c372",
+      "short_sha": "7d587c4f0872",
+      "status": "too_short",
+      "reason": "text_length=71"
+    },
+    {
+      "sha": "83058ab6d3332cf45b08ad09a029f42ee07f792a",
+      "short_sha": "83058ab6d333",
+      "status": "too_short",
+      "reason": "text_length=21"
+    },
+    {
+      "sha": "85a812e5e55951a23eadefaf545235916d4d9271",
+      "short_sha": "85a812e5e559",
+      "status": "too_short",
+      "reason": "text_length=73"
+    },
+    {
+      "sha": "88afa120d5327844daa6cd085033715ebd650a24",
+      "short_sha": "88afa120d532",
+      "status": "too_short",
+      "reason": "text_length=92"
+    },
+    {
+      "sha": "8bf1541413c2e2e57242cf8c25903fce21f41a45",
+      "short_sha": "8bf1541413c2",
+      "status": "too_short",
+      "reason": "text_length=62"
+    },
+    {
+      "sha": "9157e220a07564551379457a8ac3c253c7e52445",
+      "short_sha": "9157e220a075",
+      "status": "too_short",
+      "reason": "text_length=83"
+    },
+    {
+      "sha": "937b236b38d6131eab7a07954ef4e97bcb6c6ad8",
+      "short_sha": "937b236b38d6",
+      "status": "too_short",
+      "reason": "text_length=91"
+    },
+    {
+      "sha": "944f8add9ac81f7c1176ecd5eef713bf0ac643e6",
+      "short_sha": "944f8add9ac8",
+      "status": "too_short",
+      "reason": "text_length=98"
+    },
+    {
+      "sha": "a06ce14e08d9667d536c02c1406e4d1234525d39",
+      "short_sha": "a06ce14e08d9",
+      "status": "skip",
+      "reason": "type=unknown"
+    },
+    {
+      "sha": "a5b707d7730385dfee4f539013ba966112154794",
+      "short_sha": "a5b707d77303",
+      "status": "too_short",
+      "reason": "text_length=0"
+    },
+    {
+      "sha": "a6e8f6384b72056702a8ed775f4b8df806af2221",
+      "short_sha": "a6e8f6384b72",
+      "status": "too_short",
+      "reason": "text_length=97"
+    },
+    {
+      "sha": "a8d68b7e3cc80b8ddabb200b40b4715fccc2e728",
+      "short_sha": "a8d68b7e3cc8",
+      "status": "too_short",
+      "reason": "text_length=78"
+    },
+    {
+      "sha": "b3bf3b8400f6d6b40813496042dde4f428688152",
+      "short_sha": "b3bf3b8400f6",
+      "status": "too_short",
+      "reason": "text_length=94"
+    },
+    {
+      "sha": "b3e2d3a0b2f4a73f1e8b71684ad850b3222dc5b8",
+      "short_sha": "b3e2d3a0b2f4",
+      "status": "too_short",
+      "reason": "text_length=1"
+    },
+    {
+      "sha": "b6b646b0c00c16cb27a2cc712b241d9183bc9310",
+      "short_sha": "b6b646b0c00c",
+      "status": "skip",
+      "reason": "type=unknown"
+    },
+    {
+      "sha": "c70aa5d7b91210d12fa27bf40f4570eccbe286a2",
+      "short_sha": "c70aa5d7b912",
+      "status": "too_short",
+      "reason": "text_length=23"
+    },
+    {
+      "sha": "cdf6c90e7d9edbff40e49816bea533c1dade9dce",
+      "short_sha": "cdf6c90e7d9e",
+      "status": "too_short",
+      "reason": "text_length=95"
+    },
+    {
+      "sha": "ddd25ffa86d84b5427c7dc07bd8d4cca4e7eccd5",
+      "short_sha": "ddd25ffa86d8",
+      "status": "too_short",
+      "reason": "text_length=98"
+    },
+    {
+      "sha": "e38afcd3f908becd3c8934d40b1518390e3a182e",
+      "short_sha": "e38afcd3f908",
+      "status": "too_short",
+      "reason": "text_length=92"
+    },
+    {
+      "sha": "e3d957aa7eca033827d4aeda68f70cad41c81595",
+      "short_sha": "e3d957aa7eca",
+      "status": "skip",
+      "reason": "type=error: File is not a zip file"
+    },
+    {
+      "sha": "e3e85779ec16185f08ceb06f0f13e68bf1279a6f",
+      "short_sha": "e3e85779ec16",
+      "status": "too_short",
+      "reason": "text_length=99"
+    },
+    {
+      "sha": "e6c6e02867f0aa0bf796548ef46fcc574c893564",
+      "short_sha": "e6c6e02867f0",
+      "status": "too_short",
+      "reason": "text_length=90"
+    },
+    {
+      "sha": "f1da6d16e6d0b8948dcb041fe30da1ac3a4ccf52",
+      "short_sha": "f1da6d16e6d0",
+      "status": "too_short",
+      "reason": "text_length=78"
+    },
+    {
+      "sha": "f52b582dd8407dd253e6e588545df7b1d6e346e4",
+      "short_sha": "f52b582dd840",
+      "status": "too_short",
+      "reason": "text_length=88"
+    },
+    {
+      "sha": "f571b3fe5169c079b5efa9c9f8d53b40b664e51d",
+      "short_sha": "f571b3fe5169",
+      "status": "too_short",
+      "reason": "text_length=90"
+    },
+    {
+      "sha": "fede3f99012223f66c04ddae0871d2e695846f3a",
+      "short_sha": "fede3f990122",
+      "status": "too_short",
+      "reason": "text_length=94"
+    }
+  ]
+}

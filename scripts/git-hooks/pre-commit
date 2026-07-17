@@ -1,0 +1,35 @@
+#!/bin/sh
+# DEPRECATED: 此文件已被 .husky/pre-commit 替代，请勿使用
+# 类型债务门禁 - pre-commit hook
+# 作用: 提交前运行 tsc --noEmit，有错误则阻止提交
+# 启用方式: npm run setup:hooks
+# 跳过方式: git commit --no-verify（仅紧急情况）
+
+echo "🔍 运行 TypeScript 类型检查..."
+
+# 切换到 app 目录（hook 从仓库根目录运行）
+APP_DIR="$(git rev-parse --show-toplevel)/apps/AWKN-LABlife/app"
+
+if [ ! -d "$APP_DIR" ]; then
+  echo "⚠️  未找到 app 目录: $APP_DIR，跳过类型检查"
+  exit 0
+fi
+
+cd "$APP_DIR"
+
+# 运行类型检查
+OUTPUT=$(npx tsc -p tsconfig.app.json --noEmit 2>&1)
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "❌ 类型检查失败，提交被阻止"
+  echo ""
+  echo "$OUTPUT" | grep "error TS" | head -20
+  echo ""
+  echo "修复后重新提交，或紧急情况用: git commit --no-verify"
+  echo "运行完整报告: cd apps/AWKN-LABlife/app && npm run typecheck:report"
+  exit 1
+fi
+
+echo "✅ 类型检查通过 (0 errors)"
+exit 0

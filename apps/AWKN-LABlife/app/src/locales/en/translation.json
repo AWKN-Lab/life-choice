@@ -1,0 +1,1877 @@
+{
+  "homePage": {
+    "secondary": {
+      "klineExample": "Destiny K-Line Preview",
+      "klineExampleDesc": "Eastern divination reveals your life rhythm — see the rises, turns, and key shifts",
+      "klineExampleCta": "View Your K-Line",
+      "namingExample": "Naming Preview",
+      "namingExampleDesc": "Bazi five-element matching, sound-form-meaning balance, and pitfall avoidance",
+      "namingExampleCta": "Start Naming",
+      "questionExample": "Question Result Preview",
+      "questionExampleDesc": "Da Liu Ren & Qi Men reveal the present — see pros, cons, and timing",
+      "questionExampleCta": "Start Asking",
+      "historyEntry": "History",
+      "historyEntryDesc": "View your past consultation records",
+      "historyEntryCta": "View Records",
+      "membershipEntry": "Membership Benefits",
+      "membershipEntryDesc": "Unlock full readings, HD posters, and deep analysis",
+      "membershipEntryCta": "Learn More"
+    }
+  },
+  "app": {
+    "name": "Life Decision Master",
+    "tagline": "STRATEGIC LIFE oracle"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "consult": "Consult",
+    "membership": "Membership",
+    "history": "History",
+    "profile": "Profile"
+  },
+  "hero": {
+    "title": "Destiny has no {{highlight}}standard answer{{/highlight}}but strategy has {{highlight2}}optimal solution{{/highlight2}}",
+    "subtitle": "Delivering a definitive coordinate system in an uncertain world",
+    "ctaPrimary": "Start Consultation",
+    "ctaSecondary": "Learn More"
+  },
+  "home": {
+    "hero": {
+      "title": "Mr. Banshan",
+      "subtitle": "I help you see the cost, not make the decision",
+      "oneLiner": "You ask, I calculate, the cost is clear, you decide",
+      "inputPlaceholder": "Tell me your question...",
+      "submitButton": "Ask Zhang Banshan"
+    },
+    "quickQuestions": {
+      "canItWork": "Will it work?",
+      "willHappen": "Will it happen?",
+      "shouldDo": "Should I do it?",
+      "whenHappen": "When will it happen?",
+      "fortuneThisYear": "This year's fortune",
+      "careerFortune": "Career luck"
+    },
+    "domains": {
+      "career": "Career",
+      "careerDesc": "Job/Startup/Transition",
+      "love": "Love",
+      "loveDesc": "Relationships/Reunion",
+      "wealth": "Wealth",
+      "wealthDesc": "Investment/Fortune",
+      "family": "Family",
+      "familyDesc": "Parent-Child/Relations",
+      "naming": "Naming",
+      "namingDesc": "Baby naming/Rename",
+      "lifeKLine": "Destiny K-Line",
+      "lifeKLineDesc": "See your rising periods, turning points and key years"
+    },
+    "destinyKlineTitle": "Generate Your Destiny K-Line",
+    "destinyKlineSubtitle": "See your rising periods, turning points and key years",
+    "destinyKlineCta": "Generate My Destiny K-Line",
+    "entries": {
+      "heading": "Choose Your Decision Gateway",
+      "subheading": "Three paths, one answer",
+      "kline": {
+        "title": "Destiny K-Line",
+        "description": "See your life's rising periods, turning points and key years — turn vague intuition into clear data",
+        "cta": "Generate My K-Line"
+      },
+      "naming": {
+        "title": "Naming",
+        "description": "Baby names, adult rename, brand naming — find the perfect name through Bazi, phonetics, meaning and form",
+        "cta": "Find a Good Name"
+      },
+      "question": {
+        "title": "Ask",
+        "description": "Should I switch jobs? Can this relationship continue? Lay out what's troubling you and get a definitive answer",
+        "cta": "Get Answers"
+      }
+    }
+  },
+  "klineIntro": {
+    "title": "Generate My Destiny K-Line",
+    "subtitle": "See life stages, career & wealth trends, and key years",
+    "step": "Step {{step}}/{{total}}",
+    "info": "Destiny K-Line is calculated from BaZi life chart and DaYun cycles, showing your life's overall trends and key years. More accurate birth info leads to more precise results.",
+    "cta": "Start Generating"
+  },
+  "naming": {
+    "title": "Find a Good Name",
+    "subtitle": "Let me help you set a naming direction. Are you naming a baby, renaming as an adult, or naming a brand?",
+    "step": "Step {{step}}/{{total}}",
+    "step1Question": "Who are you naming for?",
+    "types": {
+      "baby": { "title": "Baby Naming", "desc": "Find a great name for a newborn" },
+      "adult": { "title": "Adult Rename", "desc": "Improve fortune, start a new chapter" },
+      "brand": { "title": "Brand Naming", "desc": "Name your company or product" }
+    },
+    "babyStep2Title": "Additional Info",
+    "adultStep2Title": "Additional Info",
+    "brandStep2Title": "Additional Info",
+    "babySurname": "Surname",
+    "babySurnamePlaceholder": "e.g. Smith",
+    "adultOriginalName": "Current Name",
+    "adultOriginalNamePlaceholder": "Your current name",
+    "improveDirection": "Improvement Direction",
+    "improveDirectionPlaceholder": "e.g. Career, Health, Relationships",
+    "brandIndustry": "Industry",
+    "brandIndustryPlaceholder": "e.g. Food, Education, Tech",
+    "stylePreference": "Style Preference",
+    "styles": {
+      "steady": "Steady",
+      "lively": "Lively",
+      "scholarly": "Scholarly",
+      "modern": "Modern",
+      "premium": "Premium",
+      "friendly": "Friendly",
+      "oriental": "Oriental",
+      "commercial": "Commercial"
+    },
+    "nextStep": "Next",
+    "babyStep3Title": "Baby Birth Info",
+    "cta": "Start Naming",
+    "followUp": {
+      "babySurname": "What is the baby's surname?",
+      "birthTimeConfirmed": "Is the birth time confirmed?",
+      "babyStyle": "Steady, dynamic, scholarly, or modern?",
+      "adultOriginalName": "What is your current name?",
+      "adultGoal": "Temperament, social, career, or overall energy?",
+      "brandIndustry": "What industry?",
+      "brandAudience": "Target audience?",
+      "brandAudiencePlaceholder": "e.g. Urban women aged 25-35",
+      "brandStyle": "Premium, friendly, oriental, or commercial?",
+      "style": {
+        "steady": "Steady",
+        "dynamic": "Dynamic",
+        "scholarly": "Scholarly",
+        "modern": "Modern",
+        "premium": "Premium",
+        "friendly": "Friendly",
+        "oriental": "Oriental",
+        "commercial": "Commercial"
+      },
+      "goal": {
+        "temperament": "Temperament",
+        "social": "Social",
+        "career": "Career",
+        "energy": "Energy"
+      },
+      "yes": "Confirmed",
+      "no": "Not yet"
+    },
+    "frontdesk": {
+      "greeting": "Let me help you find the right name direction. Are you naming a baby, changing an adult's name, or creating a brand name?",
+      "typeBaby": "Baby Naming",
+      "typeAdult": "Adult Rename",
+      "typeBrand": "Brand Naming",
+      "followupBaby": "What's the baby's surname? Do you prefer a steady, lively, scholarly, or modern style?",
+      "followupAdult": "What's your current name? Do you want to improve temperament, relationships, career, or overall energy?",
+      "followupBrand": "What industry? Do you prefer a premium, friendly, oriental, or commercial style?",
+      "confirm": "Great, let me confirm the details and I'll start the analysis right away.",
+      "autoSubmit": "That is enough to begin. I will start the naming analysis now.",
+      "confirmButton": "Confirm",
+      "chatting": "Chatting",
+      "supplementary": "Additional Notes",
+      "surnameDetected": "Detected surname: ",
+      "analyzing": "Analyzing...",
+      "submitCta": "Start Name Analysis",
+      "inputPlaceholderBaby": "e.g. Wang",
+      "inputPlaceholderAdult": "Your current name",
+      "inputPlaceholderBrand": "e.g. F&B, Education, Tech",
+      "genderLabel": "Gender",
+      "birthTimeLabel": "Birth Time",
+      "improveDirectionLabel": "Improvement Direction",
+      "targetAudienceLabel": "Target Audience",
+      "birthDateLabel": "Birth Date",
+      "surnamePrefix": "Surname {{value}}",
+      "preferencePrefix": "Preference: {{value}}",
+      "originalNameFormat": "Original name: {{name}} (Surname {{surname}})",
+      "improvePrefix": "Want to improve {{value}}",
+      "industryFormat": "Industry: {{value}}",
+      "selected": "Selected",
+      "noPreference": "No preference",
+      "babyDefault": "baby",
+      "brandDefault": "brand",
+      "overallFortune": "overall fortune",
+      "targetAudiencePlaceholder": "e.g., young professionals, moms",
+      "customDescriptionPlaceholder": "Describe your special requirements, desired meanings, characters to avoid...",
+      "questionBaby": "I want to choose a good name for {{surname}}, style preference: {{styleLabel}}{{birthTimePart}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionAdult": "I want to rename, {{improveDirectionLabel}}: {{improveFocus}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionBrand": "I want to name {{industry}}{{targetAudiencePart}}, style preference: {{styleLabel}}{{customPart}}",
+      "master": "Zhang Banshan",
+      "askSurname": "Alright, what's the baby's surname?",
+      "askOriginalName": "Alright, what's your current name?",
+      "askIndustry": "Alright, what industry is your brand in?",
+      "askGender": "Boy or girl?",
+      "askExpectation": "Any special expectations for the name? Like desired meanings or characters to avoid — tell me anything.",
+      "askImproveFocus": "What do you want to improve most? Temperament, relationships, career, or overall energy?",
+      "askTargetAudience": "Who is the target audience for your brand?",
+      "askStyle": "Finally, what style do you prefer? You can choose multiple.",
+      "startAnalyzing": "Got it all. Let me analyze for you — just a moment...",
+      "resultIntro": "Analysis complete. Here are three name recommendations for you:",
+      "favorite": "Save",
+      "unfavorite": "Unsave",
+      "compare": "Compare",
+      "remove": "Exclude",
+      "restore": "Restore",
+      "selectFinal": "Choose final",
+      "finalSelected": "Final choice",
+      "comparisonTitle": "Candidate comparison",
+      "wugeScore": "Five-grid score: {{score}}",
+      "actionNeedsRecord": "A formal record has not been created, so this choice cannot be saved yet.",
+      "actionSaveFailed": "Failed to save this choice. Please try again.",
+      "noResult": "No results yet. Please try again later.",
+      "analysisError": "Something went wrong with the analysis. Please try again.",
+      "restart": "Try another"
+    }
+  },
+  "question": {
+    "header": "Ask",
+    "title": "Speak Your Mind",
+    "subtitle": "What's the one thing you're most uncertain about? Just say it — like: should I change jobs, should I continue this relationship, can this partnership work.",
+    "placeholder": "e.g. Should I switch jobs?\nShould I continue this relationship?\nIs now the right time to start a business?",
+    "emptyError": "Please enter your question",
+    "analyze": "Analyze Intent",
+    "intentDetected": "Detected as",
+    "cta": "Start Asking",
+    "intents": {
+      "career": "Career",
+      "finance": "Finance",
+      "love": "Love",
+      "cooperation": "Cooperation",
+      "travel": "Travel",
+      "decision": "Decision",
+      "other": "Other",
+      "selectHint": "Select a category, or type your question directly"
+    },
+    "suggestions": {
+      "career": "Should I switch jobs",
+      "love": "Relationship decision",
+      "finance": "Is it a good time to invest",
+      "cooperation": "Can this partnership work",
+      "travel": "When is a good time to move",
+      "decision": "Should I do this"
+    },
+    "frontdesk": {
+      "greeting": "What's weighing on you the most? Just say it — like: should I change jobs, should this relationship continue, or can this partnership work?",
+      "engineSelected": "I'll use {{engine}} to look into this for you.",
+      "analysisError": "Failed to create a formal consultation record. Please try again.",
+      "klineNodeSignal": ", with the node signal “{{signal}}”",
+      "klineNodePrompt": "I want to ask about the {{targetDate}} node{{signalPart}}. The specific decision I need to examine is: ",
+      "klineNodeContext": "The {{targetDate}} trend node is attached. Add the specific decision you need to examine at the end of the input, and I will analyze it together with the trend evidence.",
+      "forceQuestionRoute": "Handled as a question entry, using event judgment for this matter.",
+      "master": "Master",
+      "submit": "Speak Out",
+      "quickCareer": "Should I change jobs",
+      "quickLove": "Should this relationship continue",
+      "quickCooperation": "Can this partnership work",
+      "quickTurningPoint": "When will things turn around"
+    }
+  },
+  "consultPage": {
+    "backToHome": "Back to Home",
+    "title": "Ask Your Question",
+    "subtitle": "The master will automatically select the most suitable analysis method based on your question",
+    "placeholder": "Describe your question...",
+    "charCount": "{{count}}/500",
+    "hint": "Specific matters for the present, overall rhythm for trends",
+    "quickQuestions": {
+      "q1": "Can this partnership continue?",
+      "q2": "How's my fortune this year?",
+      "q3": "When is a good time to change jobs?",
+      "q4": "I feel lost lately, don't know the direction"
+    },
+    "error": {
+      "title": "Error"
+    },
+    "analyzing": "Master is analyzing...",
+    "submitButton": "Submit to Master",
+    "routeIdentified": "Identified as {{route}} route, please provide the following information:",
+    "fillInfo": "Fill in Info",
+    "reAsk": "Ask Again",
+    "confidence": "confidence",
+    "startAnalysis": "Start Analysis",
+    "destinyProfileFound": "Your BaZi profile is found",
+    "noDestinyProfile": "You haven't filled in your birth information",
+    "noDestinyProfileHint": "Birth info enables deeper analysis, but you can proceed without it",
+    "fillBirthInfo": "Fill Birth Info",
+    "skipBirthInfo": "Skip for now, just show me",
+    "birthInfoOptional": "Birth info (optional, enables deeper destiny analysis)"
+  },
+  "infoPage": {
+    "missingRoute": "Missing routing info, please ask again",
+    "backToAsk": "Back to Ask",
+    "pageTitles": {
+      "liuren": "Add Divination Info",
+      "ziping": "Add Destiny Info",
+      "default": "Add Info"
+    },
+    "pageSubtitles": {
+      "liuren": "Da Liu Ren requires the time-space coordinates of your question",
+      "ziping": "Zi Ping requires your birth information",
+      "default": "Please complete the following info"
+    },
+    "back": "Back",
+    "calendarType": "Calendar Type",
+    "solar": "Solar",
+    "lunar": "Lunar",
+    "birthDate": "Birth Date",
+    "birthTime": "Birth Time",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "askTime": "Question Time",
+    "askTimeHint": "Can modify manually, or click the button on the right to use current time",
+    "useCurrentTime": "Use current time",
+    "askLocation": "Question Location",
+    "askLocationPlaceholder": "e.g., Beijing, Shanghai...",
+    "dateParts": {
+      "year": "{{value}}",
+      "month": "{{value}}",
+      "day": "{{value}}",
+      "full": "{{year}}-{{month}}-{{day}}"
+    },
+    "nextStep": "Next · Confirm",
+    "confirmTitle": "Confirm Info",
+    "confirmLabels": {
+      "calendarType": "Calendar:",
+      "gender": "Gender:",
+      "birthDate": "Birth Date:",
+      "birthTime": "Birth Time:",
+      "askTime": "Question Time:",
+      "askLocation": "Question Location:",
+      "currentTime": "Current time",
+      "notFilled": "Not filled"
+    },
+    "privacyNote": "Based on your info, the system will use traditional fortune-telling methods for analysis. Your info is only used for this consultation and will not be stored or shared.",
+    "backToEdit": "Back to Edit",
+    "analyzing": "Analyzing...",
+    "startAnalyze": "Start Analysis"
+  },
+  "form": {
+    "title": "Start Consultation",
+    "birthDate": "Birth Date",
+    "birthTime": "Birth Time",
+    "gender": "Gender",
+    "male": "♂ Male",
+    "female": "♀ Female",
+    "city": "City (Solar Time Correction)",
+    "cityPlaceholder": "e.g., Beijing, Shanghai...",
+    "question": "What would you like to ask?",
+    "questionPlaceholder": "e.g., Will this work? How's my fortune this year? Give my baby a name...",
+    "submit": "Submit",
+    "submitting": "AI analyzing...",
+    "confirm": "Confirm to enter {{engine}}",
+    "error": {
+      "required": "Please enter your question",
+      "failed": "Analysis failed, please try again"
+    },
+    "hourOption": "{{hour}} h",
+    "minuteOption": "{{minute}} min",
+    "defaultCity": "Beijing"
+  },
+  "engines": {
+    "liuren": "Event Analysis",
+    "ziping": "Destiny Reading",
+    "consult": "Consultation"
+  },
+  "consult": {
+    "title": "What do you want to ask?",
+    "subtitle": "Tell me your question, I'll determine how to analyze it. Specific matters for the present, overall rhythm for trends.",
+    "placeholder": "E.g., Should I continue this partnership? How's my fortune this year?",
+    "quickTags": {
+      "career": "Career Decision",
+      "partnership": "Partnership",
+      "assets": "Asset Decision",
+      "family": "Family Matters",
+      "yearly": "Yearly Fortune",
+      "weekly": "Weekly Reminder"
+    },
+    "startButton": "Start First Consultation",
+    "hint": "First experience includes preliminary analysis; system automatically matches the best method."
+  },
+  "info": {
+    "divination": {
+      "title": "Let me analyze this matter",
+      "location": "Location",
+      "datetime": "Date & Time",
+      "locationPlaceholder": "e.g., Home, Office...",
+      "useCurrentTime": "Use current time",
+      "submit": "Start Divination"
+    },
+    "destiny": {
+      "title": "Let me establish your personal rhythm",
+      "birthDate": "Birth Date",
+      "birthTime": "Birth Time",
+      "birthLocation": "Birth Location",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "uncertainTime": "I'm not sure of birth time",
+      "submit": "Start Analysis"
+    }
+  },
+  "result": {
+    "title": "Preliminary Analysis",
+    "summary": "Key Insight",
+    "analysis": "Brief Analysis",
+    "risks": "Risks to Watch",
+    "actions": "Recommended Actions",
+    "save": "Save Result",
+    "continue": "Continue Deep Analysis",
+    "generating": "Generating analysis...",
+    "error": "Generation failed",
+    "errorHint": "Please try again later",
+    "share": "Share Result",
+    "saveToAlbum": "Save to Album",
+    "poster": "Consultation Result Poster"
+  },
+  "membership": {
+    "back": "Back",
+    "title": "Continue Analysis",
+    "subtitle": "Focus on one thing, get complete analysis",
+    "expand": "Expand Now",
+    "expandNow": "Single Expand",
+    "expandPrice": "¥18",
+    "expandHint": "Single consultation, focus on one question",
+    "currentPlan": "Current Plan",
+    "recommended": "Recommended",
+    "plans": {
+      "single": {
+        "name": "Single Deep Reading",
+        "scene": "¥18 / session",
+        "price": "9",
+        "originalPrice": "18",
+        "features": [
+          "Complete one-time reading",
+          "Includes 3 follow-up questions",
+          "Focused on one question",
+          "First-time discount"
+        ]
+      },
+      "daily": {
+        "name": "Daily Pass",
+        "scene": "Unlimited for 1 day",
+        "price": "¥38",
+        "originalPrice": "¥58"
+      },
+      "weekly": {
+        "name": "Weekly Pass",
+        "scene": "Unlimited for 7 days",
+        "price": "¥98",
+        "originalPrice": "¥128"
+      },
+      "monthly": {
+        "name": "Monthly Pass",
+        "scene": "Unlimited for 30 days",
+        "price": "198",
+        "originalPrice": "298",
+        "features": [
+          "Full results",
+          "20 questions / month",
+          "Morning brief",
+          "Weekly fortune",
+          "30% renewal discount"
+        ]
+      },
+      "quarter": {
+        "name": "Quarterly Pass",
+        "scene": "Quarterly Deep Companion",
+        "price": "¥498",
+        "originalPrice": "¥698",
+        "features": [
+          "Unlimited consultations",
+          "Life K-Chart Full Version",
+          "Priority support",
+          "Personal fortune guide"
+        ]
+      },
+      "yearly": {
+        "name": "Yearly Pass",
+        "scene": "Yearly Deep Companion",
+        "price": "1280",
+        "originalPrice": "1998",
+        "features": [
+          "Year-round unlimited",
+          "Life K-Chart Full Version",
+          "7x24 VIP Support",
+          "Annual fortune report",
+          "Early access to new features"
+        ]
+      }
+    },
+    "renewTip": "Renewal: 30% off",
+    "creating": "Creating order...",
+    "freePlan": {
+      "title": "Continue Free",
+      "subtitle": "View preliminary analysis",
+      "price": "Free",
+      "hint": "Preliminary analysis is free to view"
+    },
+    "footerHint": "Contact support if you have questions",
+    "mockPaymentSuccess": "Payment successful! Order ID: {{orderId}}\n\n(This is a simulated payment. Production will redirect to a real payment page.)"
+  },
+  "history": {
+    "title": "Consultation Records",
+    "empty": {
+      "title": "No records yet",
+      "hint": "Your first divination starts here"
+    },
+    "records": {
+      "divination": "Divination",
+      "analysis": "Analysis"
+    },
+    "startConsult": "Start Consultation",
+    "recordType": {
+      "divination": "Divination",
+      "destiny": "Destiny"
+    },
+    "actions": {
+      "review": "Review",
+      "continue": "Continue",
+      "fullRecord": "Full Record"
+    },
+    "localizedFallback": {
+      "questionDestiny": "Destiny consultation record",
+      "questionDivination": "Decision consultation record",
+      "questionGeneric": "Saved consultation record",
+      "summaryDestiny": "A saved BaZi reading. Open the record to view the full English result.",
+      "summaryDivination": "A saved decision reading. Open the record to view the full English result.",
+      "summaryGeneric": "Open the record to view the result."
+    }
+  },
+  "historyPage": {
+    "upgradeToView": "Upgrade to view full results",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "trendComparison": "Trend Comparison",
+    "trendUp": "Fortune rising",
+    "trendDown": "Fortune declining",
+    "trendSteady": "Fortune steady",
+    "freeSummary": "Summary",
+    "monthlyDetail": "Details",
+    "yearlyTrend": "Trends",
+    "noRecords": "No records yet"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "phone": "Phone",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "No account?",
+    "hasAccount": "Already have an account?",
+    "loginSuccess": "Login successful",
+    "registerSuccess": "Registration successful",
+    "dialogLabel": "Account access",
+    "hidePassword": "Hide password",
+    "showPassword": "Show password",
+    "registerNow": "Register now",
+    "loginNow": "Login now",
+    "namePlaceholder": "Your name"
+  },
+  "common": {
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "retry": "Retry",
+    "vip": "VIP",
+    "locale": "en-US",
+    "colon": ": ",
+    "listSeparator": ", "
+  },
+  "resultPage": {
+    "loginRequired": "Please login to view full results",
+    "aiAnalyzing": "AI analyzing...",
+    "loadFailed": "Failed to load result",
+    "returnHome": "Return to Home",
+    "preliminaryConclusion": "Preliminary Conclusion",
+    "judgmentDocumentStandard": "Judgment Document Standard",
+    "currentJudgment": "Current Judgment",
+    "judgmentBasis": "Judgment",
+    "mainRisks": "Main Risks",
+    "actionRecommendations": "Actions",
+    "luckyElements": "Lucky Elements:",
+    "avoidElements": "Avoid Elements:",
+    "daYunSection": "Da Yun",
+    "keyTiming": "Key Timing",
+    "vip承接": "VIP Service",
+    "vipServicesHint": "Unlock more in-depth VIP services",
+    "adminUnlockFailed": "Admin credit unlock failed. Please refresh your login and try again. You will not be sent to recharge.",
+    "adminUnlockRetry": "Admin credit unlock is temporarily unavailable. Please retry later. You will not be sent to recharge.",
+    "generatingPoster": "Generating poster...",
+    "poster": "Consultation Result Poster",
+    "save": "Save",
+    "continue": "Continue",
+    "saved": "Saved",
+    "saveImage": "Save Image",
+    "shared": "Shared",
+    "share": "Share",
+    "bazi": {
+      "title": "Destiny Reading",
+      "fourPillars": "Four Pillars",
+      "year": "Year Pillar",
+      "month": "Month Pillar",
+      "day": "Day Pillar",
+      "hour": "Hour Pillar",
+      "tenGods": "Ten Gods",
+      "yearGan": "Year Stem",
+      "monthGan": "Month Stem",
+      "dayMaster": "Day Master",
+      "hourGan": "Hour Stem",
+      "fiveElements": "Five Elements",
+      "dayMasterElement": "Day Master Element:",
+      "daYun": "Major Cycles",
+      "shenSha": "Spiritual Influences",
+      "naYin": "Na Yin",
+      "changSheng": "Life Stages",
+      "mingGong": "Ming Gong",
+      "shenGong": "Shen Gong"
+    },
+    "liuren": {
+      "title": "Event Analysis Chart",
+      "userQuestion": "Your question",
+      "askMoment": "Question Moment",
+      "monthGeneral": "Month General",
+      "nobleSpirit": "Noble Spirit",
+      "humanOrigin": "Human Origin",
+      "earthDivision": "Earth Division",
+      "threeTransmissions": "Three Transmissions",
+      "fourLessons": "Four Lessons"
+    },
+    "vipModules": {
+      "shishenToday": "Ten Gods Today",
+      "dayunFocus": "Da Yun Focus",
+      "wuxingTiaohou": "Five Elements Tuning",
+      "todayFocus": "Today's Focus",
+      "threeDayReminder": "3-Day Reminder",
+      "todayAvoid": "Don't Do Today",
+      "gejuDingxing": "Pattern Classification",
+      "gujiBasis": "Classic Reference",
+      "careerJudge": "Career Judgment",
+      "wealthJudge": "Wealth Judgment",
+      "relationshipCoop": "Relationships & Partnership",
+      "healthReminder": "Health Alert",
+      "favorablePeriod": "Favorable Period",
+      "riskPeriod": "Risk Period",
+      "exitPlan": "Exit plan: ",
+      "rhythmAdvice": "Rhythm Advice",
+      "correctStrategy": "Correct Strategy"
+    },
+    "vipServices": {
+      "breakthrough": {
+        "title": "Breakthrough Tips",
+        "subtitle": "Key Moments",
+        "desc": "In-depth analysis of optimal decisions in competition"
+      },
+      "morning": {
+        "title": "Morning Reminder",
+        "subtitle": "Today's Alert",
+        "desc": "Seize fleeting opportunities based on daily fortune changes"
+      },
+      "kline": {
+        "title": "Life K-Chart",
+        "subtitle": "Trend Analysis",
+        "desc": "Visualize fortune rises and falls at each life stage"
+      }
+    },
+    "algorithmResult": "Algorithm Result",
+    "tenGods": "Ten Gods:",
+    "fiveElements": "Five Elements:",
+    "tiangan": "Heavenly Stems",
+    "dizhi": "Earthly Branches",
+    "avoidGods": "Avoid/Use:",
+    "detail": "Details:",
+    "vip承继Hint": "This is the preliminary analysis. For complete interpretation, continue with in-depth reading.",
+    "kline": {
+      "title": "Life K-Chart",
+      "subtitle": "Based on your BaZi Da Yun and Liu Nian analysis",
+      "overview": "Your Four Pillars: {{yearPillar}} Year {{monthPillar}} Month {{dayPillar}} Day {{hourPillar}} Hour",
+      "localReason": "Local algorithm mode: deterministically generated from chart fields and year seed.",
+      "localMonthReason": "Local algorithm mode: {{year}} Year {{month}} Month detail.",
+      "dayPillar": "Day Pillar",
+      "daYun": "Da Yun",
+      "rising": "Rising",
+      "adjusting": "Adjusting",
+      "proceed": "Proceed with verification",
+      "reduceRisk": "Reduce risk exposure",
+      "greatLuck": "Great Fortune",
+      "averageLuck": "Average",
+      "poorLuck": "Poor Fortune",
+      "advance": "Advance",
+      "holdSteady": "Hold Steady",
+      "adjust": "Adjust",
+      "gatherStrength": "Gather Strength",
+      "balanced": "Balanced",
+      "imbalanced": "Imbalanced",
+      "woodRatio": "Wood element {{ratio}}%, {{status}}",
+      "fireRatio": "Fire element {{ratio}}%, {{status}}",
+      "strong": "strong",
+      "weak": "insufficient",
+      "wuxingSuggestion": "Choose development direction based on specific fortune analysis",
+      "auspicious": "Auspicious",
+      "smooth": "Smooth",
+      "unfavorable": "Unfavorable",
+      "currentLuck": "Current fortune",
+      "futureDev": "Future development",
+      "daYunDesc": "Da Yun {{gan}}{{zhi}}, {{type}}",
+      "ageRange": "Age {{startAge}}-{{endAge}}",
+      "daYunNote": "Da Yun {{gan}}{{zhi}} rhythm",
+      "ganHighlight": "{{gan}} stem leads the stage energy",
+      "zhiHighlight": "{{zhi}} branch anchors the practical field",
+      "trendAnalysis": "Trend Analysis",
+      "keyNodes": "Key Nodes",
+      "auspiciousShort": "Good",
+      "unfavorableShort": "Risk",
+      "neutralShort": "Neutral",
+      "recentMonths": "Recent Months",
+      "elementQi": "{{element}} qi",
+      "scoreLabel": "{{score}} pts",
+      "loadingFortune": "Loading fortune...",
+      "loadingCelebrity": "Loading celebrity comparison...",
+      "currentStage": "Current Stage",
+      "opportunityWindow": "Opportunity Window",
+      "riskWindow": "Risk Window",
+      "nextThreeYears": "Next 3 Years",
+      "aiInterpreter": "AI Interpreter",
+      "generating": "Destiny K-Line generating / Insufficient data",
+      "brandName": "Destiny K-Line"
+    },
+    "destinyKline": {
+      "aspect": {
+        "overall": "Overall",
+        "career": "Career",
+        "wealth": "Wealth",
+        "relationship": "Love"
+      },
+      "aspects": {
+        "primarySignal": "Primary Signal",
+        "oneLiner": "One-Liner",
+        "actionAdvice": "Action Advice",
+        "unlockHint": "Upgrade to unlock full 4-line analysis"
+      },
+      "shareCard": "Share Card",
+      "overview": "Destiny K-Chart Overview",
+      "opportunityWindow": "Opportunity Window",
+      "riskWindow": "Risk Window",
+      "aiInterpreter": {
+        "title": "AI Interpreter",
+        "desc": "Interpreting your current stage and future windows based on your Destiny K-Line.",
+        "q1": "What stage am I in?",
+        "q2": "How do the next 3 years look?",
+        "q3": "Is this a good year for active changes?",
+        "summary": "Bottom line",
+        "timeWindow": "Time window",
+        "action": "Action advice",
+        "risk": "Risk alert"
+      },
+      "summary": "Currently in {{current}}. Prioritize core conflicts over short-term gains.",
+      "stage": {
+        "rising": "Rising Window",
+        "steady": "Steady Progress",
+        "accumulating": "Accumulating",
+        "recovery": "Recovery"
+      },
+      "signal": {
+        "strongBull": "Strong Bull",
+        "bull": "Bullish",
+        "neutral": "Neutral",
+        "bear": "Bearish",
+        "strongBear": "Deep Correction"
+      },
+      "signalLabel": {
+        "rise_cross": "Momentum Cross",
+        "noble_volume": "Noble Volume",
+        "wealth_breakout": "Wealth Breakout",
+        "relationship_shift": "Relationship Shift",
+        "void_pullback": "Void Pullback",
+        "conflict_breakdown": "Conflict Breakdown",
+        "useful_god_return": "Useful God Return"
+      },
+      "oneLiner": {
+        "rising": {
+          "overall": "You're in an uptrend — going with the flow is your best strategy.",
+          "career": "Career is on the rise — a good time to push important plans forward.",
+          "wealth": "Wealth outlook is positive — suitable for moderate investments.",
+          "relationship": "Love fortune is improving — a good time to express your feelings."
+        },
+        "steady": {
+          "overall": "Steady progress — maintaining rhythm matters more than accelerating.",
+          "career": "Career is stable with gradual gains — consolidate your achievements.",
+          "wealth": "Wealth is steady — focus on preserving what you have.",
+          "relationship": "Relationships are stable — a good time to deepen connections."
+        },
+        "accumulating": {
+          "overall": "Accumulation phase — run low-cost experiments first.",
+          "career": "Career is in a buildup phase — focus on gathering resources.",
+          "wealth": "Wealth outlook is soft — stick to conservative financial moves.",
+          "relationship": "Relationships need adjustment — reflect and communicate."
+        },
+        "recovery": {
+          "overall": "Recovery phase — stay conservative and wait for the turn.",
+          "career": "Career is in a low phase — not ideal for major changes.",
+          "wealth": "Wealth is sluggish — avoid high-risk moves.",
+          "relationship": "Relationship low point — focus on self-care first."
+        }
+      },
+      "action": {
+        "rising": {
+          "overall": "Take initiative, but keep a safety margin.",
+          "career": "Good time for career transitions, job changes, or starting a venture.",
+          "wealth": "Suitable for moderate position sizing or launching new investments.",
+          "relationship": "A good time to confess feelings or advance the relationship."
+        },
+        "steady": {
+          "overall": "Maintain current pace — small optimizations over big leaps.",
+          "career": "Consolidate current achievements — avoid frequent job changes.",
+          "wealth": "Maintain current portfolio — small regular contributions.",
+          "relationship": "Nurture existing relationships — avoid over-demanding."
+        },
+        "accumulating": {
+          "overall": "Run low-cost experiments first — go all-in when the window opens.",
+          "career": "Build skills and network — prepare for the next wave of opportunity.",
+          "wealth": "Cut expenses, increase savings — wait for the right entry point.",
+          "relationship": "Reflect on relationship patterns — adjust your communication style."
+        },
+        "recovery": {
+          "overall": "Don't make high-leverage decisions driven by short-term anxiety.",
+          "career": "Stabilize your foundation — avoid impulsive resignations or decisions.",
+          "wealth": "Focus on damage control — don't catch falling knives or add leverage.",
+          "relationship": "Give yourself space — don't rush into new relationships."
+        }
+      },
+      "currentScore": "Current Score",
+      "generating": "Destiny K-Line generating / Insufficient data",
+      "shortCycle": {
+        "life": "Life",
+        "day3": "3-Day Fast",
+        "xun": "11-Day Xun",
+        "month": "30-Day Monthly",
+        "quarter": "100-Day Quarterly",
+        "todaySignal": "Today's Signal",
+        "overallTrend": "Overall Trend",
+        "suitable": "Suitable",
+        "caution": "Caution",
+        "trendUp": "Rising",
+        "trendDown": "Falling",
+        "trendFlat": "Stable",
+        "signalStrong": "Strong",
+        "signalModerate": "Moderate",
+        "signalNeutral": "Neutral",
+        "signalWeak": "Weak",
+        "signalVeryWeak": "Very Weak",
+        "subLabel": {
+          "day3": "Recent Qi",
+          "xun": "Short-term Push",
+          "month": "Monthly Rhythm",
+          "quarter": "Phase Trend"
+        }
+      },
+      "gating": {
+        "memberOnly": "Members Only",
+        "unlockFull": "Unlock Full 4 Lines",
+        "unlockDesc": "Upgrade to see career, wealth, and relationship line analysis",
+        "unlockShortCycle": "Unlock More Cycles",
+        "unlockAI": "Unlock AI Interpreter",
+        "unlockHD": "Unlock HD Poster",
+        "freePreview": "Free Preview"
+      },
+      "annual": {
+        "title": "Annual Member Exclusive",
+        "longCycleReport": "Long-Cycle Trend Report",
+        "annualReview": "Annual Review",
+        "recordComparison": "Record Comparison",
+        "lockedBadge": "Annual Only",
+        "upgradeToAnnual": "Upgrade to Annual",
+        "upgradeDesc": "Unlock long-cycle trend report, annual review, and record comparison",
+        "longCycle": {
+          "phaseRising": "Rising Phase",
+          "phaseSteady": "Stable Phase",
+          "phaseDeclining": "Adjustment Phase",
+          "phaseRecovery": "Accumulation Phase",
+          "strategicAdvice": "Strategic Advice",
+          "transitionYear": "Transition Year",
+          "lifeTrajectory": "Life Trajectory Overview",
+          "avgScore": "Avg Score",
+          "ageUnit": " yrs",
+          "transitionDesc": "Transition from {{from}} to {{to}}",
+          "adviceRising": "Take initiative and seize the rising window",
+          "adviceSteady": "Maintain rhythm — small optimizations over big leaps",
+          "adviceDeclining": "Retrench and reduce risk exposure",
+          "adviceRecovery": "Build reserves and wait for the turnaround signal",
+          "trajectoryRising": "Overall life trajectory trends upward — more opportunities than challenges",
+          "trajectoryDeclining": "Overall life trajectory trends downward — focus on defense and accumulation",
+          "trajectoryBalanced": "Life trajectory alternates — mastering the rhythm is key"
+        },
+        "annualReview": {
+          "pastYear": "Review",
+          "currentYear": "This Year",
+          "nextYear": "Outlook",
+          "yearKeyword": "Year Keyword",
+          "scoreLabel": "Fortune Score",
+          "noData": "No annual review data available"
+        },
+        "recordComparison": {
+          "selectRecords": "Select records to compare",
+          "compare": "Compare",
+          "noRecords": "No historical records available for comparison",
+          "noKlineData": "No K-line data",
+          "delta": "Delta",
+          "divergeYear": "Diverge",
+          "ageCol": "Age",
+          "ageSuffix": " yrs"
+        }
+      }
+    },
+    "breakthrough": {
+      "unavailable": "In-depth Analysis Unavailable",
+      "needBackend": "Backend LLM module connection required",
+      "message": "This is a local temporary result or the backend module failed to load. Template-based in-depth analysis cannot be generated. Please retry to generate a formal record. No credits will be deducted."
+    },
+    "morning": {
+      "title": "Today's Fortune",
+      "subtitle": "{{year}}-{{month}}-{{day}} (Gregorian)",
+      "overview": "Today's fortune analysis based on your chart information",
+      "pettyPeople": "Petty people",
+      "impulse": "Impulse",
+      "risk": "Risk",
+      "stayQuiet": "Stay quiet",
+      "takeAction": "Take action",
+      "average": "Average",
+      "caution": "Caution",
+      "recDocWork": "Good day for paperwork and documentation",
+      "recDelayDecision": "Important decisions should be postponed",
+      "recDigestion": "Pay attention to digestive health",
+      "tipTravel": "Travel star active today, favorable for journeys",
+      "tipRomance": "Romance star enters your chart, active social life",
+      "tipWealth": "Wealth star hidden, opportunities and challenges coexist",
+      "directions": {
+        "east": "East",
+        "south": "South",
+        "west": "West",
+        "north": "North"
+      },
+      "colors": {
+        "red": "Red",
+        "yellow": "Yellow",
+        "blue": "Blue",
+        "green": "Green",
+        "white": "White"
+      }
+    },
+    "generationStatus": {
+      "generating": "AI deep analysis generating...",
+      "completed": "Generation complete",
+      "failed": "Generation failed",
+      "retry": "Retry generation",
+      "timeout": "Generation timed out, please refresh later"
+    },
+    "errors": {
+      "processing": "Consultation is being processed, please try again later",
+      "cannotLoad": "Unable to load consultation result",
+      "loadFailed": "Failed to load result, please retry"
+    },
+    "algorithmOnly": "Preliminary: Algorithm Only",
+    "timeout": "Analysis Timeout",
+    "timeoutMessage": "LLM analysis timed out. Please retry later. No credits will be deducted.",
+    "autoSaved": "Auto-saved",
+    "divination": {
+      "tianGan": {
+        "甲": "Jia",
+        "乙": "Yi",
+        "丙": "Bing",
+        "丁": "Ding",
+        "戊": "Wu",
+        "己": "Ji",
+        "庚": "Geng",
+        "辛": "Xin",
+        "壬": "Ren",
+        "癸": "Gui"
+      },
+      "diZhi": {
+        "子": "Zi",
+        "丑": "Chou",
+        "寅": "Yin",
+        "卯": "Mao",
+        "辰": "Chen",
+        "巳": "Si",
+        "午": "Wu",
+        "未": "Wei",
+        "申": "Shen",
+        "酉": "You",
+        "戌": "Xu",
+        "亥": "Hai"
+      },
+      "wuXing": {
+        "wood": "Wood",
+        "fire": "Fire",
+        "earth": "Earth",
+        "metal": "Metal",
+        "water": "Water"
+      },
+      "shiShen": {
+        "zhengCai": "Direct Wealth",
+        "pianCai": "Indirect Wealth",
+        "zhengGuan": "Direct Officer",
+        "qiSha": "Seven Killings",
+        "zhengYin": "Direct Seal",
+        "pianYin": "Indirect Seal",
+        "shiShen": "Eating God",
+        "shangGuan": "Hurting Officer",
+        "biJian": "Friend",
+        "jieCai": "Rob Wealth"
+      },
+      "labels": {
+        "dayMaster": "Day Master",
+        "bodyStrength": "Body Strength",
+        "currentDaYun": "Current Major Luck",
+        "yongShen": "Useful God",
+        "jiShen": "Unfavorable God",
+        "kongWang": "Void",
+        "taiYuan": "Conception Element",
+        "mingGong": "Life Palace"
+      },
+      "aspects": {
+        "career": "Career",
+        "wealth": "Wealth",
+        "relationship": "Relationship",
+        "health": "Health"
+      },
+      "fortune": {
+        "overall": "Overall Score",
+        "luckyDays": "Lucky Days",
+        "advice": "Advice",
+        "warnings": "Precautions",
+        "bestMonths": "Best Months",
+        "worstMonths": "Low Months",
+        "keyMoments": "Key Timing",
+        "opportunities": "Opportunity Windows",
+        "riskPeriods": "Risk Periods",
+        "fallbackLabel": "Fallback:",
+        "rhythmAdvice": "Rhythm Advice",
+        "stopDoingList": "Stop-doing List",
+        "zodiacCompatibility": "Zodiac Compatibility"
+      }
+    },
+    "source": "Source:",
+    "algorithmChart": "Algorithm Chart",
+    "algorithmOnlyNoLlm": "Algorithm only, no LLM",
+    "stemBranchMainQi": "Stem/branch main qi",
+    "destinyReview": "Destiny Review",
+    "destinyReviewText": "Four pillars: {{yearPillar}}, {{monthPillar}}, {{dayPillar}}, {{hourPillar}}. Day master {{dayMaster}} is assessed as {{bodyStrength}}.",
+    "useAvoidGods": "Useful / Avoid Elements",
+    "useGodPrefix": "Useful",
+    "avoidGodPrefix": "Avoid",
+    "caseReport": "Case Report",
+    "quality": "Quality",
+    "schemaComplete": "Complete schema",
+    "degraded": "Degraded",
+    "moduleScores": "Module Scores",
+    "futureRhythm": "Future Rhythm",
+    "suitable": "Suitable",
+    "unsuitable": "Unsuitable",
+    "fallback": "Fallback",
+    "balance": "Balance",
+    "wuxingSuggestions": "Element Suggestions",
+    "daYunReading": "Da Yun Reading",
+    "current": "Current",
+    "chartInfo": "Chart Info",
+    "recordId": "Record ID: {{id}}",
+    "posterSections": {
+      "analysis": "Analysis",
+      "risks": "Risks",
+      "actions": "Actions"
+    },
+    "hourBranches": {
+      "子": "Zi hour",
+      "丑": "Chou hour",
+      "寅": "Yin hour",
+      "卯": "Mao hour",
+      "辰": "Chen hour",
+      "巳": "Si hour",
+      "午": "Wu hour",
+      "未": "Wei hour",
+      "申": "Shen hour",
+      "酉": "You hour",
+      "戌": "Xu hour",
+      "亥": "Hai hour"
+    },
+    "bodyStrength": {
+      "偏旺": "Slightly strong day master",
+      "偏弱": "Slightly weak day master",
+      "中和": "Balanced day master",
+      "身旺": "Strong day master",
+      "身弱": "Weak day master"
+    },
+    "elementNames": {
+      "木": "Wood",
+      "火": "Fire",
+      "土": "Earth",
+      "金": "Metal",
+      "水": "Water"
+    },
+    "moduleSections": {
+      "breakthroughPath": "Breakthrough Path",
+      "keyPoints": "Key Points",
+      "riskAlerts": "Risk Alerts",
+      "nextSteps": "Next Steps"
+    },
+    "preview": {
+      "mobile": "Mobile preview",
+      "pc": "Desktop preview"
+    },
+    "klineTabs": {
+      "year": "Year",
+      "month": "Month",
+      "wuxing": "Elements",
+      "fortune": "Daily",
+      "celebrity": "Celebrity"
+    },
+    "klineModes": {
+      "year": "Year",
+      "yearMonth": "Year + Month",
+      "eightyYears": "80 Years",
+      "hundredYears": "100 Years"
+    },
+    "reportSections": {
+      "chartVerification": "Chart Verification",
+      "destinyStructure": "Destiny Structure",
+      "characterPortrait": "Character Portrait",
+      "currentDaYun": "Current Da Yun",
+      "yearKeyImage": "Year Key Image",
+      "classicBasis": "Classic Basis",
+      "coreReasoning": "Core Reasoning",
+      "actionStrategy": "Action Strategy",
+      "keySignals": "Key Signals",
+      "timeWindows": "Time Windows",
+      "counterpartPortrait": "Counterpart Portrait"
+    },
+    "decisionAudit": {
+      "title": "Decision Audit",
+      "rightOrWrong": "Right / Wrong",
+      "safetyMargin": "Safety Margin"
+    },
+    "naming": {
+      "title": "Name Analysis",
+      "subtitle": "Five-frame evaluation based on Kangxi strokes",
+      "totalScore": "Total Score: {{score}}",
+      "wuge": {
+        "tianGe": "Heaven Frame",
+        "renGe": "Person Frame",
+        "diGe": "Earth Frame",
+        "waiGe": "Outer Frame",
+        "zongGe": "Total Frame",
+        "strokeLabel": "{{count}} strokes",
+        "auspiciousness": {
+          "ji": "Auspicious",
+          "xiong": "Inauspicious",
+          "banJi": "Semi-auspicious",
+          "banXiong": "Semi-inauspicious"
+        }
+      },
+      "sancai": {
+        "title": "Three Talents Configuration",
+        "description": "Heaven-Person-Earth: {{config}}",
+        "ji": "Favorable",
+        "xiong": "Unfavorable"
+      },
+      "suggestions": "Name Suggestions",
+      "llmEnhancedTitle": "Name Analysis with AI Enhancement",
+      "charMeaning": "Character Meaning",
+      "culturalMatch": "Cultural Match",
+      "pronunciation": "Pronunciation Difficulty",
+      "homophone": "Homophone Warning",
+      "degreeOfMatch": "Match: {{degree}}%",
+      "noNamesGenerated": "No name suggestions available",
+      "algorithmScore": "Algorithm Score",
+      "llmScore": "AI Score"
+    },
+    "ziwei": {
+      "title": "Zi Wei Dou Shu",
+      "subtitle": "Purple Star Astrology Analysis",
+      "fiveElementsClass": "Five Elements Bureau",
+      "mingGong": "Life Palace (Ming Gong)",
+      "shenGong": "Body Palace (Shen Gong)",
+      "sihua": {
+        "title": "Four Transformations",
+        "lu": "Prosperity (Hua Lu)",
+        "quan": "Authority (Hua Quan)",
+        "ke": "Reputation (Hua Ke)",
+        "ji": "Obstruction (Hua Ji)"
+      },
+      "palaces": {
+        "ming": "Life",
+        "xiongdi": "Siblings",
+        "fuqi": "Spouse",
+        "zinv": "Children",
+        "caibo": "Wealth",
+        "jie": "Health",
+        "qianyi": "Travel",
+        "jiaoyou": "Friends",
+        "guanlu": "Career",
+        "tianzhai": "Property",
+        "fude": "Fortune",
+        "fumu": "Parents"
+      },
+      "stars": {
+        "majorStars": "Major Stars",
+        "minorStars": "Minor Stars",
+        "brightness": {
+          "庙": "Temple",
+          "旺": "Thriving",
+          "得": "Obtained",
+          "利": "Beneficial",
+          "平": "Even",
+          "不": "Not",
+          "陷": "Trapped"
+        }
+      },
+      "patterns": {
+        "shaPoLang": "Breaking Formation (Sha Po Lang)",
+        "fuXiangChaoYuan": "Treasury Minister Support",
+        "kongGong": "Empty Palace",
+        "shuangJiJia": "Double Ji Clamped"
+      },
+      "riskAlerts": {
+        "kongGong": "{{palace}} is empty — weakness in this life area",
+        "huaJi": "{{star}} becomes Obstructive (Hua Ji) in {{palace}}",
+        "shaPoLangTip": "Strong entrepreneurial energy but stability concerns"
+      },
+      "loading": "Calculating Zi Wei chart...",
+      "fallbackNote": "Chart computed locally. Full LLM analysis unavailable."
+    },
+    "quming": {
+      "title": "AI-Enhanced Naming",
+      "subtitle": "Five-frame analysis with LLM naming suggestions",
+      "input": {
+        "surname": "Surname",
+        "surnamePlaceholder": "Family name",
+        "gender": "Gender",
+        "male": "Boy",
+        "female": "Girl",
+        "count": "Number of Names",
+        "styleHint": "Style Preference (optional)"
+      },
+      "results": {
+        "score": "{{score}} pts",
+        "wugeSummary": "Heaven {{tian}} · Person {{ren}} · Earth {{di}} · Outer {{wai}} · Total {{zong}}",
+        "sancaiVerdict": "Three Talents: {{verdict}}",
+        "detail": "Detailed Analysis",
+        "fiveElements": "Five Elements Balance"
+      },
+      "styles": {
+        "classic": "Classic & Elegant",
+        "modern": "Modern & Simple",
+        "poetic": "Poetic & Literary",
+        "powerful": "Strong & Ambitious",
+        "gentle": "Gentle & Kind"
+      }
+    },
+    "localFallback": {
+      "liuren": {
+        "summary": "{{guiShen}} with {{yueJiang}} indicates a preliminary divination pattern.",
+        "body": "Local algorithm fallback. Key chart terms: {{terms}}. Treat this as a lightweight reference until the formal API result is available.",
+        "risk1": "The first transmission {{shang}} suggests possible early friction.",
+        "risk2": "{{guiShen}} should be checked against void or conflict conditions.",
+        "risk3": "If {{yueJiang}} is out of season, the matter may slow down.",
+        "risk4": "The middle transmission {{zhong}} is not strong enough; avoid overextension.",
+        "action1": "Use {{firstKe}} as the main reference point.",
+        "action2": "Act when {{guiShen}} is supported by the day or hour.",
+        "action3": "{{yuanWang}} favors waiting until the signal is clearer.",
+        "action4": "Watch {{zhong}} as the turning point.",
+        "timeWindow": "The three transmissions move {{shang}} -> {{zhong}} -> {{xia}}; expect a 7-14 day rhythm shift."
+      },
+      "ziping": {
+        "summary": "Day master {{dayGan}} is {{strength}}; useful elements: {{elements}}.",
+        "body": "Chart reading: day master {{dayGan}} is {{strength}}, with month branch {{monthZhi}} as the seasonal anchor. Useful elements lean toward {{suitable}}, while {{avoid}} should be kept in balance. Overall structure is {{structure}} and should be read together with Da Yun and yearly flow.",
+        "risk1": "Day master condition: {{strength}}.",
+        "risk2": "Useful element reference: {{elements}}.",
+        "risk3": "Avoid excess in: {{elements}}.",
+        "action1": "Pay attention to opportunities linked with {{element}}.",
+        "action2": "Avoid over-consuming the {{element}} line.",
+        "timeWindow": "Life trend should be interpreted together with Da Yun and yearly flow.",
+        "evidence": "Structure: day master {{dayGan}} is {{strength}}. Useful elements: {{suitable}}. Avoid excessive: {{avoid}}."
+      },
+      "generic": {
+        "summary": "Preliminary result generated locally.",
+        "body": "The formal engine result is temporarily unavailable. This local fallback gives a lightweight decision reference and keeps the consultation flow available.",
+        "risk1": "Some chart details may be incomplete until the API returns.",
+        "risk2": "Do not treat this fallback as the final reading.",
+        "action1": "Retry the consultation after a short wait.",
+        "action2": "Use the preliminary result only for low-risk planning.",
+        "timeWindow": "Retry soon; no credits will be deducted for the failed formal generation.",
+        "evidence": "Local fallback result. Formal evidence will be shown after the API succeeds."
+      }
+    },
+    "namingGating": {
+      "viewMore": "View More Names",
+      "unlockFull": "Unlock Full Naming Plan",
+      "unlockDesc": "Upgrade to see all candidates, detailed scores, and caveats",
+      "memberOnly": "Members Only",
+      "freeNames": "Free preview of {{count}} names",
+      "wuxingMatch": "Bazi Wuxing Match",
+      "phoneticMeaning": "Sound-Form-Meaning",
+      "caveat": "Caveats"
+    },
+    "namingAnnual": {
+      "title": "Annual Member Naming Features",
+      "multiRound": "Multi-Round Filter",
+      "multiRoundDesc": "Filter by elements, character count, and tone to find the perfect name",
+      "moreLikeThis": "More Like This",
+      "dislike": "Dislike",
+      "filterWuxing": "Element Filter",
+      "filterCharCount": "Character Count",
+      "filterTone": "Tone Filter",
+      "regenerate": "Regenerate",
+      "regenerating": "Regenerating...",
+      "favorites": "Favorites",
+      "round": "Round {{round}}",
+      "charUnit": " chars",
+      "scoreUnit": " pts",
+      "noResults": "No names match the current filters. Try adjusting your criteria.",
+      "renameComparison": "Rename Comparison",
+      "originalName": "Original Name",
+      "newName": "New Name",
+      "wuxingDist": "Element Distribution",
+      "sancaiConfig": "San Cai Config",
+      "strokeCount": "Stroke Count",
+      "overallScore": "Overall Score",
+      "improvementAnalysis": "Improvement Analysis",
+      "improvementScore": "Overall score improved",
+      "improvementWuxing": "Element balance improved",
+      "improvementSancai": "San Cai configuration more favorable",
+      "brandStrategy": "Brand Naming Strategy",
+      "marketPositioning": "Market Positioning",
+      "audienceMatch": "Audience Match",
+      "industryFit": "Industry Fit",
+      "memorability": "Brand Memorability",
+      "memorabilityHigh": "High memorability, easy to spread",
+      "memorabilityMedium": "Medium memorability",
+      "memorabilityLow": "Consider optimizing for better recall",
+      "brandStory": "Brand Story",
+      "brandStoryTemplate": "{{name}} builds differentiated recognition in the {{industry}} space through its unique brand DNA. The name carries the core value proposition, occupying a distinct position in consumers' minds.",
+      "defaultIndustry": "industry",
+      "trademarkAdvice": "Trademark Advice",
+      "trademarkTip1": "Check trademark availability on the national IP office website",
+      "trademarkTip2": "Also check domain availability (.com / .cn / .com.cn)",
+      "trademarkTip3": "Consider registering trademarks in multiple categories for brand protection",
+      "pdfExport": "Export Full Plan",
+      "pdfExportDesc": "Export the complete naming plan with all candidates, scores, and analysis",
+      "pdfTitle": "Naming Plan",
+      "pdfSubtitle": "Life Decision Master · AI Naming",
+      "pdfFooter": "Generated by Life Decision Master AI. For reference only.",
+      "lockedBadge": "Annual Member Exclusive",
+      "upgradeToAnnual": "Upgrade to Annual"
+    },
+    "namingBehavior": {
+      "favorite": "Favorite",
+      "remove": "Remove",
+      "exportNames": "Export Candidates",
+      "exportTitle": "Naming Candidates",
+      "favorited": "Favorited",
+      "removed": "Removed"
+    },
+    "shareTiers": {
+      "basic": "Basic Share Image",
+      "basicDesc": "Standard resolution",
+      "hd": "HD Poster",
+      "hdDesc": "2x resolution, no watermark",
+      "report": "Report Image",
+      "reportDesc": "Includes 4-line data + key years + AI interpretation",
+      "locked": "Members Only",
+      "upgradeForHd": "Upgrade to Monthly for HD poster",
+      "upgradeForReport": "Upgrade to Annual for report image",
+      "watermark": "Life Decision Master"
+    },
+    "questionGating": {
+      "viewDeep": "View Deep Analysis",
+      "unlockDeep": "Unlock Deep Analysis",
+      "unlockDesc": "Upgrade to see full analysis, evidence chain, and multi-path judgment",
+      "memberOnly": "Members Only",
+      "freePreview": "Free Preview"
+    },
+    "questionAnnual": {
+      "title": "Annual Member Exclusive",
+      "lockedHint": "Annual member exclusive — upgrade to unlock",
+      "unlockButton": "Upgrade to Annual",
+      "majorDecision": {
+        "title": "Strategic Analysis",
+        "prosCons": "Pros & Cons",
+        "pros": "Favorable Factors",
+        "cons": "Risk Factors",
+        "timing": "Timing Window",
+        "noTimingData": "No timing data available",
+        "keyVariables": "Key Variables",
+        "noVariableData": "No key variable data available",
+        "worstCase": "Worst-Case Plan",
+        "noWorstCaseData": "No worst-case plan data available",
+        "recommendation": "Recommendation",
+        "confidence": "Confidence"
+      },
+      "followUp": {
+        "title": "Follow-Up Questions",
+        "suggestedLabel": "Suggested follow-up directions",
+        "suggestedQ1": "When is the key turning point for this matter?",
+        "suggestedQ2": "What's the worst outcome if I don't act now?",
+        "suggestedQ3": "What risks am I overlooking?",
+        "suggestedQ4": "How much does my current Da Yun affect this?",
+        "suggestedQ5": "Which year is better for action — this year or next?",
+        "suggestedQ6": "What are my chart's greatest strengths and weaknesses?",
+        "inputPlaceholder": "Type your follow-up...",
+        "askButton": "Ask",
+        "analyzing": "Analyzing...",
+        "mockAnswer": "Based on the current analysis, this is a direction worth exploring further. Considering your chart and Da Yun, we recommend careful deliberation within the key timing window.",
+        "errorAnswer": "Follow-up failed. Please try again later."
+      },
+      "historyReview": {
+        "title": "History Review",
+        "empty": "No consultation history yet",
+        "statusPending": "Pending",
+        "statusVerified": "Verified",
+        "statusExpired": "Expired",
+        "prediction": "Original Prediction",
+        "actualOutcome": "Actual Outcome",
+        "addOutcome": "Add Actual Outcome",
+        "outcomePlaceholder": "Describe what actually happened...",
+        "saveOutcome": "Save",
+        "noQuestion": "Past Consultation"
+      },
+      "aiInterpreter": {
+        "suggestedQuestions": "AI suggests you consider",
+        "mockAnswer": "Based on your current chart and Da Yun, we recommend careful evaluation before making decisions.",
+        "qCareer": "When will my career bottleneck break through?",
+        "qWealth": "When will wealth fortune improve?",
+        "qRelationship": "When is the turning point in relationships?",
+        "qHealth": "What should I watch for health-wise?",
+        "qTiming": "Is this a good year for active changes?",
+        "careerQ1": "When will my career bottleneck break through?",
+        "careerQ2": "Startup or steady employment?",
+        "careerQ3": "When is the best time to change jobs?",
+        "careerQ4": "Where's the biggest career opportunity this year?",
+        "careerQ5": "How do I break through my career ceiling?",
+        "wealthQ1": "When will wealth fortune improve?",
+        "wealthQ2": "What should I watch for in investments?",
+        "wealthQ3": "Any chance of windfall gains this year?",
+        "wealthQ4": "How do I protect my current wealth?",
+        "wealthQ5": "Which direction is most prosperous for wealth?",
+        "relationshipQ1": "When is the turning point in relationships?",
+        "relationshipQ2": "How can I improve my current relationship?",
+        "relationshipQ3": "Is this a good year to confess or advance the relationship?",
+        "relationshipQ4": "What are they really thinking right now?",
+        "relationshipQ5": "How do I attract the right person?",
+        "tiers": {
+          "freeHint": "Upgrade to unlock AI Interpreter",
+          "monthlyHint": "Monthly: Full interpretation available",
+          "yearlyHint": "Annual: Unlimited follow-ups",
+          "suggestedQuestions": "AI suggests you consider",
+          "askMore": "Follow Up",
+          "typeYourQuestion": "Type your question..."
+        }
+      }
+    }
+  },
+  "fortune": {
+    "title": "Fortune Center",
+    "tabs": {
+      "daily": "Daily",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "errors": {
+      "birthDateRequired": "Please provide your birth date first",
+      "dailyFailed": "Failed to fetch daily fortune",
+      "monthlyFailed": "Failed to fetch monthly fortune",
+      "yearlyFailed": "Failed to fetch yearly fortune"
+    },
+    "missingBirth": {
+      "title": "Birth Info Required",
+      "desc": "Fortune analysis needs your birth date. Please complete a consultation first or enter birth info from the home page.",
+      "cta": "Go to Consultation"
+    },
+    "empty": {
+      "daily": "Tap the tab above to load fortune data",
+      "monthly": "Choose a month to load fortune data",
+      "yearly": "Choose a year to load fortune data"
+    },
+    "yearLabel": "{{year}}",
+    "yearMonthLabel": "{{year}} {{month}}",
+    "monthLabel": "Month {{month}}",
+    "dayLabel": "Day {{day}}",
+    "monthWithColon": "{{month}}: ",
+    "warnings": "Precautions",
+    "daily": {
+      "title": "Daily Fortune",
+      "overall": "Overall",
+      "luckyNumbers": "Lucky Numbers",
+      "luckyColors": "Lucky Colors",
+      "auspiciousHours": "Auspicious Hours",
+      "advice": "Today's Advice"
+    },
+    "monthly": {
+      "title": "Monthly Fortune",
+      "overallScore": "Overall Score",
+      "overallGood": "Favorable",
+      "overallStable": "Stable",
+      "overallLow": "Low",
+      "luckyDays": "Lucky Days",
+      "advice": "Monthly Advice"
+    },
+    "yearly": {
+      "title": "Yearly Fortune",
+      "ganZhiYear": "{{ganZhi}} Year",
+      "overall": "Yearly Overall",
+      "bestMonths": "Best Months",
+      "worstMonths": "Low Months",
+      "keyMoments": "Key Timing",
+      "opportunities": "Opportunity Windows",
+      "investment": "Finance",
+      "riskPeriods": "Risk Periods",
+      "zodiacCompatibility": "Zodiac Compatibility",
+      "advice": "Yearly Advice"
+    }
+  },
+  "profilePage": {
+    "title": "Profile",
+    "loginHint": "Login to unlock more services",
+    "loginNow": "Login Now",
+    "noAccount": "No account?",
+    "registerOne": "Register one",
+    "currentIdentity": "Current Identity",
+    "orders": {
+      "title": "My Orders",
+      "count": "{{count}} records",
+      "empty": "No orders yet"
+    },
+    "viewPlans": "View Plans",
+    "myInfo": "My Info",
+    "email": "Email",
+    "phone": "Phone",
+    "notBound": "Not bound",
+    "menu": {
+      "history": "History",
+      "library": "Case Library",
+      "pricing": "Pricing",
+      "feedback": "Help & Feedback"
+    },
+    "switchAccount": "Switch Account",
+    "logout": "Logout",
+    "loginSuccess": "Login successful",
+    "userFallback": "User",
+    "membership": {
+      "free": "Free User",
+      "monthly": "Monthly Member",
+      "yearly": "Yearly Member"
+    },
+    "orderStatus": {
+      "paid": "Paid",
+      "pending": "Pending"
+    }
+  },
+  "pricePage": {
+    "title": "Pricing",
+    "subtitle": "Transparent pricing, worry-free service",
+    "single": {
+      "title": "Single Consultation",
+      "subtitle": "Pay per use, flexible",
+      "item1": "Da Liu Ren Chart",
+      "price1": "¥38/session",
+      "item2": "Zi Ping Analysis",
+      "price2": "¥28/session",
+      "item3": "Deep Complete Analysis",
+      "price3": "¥68/session",
+      "note": "Single consultation closes after completion; purchase membership to continue"
+    },
+    "membership": {
+      "title": "Membership Plans",
+      "subtitle": "Unlimited access with subscription",
+      "monthly": {
+        "name": "Monthly Pass",
+        "price": "¥198/month",
+        "desc": "30 days unlimited consultations, daily fortune reminders included"
+      },
+      "yearly": {
+        "name": "Annual Pass",
+        "price": "¥1280/year",
+        "desc": "365 days full companionship, exclusive Life K-Chart included"
+      }
+    },
+    "explanation": {
+      "title": "Why this price?",
+      "point1": "Fortune-telling services are non-standardized knowledge-intensive services requiring professional expertise and experience",
+      "point2": "We integrate traditional fortune-telling classics with modern decision science for validated analysis frameworks",
+      "point3": "AI-assisted analysis significantly reduces marginal costs, offering professional services at lower prices",
+      "point4": "We believe: quality services should be accessible to more people, not just a few"
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": "Q: What's the difference between single and membership?",
+      "a1": "A: Single is for occasional use; membership is for users who need long-term fortune tracking or frequent consultations. Membership offers unlimited access with exclusive services.",
+      "q2": "Q: Can I get a refund?",
+      "a2": "A: Single consultations are non-refundable once started; unused memberships can request a refund within 7 days.",
+      "q3": "Q: How accurate are the results?",
+      "a3": "A: Fortune-telling analysis provides probabilistic reference, not absolute prophecy. We aim to give you a valuable thinking framework in an uncertain world."
+    },
+    "contact": {
+      "title": "Other Questions",
+      "desc": "For more questions or suggestions, please submit a ticket via Help & Feedback below. We'll respond as soon as possible."
+    }
+  },
+  "feedback": {
+    "title": "Help & Feedback",
+    "subtitle": "We value every piece of your feedback",
+    "loginRequired": "Login to use feedback",
+    "loginHint": "Login to submit tickets and view history",
+    "tab": {
+      "new": "New Ticket",
+      "history": "My Tickets"
+    },
+    "ticketType": {
+      "label": "Issue Type",
+      "bug": "Bug Report",
+      "suggestion": "Feature Suggestion",
+      "consultation": "Consultation Related",
+      "payment": "Payment Issue",
+      "other": "Other"
+    },
+    "form": {
+      "title": "Ticket Title",
+      "titlePlaceholder": "Briefly describe your issue (required)",
+      "description": "Detailed Description",
+      "descriptionPlaceholder": "Please describe your issue or suggestion in detail so we can better assist you...",
+      "contact": "Contact (optional)",
+      "contactPlaceholder": "Email or phone number for us to reach you",
+      "submit": "Submit Ticket",
+      "hint": "We'll respond to your ticket within 24 hours"
+    },
+    "empty": {
+      "title": "No tickets yet",
+      "desc": "You haven't submitted any tickets yet"
+    },
+    "status": {
+      "open": "Open",
+      "pending": "Pending",
+      "resolved": "Resolved",
+      "closed": "Closed"
+    },
+    "response": {
+      "label": "Official Response"
+    },
+    "updated": "Updated",
+    "submitSuccess": "Ticket submitted successfully!",
+    "mock": {
+      "title": "How do I change my birth information?",
+      "description": "I entered the wrong birth time and want to update it.",
+      "response": "Please go to Profile > My Info to update it. If you still need help, contact support."
+    }
+  },
+  "celebrity": {
+    "title": "Celebrity Chart Comparison",
+    "subtitle": "Compare your BaZi structure with public reference charts.",
+    "similarityPercent": "{{score}}% match",
+    "yourChart": "Your chart",
+    "celebrityChart": "Celebrity chart",
+    "dayMasterRelation": "Day master relation",
+    "insights": "Insights",
+    "shortPillars": {
+      "year": "Year",
+      "month": "Month",
+      "day": "Day",
+      "hour": "Hour",
+      "wuxing": "Elements"
+    },
+    "scoreLabels": {
+      "personality": "Personality",
+      "career": "Career",
+      "wealth": "Wealth",
+      "marriage": "Relationships",
+      "health": "Health"
+    }
+  },
+  "klineImage": {
+    "posterTitle": "Destiny K-Line",
+    "posterSubtitle": "Timing, momentum, and key windows at a glance.",
+    "rhythmMap": "Momentum Map",
+    "currentSignal": "Current Signal",
+    "score": "score",
+    "bestWindow": "Opportunity Window",
+    "riskWindow": "Risk Window",
+    "pillars": "Four Pillars",
+    "fiveElementProfile": "Five-Element Profile",
+    "dominantElement": "Dominant: {{element}}",
+    "strategicNotes": "Strategic Note",
+    "generatedBy": "Generated by AWKN Life",
+    "ageYearPair": "Age {{age}} · {{year}}",
+    "scoreValue": "{{score}} pts",
+    "trendSentence": "{{period}} is currently read as {{direction}} with {{probability}}% signal strength.",
+    "defaultNote": "Use the chart as a timing reference, then make decisions with real-world constraints.",
+    "defaultOneLiner": "You're not out of chances — you're in a buildup phase before the next track.",
+    "allAgesOverview": "All-age overview",
+    "stageWindow": "Age {{firstAge}}-{{lastAge}} window",
+    "stageAccumulating": "Accumulating",
+    "stageRising": "Rising",
+    "stageAdjusting": "Adjusting",
+    "elementCount": "{{count}} pts",
+    "ageLabel": "Age {{age}}",
+    "trendAnalysis": "Trend Analysis",
+    "overview": "Overview",
+    "brandTagline": "Life strategy rhythm map",
+    "windowLegend": "Green rising · Red adjusting",
+    "fileName": "mingyun-kline",
+    "selectRange": "Select range",
+    "ranges": {
+      "all": "All",
+      "young": "0-30",
+      "middle": "30-60",
+      "late": "60+"
+    },
+    "generating": "Generating...",
+    "generate": "Generate Share Card",
+    "previewAlt": "Destiny K-Line preview",
+    "saveImage": "Save Image",
+    "posterSecondLine": "Destiny isn't fixed — the K-line is a rhythm guide, not a verdict.",
+    "scanHint": "Scan to see your Destiny K-Line",
+    "footerDisclaimer": "For entertainment only. Not financial or life advice."
+  },
+  "shareCard": {
+    "keyYears": "Key Years",
+    "currentStage": "Current Stage",
+    "future3Year": "Next 3 Years",
+    "careerKline": "Career K-Line",
+    "wealthKline": "Wealth K-Line",
+    "relationshipWave": "Love Wave",
+    "keyYear": "Key Years",
+    "actionWindow": "Action Window",
+    "fileNameOverall": "destiny-kline-overall",
+    "fileNameCareer": "destiny-kline-career",
+    "fileNameWealth": "destiny-kline-wealth",
+    "fileNameCurrentStage": "destiny-kline-current-stage",
+    "fileNameFuture3Year": "destiny-kline-future-3y",
+    "fileNameRelationship": "destiny-kline-love",
+    "fileNameKeyYear": "destiny-kline-key-years",
+    "fileNameActionWindow": "destiny-kline-action"
+  },
+  "baziDetail": {
+    "title": "BaZi Detailed Analysis",
+    "qianZao": "Male",
+    "kunZao": "Female",
+    "yearSuffix": "{{year}}",
+    "wuxingDistribution": "Five Elements Distribution",
+    "wuxingCount": "{{element}}: {{count}}",
+    "dayMasterJudgment": "Day Master Assessment",
+    "strengthScore": "Strength Score",
+    "shenWangShort": "Strong",
+    "shenRuoShort": "Weak",
+    "shenZhongShort": "Mid",
+    "bodyStrong": "Strong Day Master",
+    "bodyWeak": "Weak Day Master",
+    "bodyBalanced": "Balanced",
+    "xiJiYongShen": "Favorable & Unfavorable",
+    "yongShen": "Favorable Element",
+    "xiShen": "Supporting Element",
+    "jiShen": "Unfavorable Element",
+    "fourPillarsTenGods": "Four Pillars & Ten Gods",
+    "yearPillar": "Year Pillar",
+    "monthPillar": "Month Pillar",
+    "dayPillar": "Day Pillar",
+    "hourPillar": "Hour Pillar",
+    "zhiZangGan": "Hidden Stems",
+    "daYun": "Major Cycles",
+    "shunXing": "Forward",
+    "niXing": "Reverse",
+    "qiYunAge": "Starts at age {{age}}",
+    "ageRange": "{{start}}-{{end}} yrs",
+    "current": "Current",
+    "shenShaGuiRen": "Spiritual Influences",
+    "tianYiGuiRen": "Noble Helper",
+    "taiJiGuiRen": "Tai Ji Noble",
+    "wenChangGuiRen": "Literary Star",
+    "yangRen": "Yang Blade",
+    "taoHua": "Peach Blossom",
+    "yiMa": "Traveling Horse",
+    "kongWang": "Void",
+    "none": "—",
+    "tianGanRelation": "Stem Relations",
+    "naYinWuXing": "Na Yin Elements",
+    "dayGanChangSheng": "Day Master Life Stages",
+    "liuNianFortune": "Annual Fortune",
+    "recent5Years": "Recent 5 years",
+    "ageSuffix": "{{age}} yrs",
+    "thisYear": "This year",
+    "qiYunJiaoYun": "Cycle Start",
+    "qiYunAgeLabel": "Starting Age",
+    "daYunDirection": "Cycle Direction",
+    "jiaoYunTime": "Transition Time",
+    "taiYuan": "Conception",
+    "mingGong": "Life Palace",
+    "yearLabel": "Yr",
+    "monthLabel": "Mo",
+    "dayLabel": "Day",
+    "hourLabel": "Hr",
+    "reasonMonthStrong": "Month branch {{zhi}} is prosperous, in season +15",
+    "reasonMonthWeak": "Month branch {{zhi}} is weak, out of season -15",
+    "reasonDayRoot": "Day branch {{zhi}} contains day stem {{gan}}, rooted +10",
+    "reasonBiJie": "{{count}} companion stars in stems +10",
+    "reasonPianKu": "Elements skewed, dominant element {{percent}}% -10",
+    "reasonMissing": "Missing element, possible special pattern +5"
+  },
+  "lifeKLine": {
+    "title": "Destiny K-Line",
+    "goodLuck": "Upside",
+    "badLuck": "Drawdown",
+    "momentum": "Momentum",
+    "rising": "Rising",
+    "falling": "Falling",
+    "fortune": "Score",
+    "daYun": "Da Yun",
+    "liuNian": "Year Flow",
+    "volatility": "Volatility",
+    "confidence": "Confidence",
+    "currentStage": "Current stage",
+    "opportunityWindow": "Opportunity window",
+    "riskWindow": "Risk window",
+    "yearSuffix": "",
+    "monthSuffix": " M{{month}}",
+    "age": "Age",
+    "ageSuffix": "y",
+    "noData": "No chart data",
+    "prev": "Prev",
+    "next": "Next",
+    "page": "Page",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "reset": "Reset",
+    "signals": {
+      "strongBuy": "Strong window",
+      "buy": "Rising window",
+      "hold": "Observe",
+      "sell": "Adjustment window"
+    },
+    "trendSignal": "Trend signal",
+    "lowPointLine": "Low point",
+    "goldenCross": "Golden cross",
+    "crossDown": "Downward",
+    "navigationHint": "Use arrows to navigate",
+    "tooltipOverview": "How this year looks",
+    "tooltipSuitable": "Suitable for",
+    "tooltipCaution": "Caution",
+    "tooltipBasis": "Basis"
+  },
+  "adminPage": {
+    "unlockRecords": "Unlock Records",
+    "creditUsage": "Credit Usage",
+    "llmFailures": "LLM Failures",
+    "noRecords": "No records"
+  }
+}

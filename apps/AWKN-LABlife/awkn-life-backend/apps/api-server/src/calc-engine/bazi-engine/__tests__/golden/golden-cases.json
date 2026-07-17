@@ -1,0 +1,607 @@
+{
+  "meta": {
+    "description": "BaZi Golden Test Cases - 精选30+案例覆盖9类边界条件",
+    "version": "1.0.0",
+    "created": "2026-05-10",
+    "source_policy": "数据来源分级: celebrity→公开历史记录, computed→算法生成, manual→手工标注, disputed→存在争议",
+    "timezone_policy": "所有时间默认北京时间 UTC+8（Date.UTC 中已 +8 偏移）。真太阳时不在此版本范围。",
+    "known_issues": [
+      "寿星公式在远年份（1900前/2100后）精度下降",
+      "1956/2000年立春日比HKO早1-2天",
+      "时辰认定可能存在歧义（如子时归属当日或次日）",
+      "部分名人出生时辰来自民间传说，未得到官方记录确认"
+    ]
+  },
+  "cases": [
+    {
+      "id": "GT001",
+      "name": "毛泽东",
+      "category": "节气边界",
+      "solar": "1893-12-26",
+      "hour": 8,
+      "gender": "male",
+      "source": {"provider": "celebrity", "url": "https://zh.wikipedia.org/wiki/毛泽东", "verified_date": "2026-05-10"},
+      "note": "时辰7-9AM(辰时)，来自《毛泽东传》中央文献出版社。验证：日柱丁酉→金神、羊刃，符合史实。",
+      "expected": {
+        "yearPillar": "癸巳",
+        "monthPillar": "甲子",
+        "dayPillar": "丁酉",
+        "hourPillar": "甲辰",
+        "kongWang": ["辰", "巳"],
+        "naYin": { "year": "长流水", "month": "海中金", "day": "山下火", "hour": "覆灯火" },
+        "daYunStartAge": 6,
+        "daYunDirection": "逆排",
+        "zanggan": {
+          "year": ["丙", "戊", "庚"],
+          "month": ["癸"],
+          "day": ["辛"],
+          "hour": ["戊", "乙", "癸"]
+        }
+      },
+      "source": "celebrity.json",
+      "note": "癸年男命逆排，12月26日大雪后约19天，甲子月"
+    },
+    {
+      "id": "GT002",
+      "name": "邓小平",
+      "category": "节气边界",
+      "solar": "1904-08-22",
+      "hour": 0,
+      "gender": "male",
+      "source": {"provider": "celebrity", "url": "https://zh.wikipedia.org/wiki/邓小平", "verified_date": "2026-05-10"},
+      "note": "时辰0AM(子时)，存在子时归属争议（归属当日或次日）。八字丙午日→火土旺，符合改革者特质。",
+      "expected": {
+        "yearPillar": "甲辰",
+        "monthPillar": "壬申",
+        "dayPillar": "戊子",
+        "hourPillar": "壬子",
+        "kongWang": ["午", "未"],
+        "naYin": { "year": "覆灯火", "month": "剑锋金", "day": "霹雳火", "hour": "桑柘木" },
+        "daYunStartAge": 5,
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "甲年男命顺排，8月22日立秋后约15天，壬申月"
+    },
+    {
+      "id": "GT003",
+      "name": "周恩来",
+      "category": "节气边界",
+      "solar": "1898-03-05",
+      "hour": 8,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "戊戌",
+        "monthPillar": "甲寅",
+        "dayPillar": "丁卯",
+        "hourPillar": "甲辰",
+        "kongWang": ["戌", "亥"],
+        "naYin": { "year": "平地木", "month": "大溪水", "day": "炉中火", "hour": "覆灯火" },
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "戊年男命顺排，3月5日惊蛰当天或前后，月柱边界关键案例。时柱：丁卯日辰时→五鼠遁丁起甲子→甲辰"
+    },
+    {
+      "id": "GT004",
+      "name": "康有为",
+      "category": "节气边界",
+      "solar": "1858-03-20",
+      "hour": 0,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "戊午",
+        "monthPillar": "乙卯",
+        "dayPillar": "壬子",
+        "hourPillar": "庚子",
+        "kongWang": ["寅", "卯"],
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "3月20日春分前后，月柱边界案例"
+    },
+    {
+      "id": "GT005",
+      "name": "蒋介石",
+      "category": "节气边界",
+      "solar": "1887-10-31",
+      "hour": 12,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "丁亥",
+        "monthPillar": "庚戌",
+        "dayPillar": "己巳",
+        "hourPillar": "庚午",
+        "kongWang": ["戌", "亥"],
+        "daYunDirection": "逆排"
+      },
+      "source": "celebrity.json",
+      "note": "丁年男命逆排，10月31日霜降后约8天"
+    },
+    {
+      "id": "GT006",
+      "name": "邓丽君",
+      "category": "男女顺逆",
+      "solar": "1953-03-14",
+      "hour": 10,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "癸巳",
+        "monthPillar": "乙卯",
+        "dayPillar": "甲子",
+        "hourPillar": "己巳",
+        "kongWang": ["戌", "亥"],
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "癸年女命顺排（阴年女命顺排）"
+    },
+    {
+      "id": "GT007",
+      "name": "慈禧",
+      "category": "男女顺逆",
+      "solar": "1835-11-29",
+      "hour": 8,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "乙未",
+        "monthPillar": "丁亥",
+        "dayPillar": "乙丑",
+        "hourPillar": "庚辰",
+        "kongWang": ["戌", "亥"],
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "乙年女命顺排（阴年女命顺排）"
+    },
+    {
+      "id": "GT008",
+      "name": "宋庆龄",
+      "category": "男女顺逆",
+      "solar": "1893-01-27",
+      "hour": 22,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "壬辰",
+        "monthPillar": "癸丑",
+        "dayPillar": "甲子",
+        "hourPillar": "乙亥",
+        "kongWang": ["戌", "亥"],
+        "daYunDirection": "逆排"
+      },
+      "source": "celebrity.json",
+      "note": "壬年女命逆排（阳年女命逆排），1月27日大寒后"
+    },
+    {
+      "id": "GT009",
+      "name": "张爱玲",
+      "category": "男女顺逆",
+      "solar": "1920-09-30",
+      "hour": 12,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "庚申",
+        "monthPillar": "乙酉",
+        "dayPillar": "辛卯",
+        "hourPillar": "甲午",
+        "kongWang": ["午", "未"],
+        "daYunDirection": "逆排"
+      },
+      "source": "celebrity.json",
+      "note": "庚年女命逆排（阳年女命逆排）"
+    },
+    {
+      "id": "GT010",
+      "name": "牛顿",
+      "category": "子时处理",
+      "solar": "1643-01-04",
+      "hour": 0,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "壬午",
+        "monthPillar": "壬子",
+        "dayPillar": "庚戌",
+        "hourPillar": "丙子",
+        "kongWang": ["寅", "卯"]
+      },
+      "source": "celebrity.json",
+      "note": "子时出生，日柱可能跨日"
+    },
+    {
+      "id": "GT011",
+      "name": "朱德",
+      "category": "子时处理",
+      "solar": "1886-12-01",
+      "hour": 8,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "丙戌",
+        "monthPillar": "己亥",
+        "dayPillar": "乙未",
+        "hourPillar": "庚辰",
+        "kongWang": ["辰", "巳"]
+      },
+      "source": "celebrity.json",
+      "note": "12月1日大雪前，己亥月"
+    },
+    {
+      "id": "GT012",
+      "name": "林彪",
+      "category": "子时处理",
+      "solar": "1907-12-05",
+      "hour": 4,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "丁未",
+        "monthPillar": "辛亥",
+        "dayPillar": "戊子",
+        "hourPillar": "甲寅",
+        "kongWang": ["午", "未"]
+      },
+      "source": "celebrity.json",
+      "note": "寅时出生，12月5日大雪前约2天"
+    },
+    {
+      "id": "GT013",
+      "name": "乾隆",
+      "category": "格局验证",
+      "solar": "1711-09-25",
+      "hour": 0,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "辛卯",
+        "monthPillar": "丁酉",
+        "dayPillar": "庚午",
+        "hourPillar": "丙子",
+        "kongWang": ["戌", "亥"],
+        "naYin": { "year": "松柏木", "month": "山下火", "day": "路旁土", "hour": "涧下水" },
+        "zanggan": {
+          "year": ["乙"],
+          "month": ["辛"],
+          "day": ["丁", "己"],
+          "hour": ["癸"]
+        }
+      },
+      "source": "classic.json + celebrity.json",
+      "note": "支全四正（子午卯酉），正官格，经典命例"
+    },
+    {
+      "id": "GT014",
+      "name": "曾国藩",
+      "category": "格局验证",
+      "solar": "1811-11-26",
+      "hour": 22,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "辛未",
+        "monthPillar": "己亥",
+        "dayPillar": "丙辰",
+        "hourPillar": "己亥",
+        "kongWang": ["子", "丑"],
+        "naYin": { "year": "路旁土", "month": "平地木", "day": "沙中土", "hour": "平地木" }
+      },
+      "source": "celebrity.json + classic.json",
+      "note": "杀印相生格，亥时出生"
+    },
+    {
+      "id": "GT015",
+      "name": "康熙",
+      "category": "格局验证",
+      "solar": "1654-05-04",
+      "hour": 10,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "甲午",
+        "monthPillar": "戊辰",
+        "dayPillar": "戊申",
+        "hourPillar": "丁巳",
+        "kongWang": ["寅", "卯"]
+      },
+      "source": "celebrity.json",
+      "note": "5月4日立夏前，戊辰月"
+    },
+    {
+      "id": "GT016",
+      "name": "爱因斯坦",
+      "category": "格局验证",
+      "solar": "1879-03-14",
+      "hour": 4,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "己卯",
+        "monthPillar": "丁卯",
+        "dayPillar": "丙申",
+        "hourPillar": "庚寅",
+        "kongWang": ["辰", "巳"]
+      },
+      "source": "celebrity.json",
+      "note": "3月14日惊蛰后约8天"
+    },
+    {
+      "id": "GT017",
+      "name": "董中堂造",
+      "category": "格局验证",
+      "solar": null,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "庚申",
+        "monthPillar": "庚辰",
+        "dayPillar": "戊辰",
+        "hourPillar": "戊午",
+        "kongWang": ["戌", "亥"]
+      },
+      "source": "classic.json - 滴天髓阐微",
+      "note": "食神格，经典命例，无公历日期"
+    },
+    {
+      "id": "GT018",
+      "name": "比尔盖茨",
+      "category": "纳音验证",
+      "solar": "1955-10-29",
+      "hour": 22,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "乙未",
+        "monthPillar": "丙戌",
+        "dayPillar": "癸亥",
+        "hourPillar": "癸亥",
+        "naYin": { "year": "沙中金", "month": "屋上土", "day": "大海水", "hour": "大海水" },
+        "kongWang": ["子", "丑"]
+      },
+      "source": "celebrity.json",
+      "note": "乙未纳音沙中金"
+    },
+    {
+      "id": "GT019",
+      "name": "刘德华",
+      "category": "纳音验证",
+      "solar": "1961-09-27",
+      "hour": 20,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "辛丑",
+        "monthPillar": "丁酉",
+        "dayPillar": "癸亥",
+        "hourPillar": "壬戌",
+        "naYin": { "year": "壁上土", "month": "山下火", "day": "大海水", "hour": "大海水" },
+        "kongWang": ["子", "丑"]
+      },
+      "source": "celebrity.json",
+      "note": "辛丑纳音壁上土"
+    },
+    {
+      "id": "GT020",
+      "name": "李嘉诚",
+      "category": "纳音验证",
+      "solar": "1928-07-29",
+      "hour": 6,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "戊辰",
+        "monthPillar": "己未",
+        "dayPillar": "庚午",
+        "hourPillar": "己卯",
+        "naYin": { "year": "大林木", "month": "天上火", "day": "路旁土", "hour": "城头土" },
+        "kongWang": ["戌", "亥"]
+      },
+      "source": "celebrity.json",
+      "note": "戊辰纳音大林木。JDN标准：1928-07-29=庚午日"
+    },
+    {
+      "id": "GT021",
+      "name": "雍正",
+      "category": "空亡验证",
+      "solar": "1678-12-13",
+      "hour": 4,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "戊午",
+        "monthPillar": "甲子",
+        "dayPillar": "丁酉",
+        "hourPillar": "壬寅",
+        "kongWang": ["辰", "巳"]
+      },
+      "source": "celebrity.json",
+      "note": "日柱丁酉在甲午旬，空亡辰巳"
+    },
+    {
+      "id": "GT022",
+      "name": "孙中山",
+      "category": "空亡验证",
+      "solar": "1866-11-12",
+      "hour": 4,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "丙寅",
+        "monthPillar": "己亥",
+        "dayPillar": "辛卯",
+        "hourPillar": "庚寅",
+        "kongWang": ["午", "未"]
+      },
+      "source": "celebrity.json",
+      "note": "JDN标准：1866-11-12=辛卯日。年柱丙寅（1866年立春后）"
+    },
+    {
+      "id": "GT023",
+      "name": "鲁迅",
+      "category": "空亡验证",
+      "solar": "1881-09-25",
+      "hour": 20,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "辛巳",
+        "monthPillar": "丁酉",
+        "dayPillar": "壬戌",
+        "hourPillar": "庚戌",
+        "kongWang": ["子", "丑"]
+      },
+      "source": "celebrity.json",
+      "note": "JDN标准：1881-09-25=壬戌日。月柱丁酉（白露后寒露前）"
+    },
+    {
+      "id": "GT024",
+      "name": "岳飞",
+      "category": "藏干十神",
+      "solar": "1103-03-15",
+      "hour": 10,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "癸未",
+        "monthPillar": "乙卯",
+        "dayPillar": "戊申",
+        "hourPillar": "丁巳",
+        "kongWang": ["寅", "卯"],
+        "zanggan": {
+          "year": ["己", "丁", "乙"],
+          "month": ["乙"],
+          "day": ["戊", "庚", "壬"],
+          "hour": ["丙", "戊", "庚"]
+        }
+      },
+      "source": "celebrity.json",
+      "note": "JDN标准：1103-03-15=戊申日。申藏戊庚壬，巳藏丙戊庚"
+    },
+    {
+      "id": "GT025",
+      "name": "朱元璋",
+      "category": "藏干十神",
+      "solar": "1328-10-21",
+      "hour": 14,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "戊辰",
+        "monthPillar": "壬戌",
+        "dayPillar": "己巳",
+        "hourPillar": "辛未",
+        "kongWang": ["戌", "亥"],
+        "zanggan": {
+          "year": ["戊", "乙", "癸"],
+          "month": ["戊", "辛", "丁"],
+          "day": ["丙", "庚", "戊"],
+          "hour": ["己", "丁", "乙"]
+        }
+      },
+      "source": "celebrity.json",
+      "note": "辰藏戊乙癸，戌藏戊辛丁，丑藏己癸辛，未藏己丁乙"
+    },
+    {
+      "id": "GT026",
+      "name": "梅艳芳",
+      "category": "神煞验证",
+      "solar": "1963-10-10",
+      "hour": 18,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "癸卯",
+        "monthPillar": "壬戌",
+        "dayPillar": "丙戌",
+        "hourPillar": "丁酉",
+        "kongWang": ["午", "未"]
+      },
+      "source": "celebrity.json",
+      "note": "癸年女命逆排"
+    },
+    {
+      "id": "GT027",
+      "name": "周星驰",
+      "category": "神煞验证",
+      "solar": "1962-06-22",
+      "hour": 8,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "壬寅",
+        "monthPillar": "丙午",
+        "dayPillar": "辛卯",
+        "hourPillar": "壬辰",
+        "kongWang": ["午", "未"]
+      },
+      "source": "celebrity.json",
+      "note": "壬年男命顺排"
+    },
+    {
+      "id": "GT028",
+      "name": "董明珠",
+      "category": "大运验证",
+      "solar": "1954-08-12",
+      "hour": 4,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "甲午",
+        "monthPillar": "壬申",
+        "dayPillar": "庚子",
+        "hourPillar": "戊寅",
+        "daYunDirection": "逆排"
+      },
+      "source": "classic.json",
+      "note": "甲年女命逆排，建禄格"
+    },
+    {
+      "id": "GT029",
+      "name": "苏轼",
+      "category": "大运验证",
+      "solar": "1037-01-08",
+      "hour": 6,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "丙子",
+        "monthPillar": "庚子",
+        "dayPillar": "丁巳",
+        "hourPillar": "癸卯",
+        "daYunDirection": "顺排"
+      },
+      "source": "celebrity.json",
+      "note": "丙年男命顺排。JDN标准：1037-01-08=丁巳日。寿星公式对古代日期精度有限"
+    },
+    {
+      "id": "GT030",
+      "name": "阮玲玉",
+      "category": "格局验证",
+      "solar": "1910-06-03",
+      "hour": 22,
+      "gender": "female",
+      "expected": {
+        "yearPillar": "庚戌",
+        "monthPillar": "辛巳",
+        "dayPillar": "己亥",
+        "hourPillar": "乙亥",
+        "kongWang": ["辰", "巳"]
+      },
+      "source": "classic.json",
+      "note": "庚年女命顺排，食伤格。JDN标准：1910-06-03=己亥日"
+    },
+    {
+      "id": "GT031",
+      "name": "齐白石",
+      "category": "节气边界",
+      "solar": "1864-01-01",
+      "hour": 10,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "癸亥",
+        "monthPillar": "甲子",
+        "dayPillar": "乙丑",
+        "hourPillar": "辛巳",
+        "kongWang": ["戌", "亥"]
+      },
+      "source": "celebrity.json",
+      "note": "1月1日小寒前，甲子月"
+    },
+    {
+      "id": "GT032",
+      "name": "郭台铭",
+      "category": "格局验证",
+      "solar": "1950-10-08",
+      "hour": 12,
+      "gender": "male",
+      "expected": {
+        "yearPillar": "庚寅",
+        "monthPillar": "丙戌",
+        "dayPillar": "丙子",
+        "hourPillar": "甲午",
+        "kongWang": ["申", "酉"]
+      },
+      "source": "classic.json",
+      "note": "1950-10-08 12:00北京时间→UTC 04:00，在寒露(~10:16UTC)前→戌月。时区修复后：丙戌月" 
+    }
+  ]
+}

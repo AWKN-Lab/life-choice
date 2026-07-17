@@ -1,0 +1,417 @@
+[
+  {
+    "id": 1,
+    "name": "紫府同宫格",
+    "category": "吉格"
+  },
+  {
+    "id": 2,
+    "name": "紫府朝垣格",
+    "category": "吉格"
+  },
+  {
+    "id": 3,
+    "name": "天府朝垣格",
+    "category": "吉格"
+  },
+  {
+    "id": 4,
+    "name": "君臣庆会格",
+    "category": "凶格"
+  },
+  {
+    "id": 5,
+    "name": "府相朝垣格",
+    "category": "凶格"
+  },
+  {
+    "id": 6,
+    "name": "机月同梁格",
+    "category": "凶格"
+  },
+  {
+    "id": 7,
+    "name": "机梁加会格",
+    "category": "吉格"
+  },
+  {
+    "id": 8,
+    "name": "文梁振纪格",
+    "category": "吉格"
+  },
+  {
+    "id": 9,
+    "name": "巨日同宫格",
+    "category": "凶格"
+  },
+  {
+    "id": 10,
+    "name": "金灿光辉格",
+    "category": "吉格"
+  },
+  {
+    "id": 11,
+    "name": "日照雷门格",
+    "category": "凶格"
+  },
+  {
+    "id": 12,
+    "name": "阳梁昌禄格",
+    "category": "吉格"
+  },
+  {
+    "id": 13,
+    "name": "明珠出海格",
+    "category": "吉格"
+  },
+  {
+    "id": 14,
+    "name": "月朗天门格",
+    "category": "吉格"
+  },
+  {
+    "id": 15,
+    "name": "日月并明格",
+    "category": "吉格"
+  },
+  {
+    "id": 16,
+    "name": "月生沧海格",
+    "category": "吉格"
+  },
+  {
+    "id": 17,
+    "name": "寿星入庙格",
+    "category": "吉格"
+  },
+  {
+    "id": 18,
+    "name": "英星入庙格",
+    "category": "吉格"
+  },
+  {
+    "id": 19,
+    "name": "石中隐玉格",
+    "category": "吉格"
+  },
+  {
+    "id": 20,
+    "name": "七杀朝斗格",
+    "category": "吉格"
+  },
+  {
+    "id": 21,
+    "name": "马头带箭格",
+    "category": "吉格"
+  },
+  {
+    "id": 22,
+    "name": "巨机同临格",
+    "category": "吉格"
+  },
+  {
+    "id": 23,
+    "name": "天乙拱命格",
+    "category": "吉格"
+  },
+  {
+    "id": 24,
+    "name": "权禄巡逢格",
+    "category": "吉格"
+  },
+  {
+    "id": 25,
+    "name": "科权禄夹格",
+    "category": "吉格"
+  },
+  {
+    "id": 26,
+    "name": "双禄夹命格",
+    "category": "吉格"
+  },
+  {
+    "id": 27,
+    "name": "左右同宫格",
+    "category": "吉格"
+  },
+  {
+    "id": 28,
+    "name": "文桂文华格",
+    "category": "凶格"
+  },
+  {
+    "id": 29,
+    "name": "贪武同行格",
+    "category": "吉格"
+  },
+  {
+    "id": 30,
+    "name": "三合火贪格",
+    "category": "吉格"
+  },
+  {
+    "id": 31,
+    "name": "贪铃朝垣格",
+    "category": "吉格"
+  },
+  {
+    "id": 32,
+    "name": "紫府夹命格",
+    "category": "吉格"
+  },
+  {
+    "id": 33,
+    "name": "日月夹命格",
+    "category": "吉格"
+  },
+  {
+    "id": 34,
+    "name": "左右夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 35,
+    "name": "昌曲夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 36,
+    "name": "魁钺夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 37,
+    "name": "廉贞文武格",
+    "category": "吉格"
+  },
+  {
+    "id": 38,
+    "name": "权煞化禄格",
+    "category": "凶格"
+  },
+  {
+    "id": 39,
+    "name": "雄宿朝垣格",
+    "category": "吉格"
+  },
+  {
+    "id": 40,
+    "name": "辅拱文星格",
+    "category": "吉格"
+  },
+  {
+    "id": 41,
+    "name": "禄文拱命格",
+    "category": "凶格"
+  },
+  {
+    "id": 42,
+    "name": "禄合鸳鸯格",
+    "category": "吉格"
+  },
+  {
+    "id": 43,
+    "name": "双禄朝垣格",
+    "category": "吉格"
+  },
+  {
+    "id": 44,
+    "name": "禄马佩印格",
+    "category": "凶格"
+  },
+  {
+    "id": 45,
+    "name": "禄马交驰格",
+    "category": "吉格"
+  },
+  {
+    "id": 46,
+    "name": "二曜同临格",
+    "category": "吉格"
+  },
+  {
+    "id": 47,
+    "name": "丹墀桂墀格",
+    "category": "吉格"
+  },
+  {
+    "id": 48,
+    "name": "甲第登庸格",
+    "category": "吉格"
+  },
+  {
+    "id": 49,
+    "name": "科名会禄格",
+    "category": "吉格"
+  },
+  {
+    "id": 50,
+    "name": "极向离明格",
+    "category": "吉格"
+  },
+  {
+    "id": 51,
+    "name": "化星返贵格",
+    "category": "凶格"
+  },
+  {
+    "id": 52,
+    "name": "将星得地格",
+    "category": "吉格"
+  },
+  {
+    "id": 53,
+    "name": "日月照壁格",
+    "category": "凶格"
+  },
+  {
+    "id": 54,
+    "name": "财禄夹马格",
+    "category": "凶格"
+  },
+  {
+    "id": 55,
+    "name": "明禄暗禄格",
+    "category": "凶格"
+  },
+  {
+    "id": 56,
+    "name": "科明禄暗格",
+    "category": "杂格"
+  },
+  {
+    "id": 57,
+    "name": "坐贵向贵格",
+    "category": "吉格"
+  },
+  {
+    "id": 58,
+    "name": "文星拱命格",
+    "category": "吉格"
+  },
+  {
+    "id": 59,
+    "name": "财荫夹印格",
+    "category": "凶格"
+  },
+  {
+    "id": 60,
+    "name": "擎羊入庙格",
+    "category": "吉格"
+  },
+  {
+    "id": 61,
+    "name": "日月同宫格",
+    "category": "吉格"
+  },
+  {
+    "id": 62,
+    "name": "马头带剑格",
+    "category": "吉格"
+  },
+  {
+    "id": 63,
+    "name": "极居卯酉格",
+    "category": "吉格"
+  },
+  {
+    "id": 64,
+    "name": "巨机化酉格",
+    "category": "凶格"
+  },
+  {
+    "id": 65,
+    "name": "日月反背格",
+    "category": "凶格"
+  },
+  {
+    "id": 66,
+    "name": "梁马飘荡格",
+    "category": "凶格"
+  },
+  {
+    "id": 67,
+    "name": "贞杀同宫格",
+    "category": "吉格"
+  },
+  {
+    "id": 68,
+    "name": "刑囚夹印格",
+    "category": "凶格"
+  },
+  {
+    "id": 69,
+    "name": "巨逢四煞格",
+    "category": "凶格"
+  },
+  {
+    "id": 70,
+    "name": "命无正曜格",
+    "category": "杂格"
+  },
+  {
+    "id": 71,
+    "name": "命里逢空格",
+    "category": "凶格"
+  },
+  {
+    "id": 72,
+    "name": "空劫夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 73,
+    "name": "文星遇夹格",
+    "category": "凶格"
+  },
+  {
+    "id": 74,
+    "name": "羊陀夹忌格",
+    "category": "凶格"
+  },
+  {
+    "id": 75,
+    "name": "羊陀夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 76,
+    "name": "火铃夹命格",
+    "category": "凶格"
+  },
+  {
+    "id": 77,
+    "name": "刑忌夹印格",
+    "category": "凶格"
+  },
+  {
+    "id": 78,
+    "name": "马落空亡格",
+    "category": "凶格"
+  },
+  {
+    "id": 79,
+    "name": "两重华盖格",
+    "category": "凶格"
+  },
+  {
+    "id": 80,
+    "name": "禄逢冲破格",
+    "category": "凶格"
+  },
+  {
+    "id": 81,
+    "name": "泛水桃花格",
+    "category": "凶格"
+  },
+  {
+    "id": 82,
+    "name": "风流彩杖格",
+    "category": "凶格"
+  },
+  {
+    "id": 83,
+    "name": "天机巳亥格",
+    "category": "杂格"
+  }
+]

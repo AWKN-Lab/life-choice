@@ -1,0 +1,159 @@
+{
+  "data": [
+    {
+      "id": "page-home-dark",
+      "title": "首页（暗色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019200000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/home-dark.html"
+      }
+    },
+    {
+      "id": "page-home-light",
+      "title": "首页（亮色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019201000,
+      "canvasData": {
+        "x": 420,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/home-light.html"
+      }
+    },
+    {
+      "id": "page-tide-dark",
+      "title": "潮汐页（暗色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019202000,
+      "canvasData": {
+        "x": 0,
+        "y": 948,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/tide-dark.html"
+      }
+    },
+    {
+      "id": "page-tide-light",
+      "title": "潮汐页（亮色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019203000,
+      "canvasData": {
+        "x": 420,
+        "y": 949,
+        "group": 1
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/tide-light.html"
+      }
+    },
+    {
+      "id": "page-kline-dark",
+      "title": "K线页（暗色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019204000,
+      "canvasData": {
+        "x": 0,
+        "y": 1776,
+        "group": 2
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/kline-dark.html"
+      }
+    },
+    {
+      "id": "page-kline-light",
+      "title": "K线页（亮色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019205000,
+      "canvasData": {
+        "x": 420,
+        "y": 1776,
+        "group": 2
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/kline-light.html"
+      }
+    },
+    {
+      "id": "page-ledger-dark",
+      "title": "账本页（暗色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019206000,
+      "canvasData": {
+        "x": 0,
+        "y": 2366,
+        "group": 3
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/ledger-dark.html"
+      }
+    },
+    {
+      "id": "page-ledger-light",
+      "title": "账本页（亮色）",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019207000,
+      "canvasData": {
+        "x": 420,
+        "y": 2366,
+        "group": 3
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/ledger-light.html"
+      }
+    },
+    {
+      "id": "page-bottom-nav",
+      "title": "BottomNav 导航组件",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019208000,
+      "canvasData": {
+        "x": 0,
+        "y": 3054,
+        "group": 4
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/bottom-nav.html"
+      }
+    },
+    {
+      "id": "page-tokens",
+      "title": "设计 Token 总览",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1752019209000,
+      "canvasData": {
+        "x": 420,
+        "y": 3054,
+        "group": 4
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/tokens.html"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "mobile",
+    "projectName": "人生决策宗师-体验升级"
+  }
+}

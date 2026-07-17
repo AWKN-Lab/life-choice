@@ -1,0 +1,37 @@
+{
+  "caseId": "gc-005",
+  "segmentsFound": [
+    "事实层",
+    "解读层",
+    "推演层",
+    "建议层",
+    "点睛层",
+    "我的判断",
+    "前提",
+    "代价",
+    "推理轨迹",
+    "分值",
+    "观察期",
+    "红线",
+    "三窗口",
+    "落一句最实在的话"
+  ],
+  "segmentsMissing": [],
+  "segmentsCount": 14,
+  "isComplete": true,
+  "score": 58,
+  "scoreInRange": true,
+  "riskLevel": "high",
+  "riskMatch": true,
+  "keywordsHit": [
+    "伤官见官",
+    "挑剔"
+  ],
+  "keywordsHitCount": 2,
+  "keywordsPassed": true,
+  "redLinesFound": [],
+  "redLinesPassed": false,
+  "passed": true,
+  "failureReasons": [],
+  "rawOutputLength": 1637
+}

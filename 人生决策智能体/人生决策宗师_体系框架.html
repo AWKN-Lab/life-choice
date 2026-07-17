@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生决策宗师 — 体系框架 V1.0</title>
+<style>
+  :root {
+    --bg: #0c0c14;
+    --surface: #14141f;
+    --card: #1a1a2e;
+    --border: rgba(255,255,255,0.08);
+    --gold: #d4a853;
+    --gold-dim: rgba(212,168,83,0.15);
+    --blue: #5b8def;
+    --green: #4ecdc4;
+    --red: #ff6b6b;
+    --amber: #f5a623;
+    --text: #e8e6e3;
+    --text-dim: rgba(232,230,227,0.5);
+    --text-faint: rgba(232,230,227,0.3);
+    --radius: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Noto Serif SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(212,168,83,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(91,141,239,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--text-dim);
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+  .hero .positioning {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pos-card {
+    padding: 20px 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    min-width: 260px;
+  }
+  .pos-card.us { border-color: var(--gold); background: var(--gold-dim); }
+  .pos-card .label { font-size: 11px; color: var(--text-faint); letter-spacing: 2px; margin-bottom: 6px; }
+  .pos-card .value { font-size: 18px; font-weight: 700; }
+  .pos-card.us .value { color: var(--gold); }
+
+  /* Sections */
+  section { padding: 80px 0; }
+  section:nth-child(even) { background: var(--surface); }
+  .section-num {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  /* Comparison Table */
+  .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .compare-table th, .compare-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table thead th {
+    background: var(--card);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .compare-table thead th:nth-child(2) { color: var(--gold); }
+  .compare-table tbody tr { background: var(--surface); }
+  .compare-table tbody tr:hover { background: var(--card); }
+  .compare-table td:first-child { font-weight: 600; color: var(--text-dim); width: 22%; }
+  .compare-table td:nth-child(2) { color: var(--gold); width: 39%; }
+  .compare-table td:nth-child(3) { color: var(--text-dim); width: 39%; }
+  .tag-yes { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 11px; background: rgba(78,205,196,0.15); color: var(--green); }
+  .tag-no { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 11px; background: rgba(255,107,107,0.1); color: var(--red); }
+  .tag-partial { display: inline-block; padding: 2px 10px; border-radius: 100px; font-size: 11px; background: rgba(245,166,35,0.15); color: var(--amber); }
+
+  /* Architecture Layers */
+  .layer-stack { display: flex; flex-direction: column; gap: 16px; }
+  .layer-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .layer-card:hover { border-color: var(--gold); }
+  .layer-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--gold-dim) 0%, transparent 100%);
+    border-right: 1px solid var(--border);
+    padding: 20px 8px;
+  }
+  .layer-num .num { font-size: 28px; font-weight: 800; color: var(--gold); }
+  .layer-num .cn { font-size: 12px; color: var(--text-faint); margin-top: 4px; }
+  .layer-body { padding: 24px; }
+  .layer-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .layer-body h3 .en { font-size: 13px; color: var(--text-faint); font-weight: 400; margin-left: 8px; }
+  .layer-body p { color: var(--text-dim); font-size: 14px; margin-bottom: 12px; }
+  .layer-modules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .module-tag {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    background: rgba(91,141,239,0.1);
+    color: var(--blue);
+    border: 1px solid rgba(91,141,239,0.2);
+  }
+  .module-tag.unique {
+    background: var(--gold-dim);
+    color: var(--gold);
+    border-color: rgba(212,168,83,0.3);
+  }
+
+  /* Engine Cards */
+  .engine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .engine-card {
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .engine-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .engine-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+    background: var(--gold-dim);
+  }
+  .engine-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .engine-card .en-name { font-size: 12px; color: var(--text-faint); margin-bottom: 12px; }
+  .engine-card p { font-size: 14px; color: var(--text-dim); }
+  .engine-card .tech {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  /* Agent Matrix */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .agent-card {
+    padding: 20px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .agent-card:hover { border-color: var(--gold); }
+  .agent-card .emoji { font-size: 28px; margin-bottom: 8px; }
+  .agent-card .name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .agent-card .school { font-size: 11px; color: var(--text-faint); }
+  .agent-card .status { margin-top: 8px; }
+  .agent-card .status .tag-yes { font-size: 10px; }
+  .agent-card .status .tag-partial { font-size: 10px; }
+
+  /* Pipeline */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 20px 0;
+    margin-bottom: 40px;
+  }
+  .pipe-step {
+    flex-shrink: 0;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    text-align: center;
+    min-width: 120px;
+  }
+  .pipe-step .step-num { font-size: 10px; color: var(--gold); letter-spacing: 2px; }
+  .pipe-step .step-name { font-size: 13px; font-weight: 600; margin-top: 4px; }
+  .pipe-arrow {
+    flex-shrink: 0;
+    font-size: 18px;
+    color: var(--text-faint);
+    padding: 0 4px;
+  }
+
+  /* Trust Layers */
+  .trust-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+  .trust-layer {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .trust-label {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .trust-layer:nth-child(1) .trust-label { background: rgba(212,168,83,0.8); }
+  .trust-layer:nth-child(2) .trust-label { background: rgba(91,141,239,0.7); }
+  .trust-layer:nth-child(3) .trust-label { background: rgba(78,205,196,0.6); }
+  .trust-layer:nth-child(4) .trust-label { background: rgba(245,166,35,0.5); }
+  .trust-body {
+    padding: 16px 20px;
+    background: var(--card);
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  /* Roadmap */
+  .roadmap { position: relative; padding-left: 40px; }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--blue) 50%, var(--green) 100%);
+  }
+  .roadmap-item { position: relative; margin-bottom: 48px; }
+  .roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--bg);
+  }
+  .roadmap-item:nth-child(2)::before { border-color: var(--blue); }
+  .roadmap-item:nth-child(3)::before { border-color: var(--green); }
+  .roadmap-item .phase {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .roadmap-item:nth-child(2) .phase { color: var(--blue); }
+  .roadmap-item:nth-child(3) .phase { color: var(--green); }
+  .roadmap-item h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .roadmap-item p { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+  .roadmap-item .deliverables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .del-tag {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .del-tag.done { background: rgba(78,205,196,0.1); color: var(--green); border-color: rgba(78,205,196,0.2); }
+  .del-tag.wip { background: var(--gold-dim); color: var(--gold); border-color: rgba(212,168,83,0.2); }
+  .del-tag.future { background: rgba(91,141,239,0.1); color: var(--blue); border-color: rgba(91,141,239,0.15); }
+
+  /* Footer */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero .positioning { flex-direction: column; }
+    .layer-card { grid-template-columns: 1fr; }
+    .layer-num { flex-direction: row; gap: 8px; padding: 12px 20px; border-right: none; border-bottom: 1px solid var(--border); }
+    .pipeline { flex-wrap: wrap; }
+    .trust-layer { grid-template-columns: 1fr; }
+    .trust-label { padding: 8px; }
+    .agent-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="hero-badge">Life Intelligence System · V1.0</div>
+  <h1>不是算命，是练判断力</h1>
+  <p class="subtitle">
+    把人生的没底，变成可以被记录、被摆开、被试算、被验证、被回看、被修正的判断力。<br>
+    这不是一个预测工具——这是一个<strong style="color:var(--gold)">人生决策操作系统</strong>。
+  </p>
+  <div class="positioning">
+    <div class="pos-card us">
+      <div class="label">人生决策宗师</div>
+      <div class="value">决策孪生体 · LifeOS</div>
+      <p style="font-size:13px;color:var(--text-dim);margin-top:8px;">构建个人判断力的闭环系统：<br>算→看→想→记→修，持续进化</p>
+    </div>
+    <div class="pos-card">
+      <div class="label">市面同类产品</div>
+      <div class="value" style="color:var(--text-dim)">命理分析器</div>
+      <p style="font-size:13px;color:var(--text-faint);margin-top:8px;">排盘→取象→校验→整合<br>一次性输出分析报告</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============== SECTION 1: 定位宣言 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 01</div>
+    <h2 class="section-title">定位宣言：为什么我们不是另一个算命 App</h2>
+    <p class="section-desc">
+      市面上的 AI 命理产品，包括天福 Agent，本质上是<strong>「命理分析器」</strong>——用多 Agent 交叉验证，输出一份更准确的命盘报告。我们尊重这个方向，但我们的命题完全不同：我们不做一次性的命运预测，而是构建一个<strong>持续学习、持续修正的个人决策孪生体</strong>。
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>人生决策宗师（我们）</th>
+          <th>天福 Agent 类产品</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>核心命题</td>
+          <td>构建判断力闭环——你的决策质量可以越来越好</td>
+          <td>输出一份准确的命盘分析报告</td>
+        </tr>
+        <tr>
+          <td>产品隐喻</td>
+          <td>人生决策操作系统（LifeOS）</td>
+          <td>AI 命理顾问</td>
+        </tr>
+        <tr>
+          <td>时间维度</td>
+          <td>持续追踪——事件账本记录你的每一步，反馈修正让模型越来越懂你</td>
+          <td>单次分析——输入生辰，输出报告，结束</td>
+        </tr>
+        <tr>
+          <td>可视化</td>
+          <td>人生K线 + 潮汐相位空间 + 12维状态雷达——独创的金融/物理学隐喻</td>
+          <td>传统命盘图表 + 文字报告</td>
+        </tr>
+        <tr>
+          <td>决策支持</td>
+          <td>枢密院四步法 + 妙算情景推演 + 选择损益矩阵——不只给结论，给你思考框架</td>
+          <td>整合建议 + 可行步骤</td>
+        </tr>
+        <tr>
+          <td>学习能力</td>
+          <td>通鉴决策日志 + 模式识别 + 基线校准——系统记住你每一次决策，发现你的思维惯性</td>
+          <td>长期记忆对话上下文</td>
+        </tr>
+        <tr>
+          <td>信任机制</td>
+          <td>四层证据链（算法→古籍→统计→LLM）+ 置信度标注 + 可回溯</td>
+          <td>推理步骤可见 + 概率模型</td>
+        </tr>
+        <tr>
+          <td>学派覆盖</td>
+          <td>六派专精 Agent（子平/六壬/奇门/六爻/紫微/取名）+ 交叉校验层</td>
+          <td>三学派交叉验证（紫微/子平/奇门）</td>
+        </tr>
+        <tr>
+          <td>学术基础</td>
+          <td>中国系统思维 → 现代系统科学的四层翻译链（香农信息论 / 维纳控制论 / 普利高津自组织）</td>
+          <td>经验验证的传统框架</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== SECTION 2: 五层架构 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 02</div>
+    <h2 class="section-title">五层架构：算 · 看 · 想 · 记 · 修</h2>
+    <p class="section-desc">
+      区别于"排盘→取象→校验→整合"四步流水线，我们构建五层递进架构。前两层是基础能力（天福也有），后三层是我们的独创——让产品从"工具"进化为"系统"。
+    </p>
+
+    <div class="layer-stack">
+      <!-- L1 -->
+      <div class="layer-card">
+        <div class="layer-num"><span class="num">L1</span><span class="cn">算</span></div>
+        <div class="layer-body">
+          <h3>天机引擎 <span class="en">Calculation Engine</span></h3>
+          <p>六派命理计算内核。不是一组通用算法，而是六个独立专精的 Agent，每个 Agent 深耕一个学派数年积累的知识库和规则引擎。算法层保证排盘零误差，规则引擎保证推论忠于经典，LLM 只负责把结构化结论翻译成人话。</p>
+          <div class="layer-modules">
+            <span class="module-tag">子平八字</span>
+            <span class="module-tag">大六壬</span>
+            <span class="module-tag">奇门遁甲</span>
+            <span class="module-tag">六爻</span>
+            <span class="module-tag">紫微斗数</span>
+            <span class="module-tag">取名</span>
+            <span class="module-tag">规则引擎</span>
+            <span class="module-tag">知识库 RAG</span>
+            <span class="module-tag">LLM 网关</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- L2 -->
+      <div class="layer-card">
+        <div class="layer-num"><span class="num">L2</span><span class="cn">看</span></div>
+        <div class="layer-body">
+          <h3>人生可视化 <span class="en">Life Visualization</span></h3>
+          <p><span class="tag-yes">独创</span> 将金融 K 线和物理学相空间引入人生分析。七条人生线（事业/财富/健康/关系/成长/自由/缓冲）以 OHLCV 蜡烛图呈现月度波动；12 维状态雷达展示你当前的承载力与无序度；相位空间用四象限定位你所处的生命阶段。</p>
+          <div class="layer-modules">
+            <span class="module-tag unique">人生K线</span>
+            <span class="module-tag unique">潮汐雷达</span>
+            <span class="module-tag unique">相位空间</span>
+            <span class="module-tag unique">星图网络</span>
+            <span class="module-tag">运势日历</span>
+            <span class="module-tag">时间线</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- L3 -->
+      <div class="layer-card">
+        <div class="layer-num"><span class="num">L3</span><span class="cn">想</span></div>
+        <div class="layer-body">
+          <h3>决策工具箱 <span class="en">Decision Toolkit</span></h3>
+          <p><span class="tag-yes">独创</span> 不只告诉你"命运是什么"，而是给你一套结构化的思考框架。枢密院用四步法（说→摆→见→派）帮你拆解卡点；妙算用多情景概率分析帮你评估风险；选择损益矩阵模拟每个决策的得与失。</p>
+          <div class="layer-modules">
+            <span class="module-tag unique">枢密院四步法</span>
+            <span class="module-tag unique">妙算情景推演</span>
+            <span class="module-tag unique">选择损益矩阵</span>
+            <span class="module-tag">意图路由</span>
+            <span class="module-tag">澄清问答</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- L4 -->
+      <div class="layer-card">
+        <div class="layer-num"><span class="num">L4</span><span class="cn">记</span></div>
+        <div class="layer-body">
+          <h3>决策日志 <span class="en">Decision Journal</span></h3>
+          <p><span class="tag-yes">独创</span> 通鉴系统持续记录你的每一次决策和结果。AI 从你的历史中识别决策模式：你的风险偏好、常见卡点、误判惯性、情绪触发场景。无需重复解释自己——每次分析都建立在你完整的人生背景上。</p>
+          <div class="layer-modules">
+            <span class="module-tag unique">通鉴日志</span>
+            <span class="module-tag unique">模式识别</span>
+            <span class="module-tag unique">回看系统</span>
+            <span class="module-tag">事件账本</span>
+            <span class="module-tag">人物档案</span>
+            <span class="module-tag">编年史</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- L5 -->
+      <div class="layer-card">
+        <div class="layer-num"><span class="num">L5</span><span class="cn">修</span></div>
+        <div class="layer-body">
+          <h3>反馈进化 <span class="en">Feedback Evolution</span></h3>
+          <p><span class="tag-yes">独创</span> 系统的核心差异化。当你的预测结果与现实产生偏差，反馈修正引擎自动校准基线模型。你的"决策孪生体"越来越准确地反映你的真实行为模式——不是理论上的你应该怎样，而是实际的你正在怎样。</p>
+          <div class="layer-modules">
+            <span class="module-tag unique">修正引擎</span>
+            <span class="module-tag unique">基线校准</span>
+            <span class="module-tag unique">决策孪生体</span>
+            <span class="module-tag">个人策略引擎</span>
+            <span class="module-tag">证据置信图谱</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 3: 六大独创引擎 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 03</div>
+    <h2 class="section-title">六大独创引擎</h2>
+    <p class="section-desc">
+      这六个引擎是天福 Agent 及所有同类产品不具备的。它们不是"更好的排盘"，而是全新的分析范式和决策工具。
+    </p>
+
+    <div class="engine-grid">
+      <!-- Engine 1 -->
+      <div class="engine-card">
+        <div class="engine-icon">📈</div>
+        <h3>人生 K 线引擎</h3>
+        <div class="en-name">Life K-Line Engine</div>
+        <p>
+          将金融 K 线的 OHLCV 隐喻应用于人生轨迹量化。每条蜡烛代表一个月的综合状态：
+          <strong>开盘</strong>=月初潜力、<strong>最高</strong>=机会天花板、<strong>最低</strong>=风险底线、
+          <strong>收盘</strong>=综合落点、<strong>成交量</strong>=事件激活度。
+          七条人生线（事业/财富/健康/关系/成长/自由/缓冲）叠加在 K 线之上，形成"命运走势 + 维度拆解"双层视图。
+        </p>
+        <div class="tech">技术实现：ECharts 蜡烛图 + 七维度折线 · 数据源：calcEngine 月度聚合</div>
+      </div>
+
+      <!-- Engine 2 -->
+      <div class="engine-card">
+        <div class="engine-icon">🌊</div>
+        <h3>潮汐相位引擎</h3>
+        <div class="en-name">Tide & Phase Space Engine</div>
+        <p>
+          借用物理学相空间概念，用<strong>承载力（Capacity）× 无序度（Entropy）</strong>两个核心指标构建四象限：
+          稳健扩张（绿）、高压探索（橙）、收敛修复（蓝）、风险暴露（红）。
+          12 维状态雷达展示你在能量/恢复/情绪/清晰/流动/动力/支撑/能动/秩序/成长/选择权/缓冲 十二个维度的当前值 vs 历史基准线。
+        </p>
+        <div class="tech">技术实现：ECharts 雷达图 + 散点图 · 12维 StateSnapshot · 四象限分类器</div>
+      </div>
+
+      <!-- Engine 3 -->
+      <div class="engine-card">
+        <div class="engine-icon">🏛️</div>
+        <h3>枢密院结构化思维引擎</h3>
+        <div class="en-name">Shumiyuan Structured Thinking</div>
+        <p>
+          不是 AI 直接给答案，而是引导你自己想清楚。四步法：<br>
+          ① <strong>说</strong>——倾诉问题<br>
+          ② <strong>摆</strong>——AI 拆成可编辑卡片，你补充细节<br>
+          ③ <strong>见</strong>——AI 揭示核心卡点 + 风险 + 三种走法 + 最小一步<br>
+          ④ <strong>派</strong>——根据结论智能路由到下一步行动
+        </p>
+        <div class="tech">技术实现：Speak→Spread→Bottom→Dispatch 四阶段 API · 可编辑卡片组件</div>
+      </div>
+
+      <!-- Engine 4 -->
+      <div class="engine-card">
+        <div class="engine-icon">⚖️</div>
+        <h3>选择损益矩阵</h3>
+        <div class="en-name">Choice Gain/Loss Matrix</div>
+        <p>
+          不预测唯一结果，而是模拟每条路的得与失。横轴是可选路径（乐观/中性/悲观），纵轴是影响维度（事业/财富/关系/健康...）。
+          每个格子标注"走这条路，在这个维度上你会得到什么、失去什么"。帮助用户从"我该选哪条路"变成"每条路的代价我能不能承受"。
+        </p>
+        <div class="tech">技术实现：ChoiceSimulationEngine · 多维度损益计算 · 交互式矩阵组件</div>
+      </div>
+
+      <!-- Engine 5 -->
+      <div class="engine-card">
+        <div class="engine-icon">🧬</div>
+        <h3>决策孪生体</h3>
+        <div class="en-name">Personal Decision Twin</div>
+        <p>
+          持续学习的个人决策模式模型。通过事件账本记录你的每一次决策，通过反馈修正校准你的行为基线，
+          最终形成一个数字化的"你"——不是命盘上理论的你，而是真实行为模式中的你。
+          后续每次分析都自动关联这个孪生体的完整上下文，让建议越来越贴合你的实际情况。
+        </p>
+        <div class="tech">技术实现：PersonalPatternModel · PolicyEngine · CorrectionEngine · 8层内核架构</div>
+      </div>
+
+      <!-- Engine 6 -->
+      <div class="engine-card">
+        <div class="engine-icon">🔗</div>
+        <h3>证据置信图谱</h3>
+        <div class="en-name">Evidence Confidence Graph</div>
+        <p>
+          每条结论都可追溯到四层证据：算法层（精确计算）→ 古籍层（经典原文引用）→ 统计层（置换检验 / Bootstrap 置信区间）→ LLM 层（语义综合）。
+          置信度以百分比标注，用户可以点击查看每层证据的具体来源。不是"AI 说的"，而是"哪本书的第几卷、多少次统计验证支撑的"。
+        </p>
+        <div class="tech">技术实现：EvidenceNode + EvidenceEdge 图结构 · ChromaDB 向量检索 · 置信度评分器</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 4: 智能体矩阵 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 04</div>
+    <h2 class="section-title">智能体矩阵：六派宗师</h2>
+    <p class="section-desc">
+      区别于天福的"排盘 / 取象 / 校验 / 整合"四个泛化 Agent，我们的六个 Agent 各自深耕一个完整学派——拥有独立的知识库、规则引擎和计算工具。交叉校验不是简单投票，而是加权综合 + 分歧分析 + 置信度输出。
+    </p>
+
+    <div class="agent-grid">
+      <div class="agent-card">
+        <div class="emoji">🏮</div>
+        <div class="name">子平八字</div>
+        <div class="school">Ziping BaZi</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="emoji">🌙</div>
+        <div class="name">大六壬</div>
+        <div class="school">Da Liu Ren</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="emoji">⚔️</div>
+        <div class="name">奇门遁甲</div>
+        <div class="school">Qi Men Dun Jia</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="emoji">☰</div>
+        <div class="name">六爻</div>
+        <div class="school">Liu Yao</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="emoji">⭐</div>
+        <div class="name">紫微斗数</div>
+        <div class="school">Zi Wei Dou Shu</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+      <div class="agent-card">
+        <div class="emoji">✍️</div>
+        <div class="name">取名</div>
+        <div class="school">Quming Agent</div>
+        <div class="status"><span class="tag-yes">已上线</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;margin-bottom:20px;">编排流水线</h3>
+    <div class="pipeline">
+      <div class="pipe-step"><div class="step-num">STEP 1</div><div class="step-name">意图路由</div></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><div class="step-num">STEP 2</div><div class="step-name">主 Agent<br>算法计算</div></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><div class="step-num">STEP 3</div><div class="step-name">交叉校验<br>多派综合</div></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><div class="step-num">STEP 4</div><div class="step-name">证据组装<br>置信标注</div></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><div class="step-num">STEP 5</div><div class="step-name">自然语言<br>生成输出</div></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><div class="step-num">STEP 6</div><div class="step-name">异步深度<br>LLM 生成</div></div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">与天福 Agent 架构的本质区别</h3>
+    <table class="compare-table">
+      <thead>
+        <tr><th>维度</th><th>我们的六派宗师</th><th>天福的四步 Agent</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Agent 分工</td>
+          <td>按学派垂直分工——每个 Agent 是一个完整学派的数字化身，拥有独立知识库、规则库、计算工具</td>
+          <td>按流水线水平分工——排盘 Agent、取象 Agent、校验 Agent、整合 Agent</td>
+        </tr>
+        <tr>
+          <td>知识深度</td>
+          <td>21 部经典古籍 · 6 个 SQLite 知识库 · 4 个向量数据库 · ~70 个工具脚本</td>
+          <td>严格筛选的知识库（未公开具体规模）</td>
+        </tr>
+        <tr>
+          <td>交叉校验</td>
+          <td>加权综合 + 分歧分析 + 置信度输出——不是简单投票，而是分析"为什么三派结论不同"</td>
+          <td>概率模型处理分歧</td>
+        </tr>
+        <tr>
+          <td>扩展性</td>
+          <td>新增学派 = 新增一个 Agent 模块（已有梅花易数、太乙神数在规划中）</td>
+          <td>三学派固定架构</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== SECTION 5: 信任体系 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 05</div>
+    <h2 class="section-title">信任体系：四层证据链</h2>
+    <p class="section-desc">
+      天福展示推理步骤——"从排盘到取象到校验"。我们更进一步：每一步推理不仅可见，还标注<strong>证据来源</strong>和<strong>置信度</strong>。四层证据层层递进，构成可审计的信任体系。
+    </p>
+
+    <div class="trust-stack">
+      <div class="trust-layer">
+        <div class="trust-label">算法层</div>
+        <div class="trust-body">
+          <strong>精确计算，零误差。</strong>天干地支、五行分布、十神、纳音、长生、空亡——全部由确定性算法产出，不经过 LLM。排盘结果 100% 可复现、可审计。大六壬的四课三传、奇门的九宫八门同样由规则引擎精确计算。
+        </div>
+      </div>
+      <div class="trust-layer">
+        <div class="trust-label">古籍层</div>
+        <div class="trust-body">
+          <strong>每条推论引用经典原文。</strong>知识库覆盖 21 部命理经典（子平真诠、滴天髓、穷通宝鉴、大六壬大全、奇门遁甲秘笈...），通过 RAG 向量检索精准匹配。不是"AI 觉得"，而是"《子平真诠》卷三第十七节说"。
+        </div>
+      </div>
+      <div class="trust-layer">
+        <div class="trust-label">统计层</div>
+        <div class="trust-body">
+          <strong>置换检验 + Bootstrap 置信区间。</strong>命理编码不等于命理验证。我们通过严格的统计方法验证每个命理信号的稳定性：滚动原点评估、消融实验、Diebold-Mariano 检验。每个信号的预测力都有量化的置信区间。
+        </div>
+      </div>
+      <div class="trust-layer">
+        <div class="trust-label">LLM 层</div>
+        <div class="trust-body">
+          <strong>语义综合，而非臆造。</strong>LLM 只做一件事：把前三层的结构化结论翻译成自然语言。反幻觉机制确保 LLM 不添加知识库中没有的信息。规则引擎兜底——如果 LLM 输出与规则冲突，自动降级为算法结果。
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">反幻觉三重保险</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div style="padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);">
+        <h4 style="font-size:15px;margin-bottom:8px;">🛡️ 规则引擎兜底</h4>
+        <p style="font-size:13px;color:var(--text-dim);">
+          核心推论由确定性规则引擎产出，LLM 生成结果必须与规则一致。如果冲突，自动降级为算法结果，确保核心判断永远不会"胡说"。
+        </p>
+      </div>
+      <div style="padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);">
+        <h4 style="font-size:15px;margin-bottom:8px;">📚 知识库强制引用</h4>
+        <p style="font-size:13px;color:var(--text-dim);">
+          RAG 检索强制要求 LLM 的每个推论都附带知识库出处。没有引用的结论会被标记为"推测性"，降低置信度显示。
+        </p>
+      </div>
+      <div style="padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);">
+        <h4 style="font-size:15px;margin-bottom:8px;">📊 置信度可视化</h4>
+        <p style="font-size:13px;color:var(--text-dim);">
+          每条结论都标注置信度百分比。用户可以展开查看四层证据的具体内容。高置信结论加粗显示，低置信结论灰色标注并附注"仅供参考"。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 6: 路线图 ============== -->
+<section>
+  <div class="container">
+    <div class="section-num">SECTION 06</div>
+    <h2 class="section-title">产品路线图：三阶段演进</h2>
+    <p class="section-desc">
+      从玄学咨询入口，到决策闭环系统，最终成为个人决策操作系统（LifeOS）。
+    </p>
+
+    <div class="roadmap">
+      <!-- Phase 1 -->
+      <div class="roadmap-item">
+        <div class="phase">PHASE 1 · 当前阶段</div>
+        <h3>玄学咨询 + 可视化 + 积分体系</h3>
+        <p>已上线的核心产品。六派命理咨询引擎 + 人生 K 线潮汐可视化 + 积分门控 + 会员订阅。用户可以完成"问→算→看→付"的完整链路。</p>
+        <div class="deliverables">
+          <span class="del-tag done">✓ 六派 Agent 已上线</span>
+          <span class="del-tag done">✓ 人生 K 线</span>
+          <span class="del-tag done">✓ 潮汐相位空间</span>
+          <span class="del-tag done">✓ 枢密院四步法</span>
+          <span class="del-tag done">✓ 妙算情景推演</span>
+          <span class="del-tag done">✓ 通鉴决策日志</span>
+          <span class="del-tag done">✓ 积分 + 会员体系</span>
+          <span class="del-tag done">✓ 运势日历</span>
+          <span class="del-tag done">✓ 星图人物网络</span>
+          <span class="del-tag wip">◎ K 线数据真实化</span>
+          <span class="del-tag wip">◎ 编年史完善</span>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="roadmap-item">
+        <div class="phase">PHASE 2 · 90 天</div>
+        <h3>内核闭环：从工具到系统</h3>
+        <p>构建八层内核架构的数据闭环。事件账本记录每一次决策和结果，状态向量追踪你的 12 维生命状态，基线模型学习你的个人基准线，情境引擎开始做"如果当时..."的推演。</p>
+        <div class="deliverables">
+          <span class="del-tag future">事件账本 LifeEventLedger</span>
+          <span class="del-tag future">状态向量 UserStateVector</span>
+          <span class="del-tag future">个人基线 PersonalBaseline</span>
+          <span class="del-tag future">情境引擎 SituationEngine</span>
+          <span class="del-tag future">反馈修正 CorrectionEngine</span>
+          <span class="del-tag future">证据置信图谱</span>
+          <span class="del-tag future">选择损益矩阵 V1</span>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="roadmap-item">
+        <div class="phase">PHASE 3 · 180 天</div>
+        <h3>LifeOS：个人决策操作系统</h3>
+        <p>终极形态。决策孪生体完整上线——系统拥有你的完整决策历史和行为模式。选择模拟引擎可以推演"如果走这条路"的多维结果。个人策略引擎基于你的历史数据给出"你这类人在这种情况下通常应该..."的建议。</p>
+        <div class="deliverables">
+          <span class="del-tag future">决策孪生体 PersonalDecisionTwin</span>
+          <span class="del-tag future">选择模拟 ChoiceSimulation</span>
+          <span class="del-tag future">个人策略引擎 PolicyEngine</span>
+          <span class="del-tag future">个人模式模型 PersonalPatternModel</span>
+          <span class="del-tag future">命理量化回测</span>
+          <span class="del-tag future">开放 API</span>
+          <span class="del-tag future">多语言扩展</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>人生决策宗师 · 体系框架 V1.0 · 2026-06-12</p>
+    <p style="margin-top:4px;">AWKN-LABlife · 把人生的没底，变成判断力</p>
+  </div>
+</footer>
+
+</body>
+</html>

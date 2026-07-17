@@ -1,0 +1,386 @@
+{
+  "1": {
+    "name": "命宫",
+    "dizhi": "寅",
+    "duigong": 7,
+    "duigong_dizhi": "申",
+    "sanfang": [
+      5,
+      9
+    ],
+    "sanfang_dizhi": [
+      "午",
+      "戌"
+    ],
+    "sizheng": [
+      1,
+      5,
+      7,
+      9
+    ],
+    "anhe": 10,
+    "anhe_dizhi": "亥",
+    "jiagong": [
+      12,
+      2
+    ],
+    "huizhao": [
+      1,
+      5,
+      7,
+      9
+    ]
+  },
+  "2": {
+    "name": "兄弟",
+    "dizhi": "卯",
+    "duigong": 8,
+    "duigong_dizhi": "酉",
+    "sanfang": [
+      6,
+      10
+    ],
+    "sanfang_dizhi": [
+      "未",
+      "亥"
+    ],
+    "sizheng": [
+      2,
+      6,
+      8,
+      10
+    ],
+    "anhe": 9,
+    "anhe_dizhi": "戌",
+    "jiagong": [
+      1,
+      3
+    ],
+    "huizhao": [
+      2,
+      6,
+      8,
+      10
+    ]
+  },
+  "3": {
+    "name": "夫妻",
+    "dizhi": "辰",
+    "duigong": 9,
+    "duigong_dizhi": "戌",
+    "sanfang": [
+      7,
+      11
+    ],
+    "sanfang_dizhi": [
+      "申",
+      "子"
+    ],
+    "sizheng": [
+      3,
+      7,
+      9,
+      11
+    ],
+    "anhe": 8,
+    "anhe_dizhi": "酉",
+    "jiagong": [
+      2,
+      4
+    ],
+    "huizhao": [
+      3,
+      7,
+      9,
+      11
+    ]
+  },
+  "4": {
+    "name": "子女",
+    "dizhi": "巳",
+    "duigong": 10,
+    "duigong_dizhi": "亥",
+    "sanfang": [
+      8,
+      12
+    ],
+    "sanfang_dizhi": [
+      "酉",
+      "丑"
+    ],
+    "sizheng": [
+      4,
+      8,
+      10,
+      12
+    ],
+    "anhe": 7,
+    "anhe_dizhi": "申",
+    "jiagong": [
+      3,
+      5
+    ],
+    "huizhao": [
+      4,
+      8,
+      10,
+      12
+    ]
+  },
+  "5": {
+    "name": "财帛",
+    "dizhi": "午",
+    "duigong": 11,
+    "duigong_dizhi": "子",
+    "sanfang": [
+      1,
+      9
+    ],
+    "sanfang_dizhi": [
+      "寅",
+      "戌"
+    ],
+    "sizheng": [
+      1,
+      5,
+      9,
+      11
+    ],
+    "anhe": 6,
+    "anhe_dizhi": "未",
+    "jiagong": [
+      4,
+      6
+    ],
+    "huizhao": [
+      1,
+      5,
+      9,
+      11
+    ]
+  },
+  "6": {
+    "name": "疾厄",
+    "dizhi": "未",
+    "duigong": 12,
+    "duigong_dizhi": "丑",
+    "sanfang": [
+      2,
+      10
+    ],
+    "sanfang_dizhi": [
+      "卯",
+      "亥"
+    ],
+    "sizheng": [
+      2,
+      6,
+      10,
+      12
+    ],
+    "anhe": 5,
+    "anhe_dizhi": "午",
+    "jiagong": [
+      5,
+      7
+    ],
+    "huizhao": [
+      2,
+      6,
+      10,
+      12
+    ]
+  },
+  "7": {
+    "name": "迁移",
+    "dizhi": "申",
+    "duigong": 1,
+    "duigong_dizhi": "寅",
+    "sanfang": [
+      3,
+      11
+    ],
+    "sanfang_dizhi": [
+      "辰",
+      "子"
+    ],
+    "sizheng": [
+      1,
+      3,
+      7,
+      11
+    ],
+    "anhe": 4,
+    "anhe_dizhi": "巳",
+    "jiagong": [
+      6,
+      8
+    ],
+    "huizhao": [
+      1,
+      3,
+      7,
+      11
+    ]
+  },
+  "8": {
+    "name": "交友",
+    "dizhi": "酉",
+    "duigong": 2,
+    "duigong_dizhi": "卯",
+    "sanfang": [
+      4,
+      12
+    ],
+    "sanfang_dizhi": [
+      "巳",
+      "丑"
+    ],
+    "sizheng": [
+      2,
+      4,
+      8,
+      12
+    ],
+    "anhe": 3,
+    "anhe_dizhi": "辰",
+    "jiagong": [
+      7,
+      9
+    ],
+    "huizhao": [
+      2,
+      4,
+      8,
+      12
+    ]
+  },
+  "9": {
+    "name": "官禄",
+    "dizhi": "戌",
+    "duigong": 3,
+    "duigong_dizhi": "辰",
+    "sanfang": [
+      1,
+      5
+    ],
+    "sanfang_dizhi": [
+      "寅",
+      "午"
+    ],
+    "sizheng": [
+      1,
+      3,
+      5,
+      9
+    ],
+    "anhe": 2,
+    "anhe_dizhi": "卯",
+    "jiagong": [
+      8,
+      10
+    ],
+    "huizhao": [
+      1,
+      3,
+      5,
+      9
+    ]
+  },
+  "10": {
+    "name": "田宅",
+    "dizhi": "亥",
+    "duigong": 4,
+    "duigong_dizhi": "巳",
+    "sanfang": [
+      2,
+      6
+    ],
+    "sanfang_dizhi": [
+      "卯",
+      "未"
+    ],
+    "sizheng": [
+      2,
+      4,
+      6,
+      10
+    ],
+    "anhe": 1,
+    "anhe_dizhi": "寅",
+    "jiagong": [
+      9,
+      11
+    ],
+    "huizhao": [
+      2,
+      4,
+      6,
+      10
+    ]
+  },
+  "11": {
+    "name": "福德",
+    "dizhi": "子",
+    "duigong": 5,
+    "duigong_dizhi": "午",
+    "sanfang": [
+      3,
+      7
+    ],
+    "sanfang_dizhi": [
+      "辰",
+      "申"
+    ],
+    "sizheng": [
+      3,
+      5,
+      7,
+      11
+    ],
+    "anhe": 12,
+    "anhe_dizhi": "丑",
+    "jiagong": [
+      10,
+      12
+    ],
+    "huizhao": [
+      3,
+      5,
+      7,
+      11
+    ]
+  },
+  "12": {
+    "name": "父母",
+    "dizhi": "丑",
+    "duigong": 6,
+    "duigong_dizhi": "未",
+    "sanfang": [
+      4,
+      8
+    ],
+    "sanfang_dizhi": [
+      "巳",
+      "酉"
+    ],
+    "sizheng": [
+      4,
+      6,
+      8,
+      12
+    ],
+    "anhe": 11,
+    "anhe_dizhi": "子",
+    "jiagong": [
+      11,
+      1
+    ],
+    "huizhao": [
+      4,
+      6,
+      8,
+      12
+    ]
+  }
+}

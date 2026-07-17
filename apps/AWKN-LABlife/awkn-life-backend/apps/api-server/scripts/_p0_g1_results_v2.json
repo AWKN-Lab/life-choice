@@ -1,0 +1,907 @@
+{
+  "timestamp": "2026-06-28T04:41:27.012Z",
+  "users": {
+    "A": {
+      "email": "test-kline-a-full@example.com",
+      "label": "完整资料",
+      "hasToken": true
+    },
+    "C": {
+      "email": "test-kline-c-no-city@example.com",
+      "label": "缺出生地",
+      "hasToken": true
+    },
+    "D": {
+      "email": "test-kline-d-no-profile@example.com",
+      "label": "无BaZiProfile",
+      "hasToken": true
+    },
+    "D0": {
+      "email": "10919669@qq.com",
+      "label": "管理员历史遗留(不动数据)",
+      "hasToken": true
+    }
+  },
+  "endpoints": [
+    {
+      "name": "bars",
+      "path": "/kline-tide/bars",
+      "params": "?from=2024-01&to=2026-06"
+    },
+    {
+      "name": "snapshots",
+      "path": "/kline-tide/snapshots",
+      "params": "?from=2024-01&to=2026-06"
+    },
+    {
+      "name": "phase-points",
+      "path": "/kline-tide/phase-points",
+      "params": "?from=2024-01&to=2026-06"
+    },
+    {
+      "name": "package",
+      "path": "/kline-tide/package",
+      "params": "?from=2024-01&to=2026-06"
+    },
+    {
+      "name": "scores",
+      "path": "/kline-tide/scores",
+      "params": ""
+    },
+    {
+      "name": "node-explanation",
+      "path": "/kline-tide/node-explanation",
+      "params": "?monthLabel=2026-06&compositeCapital=65"
+    }
+  ],
+  "results": {
+    "bars": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "monthLabel",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "career",
+            "wealth",
+            "health",
+            "relationship",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"2107a7a0-df5f-4534-92d7-907c92983fc4\",\"userId\":\"72e864ff-8619-4135-9713-c797c0df56e1\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":55.8,\"high\":9.3,\"low\":1.6,\"close\":57.1,\"volume\":61,\"career\":{\"open\":66.3,\"high\":8.5,\"low\":3.6,\"close\":67.7,\"volume\":40},\"wealth\":{\"open\":65.1,\"high\":9.3,\"low\":5.9,\"close\":66.3,\"volume\":63},\"health\":{\"open\":57.9,\"high\":6.8,\"low\":3.1,\"close\":59.6,\"volume\":4"
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "monthLabel",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "career",
+            "wealth",
+            "health",
+            "relationship",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"eef8885f-af0d-41eb-84d3-c3fad4981424\",\"userId\":\"9f92692e-5212-494c-935c-eaae6ad03422\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":55.8,\"high\":9.3,\"low\":1.6,\"close\":57.1,\"volume\":61,\"career\":{\"open\":66.3,\"high\":8.5,\"low\":3.6,\"close\":67.7,\"volume\":40},\"wealth\":{\"open\":65.1,\"high\":9.3,\"low\":5.9,\"close\":66.3,\"volume\":63},\"health\":{\"open\":57.9,\"high\":6.8,\"low\":3.1,\"close\":59.6,\"volume\":4"
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "gated=true"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "gated",
+            "moduleId",
+            "creditsNeeded"
+          ],
+          "gated": true,
+          "preview": "{\"gated\":true,\"moduleId\":\"kline\",\"creditsNeeded\":3}"
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "monthLabel",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "career",
+            "wealth",
+            "health",
+            "relationship",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"d0039e29-ff68-4028-b57c-0593bdb77f9a\",\"userId\":\"b6db5352-cc93-44db-8633-ec7904ecd391\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":51.9,\"high\":10.4,\"low\":0.7,\"close\":53.5,\"volume\":59.1,\"career\":{\"open\":58.2,\"high\":10.2,\"low\":2.2,\"close\":59.7,\"volume\":72},\"wealth\":{\"open\":52.7,\"high\":10.4,\"low\":1.1,\"close\":54.8,\"volume\":62},\"health\":{\"open\":62.8,\"high\":10.2,\"low\":3.4,\"close\":64.7,\"vol"
+        }
+      }
+    },
+    "snapshots": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "_seedStateSnapshots(30条)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "date",
+            "energy",
+            "recovery",
+            "emotion",
+            "clarity",
+            "liquidity",
+            "momentum",
+            "support",
+            "agency",
+            "order",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"50b40b1b-8207-4caa-bb04-33a3d030c03d\",\"userId\":\"72e864ff-8619-4135-9713-c797c0df56e1\",\"year\":2024,\"month\":1,\"date\":\"2024-01\",\"energy\":55,\"recovery\":52,\"emotion\":57,\"clarity\":58,\"liquidity\":49,\"momentum\":44,\"support\":67,\"agency\":55,\"order\":44,\"growth\":66,\"optionality\":50,\"buffer\":64,\"timeGroup\":48,\"positionGroup\":59,\"mindGroup\":56,\"capacity\":57,\"entropy\":13.6,\"quadrant\":\"prosperous\",\"created"
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "_seedStateSnapshots(30条)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "date",
+            "energy",
+            "recovery",
+            "emotion",
+            "clarity",
+            "liquidity",
+            "momentum",
+            "support",
+            "agency",
+            "order",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"fafdc301-1dea-41ec-9f28-fb5716f41845\",\"userId\":\"9f92692e-5212-494c-935c-eaae6ad03422\",\"year\":2024,\"month\":1,\"date\":\"2024-01\",\"energy\":55,\"recovery\":52,\"emotion\":57,\"clarity\":58,\"liquidity\":49,\"momentum\":44,\"support\":67,\"agency\":55,\"order\":44,\"growth\":66,\"optionality\":50,\"buffer\":64,\"timeGroup\":48,\"positionGroup\":59,\"mindGroup\":56,\"capacity\":57,\"entropy\":13.6,\"quadrant\":\"prosperous\",\"created"
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "gated=true"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "gated",
+            "moduleId",
+            "creditsNeeded"
+          ],
+          "gated": true,
+          "preview": "{\"gated\":true,\"moduleId\":\"tide_radar\",\"creditsNeeded\":3}"
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 12,
+          "firstItemKeys": [
+            "id",
+            "userId",
+            "year",
+            "month",
+            "date",
+            "energy",
+            "recovery",
+            "emotion",
+            "clarity",
+            "liquidity",
+            "momentum",
+            "support",
+            "agency",
+            "order",
+            "growth"
+          ],
+          "firstItemPreview": "{\"id\":\"cfb27019-736e-4669-9338-5f92a33e4c9e\",\"userId\":\"b6db5352-cc93-44db-8633-ec7904ecd391\",\"year\":2025,\"month\":7,\"date\":\"2025-07\",\"energy\":25,\"recovery\":45,\"emotion\":41,\"clarity\":59,\"liquidity\":43,\"momentum\":46,\"support\":44,\"agency\":59,\"order\":48,\"growth\":46,\"optionality\":61,\"buffer\":36,\"timeGroup\":50,\"positionGroup\":47,\"mindGroup\":43,\"capacity\":39,\"entropy\":21.2,\"quadrant\":\"recovery\",\"createdAt"
+        }
+      }
+    },
+    "phase-points": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "date",
+            "x",
+            "y",
+            "timeGroup",
+            "size",
+            "quadrant",
+            "label",
+            "actionBias"
+          ],
+          "firstItemPreview": "{\"id\":\"phase-2024-01\",\"date\":\"2024-01\",\"x\":59,\"y\":56,\"timeGroup\":48,\"size\":50,\"quadrant\":\"prosperous\",\"label\":\"2024-01 扩张\",\"actionBias\":\"expand\"}"
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "date",
+            "x",
+            "y",
+            "timeGroup",
+            "size",
+            "quadrant",
+            "label",
+            "actionBias"
+          ],
+          "firstItemPreview": "{\"id\":\"phase-2024-01\",\"date\":\"2024-01\",\"x\":59,\"y\":56,\"timeGroup\":48,\"size\":50,\"quadrant\":\"prosperous\",\"label\":\"2024-01 扩张\",\"actionBias\":\"expand\"}"
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 30,
+          "firstItemKeys": [
+            "id",
+            "date",
+            "x",
+            "y",
+            "timeGroup",
+            "size",
+            "quadrant",
+            "label",
+            "actionBias"
+          ],
+          "firstItemPreview": "{\"id\":\"phase-2024-01\",\"date\":\"2024-01\",\"x\":59,\"y\":56,\"timeGroup\":48,\"size\":50,\"quadrant\":\"prosperous\",\"label\":\"2024-01 扩张\",\"actionBias\":\"expand\"}"
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "array",
+          "length": 12,
+          "firstItemKeys": [
+            "id",
+            "date",
+            "x",
+            "y",
+            "timeGroup",
+            "size",
+            "quadrant",
+            "label",
+            "actionBias"
+          ],
+          "firstItemPreview": "{\"id\":\"phase-2025-07\",\"date\":\"2025-07\",\"x\":47,\"y\":43,\"timeGroup\":50,\"size\":61,\"quadrant\":\"recovery\",\"label\":\"2025-07 修复\",\"actionBias\":\"repair\"}"
+        }
+      }
+    },
+    "package": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)",
+          "_seedStateSnapshots(30条)",
+          "meta.note=阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "klineBars",
+            "stateSnapshots",
+            "phasePoints",
+            "meta"
+          ],
+          "klineBarsLen": 30,
+          "stateSnapshotsLen": 30,
+          "phasePointsLen": 30,
+          "metaNote": "阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。",
+          "preview": "{\"klineBars\":[{\"id\":\"2107a7a0-df5f-4534-92d7-907c92983fc4\",\"userId\":\"72e864ff-8619-4135-9713-c797c0df56e1\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":55.8,\"high\":64.5,\"low\":51.8,\"close\":58.4,\"volume\":61,\"career\":{\"open\":66.3,\"high\":8.5,\"low\":3.6,\"close\":67.7,\"volume\":40},\"wealth\":{\"open\":65.1,\"high\":9.3,\"low\":5.9,\"close\":66.3,\"volume\":63},\"health\":{\"open\":57.9,\"high\":6.8,\"low\":3.1,\"close\":59.6,\"volume\":47},\"relationship\":{\"open\":54,\"high\":6.8,\"low\":4.7,\"close\":54.9,\"volume\":69},\"growth\""
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)",
+          "_seedStateSnapshots(30条)",
+          "meta.note=阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "klineBars",
+            "stateSnapshots",
+            "phasePoints",
+            "meta"
+          ],
+          "klineBarsLen": 30,
+          "stateSnapshotsLen": 30,
+          "phasePointsLen": 30,
+          "metaNote": "阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。",
+          "preview": "{\"klineBars\":[{\"id\":\"eef8885f-af0d-41eb-84d3-c3fad4981424\",\"userId\":\"9f92692e-5212-494c-935c-eaae6ad03422\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":55.8,\"high\":64.5,\"low\":51.8,\"close\":58.4,\"volume\":61,\"career\":{\"open\":66.3,\"high\":8.5,\"low\":3.6,\"close\":67.7,\"volume\":40},\"wealth\":{\"open\":65.1,\"high\":9.3,\"low\":5.9,\"close\":66.3,\"volume\":63},\"health\":{\"open\":57.9,\"high\":6.8,\"low\":3.1,\"close\":59.6,\"volume\":47},\"relationship\":{\"open\":54,\"high\":6.8,\"low\":4.7,\"close\":54.9,\"volume\":69},\"growth\""
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "gated=partial",
+          "meta.note=阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "klineBars",
+            "stateSnapshots",
+            "phasePoints",
+            "meta",
+            "gated",
+            "moduleId",
+            "creditsNeeded",
+            "creditBalance",
+            "requiredPlan",
+            "message"
+          ],
+          "klineBarsLen": 3,
+          "stateSnapshotsLen": 3,
+          "phasePointsLen": 3,
+          "metaNote": "阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。",
+          "gated": "partial",
+          "message": "免费用户可查看 3 个关键节点，解锁后查看完整 K线推演",
+          "preview": "{\"klineBars\":[{\"id\":\"71fd9407-e89b-476f-83fe-45098852255c\",\"userId\":\"476b8a15-8b59-481f-8117-c6465797caf3\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":56.1,\"high\":64.6,\"low\":52.1,\"close\":58.5,\"volume\":61,\"career\":{\"open\":62.3,\"high\":8.1,\"low\":3.2,\"close\":63.7,\"volume\":40},\"wealth\":{\"open\":65.1,\"high\":9.3,\"low\":5.9,\"close\":66.3,\"volume\":63},\"health\":{\"open\":62.9,\"high\":7.3,\"low\":3.6,\"close\":64.6,\"volume\":47},\"relationship\":{\"open\":50,\"high\":6.4,\"low\":4.3,\"close\":50.9,\"volume\":69},\"growth\""
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "_seedKlineBars(30条)",
+          "meta.note=阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "klineBars",
+            "stateSnapshots",
+            "phasePoints",
+            "meta"
+          ],
+          "klineBarsLen": 30,
+          "stateSnapshotsLen": 12,
+          "phasePointsLen": 12,
+          "metaNote": "阶段一：SQLite 持久化 + 内存 fallback。阶段二：接入 Supabase + LLM 推导。",
+          "preview": "{\"klineBars\":[{\"id\":\"d0039e29-ff68-4028-b57c-0593bdb77f9a\",\"userId\":\"b6db5352-cc93-44db-8633-ec7904ecd391\",\"year\":2024,\"month\":1,\"monthLabel\":\"2024-01\",\"open\":51.9,\"high\":65.4,\"low\":42.599999999999994,\"close\":55.1,\"volume\":59.1,\"career\":{\"open\":58.2,\"high\":10.2,\"low\":2.2,\"close\":59.7,\"volume\":72},\"wealth\":{\"open\":52.7,\"high\":10.4,\"low\":1.1,\"close\":54.8,\"volume\":62},\"health\":{\"open\":62.8,\"high\":10.2,\"low\":3.4,\"close\":64.7,\"volume\":55},\"relationship\":{\"open\":52.9,\"high\":8,\"low\":3.3,\"close\":54.6,\"v"
+        }
+      }
+    },
+    "scores": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "career",
+            "wealth",
+            "relationship",
+            "source",
+            "scoredAt",
+            "gated"
+          ],
+          "source": "bazi",
+          "careerScore": 35,
+          "wealthScore": 45,
+          "preview": "{\"career\":{\"dimension\":\"career\",\"score\":35,\"reasoning\":\"事业线评分基于官星旺衰与日主强弱。 命局无官星，事业需自创。 身弱(40)官星压身，事业多压力。\",\"factors\":[{\"name\":\"无官星\",\"type\":\"shiShen\",\"impact\":-5,\"source\":\"无官星则事业缺推动力\"},{\"name\":\"身弱（身弱, 40）\",\"type\":\"shenWang\",\"impact\":-10,\"source\":\"身弱官星压身，事业多压力\"}]},\"wealth\":{\"dimension\":\"wealth\",\"score\":45,\"reasoning\":\"财富线评分基于财星旺衰与食伤生财。 命局无财星，需靠食伤生财。\",\"factors\":[{\"name\":\"无财星\",\"type\":\"shiShen\",\"impact\":-5,\"source\":\"无财星则财富需靠食伤生扶\"}]},\"relationship\":{\"dimension\":\"relationship\",\"score\":45,\"reasoning\":\"情感"
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "无标记(需代码追踪)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "career",
+            "wealth",
+            "relationship",
+            "source",
+            "scoredAt",
+            "gated"
+          ],
+          "source": "bazi",
+          "careerScore": 35,
+          "wealthScore": 45,
+          "preview": "{\"career\":{\"dimension\":\"career\",\"score\":35,\"reasoning\":\"事业线评分基于官星旺衰与日主强弱。 命局无官星，事业需自创。 身弱(40)官星压身，事业多压力。\",\"factors\":[{\"name\":\"无官星\",\"type\":\"shiShen\",\"impact\":-5,\"source\":\"无官星则事业缺推动力\"},{\"name\":\"身弱（身弱, 40）\",\"type\":\"shenWang\",\"impact\":-10,\"source\":\"身弱官星压身，事业多压力\"}]},\"wealth\":{\"dimension\":\"wealth\",\"score\":45,\"reasoning\":\"财富线评分基于财星旺衰与食伤生财。 命局无财星，需靠食伤生财。\",\"factors\":[{\"name\":\"无财星\",\"type\":\"shiShen\",\"impact\":-5,\"source\":\"无财星则财富需靠食伤生扶\"}]},\"relationship\":{\"dimension\":\"relationship\",\"score\":45,\"reasoning\":\"情感"
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "kline-scoring fallback",
+          "gated=preview"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "career",
+            "wealth",
+            "relationship",
+            "source",
+            "scoredAt",
+            "gated",
+            "moduleId",
+            "creditsNeeded",
+            "creditBalance",
+            "requiredPlan",
+            "message"
+          ],
+          "source": "fallback",
+          "gated": "preview",
+          "careerScore": 55,
+          "wealthScore": null,
+          "message": "免费用户可查看事业线评分，解锁后查看完整三线命理分析",
+          "preview": "{\"career\":{\"dimension\":\"career\",\"score\":55,\"reasoning\":\"无八字档案，使用默认事业线评分（兜底）。\",\"factors\":[]},\"wealth\":{\"dimension\":\"wealth\",\"score\":null,\"reasoning\":\"解锁后查看财富线命理评分\",\"factors\":[]},\"relationship\":{\"dimension\":\"relationship\",\"score\":null,\"reasoning\":\"解锁后查看情感线命理评分\",\"factors\":[]},\"source\":\"fallback\",\"scoredAt\":\"2026-06-28T04:41:14.188Z\",\"gated\":\"preview\",\"moduleId\":\"kline\",\"creditsNeeded\":3,\"creditBalance\":100,\"requiredPlan\":\"month\",\"message\":\"免费用户可查看事业线评分，解锁后查看完整三线命理分析\"}"
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "kline-scoring fallback"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "career",
+            "wealth",
+            "relationship",
+            "source",
+            "scoredAt",
+            "gated"
+          ],
+          "source": "fallback",
+          "careerScore": 55,
+          "wealthScore": 50,
+          "preview": "{\"career\":{\"dimension\":\"career\",\"score\":55,\"reasoning\":\"无八字档案，使用默认事业线评分（兜底）。\",\"factors\":[]},\"wealth\":{\"dimension\":\"wealth\",\"score\":50,\"reasoning\":\"无八字档案，使用默认财富线评分（兜底）。\",\"factors\":[]},\"relationship\":{\"dimension\":\"relationship\",\"score\":55,\"reasoning\":\"无八字档案，使用默认情感线评分（兜底）。\",\"factors\":[]},\"source\":\"fallback\",\"scoredAt\":\"2026-06-28T04:41:14.192Z\",\"gated\":false}"
+        }
+      }
+    },
+    "node-explanation": {
+      "A": {
+        "status": 200,
+        "mockSources": [
+          "真实LLM(DeepSeek)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "llmSummary",
+            "baziBasis",
+            "riskHint",
+            "actionSuggestion",
+            "source"
+          ],
+          "source": "llm",
+          "llmSummaryLen": 21,
+          "baziBasis": "甲子日身弱，庚午、壬午火旺克身，事业感情皆受制。",
+          "preview": "{\"llmSummary\":\"2026年火旺身弱，运势低迷，需谨慎行事。\",\"baziBasis\":\"甲子日身弱，庚午、壬午火旺克身，事业感情皆受制。\",\"riskHint\":\"火旺耗身，注意健康与情绪波动。\",\"actionSuggestion\":\"补金水，调和五行，避免冲动决策。\",\"source\":\"llm\"}"
+        }
+      },
+      "C": {
+        "status": 200,
+        "mockSources": [
+          "真实LLM(DeepSeek)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "llmSummary",
+            "baziBasis",
+            "riskHint",
+            "actionSuggestion",
+            "source"
+          ],
+          "source": "llm",
+          "llmSummaryLen": 18,
+          "baziBasis": "甲木生午月，火炎土燥，身弱，午午自刑，克泄交加。",
+          "preview": "{\"llmSummary\":\"身弱遇火旺之月，事业压力大，宜守成。\",\"baziBasis\":\"甲木生午月，火炎土燥，身弱，午午自刑，克泄交加。\",\"riskHint\":\"事业分低，决策易失误，避免冒进。\",\"actionSuggestion\":\"专注情感稳定，稳中求进，勿贪财。\",\"source\":\"llm\"}"
+        }
+      },
+      "D": {
+        "status": 200,
+        "mockSources": [
+          "真实LLM(DeepSeek)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "llmSummary",
+            "baziBasis",
+            "riskHint",
+            "actionSuggestion",
+            "source"
+          ],
+          "source": "llm",
+          "llmSummaryLen": 22,
+          "baziBasis": "综合分65显示运势中等，三线评分均衡但略偏低。",
+          "preview": "{\"llmSummary\":\"运势平稳，事业和情感有提升空间，财运需谨慎。\",\"baziBasis\":\"综合分65显示运势中等，三线评分均衡但略偏低。\",\"riskHint\":\"财运50分提示需防投资风险。\",\"actionSuggestion\":\"主动提升事业和情感，理财保守。\",\"source\":\"llm\"}"
+        }
+      },
+      "D0": {
+        "status": 200,
+        "mockSources": [
+          "真实LLM(DeepSeek)"
+        ],
+        "summary": {
+          "type": "object",
+          "keys": [
+            "llmSummary",
+            "baziBasis",
+            "riskHint",
+            "actionSuggestion",
+            "source"
+          ],
+          "source": "llm",
+          "llmSummaryLen": 30,
+          "baziBasis": "综合分65，三线评分为50-55，显示无大凶大吉，运势中庸。",
+          "preview": "{\"llmSummary\":\"2026年6月运势平稳，事业情感中平，财富稍弱，需稳中求进。\",\"baziBasis\":\"综合分65，三线评分为50-55，显示无大凶大吉，运势中庸。\",\"riskHint\":\"财富分最低，注意财务规划，避免冲动消费或投资。\",\"actionSuggestion\":\"专注本职工作，提升技能，可适当储蓄，不宜冒进。\",\"source\":\"llm\"}"
+        }
+      }
+    }
+  },
+  "stability": {
+    "bars": [
+      {
+        "run": 1,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": "2024-01",
+            "compositeCapital": 58.4,
+            "volatility": 0.6
+          },
+          {
+            "month": "2024-02",
+            "compositeCapital": 58.4,
+            "volatility": 6.7
+          },
+          {
+            "month": "2024-03",
+            "compositeCapital": 58.1,
+            "volatility": 9
+          },
+          {
+            "month": "2024-04",
+            "compositeCapital": 58.2,
+            "volatility": 2.2
+          },
+          {
+            "month": "2024-05",
+            "compositeCapital": 58.5,
+            "volatility": 9.9
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": "2024-01",
+            "compositeCapital": 58.4,
+            "volatility": 0.6
+          },
+          {
+            "month": "2024-02",
+            "compositeCapital": 58.4,
+            "volatility": 6.7
+          },
+          {
+            "month": "2024-03",
+            "compositeCapital": 58.1,
+            "volatility": 9
+          },
+          {
+            "month": "2024-04",
+            "compositeCapital": 58.2,
+            "volatility": 2.2
+          },
+          {
+            "month": "2024-05",
+            "compositeCapital": 58.5,
+            "volatility": 9.9
+          }
+        ]
+      },
+      {
+        "run": 3,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": "2024-01",
+            "compositeCapital": 58.4,
+            "volatility": 0.6
+          },
+          {
+            "month": "2024-02",
+            "compositeCapital": 58.4,
+            "volatility": 6.7
+          },
+          {
+            "month": "2024-03",
+            "compositeCapital": 58.1,
+            "volatility": 9
+          },
+          {
+            "month": "2024-04",
+            "compositeCapital": 58.2,
+            "volatility": 2.2
+          },
+          {
+            "month": "2024-05",
+            "compositeCapital": 58.5,
+            "volatility": 9.9
+          }
+        ]
+      }
+    ],
+    "snapshots": [
+      {
+        "run": 1,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": 1,
+            "picked": {
+              "energy": 55,
+              "recovery": 52,
+              "emotion": 57,
+              "clarity": 58,
+              "liquidity": 49,
+              "momentum": 44,
+              "support": 67,
+              "agency": 55,
+              "order": 44,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 64
+            }
+          },
+          {
+            "month": 2,
+            "picked": {
+              "energy": 61,
+              "recovery": 52,
+              "emotion": 56,
+              "clarity": 56,
+              "liquidity": 54,
+              "momentum": 49,
+              "support": 59,
+              "agency": 58,
+              "order": 52,
+              "growth": 64,
+              "optionality": 48,
+              "buffer": 62
+            }
+          },
+          {
+            "month": 3,
+            "picked": {
+              "energy": 58,
+              "recovery": 56,
+              "emotion": 53,
+              "clarity": 51,
+              "liquidity": 54,
+              "momentum": 55,
+              "support": 57,
+              "agency": 64,
+              "order": 54,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 60
+            }
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": 1,
+            "picked": {
+              "energy": 55,
+              "recovery": 52,
+              "emotion": 57,
+              "clarity": 58,
+              "liquidity": 49,
+              "momentum": 44,
+              "support": 67,
+              "agency": 55,
+              "order": 44,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 64
+            }
+          },
+          {
+            "month": 2,
+            "picked": {
+              "energy": 61,
+              "recovery": 52,
+              "emotion": 56,
+              "clarity": 56,
+              "liquidity": 54,
+              "momentum": 49,
+              "support": 59,
+              "agency": 58,
+              "order": 52,
+              "growth": 64,
+              "optionality": 48,
+              "buffer": 62
+            }
+          },
+          {
+            "month": 3,
+            "picked": {
+              "energy": 58,
+              "recovery": 56,
+              "emotion": 53,
+              "clarity": 51,
+              "liquidity": 54,
+              "momentum": 55,
+              "support": 57,
+              "agency": 64,
+              "order": 54,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 60
+            }
+          }
+        ]
+      },
+      {
+        "run": 3,
+        "status": 200,
+        "len": 30,
+        "sig": [
+          {
+            "month": 1,
+            "picked": {
+              "energy": 55,
+              "recovery": 52,
+              "emotion": 57,
+              "clarity": 58,
+              "liquidity": 49,
+              "momentum": 44,
+              "support": 67,
+              "agency": 55,
+              "order": 44,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 64
+            }
+          },
+          {
+            "month": 2,
+            "picked": {
+              "energy": 61,
+              "recovery": 52,
+              "emotion": 56,
+              "clarity": 56,
+              "liquidity": 54,
+              "momentum": 49,
+              "support": 59,
+              "agency": 58,
+              "order": 52,
+              "growth": 64,
+              "optionality": 48,
+              "buffer": 62
+            }
+          },
+          {
+            "month": 3,
+            "picked": {
+              "energy": 58,
+              "recovery": 56,
+              "emotion": 53,
+              "clarity": 51,
+              "liquidity": 54,
+              "momentum": 55,
+              "support": 57,
+              "agency": 64,
+              "order": 54,
+              "growth": 66,
+              "optionality": 50,
+              "buffer": 60
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "verdict": {
+    "barsStable": true,
+    "snapStable": true,
+    "allEndpoints200": true,
+    "noError500": true
+  }
+}

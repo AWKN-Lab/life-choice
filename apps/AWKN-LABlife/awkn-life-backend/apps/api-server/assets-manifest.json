@@ -1,0 +1,41 @@
+{
+  "$schema": "./assets-manifest.schema.json",
+  "version": "1.0.0",
+  "description": "构建产物完整性权威清单 —— 所有非 .js 资源的单一来源。本文件是 assets 清单的唯一权威，nest-cli.json / bootstrap-production.js / Dockerfile 都应从此文件派生或引用。",
+  "note": "required=true 缺失即 fail-fast；required=false 缺失设降级标志位不 exit",
+  "dirs": [
+    {"src": "calc-engine/data", "dest": "calc-engine/data", "required": true, "note": "八字计算引擎数据（13 个 json：shensha/nayin/kongwang 等），bazi-data.service.ts 消费"},
+    {"src": "calc-engine/ziwei-engine/python-validator", "dest": "calc-engine/ziwei-engine/python-validator", "required": false, "note": "紫微斗数 Python 排盘 CLI，ziwei-agent.service.ts 消费，缺失则降级到 iztro JS 库"},
+    {"src": "calc-engine/ziwei-engine/python-validator/data", "dest": "calc-engine/ziwei-engine/python-validator/data", "required": false, "note": "Python 排盘引擎数据（13 个 json），与 python-validator 同步部署"},
+    {"src": "consult/orchestrator/rules", "dest": "consult/orchestrator/rules", "required": true, "note": "orchestrator 调度规则目录，含 scenario-rules.yaml"},
+    {"src": "liuren-agent/prompts", "dest": "liuren-agent/prompts", "required": true, "note": "六壬代理 prompt（9 个 md），liuren-agent.service.ts 消费"},
+    {"src": "liuyao-agent/prompts", "dest": "liuyao-agent/prompts", "required": true, "note": "六爻代理 prompt，liuyao-agent.service.ts 消费"},
+    {"src": "meihua-agent/prompts", "dest": "meihua-agent/prompts", "required": true, "note": "梅花代理 prompt，meihua-agent.service.ts 消费（原 ASSETS_DIRS 遗漏项）"},
+    {"src": "qimen-agent/prompts", "dest": "qimen-agent/prompts", "required": true, "note": "奇门代理 prompt，qimen-agent.service.ts 消费"},
+    {"src": "quming-agent/prompts", "dest": "quming-agent/prompts", "required": true, "note": "取名代理 prompt（2 个 md），quming-agent.service.ts 消费"},
+    {"src": "shared/prompts", "dest": "shared/prompts", "required": true, "note": "共享 prompt（output-style-rules.md）"},
+    {"src": "shared/rule-engine/rules", "dest": "shared/rule-engine/rules", "required": true, "note": "规则引擎数据（8 个 json：liuren-*/liuyao-*），rule-engine.service.ts 消费"},
+    {"src": "shared/case-library", "dest": "shared/case-library", "required": false, "note": "案例库（cases.json），缺失不影响核心链路"},
+    {"src": "ziping-agent/prompts", "dest": "ziping-agent/prompts", "required": true, "note": "八字代理 prompt（2 个 md），ziping-agent.service.ts 消费"},
+    {"src": "ziwei-agent/prompts", "dest": "ziwei-agent/prompts", "required": true, "note": "紫微代理 prompt（2 个 md），ziwei-agent.service.ts 消费"},
+    {"src": "knowledge-base/bazi", "dest": "knowledge-base/bazi", "required": false, "note": "八字知识库（含 01_basic/02_rules/03_terminology/04_cases/05_assets 子目录），bazi-calculator.ts 消费"},
+    {"src": "knowledge-base/liuren", "dest": "knowledge-base/liuren", "required": true, "note": "六壬知识库（11 个 json：ke-ti/jinkoujue-rules 等），liuren-agent.service.ts 消费"},
+    {"src": "knowledge-base-data", "dest": "knowledge-base-data", "required": false, "note": "知识库检索数据（bazi-classics.json），knowledge-search.service.ts 消费"}
+  ],
+  "files": [
+    {"src": "consult/safety/scenario-rules.yaml", "dest": "consult/safety/scenario-rules.yaml", "required": true, "note": "安全场景规则，high-risk-detector.service.ts 消费"},
+    {"src": "consult/orchestrator/rules/scenario-rules.yaml", "dest": "consult/orchestrator/rules/scenario-rules.yaml", "required": true, "note": "orchestrator 调度规则，scenario-rules-loader.ts 消费（与 safety 同名但内容不同）"}
+  ],
+  "dataDirs": [
+    {"src": "../data/knowledge-base", "dest": "../data/knowledge-base", "required": false, "note": "在 src 外，knowledge-search.service.ts 用 cwd 相对路径消费，Step7 将统一为 __dirname 相对路径"}
+  ],
+  "criticalEnvVars": [
+    {"name": "DATABASE_URL", "required": true, "note": "SQLite 数据库路径"},
+    {"name": "JWT_SECRET", "required": true, "note": "JWT 签名密钥"},
+    {"name": "DEFAULT_LLM_PROVIDER", "required": true, "note": "默认 LLM provider，应为 deepseek-direct"},
+    {"name": "CHEAP_LLM_PROVIDER", "required": false, "note": "轻量 LLM provider，应为 sensenova"},
+    {"name": "DEEPSEEK_DIRECT_API_KEY", "required": true, "note": "DeepSeek 官方 API key（主 provider）"},
+    {"name": "SENSENOVA_API_KEY", "required": true, "note": "商汤 sensenova API key（备 provider）"},
+    {"name": "ADMIN_PASSWORD", "required": false, "note": "管理员密码，缺失则 ensureAdmin 跳过（不影响 main.js 启动）"}
+  ]
+}

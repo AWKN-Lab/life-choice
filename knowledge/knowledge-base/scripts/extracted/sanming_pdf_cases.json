@@ -1,0 +1,127 @@
+{
+  "timestamp": "2026-03-21T12:27:55.553774",
+  "source": "三命通会PDF",
+  "total": 10,
+  "cases": [
+    {
+      "year_pillar": "甲?",
+      "month_pillar": "丁卯",
+      "day_pillar": "乙未",
+      "hour_pillar": "戊寅",
+      "day_master": "乙",
+      "month_branch": "卯",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六甲年丁卯月乙未日戊寅时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "乙?",
+      "month_pillar": "己卯",
+      "day_pillar": "甲戌",
+      "hour_pillar": "乙亥",
+      "day_master": "甲",
+      "month_branch": "卯",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六乙年己卯月甲戌日乙亥时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "丙?",
+      "month_pillar": "庚寅",
+      "day_pillar": "丁巳",
+      "hour_pillar": "丙午",
+      "day_master": "丁",
+      "month_branch": "寅",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六丙年庚寅月丁巳日丙午时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "丁?",
+      "month_pillar": "丙午",
+      "day_pillar": "壬辰",
+      "hour_pillar": "丁未",
+      "day_master": "壬",
+      "month_branch": "午",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六丁年丙午月壬辰日丁未时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "戊?",
+      "month_pillar": "壬戌",
+      "day_pillar": "己丑",
+      "hour_pillar": "戊寅",
+      "day_master": "己",
+      "month_branch": "戌",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六戊年壬戌月己丑日戊寅时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "己?",
+      "month_pillar": "辛未",
+      "day_pillar": "己未",
+      "hour_pillar": "丙寅",
+      "day_master": "己",
+      "month_branch": "未",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六己年辛未月己未日丙寅时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "庚?",
+      "month_pillar": "甲申",
+      "day_pillar": "庚申",
+      "hour_pillar": "辛巳",
+      "day_master": "庚",
+      "month_branch": "申",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六庚年甲申月庚申日辛巳时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "辛?",
+      "month_pillar": "丙申",
+      "day_pillar": "庚午",
+      "hour_pillar": "辛巳",
+      "day_master": "庚",
+      "month_branch": "申",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六辛年丙申月庚午日辛巳时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "壬?",
+      "month_pillar": "辛亥",
+      "day_pillar": "壬辰",
+      "hour_pillar": "丁未",
+      "day_master": "壬",
+      "month_branch": "亥",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六壬年辛亥月壬辰日丁未时",
+      "pattern": "liunian"
+    },
+    {
+      "year_pillar": "癸?",
+      "month_pillar": "丙辰",
+      "day_pillar": "丙辰",
+      "hour_pillar": "戊子",
+      "day_master": "丙",
+      "month_branch": "辰",
+      "source": "三命通会PDF",
+      "page": 249,
+      "original_text": "六癸年丙辰月丙辰日戊子时",
+      "pattern": "liunian"
+    }
+  ]
+}

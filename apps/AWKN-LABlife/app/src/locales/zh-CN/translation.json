@@ -1,0 +1,1733 @@
+{
+  "homePage": {
+    "secondary": {
+      "klineExample": "命运K线",
+      "klineExampleDesc": "用东方术数推演人生节律，看清起伏与转折",
+      "klineExampleCta": "查看你的K线",
+      "namingExample": "取名方案",
+      "namingExampleDesc": "八字五行匹配，音形义兼顾，避坑有方",
+      "namingExampleCta": "开始取名",
+      "questionExample": "问事结果",
+      "questionExampleDesc": "六壬奇门推演当下，看清利弊与时机",
+      "questionExampleCta": "开始问事",
+      "historyEntry": "历史记录",
+      "historyEntryDesc": "查看你的过往咨询记录",
+      "historyEntryCta": "查看记录",
+      "membershipEntry": "会员权益",
+      "membershipEntryDesc": "解锁完整解读、高清海报、深度推演",
+      "membershipEntryCta": "了解会员"
+    }
+  },
+  "app": {
+    "name": "人生决策宗师",
+    "tagline": "LIFE STRATEGY oracle"
+  },
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "about": "关于",
+    "consult": "开始咨询",
+    "membership": "会员",
+    "history": "历史",
+    "profile": "我的"
+  },
+  "hero": {
+    "title": "命运没有{{highlight}}标准答案{{/highlight}}但博弈有{{highlight2}}最优解{{/highlight2}}",
+    "subtitle": "在不确定的世界里，为你交付一套确定的坐标系",
+    "ctaPrimary": "开始咨询",
+    "ctaSecondary": "了解更多"
+  },
+  "home": {
+    "hero": {
+      "title": "半山先生",
+      "subtitle": "帮你看清代价，不帮你做决定",
+      "oneLiner": "你问，我算，代价说清楚，你自己定",
+      "inputPlaceholder": "说出你的问题...",
+      "submitButton": "问张半山"
+    },
+    "quickQuestions": {
+      "canItWork": "能不能成",
+      "willHappen": "会不会发生",
+      "shouldDo": "要不要做",
+      "whenHappen": "何时发生",
+      "fortuneThisYear": "今年运势",
+      "careerFortune": "事业运"
+    },
+    "domains": {
+      "career": "事业",
+      "careerDesc": "职业/创业/转型",
+      "love": "感情",
+      "loveDesc": "姻缘/复合/相处",
+      "wealth": "财运",
+      "wealthDesc": "投资/求财/守财",
+      "family": "家庭",
+      "familyDesc": "亲子/父母/关系",
+      "naming": "取名",
+      "namingDesc": "宝宝起名/改名",
+      "lifeKLine": "命运K线",
+      "lifeKLineDesc": "看见人生上升期、转折点和关键年份"
+    },
+    "destinyKlineTitle": "生成你的命运K线",
+    "destinyKlineSubtitle": "看见你的上升期、转折点和关键年份",
+    "destinyKlineCta": "生成我的命运K线",
+    "entries": {
+      "heading": "选择你的决策入口",
+      "subheading": "三种方式，一个答案",
+      "kline": {
+        "title": "命运K线",
+        "description": "看见你人生的上升期、转折点和关键年份，把模糊的直觉变成清晰的数据",
+        "cta": "生成我的K线"
+      },
+      "naming": {
+        "title": "取名",
+        "description": "宝宝起名、成人改名、品牌命名，从八字五行到音形义，为你找到最合适的名字",
+        "cta": "取个好名字"
+      },
+      "question": {
+        "title": "问事",
+        "description": "要不要换工作？这段关系还能继续吗？把困扰你的问题说清楚，得到一个确定的答案",
+        "cta": "问到确定答案"
+      }
+    }
+  },
+  "klineIntro": {
+    "title": "生成我的命运K线",
+    "subtitle": "看人生阶段、事业财运感情走势和关键年份",
+    "step": "步骤 {{step}}/{{total}}",
+    "info": "命运K线基于八字命理和大运流年计算，展示你人生的整体趋势和关键年份。出生信息越准确，结果越精确。",
+    "cta": "开始生成"
+  },
+  "naming": {
+    "title": "取个好名字",
+    "subtitle": "我先帮你定名字方向。你是想给宝宝取名、成人改名，还是品牌取名？",
+    "step": "步骤 {{step}}/{{total}}",
+    "step1Question": "你想为谁取名？",
+    "types": {
+      "baby": { "title": "宝宝取名", "desc": "为新生儿取一个好名字" },
+      "adult": { "title": "成人改名", "desc": "改善运势，开启新篇章" },
+      "brand": { "title": "品牌取名", "desc": "为公司或产品取个好名字" }
+    },
+    "babyStep2Title": "补充信息",
+    "adultStep2Title": "补充信息",
+    "brandStep2Title": "补充信息",
+    "babySurname": "姓氏",
+    "babySurnamePlaceholder": "如：张",
+    "adultOriginalName": "现用名",
+    "adultOriginalNamePlaceholder": "你现在的名字",
+    "improveDirection": "改善方向",
+    "improveDirectionPlaceholder": "如：事业、健康、感情",
+    "brandIndustry": "行业",
+    "brandIndustryPlaceholder": "如：餐饮、教育、科技",
+    "stylePreference": "风格偏好",
+    "styles": {
+      "steady": "稳重",
+      "lively": "活泼",
+      "scholarly": "文雅",
+      "modern": "现代",
+      "premium": "高端",
+      "friendly": "亲切",
+      "oriental": "东方",
+      "commercial": "商业"
+    },
+    "nextStep": "下一步",
+    "babyStep3Title": "宝宝出生信息",
+    "cta": "开始取名",
+    "followUp": {
+      "babySurname": "宝宝姓什么？",
+      "birthTimeConfirmed": "出生时间确定了吗？",
+      "babyStyle": "希望名字偏稳重、灵动、书卷气，还是现代感？",
+      "adultOriginalName": "原名是什么？",
+      "adultGoal": "更想改善气质、人际、事业，还是整体能量？",
+      "brandIndustry": "行业是什么？",
+      "brandAudience": "面向什么人群？",
+      "brandAudiencePlaceholder": "如：25-35岁都市女性",
+      "brandStyle": "希望名字偏高级、亲和、东方感，还是商业感？",
+      "style": {
+        "steady": "稳重",
+        "dynamic": "灵动",
+        "scholarly": "书卷气",
+        "modern": "现代感",
+        "premium": "高级",
+        "friendly": "亲和",
+        "oriental": "东方感",
+        "commercial": "商业感"
+      },
+      "goal": {
+        "temperament": "气质",
+        "social": "人际",
+        "career": "事业",
+        "energy": "整体能量"
+      },
+      "yes": "已确定",
+      "no": "还没确定"
+    },
+    "frontdesk": {
+      "greeting": "我先帮你定名字方向。你是想给宝宝取名、成人改名，还是品牌取名？",
+      "typeBaby": "宝宝取名",
+      "typeAdult": "成人改名",
+      "typeBrand": "品牌取名",
+      "followupBaby": "宝宝姓什么？希望名字偏稳重、灵动、书卷气，还是现代感？",
+      "followupAdult": "原名是什么？更想改善气质、人际、事业，还是整体能量？",
+      "followupBrand": "行业是什么？希望名字偏高级、亲和、东方感，还是商业感？",
+      "confirm": "好的，我再确认下详细信息，马上帮你分析。",
+      "autoSubmit": "信息已经够用了，我直接开始取名分析。",
+      "confirmButton": "确认",
+      "chatting": "对话中",
+      "supplementary": "补充说明",
+      "surnameDetected": "已识别姓氏：",
+      "analyzing": "分析中...",
+      "submitCta": "开始取名分析",
+      "inputPlaceholderBaby": "如：张",
+      "inputPlaceholderAdult": "你现在的名字",
+      "inputPlaceholderBrand": "如：餐饮、教育、科技",
+      "genderLabel": "性别",
+      "birthTimeLabel": "出生时间",
+      "improveDirectionLabel": "改善方向",
+      "targetAudienceLabel": "目标人群",
+      "birthDateLabel": "出生日期",
+      "surnamePrefix": "姓{{value}}",
+      "preferencePrefix": "偏好{{value}}",
+      "originalNameFormat": "原名：{{name}}（姓{{surname}}）",
+      "improvePrefix": "想改善{{value}}",
+      "industryFormat": "行业：{{value}}",
+      "selected": "已选择",
+      "noPreference": "不限",
+      "babyDefault": "宝宝",
+      "brandDefault": "品牌",
+      "overallFortune": "综合运势",
+      "targetAudiencePlaceholder": "如：年轻白领、宝妈",
+      "customDescriptionPlaceholder": "描述你的特殊要求、期望寓意、避讳字等...",
+      "questionBaby": "我想为{{surname}}取个好名字，风格偏好：{{styleLabel}}{{birthTimePart}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionAdult": "我想改名，{{improveDirectionLabel}}：{{improveFocus}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionBrand": "我想为{{industry}}取名{{targetAudiencePart}}，风格偏好：{{styleLabel}}{{customPart}}",
+      "master": "张半山",
+      "askSurname": "好，宝宝姓什么？",
+      "askOriginalName": "好，你现在的名字是什么？",
+      "askIndustry": "好，你的品牌属于什么行业？",
+      "askGender": "男孩还是女孩？",
+      "askExpectation": "你对名字有什么特别的期望？比如寓意、避讳字，都可以告诉我。",
+      "askImproveFocus": "更想改善哪方面？气质、人际、事业，还是整体能量？",
+      "askTargetAudience": "品牌面向什么人群？",
+      "askStyle": "最后，你希望名字偏什么风格？可以多选。",
+      "startAnalyzing": "信息齐了，我来帮你分析。稍等片刻……",
+      "resultIntro": "分析完成。以下是为你推荐的三个名字：",
+      "favorite": "收藏",
+      "unfavorite": "取消收藏",
+      "compare": "对比",
+      "remove": "淘汰",
+      "restore": "恢复",
+      "selectFinal": "选为最终",
+      "finalSelected": "最终选择",
+      "comparisonTitle": "候选对比",
+      "wugeScore": "五格分：{{score}}",
+      "actionNeedsRecord": "正式记录尚未生成，暂时无法保存选择。",
+      "actionSaveFailed": "选择状态保存失败，请重试。",
+      "noResult": "暂无推荐结果，请稍后重试。",
+      "analysisError": "分析遇到了问题，请重试。",
+      "restart": "再取一个"
+    }
+  },
+  "question": {
+    "header": "问个事",
+    "title": "把困扰说清楚",
+    "subtitle": "你现在最没底的是哪件事？可以直接说，比如：要不要换工作、这段关系还要不要继续、合作能不能做。",
+    "placeholder": "比如：我该不该换工作？\n这段感情还要不要继续？\n现在开店合适吗？",
+    "emptyError": "请输入你的问题",
+    "analyze": "分析意图",
+    "intentDetected": "已识别为",
+    "cta": "开始问事",
+    "intents": {
+      "career": "事业",
+      "finance": "财务",
+      "love": "感情",
+      "cooperation": "合作",
+      "travel": "出行",
+      "decision": "选择",
+      "other": "其他",
+      "selectHint": "选择类别，或直接输入你的问题"
+    },
+    "suggestions": {
+      "career": "要不要换工作",
+      "love": "这段感情要不要继续",
+      "finance": "现在投资合适吗",
+      "cooperation": "这个合作能不能做",
+      "travel": "什么时候搬家合适",
+      "decision": "这件事要不要做"
+    },
+    "frontdesk": {
+      "greeting": "你现在最没底的是哪件事？可以直接说，比如：要不要换工作、这段关系还要不要继续、合作能不能做。",
+      "engineSelected": "我帮你用{{engine}}来看这件事。",
+      "analysisError": "正式咨询记录生成失败，请重试。",
+      "klineNodeSignal": "，节点信号是“{{signal}}”",
+      "klineNodePrompt": "我想问 {{targetDate}} 这个时间节点{{signalPart}}。我真正要判断的具体事情是：",
+      "klineNodeContext": "已带入 {{targetDate}} 的走势节点。请在输入框末尾补充你真正要判断的具体事情，我会把走势证据和这件事一起分析。",
+      "forceQuestionRoute": "按问事入口处理，使用断事推演来看这件事。",
+      "master": "宗师",
+      "submit": "说出来",
+      "quickCareer": "要不要换工作",
+      "quickLove": "这段关系还要不要继续",
+      "quickCooperation": "合作能不能做",
+      "quickTurningPoint": "什么时候能好转"
+    }
+  },
+  "consult": {
+    "title": "你现在最想问什么？",
+    "subtitle": "你说问题，我来判断该怎么看。具体事情看当下，整体节律看趋势。",
+    "placeholder": "例如：这个合作还能不能继续？我今年整体运势怎么样？",
+    "quickTags": {
+      "career": "职业去留",
+      "partnership": "合作判断",
+      "assets": "资产决策",
+      "family": "家庭问题",
+      "yearly": "年度运势",
+      "weekly": "本周提醒"
+    },
+    "startButton": "开始第一次咨询",
+    "hint": "第一次来？先看初步判断，不急。"
+  },
+  "consultPage": {
+    "backToHome": "返回首页",
+    "title": "提出您的问题",
+    "subtitle": "你说问题，我来判断该怎么看",
+    "placeholder": "描述您想了解的问题...",
+    "charCount": "{{count}}/500",
+    "hint": "具体事情看当下，整体节律看趋势",
+    "quickQuestions": {
+      "q1": "这个合作还能不能继续推进",
+      "q2": "我今年整体运势怎么样",
+      "q3": "什么时候适合跳槽",
+      "q4": "最近感觉迷茫，不知道方向"
+    },
+    "error": {
+      "title": "错误"
+    },
+    "analyzing": "张半山推演中...",
+    "submitButton": "问张半山",
+    "routeIdentified": "已识别为{{route}}线路，需要补充以下信息：",
+    "fillInfo": "填写信息",
+    "reAsk": "重新提问",
+    "confidence": "置信度",
+    "startAnalysis": "开始推演",
+    "destinyProfileFound": "已找到您的八字档案",
+    "noDestinyProfile": "您还没有填写出生信息",
+    "noDestinyProfileHint": "提供出生信息可做命理分析，不提供也能看",
+    "fillBirthInfo": "填写出生信息",
+    "skipBirthInfo": "先不说生辰，直接看",
+    "birthInfoOptional": "生辰信息（选填，提供后可做命理深度分析）"
+  },
+  "form": {
+    "title": "开始咨询",
+    "birthDate": "出生日期",
+    "birthTime": "出生时辰",
+    "gender": "性别",
+    "male": "♂ 男",
+    "female": "♀ 女",
+    "city": "所在城市（真太阳时校正）",
+    "cityPlaceholder": "如：北京、上海...",
+    "question": "您想问什么？",
+    "questionPlaceholder": "比如：这件事能不能成？今年运势如何？给宝宝起个名字...",
+    "submit": "确定",
+    "submitting": "张半山推演中...",
+    "error": {
+      "required": "请输入您想问的问题",
+      "failed": "分析失败，请重试"
+    },
+    "hourOption": "{{hour}} 时",
+    "minuteOption": "{{minute}} 分",
+    "defaultCity": "北京"
+  },
+  "engines": {
+    "liuren": "断事推演",
+    "ziping": "东方命理",
+    "consult": "咨询"
+  },
+  "info": {
+    "divination": {
+      "title": "我先按这件事来起局",
+      "location": "问事地点",
+      "datetime": "问事时间",
+      "locationPlaceholder": "目前所在位置",
+      "useCurrentTime": "使用当前时间",
+      "submit": "开始推演"
+    },
+    "destiny": {
+      "title": "我先建立你的个人节律",
+      "birthDate": "出生日期",
+      "birthTime": "出生时间",
+      "birthLocation": "出生地",
+      "gender": "性别",
+      "male": "男",
+      "female": "女",
+      "uncertainTime": "我不确定出生时间",
+      "submit": "开始分析"
+    }
+  },
+  "result": {
+    "title": "初步判断",
+    "summary": "一句准话",
+    "analysis": "简版判断",
+    "risks": "你可能面对的",
+    "actions": "你可以考虑的",
+    "save": "保存本次结果",
+    "continue": "继续深入判断",
+    "generating": "正在生成分析...",
+    "error": "生成失败",
+    "errorHint": "请稍后重试",
+    "share": "分享结果",
+    "saveToAlbum": "保存到相册",
+    "poster": "咨询结果海报"
+  },
+  "infoPage": {
+    "back": "返回",
+    "missingRoute": "未识别到咨询类型",
+    "backToAsk": "重新提问",
+    "pageTitles": {
+      "liuren": "断事推演起局",
+      "ziping": "东方命理",
+      "default": "填写信息"
+    },
+    "pageSubtitles": {
+      "liuren": "断事推演起课断事",
+      "ziping": "四柱八字分析",
+      "default": "请完善以下信息"
+    },
+    "calendarType": "历法",
+    "solar": "公历",
+    "lunar": "农历",
+    "birthDate": "出生日期",
+    "birthTime": "出生时辰",
+    "gender": "性别",
+    "male": "♂ 男",
+    "female": "♀ 女",
+    "askTime": "问事时间",
+    "askTimeHint": "可手动修改，或点击右侧按钮使用当前时间",
+    "useCurrentTime": "使用当前时间",
+    "askLocation": "问事地点",
+    "askLocationPlaceholder": "如：北京、上海...",
+    "dateParts": {
+      "year": "{{value}}年",
+      "month": "{{value}}月",
+      "day": "{{value}}日",
+      "full": "{{year}}年{{month}}月{{day}}日"
+    },
+    "nextStep": "下一步",
+    "confirmTitle": "确认信息",
+    "confirmLabels": {
+      "calendarType": "历法",
+      "gender": "性别",
+      "birthDate": "出生日期",
+      "birthTime": "出生时辰",
+      "askTime": "问事时间",
+      "askLocation": "问事地点",
+      "notFilled": "未填写"
+    },
+    "privacyNote": "您的信息仅用于本次推演，不会被保存",
+    "backToEdit": "返回修改",
+    "analyzing": "张半山推演中...",
+    "startAnalyze": "开始分析"
+  },
+  "membership": {
+    "back": "返回",
+    "title": "继续推演",
+    "subtitle": "聚焦一件事，展开完整判断",
+    "expand": "立即展开",
+    "expandNow": "单次展开",
+    "expandPrice": "18元",
+    "expandHint": "单次完整深推，聚焦一个问题",
+    "currentPlan": "当前方案",
+    "recommended": "推荐",
+    "plans": {
+      "single": {
+        "name": "单次深推",
+        "scene": "18元 / 次",
+        "price": "9",
+        "originalPrice": "18",
+        "features": [
+          "单次完整深推",
+          "包含3次追问",
+          "聚焦一个问题",
+          "首次享1折优惠"
+        ]
+      },
+      "monthly": {
+        "name": "轻陪伴月卡",
+        "scene": "99元",
+        "price": "99",
+        "originalPrice": "198",
+        "features": [
+          "完整结果",
+          "20问 / 月",
+          "醒神早帖",
+          "本周运势",
+          "续费享受7折"
+        ]
+      },
+      "yearly": {
+        "name": "长期陪伴年卡",
+        "scene": "588元 / 年（49元 / 月）",
+        "price": "588",
+        "originalPrice": "1176",
+        "features": [
+          "月卡全部权益",
+          "365问 / 年",
+          "深推模块",
+          "人生K线图"
+        ]
+      }
+    },
+    "renewTip": "续费享受7折",
+    "creating": "正在创建订单...",
+    "freePlan": {
+      "title": "免费继续",
+      "subtitle": "初步判断可免费查看",
+      "price": "免费",
+      "hint": "免费"
+    },
+    "footerHint": "如有疑问请联系客服",
+    "mockPaymentSuccess": "支付成功！订单号：{{orderId}}\n\n（当前为模拟支付，正式环境将跳转真实支付页面）"
+  },
+  "history": {
+    "title": "咨询记录",
+    "empty": {
+      "title": "暂无记录",
+      "hint": "第一条判断，从这里开始"
+    },
+    "records": {
+      "divination": "判断",
+      "analysis": "分析"
+    },
+    "startConsult": "开始咨询",
+    "recordType": {
+      "divination": "判断",
+      "destiny": "命理"
+    },
+    "actions": {
+      "review": "查看",
+      "continue": "继续",
+      "fullRecord": "完整记录"
+    },
+    "localizedFallback": {
+      "questionDestiny": "命理咨询记录",
+      "questionDivination": "断事咨询记录",
+      "questionGeneric": "咨询记录",
+      "summaryDestiny": "已保存的八字命理记录，打开可查看完整结果。",
+      "summaryDivination": "已保存的断事推演记录，打开可查看完整结果。",
+      "summaryGeneric": "打开记录查看结果。"
+    }
+  },
+  "historyPage": {
+    "upgradeToView": "升级会员查看完整结果",
+    "expand": "展开详情",
+    "collapse": "收起",
+    "trendComparison": "趋势对比",
+    "trendUp": "运势上升",
+    "trendDown": "运势下降",
+    "trendSteady": "运势平稳",
+    "freeSummary": "摘要",
+    "monthlyDetail": "详情",
+    "yearlyTrend": "趋势",
+    "noRecords": "暂无历史记录"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "email": "邮箱",
+    "password": "密码",
+    "name": "姓名",
+    "phone": "电话",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "还没有账号？",
+    "hasAccount": "已有账号？",
+    "loginSuccess": "登录成功",
+    "registerSuccess": "注册成功",
+    "dialogLabel": "账号登录注册",
+    "hidePassword": "隐藏密码",
+    "showPassword": "显示密码",
+    "registerNow": "立即注册",
+    "loginNow": "立即登录",
+    "namePlaceholder": "请输入姓名"
+  },
+  "common": {
+    "loading": "加载中...",
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一步",
+    "skip": "跳过",
+    "retry": "重试",
+    "vip": "VIP",
+    "locale": "zh-CN",
+    "colon": "：",
+    "listSeparator": "、"
+  },
+  "resultPage": {
+    "loginRequired": "东方命理需要登录后查看完整结果",
+    "aiAnalyzing": "张半山推演中...",
+    "loadFailed": "加载结果失败，请重试",
+    "returnHome": "返回首页",
+    "preliminaryConclusion": "初步结论",
+    "judgmentDocumentStandard": "判断文书口径",
+    "currentJudgment": "当前判断",
+    "judgmentBasis": "判断",
+    "mainRisks": "主要风险",
+    "actionRecommendations": "行动建议",
+    "luckyElements": "喜神：",
+    "avoidElements": "忌神：",
+    "daYunSection": "大运",
+    "keyTiming": "关键时间",
+    "vipServicesHint": "会员承接：解锁更多深度服务",
+    "adminUnlockFailed": "管理员积分解锁失败，请刷新登录后重试。本次不会跳转充值页。",
+    "adminUnlockRetry": "管理员积分解锁接口暂时不可用，请稍后重试。本次不会跳转充值页。",
+    "generatingPoster": "正在生成海报...",
+    "poster": "咨询结果海报",
+    "save": "保存结论",
+    "continue": "深入推演",
+    "saved": "已保存",
+    "saveImage": "保存图片",
+    "shared": "已分享",
+    "share": "分享",
+    "bazi": {
+      "title": "东方命理",
+      "fourPillars": "四柱",
+      "year": "年柱",
+      "month": "月柱",
+      "day": "日柱",
+      "hour": "时柱",
+      "tenGods": "十神",
+      "yearGan": "年干",
+      "monthGan": "月干",
+      "dayMaster": "日主",
+      "hourGan": "时干",
+      "fiveElements": "五行",
+      "dayMasterElement": "日主五行：",
+      "daYun": "大运",
+      "shenSha": "神煞",
+      "naYin": "纳音",
+      "changSheng": "长生",
+      "mingGong": "命宫",
+      "shenGong": "身宫"
+    },
+    "liuren": {
+      "title": "断事推演盘",
+      "userQuestion": "你问的是",
+      "askMoment": "起课时空",
+      "monthGeneral": "月将",
+      "nobleSpirit": "贵神",
+      "humanOrigin": "人元",
+      "earthDivision": "地分",
+      "threeTransmissions": "三传",
+      "fourLessons": "四课"
+    },
+    "vipModules": {
+      "shishenToday": "十神今日",
+      "dayunFocus": "大运聚焦",
+      "wuxingTiaohou": "五行调候",
+      "todayFocus": "今日聚焦",
+      "threeDayReminder": "三日提醒",
+      "todayAvoid": "今日不做",
+      "gejuDingxing": "格局定性",
+      "gujiBasis": "古籍依据",
+      "careerJudge": "事业断事",
+      "wealthJudge": "财运断事",
+      "relationshipCoop": "人际与合作",
+      "healthReminder": "健康提醒",
+      "favorablePeriod": "有利时段",
+      "riskPeriod": "风险时段",
+      "exitPlan": "退路：",
+      "rhythmAdvice": "节奏建议",
+      "correctStrategy": "正确打法"
+    },
+    "vipServices": {
+      "breakthrough": {
+        "title": "破局锦囊",
+        "subtitle": "关键时刻",
+        "desc": "深入推演竞争之中，如何做出最优决策"
+      },
+      "morning": {
+        "title": "醒神早帖",
+        "subtitle": "今日提醒",
+        "desc": "根据每日运势变化，把握稍纵即逝的机遇"
+      },
+      "kline": {
+        "title": "命运K线",
+        "subtitle": "走势分析",
+        "desc": "可视化呈现人生各阶段运势涨跌"
+      }
+    },
+    "algorithmResult": "推演结果",
+    "tenGods": "十神：",
+    "fiveElements": "五行：",
+    "tiangan": "天干",
+    "dizhi": "地支",
+    "avoidGods": "忌用神：",
+    "detail": "细解：",
+    "vip承继Hint": "当前为初步判断。需要完整推演，可继续展开。",
+    "kline": {
+      "title": "人生K线图",
+      "subtitle": "基于您的八字大运流年分析",
+      "overview": "您的命盘四柱为：{{yearPillar}}年 {{monthPillar}}月 {{dayPillar}}日 {{hourPillar}}时",
+      "localReason": "本地算法模式：根据命盘字段与年份种子确定性生成。",
+      "localMonthReason": "本地算法模式：{{year}}年{{month}}月细分。",
+      "dayPillar": "日柱",
+      "daYun": "大运",
+      "rising": "上升",
+      "adjusting": "调整",
+      "proceed": "可推进验证",
+      "reduceRisk": "宜收缩风险",
+      "greatLuck": "大吉",
+      "averageLuck": "中平",
+      "poorLuck": "小凶",
+      "advance": "宜进取",
+      "holdSteady": "宜守成",
+      "adjust": "宜调整",
+      "gatherStrength": "宜蓄势",
+      "balanced": "平衡",
+      "imbalanced": "偏颇",
+      "woodRatio": "五行木占比{{ratio}}%，{{status}}",
+      "fireRatio": "五行火占比{{ratio}}%，{{status}}",
+      "strong": "旺盛",
+      "weak": "不足",
+      "wuxingSuggestion": "建议根据具体运势选择合适的发展方向",
+      "auspicious": "吉利",
+      "smooth": "平顺",
+      "unfavorable": "欠佳",
+      "currentLuck": "当前运势",
+      "futureDev": "未来发展",
+      "daYunDesc": "大运{{gan}}{{zhi}}，{{type}}",
+      "ageRange": "{{startAge}}-{{endAge}}岁",
+      "daYunNote": "大运{{gan}}{{zhi}}节律",
+      "ganHighlight": "{{gan}}干主导阶段气机",
+      "zhiHighlight": "{{zhi}}支落在现实场域",
+      "trendAnalysis": "趋势分析",
+      "keyNodes": "关键节点",
+      "auspiciousShort": "吉",
+      "unfavorableShort": "凶",
+      "neutralShort": "平",
+      "recentMonths": "近期月运",
+      "elementQi": "{{element}}气",
+      "scoreLabel": "{{score}}分",
+      "loadingFortune": "正在加载运势...",
+      "loadingCelebrity": "正在加载名人对比...",
+      "currentStage": "当前阶段",
+      "opportunityWindow": "机会窗口",
+      "riskWindow": "风险窗口",
+      "nextThreeYears": "未来三年",
+      "aiInterpreter": "解盘师",
+      "generating": "命运K线生成中/暂无足够数据",
+      "brandName": "命运K线"
+    },
+    "destinyKline": {
+      "aspect": {
+        "overall": "总势",
+        "career": "事业",
+        "wealth": "财运",
+        "relationship": "情感"
+      },
+      "aspects": {
+        "primarySignal": "核心信号",
+        "oneLiner": "一句话",
+        "actionAdvice": "行动建议",
+        "unlockHint": "升级会员查看完整四线解读"
+      },
+      "shareCard": "分享卡",
+      "overview": "命运K线总览",
+      "opportunityWindow": "机会窗口",
+      "riskWindow": "风险窗口",
+      "aiInterpreter": {
+        "title": "解盘师",
+        "desc": "根据你的命运K线，解读当前阶段和未来窗口。",
+        "q1": "我现在处于什么阶段？",
+        "q2": "未来三年怎么走？",
+        "q3": "今年适合主动变化吗？",
+        "summary": "一句准话",
+        "timeWindow": "时间窗口",
+        "action": "行动建议",
+        "risk": "风险提醒"
+      },
+      "summary": "当前处于{{current}}，建议优先处理核心矛盾而非追求短期回报。",
+      "stage": {
+        "rising": "上升窗口",
+        "steady": "稳步推进",
+        "accumulating": "蓄势调整",
+        "recovery": "低谷修复"
+      },
+      "signal": {
+        "strongBull": "强势窗口",
+        "bull": "上升窗口",
+        "neutral": "观察",
+        "bear": "调整窗口",
+        "strongBear": "深度回撤"
+      },
+      "signalLabel": {
+        "rise_cross": "启势金叉",
+        "noble_volume": "贵人放量",
+        "wealth_breakout": "财星突破",
+        "relationship_shift": "关系异动",
+        "void_pullback": "空亡回撤",
+        "conflict_breakdown": "冲刑破位",
+        "useful_god_return": "用神回归"
+      },
+      "oneLiner": {
+        "rising": {
+          "overall": "你正处于上升通道，顺势而为是最佳策略。",
+          "career": "事业处于上升期，适合推进重要计划。",
+          "wealth": "财运看涨，适合适度投资。",
+          "relationship": "感情运势向好，适合主动表达。"
+        },
+        "steady": {
+          "overall": "稳步推进中，保持节奏比加速更重要。",
+          "career": "事业稳中有进，适合巩固成果。",
+          "wealth": "财运平稳，适合守成为主。",
+          "relationship": "感情稳定，适合深化关系。"
+        },
+        "accumulating": {
+          "overall": "蓄势调整期，先做低成本验证。",
+          "career": "事业进入蓄势期，适合积累筹码。",
+          "wealth": "财运偏弱，适合保守理财。",
+          "relationship": "感情需要调整，适合反思和沟通。"
+        },
+        "recovery": {
+          "overall": "低谷修复期，保守为主，等待转机。",
+          "career": "事业处于低谷，不适合大变动。",
+          "wealth": "财运低迷，避免高风险操作。",
+          "relationship": "感情低谷期，先照顾好自己。"
+        }
+      },
+      "action": {
+        "rising": {
+          "overall": "适合主动出击，但保留安全边际。",
+          "career": "可以推进转型、跳槽、创业等重大变化。",
+          "wealth": "适合适度加仓或启动新投资。",
+          "relationship": "适合主动表白或推进关系。"
+        },
+        "steady": {
+          "overall": "保持当前节奏，小步优化而非大步跨越。",
+          "career": "巩固现有成果，不宜频繁跳槽。",
+          "wealth": "维持现有投资组合，小额定投。",
+          "relationship": "维护现有关系，避免过度索取。"
+        },
+        "accumulating": {
+          "overall": "先做低成本试错，等窗口打开再全力推进。",
+          "career": "积累技能和人脉，为下一波机会做准备。",
+          "wealth": "减少支出，增加储蓄，等待入场时机。",
+          "relationship": "反思关系模式，调整沟通方式。"
+        },
+        "recovery": {
+          "overall": "不要因为短期焦虑做高杠杆决定。",
+          "career": "先稳住基本盘，避免裸辞或冲动决策。",
+          "wealth": "止损为主，不要抄底或加杠杆。",
+          "relationship": "给自己空间，不要急于进入新关系。"
+        }
+      },
+      "currentScore": "当前分数",
+      "generating": "命运K线生成中/暂无足够数据",
+      "shortCycle": {
+        "life": "人生",
+        "day3": "3日快线",
+        "xun": "11日旬线",
+        "month": "30日月线",
+        "quarter": "100日季线",
+        "todaySignal": "今日信号",
+        "overallTrend": "整体趋势",
+        "suitable": "宜",
+        "caution": "忌",
+        "trendUp": "上升",
+        "trendDown": "下行",
+        "trendFlat": "平稳",
+        "signalStrong": "强势",
+        "signalModerate": "偏强",
+        "signalNeutral": "中性",
+        "signalWeak": "偏弱",
+        "signalVeryWeak": "弱势",
+        "subLabel": {
+          "day3": "近期气感",
+          "xun": "短期推进",
+          "month": "月度节律",
+          "quarter": "阶段趋势"
+        }
+      },
+      "gating": {
+        "memberOnly": "会员专享",
+        "unlockFull": "解锁完整四线",
+        "unlockDesc": "升级会员查看事业线、财运线、情感线完整解读",
+        "unlockShortCycle": "解锁更多周期",
+        "unlockAI": "解锁解盘师",
+        "unlockHD": "解锁高清海报",
+        "freePreview": "免费预览"
+      },
+      "annual": {
+        "title": "年会员专属",
+        "longCycleReport": "长周期趋势报告",
+        "annualReview": "年度复看",
+        "recordComparison": "多次记录对比",
+        "lockedBadge": "年会员专享",
+        "upgradeToAnnual": "升级年会员",
+        "upgradeDesc": "解锁长周期趋势报告、年度复看和多次记录对比",
+        "longCycle": {
+          "phaseRising": "上升期",
+          "phaseSteady": "稳定期",
+          "phaseDeclining": "调整期",
+          "phaseRecovery": "蓄势期",
+          "strategicAdvice": "战略建议",
+          "transitionYear": "转折年",
+          "lifeTrajectory": "人生轨迹总览",
+          "avgScore": "均分",
+          "ageUnit": "岁",
+          "transitionDesc": "从{{from}}转入{{to}}",
+          "adviceRising": "适合主动出击，把握上升窗口",
+          "adviceSteady": "保持节奏，小步优化而非大步跨越",
+          "adviceDeclining": "收缩战线，降低风险敞口",
+          "adviceRecovery": "蓄势积累，等待转机信号",
+          "trajectoryRising": "整体人生轨迹偏上升，机遇多于挑战",
+          "trajectoryDeclining": "整体人生轨迹偏调整，需注重防守和积累",
+          "trajectoryBalanced": "人生轨迹起伏交替，把握节奏是关键"
+        },
+        "annualReview": {
+          "pastYear": "回顾",
+          "currentYear": "今年",
+          "nextYear": "展望",
+          "yearKeyword": "年度关键词",
+          "scoreLabel": "运势分",
+          "noData": "暂无年度复看数据"
+        },
+        "recordComparison": {
+          "selectRecords": "选择要对比的记录",
+          "compare": "对比",
+          "noRecords": "暂无可对比的历史记录",
+          "noKlineData": "无K线数据",
+          "delta": "变化",
+          "divergeYear": "分歧",
+          "ageCol": "年龄",
+          "ageSuffix": "岁"
+        }
+      }
+    },
+    "breakthrough": {
+      "unavailable": "深入推演暂不可用",
+      "needBackend": "需要连接后端 LLM 模块",
+      "message": "当前是本地临时结果或后端模块加载失败，不能输出模板化深入推演。请重试生成正式记录，本次不会扣除积分。"
+    },
+    "morning": {
+      "title": "今日运势",
+      "subtitle": "公历{{year}}年{{month}}月{{day}}日",
+      "overview": "基于您的命盘信息，为您提供今日运势分析",
+      "pettyPeople": "小人",
+      "impulse": "冲动",
+      "risk": "冒险",
+      "stayQuiet": "宜静",
+      "takeAction": "宜动",
+      "average": "平平",
+      "caution": "注意",
+      "recDocWork": "今日适合处理文书工作",
+      "recDelayDecision": "重要决策建议延后",
+      "recDigestion": "注意脾胃健康",
+      "tipTravel": "今日驿马星动，出行有利",
+      "tipRomance": "桃花星入命，人际关系活跃",
+      "tipWealth": "财星暗藏，机遇与挑战并存",
+      "directions": {
+        "east": "东方",
+        "south": "南方",
+        "west": "西方",
+        "north": "北方"
+      },
+      "colors": {
+        "red": "红色",
+        "yellow": "黄色",
+        "blue": "蓝色",
+        "green": "绿色",
+        "white": "白色"
+      }
+    },
+    "generationStatus": {
+      "generating": "深度推演中...",
+      "completed": "生成完成",
+      "failed": "生成失败",
+      "retry": "重试生成",
+      "timeout": "生成超时，请稍后刷新查看"
+    },
+    "errors": {
+      "processing": "咨询正在处理中，请稍候再试",
+      "cannotLoad": "无法加载咨询结果",
+      "loadFailed": "加载结果失败，请重试"
+    },
+    "algorithmOnly": "初步结论",
+    "timeout": "推演超时",
+    "timeoutMessage": "LLM 推演超时，请稍后重试。本次不会扣除积分。",
+    "autoSaved": "已自动保存",
+    "divination": {
+      "tianGan": {
+        "甲": "甲",
+        "乙": "乙",
+        "丙": "丙",
+        "丁": "丁",
+        "戊": "戊",
+        "己": "己",
+        "庚": "庚",
+        "辛": "辛",
+        "壬": "壬",
+        "癸": "癸"
+      },
+      "diZhi": {
+        "子": "子",
+        "丑": "丑",
+        "寅": "寅",
+        "卯": "卯",
+        "辰": "辰",
+        "巳": "巳",
+        "午": "午",
+        "未": "未",
+        "申": "申",
+        "酉": "酉",
+        "戌": "戌",
+        "亥": "亥"
+      },
+      "wuXing": {
+        "wood": "木",
+        "fire": "火",
+        "earth": "土",
+        "metal": "金",
+        "water": "水"
+      },
+      "shiShen": {
+        "zhengCai": "正财",
+        "pianCai": "偏财",
+        "zhengGuan": "正官",
+        "qiSha": "七杀",
+        "zhengYin": "正印",
+        "pianYin": "偏印",
+        "shiShen": "食神",
+        "shangGuan": "伤官",
+        "biJian": "比肩",
+        "jieCai": "劫财"
+      },
+      "labels": {
+        "dayMaster": "日主",
+        "bodyStrength": "身强弱",
+        "currentDaYun": "当前大运",
+        "yongShen": "用神",
+        "jiShen": "忌神",
+        "kongWang": "空亡",
+        "taiYuan": "胎元",
+        "mingGong": "命宫"
+      },
+      "aspects": {
+        "career": "事业",
+        "wealth": "财运",
+        "relationship": "感情",
+        "health": "健康"
+      },
+      "fortune": {
+        "overall": "综合评分",
+        "luckyDays": "吉日",
+        "advice": "建议",
+        "warnings": "注意事项",
+        "bestMonths": "最佳月份",
+        "worstMonths": "低谷月份",
+        "keyMoments": "关键时间节点",
+        "opportunities": "机遇窗口",
+        "riskPeriods": "风险时段",
+        "fallbackLabel": "退路：",
+        "rhythmAdvice": "节奏建议",
+        "stopDoingList": "Stop-doing List",
+        "zodiacCompatibility": "生肖契合度"
+      }
+    },
+    "source": "来源：",
+    "algorithmChart": "算法排盘",
+    "algorithmOnlyNoLlm": "纯算法，未调用 LLM",
+    "stemBranchMainQi": "干支主气",
+    "destinyReview": "命局复核",
+    "destinyReviewText": "四柱：{{yearPillar}}、{{monthPillar}}、{{dayPillar}}、{{hourPillar}}。日主 {{dayMaster}}，身强弱判断为{{bodyStrength}}。",
+    "useAvoidGods": "用忌参考",
+    "useGodPrefix": "用",
+    "avoidGodPrefix": "忌",
+    "caseReport": "案例报告",
+    "quality": "质量",
+    "schemaComplete": "结构完整",
+    "degraded": "降级",
+    "moduleScores": "模块评分",
+    "futureRhythm": "未来节律",
+    "suitable": "宜",
+    "unsuitable": "忌",
+    "fallback": "备选",
+    "balance": "平衡",
+    "wuxingSuggestions": "五行建议",
+    "daYunReading": "大运解读",
+    "current": "当前",
+    "chartInfo": "命盘信息",
+    "recordId": "记录编号：{{id}}",
+    "posterSections": {
+      "analysis": "解释",
+      "risks": "风险",
+      "actions": "建议行动"
+    },
+    "hourBranches": {
+      "子": "子时",
+      "丑": "丑时",
+      "寅": "寅时",
+      "卯": "卯时",
+      "辰": "辰时",
+      "巳": "巳时",
+      "午": "午时",
+      "未": "未时",
+      "申": "申时",
+      "酉": "酉时",
+      "戌": "戌时",
+      "亥": "亥时"
+    },
+    "bodyStrength": {
+      "偏旺": "偏旺",
+      "偏弱": "偏弱",
+      "中和": "中和",
+      "身旺": "身旺",
+      "身弱": "身弱"
+    },
+    "elementNames": {
+      "木": "木",
+      "火": "火",
+      "土": "土",
+      "金": "金",
+      "水": "水"
+    },
+    "moduleSections": {
+      "breakthroughPath": "破局路径",
+      "keyPoints": "关键要点",
+      "riskAlerts": "风险提示",
+      "nextSteps": "下一步"
+    },
+    "preview": {
+      "mobile": "手机预览",
+      "pc": "电脑预览"
+    },
+    "klineTabs": {
+      "year": "年运",
+      "month": "月运",
+      "wuxing": "五行",
+      "fortune": "每日",
+      "celebrity": "名人"
+    },
+    "klineModes": {
+      "year": "年运",
+      "yearMonth": "年月",
+      "eightyYears": "80年",
+      "hundredYears": "100年"
+    },
+    "reportSections": {
+      "chartVerification": "排盘核验",
+      "destinyStructure": "命局骨架",
+      "characterPortrait": "性格画像",
+      "currentDaYun": "当前大运",
+      "yearKeyImage": "年度关键象",
+      "classicBasis": "经典依据",
+      "coreReasoning": "核心推理",
+      "actionStrategy": "行动策略",
+      "keySignals": "关键信号",
+      "timeWindows": "时间窗口",
+      "counterpartPortrait": "对方画像"
+    },
+    "decisionAudit": {
+      "title": "决策审计",
+      "rightOrWrong": "是非判断",
+      "safetyMargin": "安全边界"
+    },
+    "localFallback": {
+      "liuren": {
+        "summary": "【{{guiShen}}】{{yueJiang}}月将，形成初步课局。",
+        "body": "本地算法兜底。关键课局项：{{terms}}。正式结果以服务端推演为准。",
+        "risk1": "初传{{shang}}若遇克害，需防阻碍",
+        "risk2": "{{guiShen}}为贵神，忌逢空亡或冲破",
+        "risk3": "{{yueJiang}}月将若失令，事体有拖延之象",
+        "risk4": "三传{{zhong}}中传欠力，宜保守待机",
+        "action1": "以{{firstKe}}为事体核心，循其克应而行",
+        "action2": "逢{{guiShen}}值日或时辰，可把握时机",
+        "action3": "{{yuanWang}}门宜静不宜动，待气机明确再发",
+        "action4": "中传{{zhong}}为转折点，关注此阶段变化",
+        "timeWindow": "三传流转约{{shang}}→{{zhong}}→{{xia}}，约7-14天气机转换"
+      },
+      "ziping": {
+        "summary": "日主{{dayGan}}{{strength}}，用神宜{{elements}}",
+        "body": "命局分析：日主{{dayGan}}{{strength}}，月令{{monthZhi}}旺气十足。用神宜取{{suitable}}之属，忌{{avoid}}过旺。整体格局{{structure}}，运势起伏需结合大运流年综合判断。",
+        "risk1": "日主状态：{{strength}}",
+        "risk2": "用神参考：{{elements}}",
+        "risk3": "忌神参考：{{elements}}",
+        "action1": "注意{{element}}属性的发展机会",
+        "action2": "避免{{element}}属性的过度消耗",
+        "timeWindow": "命运走势需结合大运流年综合分析",
+        "evidence": "格局判定：日主{{dayGan}}{{strength}}，用神取{{suitable}}\n喜神：{{suitable}}优先\n忌神：{{avoid}}优先"
+      },
+      "generic": {
+        "summary": "已生成初步分析结果。",
+        "body": "服务器正在处理中，当前结果为轻量参考，完整分析稍后可用。",
+        "risk1": "完整排盘数据需要连接服务器，当前展示可能不完整。",
+        "risk2": "请以最终完整分析为准。",
+        "action1": "稍后重新查看完整结果。",
+        "action2": "初步结果可用于低风险参考。",
+        "timeWindow": "稍后可重试；完整分析生成不会扣除积分。",
+        "evidence": "初步分析结果。完整分析生成后将自动更新。"
+      }
+    },
+    "namingGating": {
+      "viewMore": "查看更多名字",
+      "unlockFull": "解锁完整取名方案",
+      "unlockDesc": "升级会员查看全部候选名字、详细评分和避坑说明",
+      "memberOnly": "会员专享",
+      "freeNames": "免费查看 {{count}} 个候选名",
+      "wuxingMatch": "八字五行匹配",
+      "phoneticMeaning": "音形义",
+      "caveat": "避坑说明"
+    },
+    "namingAnnual": {
+      "title": "年会员专属取名功能",
+      "multiRound": "多轮筛选",
+      "multiRoundDesc": "按五行、字数、音调筛选，找到最合适的名字",
+      "moreLikeThis": "更多类似",
+      "dislike": "不喜欢",
+      "filterWuxing": "五行筛选",
+      "filterCharCount": "字数筛选",
+      "filterTone": "音调筛选",
+      "regenerate": "重新生成一轮",
+      "regenerating": "重新生成中...",
+      "favorites": "收藏列表",
+      "round": "第{{round}}轮",
+      "charUnit": "字",
+      "scoreUnit": "分",
+      "noResults": "没有符合条件的名字，请调整筛选条件",
+      "renameComparison": "改名对比",
+      "originalName": "原名",
+      "newName": "新名",
+      "wuxingDist": "五行分布",
+      "sancaiConfig": "三才配置",
+      "strokeCount": "笔画数",
+      "overallScore": "综合评分",
+      "improvementAnalysis": "改善分析",
+      "improvementScore": "综合评分提升",
+      "improvementWuxing": "五行平衡度提升",
+      "improvementSancai": "三才配置更吉",
+      "brandStrategy": "品牌命名策略",
+      "marketPositioning": "市场定位",
+      "audienceMatch": "受众匹配度",
+      "industryFit": "行业契合度",
+      "memorability": "品牌记忆度",
+      "memorabilityHigh": "高记忆度，易传播",
+      "memorabilityMedium": "中等记忆度",
+      "memorabilityLow": "建议优化提升记忆度",
+      "brandStory": "品牌故事",
+      "brandStoryTemplate": "{{name}}，以独特的品牌基因在{{industry}}中建立差异化认知。名字承载着品牌的核心价值主张，在消费者心智中占据独特位置。",
+      "defaultIndustry": "行业",
+      "trademarkAdvice": "商标建议",
+      "trademarkTip1": "建议在国家知识产权局官网查询商标注册情况",
+      "trademarkTip2": "同时检查域名可用性（.com / .cn / .com.cn）",
+      "trademarkTip3": "建议注册多个类别的商标以保护品牌",
+      "pdfExport": "导出完整方案",
+      "pdfExportDesc": "导出包含所有候选名字、评分和分析的完整方案",
+      "pdfTitle": "取名方案",
+      "pdfSubtitle": "人生决策宗师 · 半山取名",
+      "pdfFooter": "由半山先生推演，仅供参考",
+      "lockedBadge": "年会员专享",
+      "upgradeToAnnual": "升级年会员"
+    },
+    "namingBehavior": {
+      "favorite": "收藏",
+      "remove": "移除",
+      "exportNames": "导出候选名",
+      "exportTitle": "取名候选方案",
+      "favorited": "已收藏",
+      "removed": "已移除"
+    },
+    "shareTiers": {
+      "basic": "基础分享图",
+      "basicDesc": "标准分辨率",
+      "hd": "高清海报",
+      "hdDesc": "2倍分辨率，无水印",
+      "report": "报告图",
+      "reportDesc": "含四线数据+关键年份+AI解读",
+      "locked": "会员专享",
+      "upgradeForHd": "升级月会员解锁高清海报",
+      "upgradeForReport": "升级年会员解锁报告图",
+      "watermark": "人生决策宗师"
+    },
+    "questionGating": {
+      "viewDeep": "查看深度推演",
+      "unlockDeep": "解锁深度推演",
+      "unlockDesc": "升级会员查看完整推演、证据链和多路径判断",
+      "memberOnly": "会员专享",
+      "freePreview": "免费预览"
+    },
+    "questionAnnual": {
+      "title": "年会员专属问事功能",
+      "lockedHint": "年会员专享，升级解锁",
+      "unlockButton": "升级年会员",
+      "majorDecision": {
+        "title": "重大事项庙算",
+        "prosCons": "利弊分析",
+        "pros": "有利因素",
+        "cons": "风险因素",
+        "timing": "时间窗口",
+        "noTimingData": "暂无时间窗口数据",
+        "keyVariables": "关键变量",
+        "noVariableData": "暂无关键变量数据",
+        "worstCase": "最坏情况预案",
+        "noWorstCaseData": "暂无最坏情况预案数据",
+        "recommendation": "决策建议",
+        "confidence": "置信度"
+      },
+      "followUp": {
+        "title": "继续追问",
+        "suggestedLabel": "推荐追问方向",
+        "suggestedQ1": "这件事的关键转折点在什么时候？",
+        "suggestedQ2": "如果我现在不做，最坏的结果是什么？",
+        "suggestedQ3": "有什么我忽略的风险需要特别注意？",
+        "suggestedQ4": "我当前大运对这件事的影响有多大？",
+        "suggestedQ5": "今年和明年哪个更适合行动？",
+        "suggestedQ6": "我命局中最大的优势和短板分别是什么？",
+        "inputPlaceholder": "输入你的追问...",
+        "askButton": "追问",
+        "analyzing": "分析中...",
+        "mockAnswer": "基于当前推演结果，这是一个值得深入探讨的方向。结合您命局和大运的综合判断，建议在关键时间窗口内审慎决策。",
+        "errorAnswer": "追问失败，请稍后重试。"
+      },
+      "historyReview": {
+        "title": "历史事项复盘",
+        "empty": "暂无历史问事记录",
+        "statusPending": "待验证",
+        "statusVerified": "已验证",
+        "statusExpired": "已过期",
+        "prediction": "当初预测",
+        "actualOutcome": "实际结果",
+        "addOutcome": "添加实际结果",
+        "outcomePlaceholder": "描述实际发生了什么...",
+        "saveOutcome": "保存",
+        "noQuestion": "历史咨询"
+      },
+      "aiInterpreter": {
+        "suggestedQuestions": "半山建议你想想",
+        "mockAnswer": "看了你的命盘和大运，这事急不得，先把关键信息搞清楚再说。",
+        "qCareer": "事业上的瓶颈期什么时候突破？",
+        "qWealth": "财运什么时候转好？",
+        "qRelationship": "感情上的转折点在什么时候？",
+        "qHealth": "健康方面需要注意什么？",
+        "qTiming": "今年适合主动变化吗？",
+        "careerQ1": "事业上的瓶颈期什么时候突破？",
+        "careerQ2": "适合创业还是守成？",
+        "careerQ3": "跳槽的最佳时机是什么时候？",
+        "careerQ4": "今年事业最大的机遇在哪？",
+        "careerQ5": "如何突破当前的职业天花板？",
+        "wealthQ1": "财运什么时候转好？",
+        "wealthQ2": "投资应该注意什么？",
+        "wealthQ3": "今年有没有意外之财的机会？",
+        "wealthQ4": "如何守住现有财富？",
+        "wealthQ5": "什么方向最旺财？",
+        "relationshipQ1": "感情上的转折点在什么时候？",
+        "relationshipQ2": "如何改善当前关系？",
+        "relationshipQ3": "今年适合表白或推进关系吗？",
+        "relationshipQ4": "对方现在的真实想法是什么？",
+        "relationshipQ5": "如何吸引对的人？",
+        "tiers": {
+          "freeHint": "升级会员解锁AI解盘师完整解读",
+          "monthlyHint": "月会员：可查看完整解读",
+          "yearlyHint": "年会员：可无限追问",
+          "suggestedQuestions": "半山建议你想想",
+          "askMore": "继续追问",
+          "typeYourQuestion": "输入你的追问..."
+        }
+      }
+    }
+  },
+  "fortune": {
+    "title": "运势中心",
+    "tabs": {
+      "daily": "每日运势",
+      "monthly": "月度运势",
+      "yearly": "年度运势"
+    },
+    "errors": {
+      "birthDateRequired": "请先提供出生日期",
+      "dailyFailed": "获取每日运势失败",
+      "monthlyFailed": "获取月度运势失败",
+      "yearlyFailed": "获取年度运势失败"
+    },
+    "missingBirth": {
+      "title": "需要出生信息",
+      "desc": "运势分析需要您的出生日期，请先完成一次咨询或返回首页输入出生信息",
+      "cta": "前往咨询"
+    },
+    "empty": {
+      "daily": "点击上方标签加载运势数据",
+      "monthly": "选择月份加载运势数据",
+      "yearly": "选择年份加载运势数据"
+    },
+    "yearLabel": "{{year}}年",
+    "yearMonthLabel": "{{year}}年{{month}}",
+    "monthLabel": "{{month}}月",
+    "dayLabel": "{{day}}日",
+    "monthWithColon": "{{month}}：",
+    "warnings": "⚠ 注意事项",
+    "daily": {
+      "title": "每日运势",
+      "overall": "综合运势",
+      "luckyNumbers": "幸运数字",
+      "luckyColors": "幸运颜色",
+      "auspiciousHours": "吉时",
+      "advice": "今日建议"
+    },
+    "monthly": {
+      "title": "月度运势",
+      "overallScore": "综合评分",
+      "overallGood": "运势较佳",
+      "overallStable": "运势平稳",
+      "overallLow": "运势偏低",
+      "luckyDays": "本月吉日",
+      "advice": "月度建议"
+    },
+    "yearly": {
+      "title": "年度运势",
+      "ganZhiYear": "{{ganZhi}}年",
+      "overall": "年度综合",
+      "bestMonths": "最佳月份",
+      "worstMonths": "低谷月份",
+      "keyMoments": "关键时间节点",
+      "opportunities": "机遇窗口",
+      "investment": "理财",
+      "riskPeriods": "风险时段",
+      "zodiacCompatibility": "生肖契合度",
+      "advice": "年度建议"
+    }
+  },
+  "profilePage": {
+    "title": "我的",
+    "loginHint": "登录后解锁更多服务",
+    "loginNow": "立即登录",
+    "noAccount": "还没有账号？",
+    "registerOne": "注册一个",
+    "currentIdentity": "当前身份",
+    "orders": {
+      "title": "我的订单",
+      "count": "{{count}} 条记录",
+      "empty": "暂无订单"
+    },
+    "viewPlans": "查看套餐",
+    "myInfo": "个人信息",
+    "email": "邮箱",
+    "phone": "手机",
+    "notBound": "未绑定",
+    "menu": {
+      "history": "咨询记录",
+      "library": "命例库",
+      "pricing": "价格说明",
+      "feedback": "帮助与反馈"
+    },
+    "switchAccount": "切换账号",
+    "logout": "退出登录",
+    "loginSuccess": "登录成功",
+    "userFallback": "用户",
+    "membership": {
+      "free": "普通用户",
+      "monthly": "轻陪伴会员",
+      "yearly": "长期陪伴会员"
+    },
+    "orderStatus": {
+      "paid": "已支付",
+      "pending": "待支付"
+    }
+  },
+  "pricePage": {
+    "title": "价格说明",
+    "subtitle": "明明白白消费，放心使用服务",
+    "single": {
+      "title": "单次咨询",
+      "subtitle": "按需付费，灵活使用",
+      "item1": "断事推演起课",
+      "price1": "¥38/次",
+      "item2": "东方命理命理分析",
+      "price2": "¥28/次",
+      "item3": "深度完整判断",
+      "price3": "¥68/次",
+      "note": "单次咨询完成后自动关闭，如需继续可购买会员"
+    },
+    "membership": {
+      "title": "会员套餐",
+      "subtitle": "包时段无限用，更划算",
+      "monthly": {
+        "name": "轻陪伴月卡",
+        "price": "¥198/月",
+        "desc": "30天内无限次咨询，送每日运势提醒"
+      },
+      "yearly": {
+        "name": "长期陪伴年卡",
+        "price": "¥1280/年",
+        "desc": "365天全程陪伴，送专属人生K线图"
+      }
+    },
+    "explanation": {
+      "title": "为什么是这个价格？",
+      "point1": "命理服务是非标准化的智力密集型服务，每一份分析都需要投入专业的知识和经验",
+      "point2": "我们整合了传统命理经典与现代决策科学，提供经过验证的判断框架",
+      "point3": "AI辅助分析大幅降低了边际成本，让您能以更低的价格获得专业服务",
+      "point4": "我们相信：好的服务应该让更多人用得起，而不是只服务少数人"
+    },
+    "faq": {
+      "title": "常见问题",
+      "q1": "Q: 单次和会员有什么区别？",
+      "a1": "A: 单次适合偶尔使用，会员适合需要长期跟踪运势或频繁咨询的用户。会员期间不限次数，还能享受专属服务。",
+      "q2": "Q: 付费后能退款吗？",
+      "a2": "A: 单次咨询一旦开始不支持退款；会员未使用的情况下，7天内可申请退款。",
+      "q3": "Q: 咨询结果准不准？",
+      "a3": "A: 命理分析提供的是概率性参考，不是绝对的预言。我们追求的是在不确定的世界中给您一个有价值的思考框架。"
+    },
+    "contact": {
+      "title": "其他问题",
+      "desc": "如有更多问题或建议，欢迎通过下方的帮助与反馈提交工单，我们会尽快回复。"
+    }
+  },
+  "feedback": {
+    "title": "帮助与反馈",
+    "subtitle": "我们重视您的每一条反馈",
+    "loginRequired": "登录后使用反馈功能",
+    "loginHint": "登录即可提交工单、查看历史反馈记录",
+    "tab": {
+      "new": "新建工单",
+      "history": "我的工单"
+    },
+    "ticketType": {
+      "label": "问题类型",
+      "bug": "功能问题",
+      "suggestion": "功能建议",
+      "consultation": "咨询相关",
+      "payment": "支付问题",
+      "other": "其他"
+    },
+    "form": {
+      "title": "工单标题",
+      "titlePlaceholder": "简要描述您的问题（必填）",
+      "description": "详细描述",
+      "descriptionPlaceholder": "请详细描述您遇到的问题或建议，以便我们更好地处理...",
+      "contact": "联系方式（选填）",
+      "contactPlaceholder": "邮箱或手机号，方便我们联系您",
+      "submit": "提交工单",
+      "hint": "工单提交后，我们会在24小时内回复"
+    },
+    "empty": {
+      "title": "暂无工单记录",
+      "desc": "您还没有提交过任何工单"
+    },
+    "status": {
+      "open": "待处理",
+      "pending": "处理中",
+      "resolved": "已解决",
+      "closed": "已关闭"
+    },
+    "response": {
+      "label": "官方回复"
+    },
+    "updated": "更新于",
+    "submitSuccess": "工单提交成功！",
+    "mock": {
+      "title": "如何修改出生信息？",
+      "description": "我填写的出生时间有误，想要重新修改。",
+      "response": "请进入「我的 > 个人信息」修改。如仍需帮助，可联系客服。"
+    }
+  },
+  "celebrity": {
+    "title": "名人命盘对比",
+    "subtitle": "与公开参考命盘进行八字结构对比。",
+    "similarityPercent": "{{score}}% 相似",
+    "yourChart": "你的命盘",
+    "celebrityChart": "名人命盘",
+    "dayMasterRelation": "日主关系",
+    "insights": "启发",
+    "shortPillars": {
+      "year": "年柱",
+      "month": "月柱",
+      "day": "日柱",
+      "hour": "时柱",
+      "wuxing": "五行"
+    },
+    "scoreLabels": {
+      "personality": "性格",
+      "career": "事业",
+      "wealth": "财富",
+      "marriage": "感情",
+      "health": "健康"
+    }
+  },
+  "klineImage": {
+    "posterTitle": "命运K线",
+    "posterSubtitle": "看时机、动能与关键窗口。",
+    "rhythmMap": "节律走势",
+    "currentSignal": "当前信号",
+    "score": "分",
+    "bestWindow": "机会窗口",
+    "riskWindow": "风险窗口",
+    "pillars": "四柱命盘",
+    "fiveElementProfile": "五行结构",
+    "dominantElement": "主气：{{element}}",
+    "strategicNotes": "策略提示",
+    "generatedBy": "AWKN Life 生成",
+    "ageYearPair": "{{age}}岁 · {{year}}年",
+    "scoreValue": "{{score}}分",
+    "trendSentence": "{{period}} 当前判断为{{direction}}，信号强度 {{probability}}%。",
+    "defaultNote": "把K线图作为时机参考，结合现实资源和约束再做决定。",
+    "defaultOneLiner": "你不是没有机会，而是在换轨前的蓄势段",
+    "allAgesOverview": "全年龄总览",
+    "stageWindow": "{{firstAge}}-{{lastAge}}岁阶段窗口",
+    "stageAccumulating": "蓄势调整期",
+    "stageRising": "顺势上升期",
+    "stageAdjusting": "回撤调整期",
+    "elementCount": "{{count}}点",
+    "ageLabel": "{{age}}岁",
+    "trendAnalysis": "趋势分析",
+    "overview": "总纲",
+    "brandTagline": "人生策略节律图谱",
+    "windowLegend": "绿色上升 · 红色调整",
+    "fileName": "命运K线",
+    "selectRange": "选择范围",
+    "ranges": {
+      "all": "全部",
+      "young": "0-30岁",
+      "middle": "30-60岁",
+      "late": "60岁+"
+    },
+    "generating": "生成中...",
+    "generate": "生成传播卡",
+    "previewAlt": "命运K线预览",
+    "saveImage": "保存图片",
+    "posterSecondLine": "命运不是定数，K线是节奏的参考，不是结局的预告。",
+    "scanHint": "扫码查看你的命运K线",
+    "footerDisclaimer": "仅供娱乐参考，不构成任何决策建议"
+  },
+  "shareCard": {
+    "keyYears": "关键年份",
+    "currentStage": "当前阶段",
+    "future3Year": "未来三年",
+    "careerKline": "事业K线",
+    "wealthKline": "财运K线",
+    "relationshipWave": "情感波动",
+    "keyYear": "关键年份",
+    "actionWindow": "行动窗口",
+    "fileNameOverall": "命运K线-总势",
+    "fileNameCareer": "命运K线-事业",
+    "fileNameWealth": "命运K线-财运",
+    "fileNameCurrentStage": "命运K线-当前阶段",
+    "fileNameFuture3Year": "命运K线-未来三年",
+    "fileNameRelationship": "命运K线-情感",
+    "fileNameKeyYear": "命运K线-关键年份",
+    "fileNameActionWindow": "命运K线-行动窗口"
+  },
+  "baziDetail": {
+    "title": "八字详细分析",
+    "qianZao": "乾造",
+    "kunZao": "坤造",
+    "yearSuffix": "{{year}}年",
+    "wuxingDistribution": "五行分布",
+    "wuxingCount": "{{element}}: {{count}}",
+    "dayMasterJudgment": "日主判断",
+    "strengthScore": "强度分",
+    "shenWangShort": "旺",
+    "shenRuoShort": "弱",
+    "shenZhongShort": "中",
+    "bodyStrong": "身旺",
+    "bodyWeak": "身弱",
+    "bodyBalanced": "中和",
+    "xiJiYongShen": "喜忌用神",
+    "yongShen": "用神",
+    "xiShen": "喜神",
+    "jiShen": "忌神",
+    "fourPillarsTenGods": "四柱十神",
+    "yearPillar": "年柱",
+    "monthPillar": "月柱",
+    "dayPillar": "日柱",
+    "hourPillar": "时柱",
+    "zhiZangGan": "地支藏干",
+    "daYun": "大运",
+    "shunXing": "顺行",
+    "niXing": "逆行",
+    "qiYunAge": "{{age}}岁起运",
+    "ageRange": "{{start}}-{{end}}岁",
+    "current": "当前",
+    "shenShaGuiRen": "神煞贵人",
+    "tianYiGuiRen": "天乙贵人",
+    "taiJiGuiRen": "太极贵人",
+    "wenChangGuiRen": "文昌贵人",
+    "yangRen": "阳刃",
+    "taoHua": "桃花",
+    "yiMa": "驿马",
+    "kongWang": "空亡",
+    "none": "无",
+    "tianGanRelation": "天干关系",
+    "naYinWuXing": "纳音五行",
+    "dayGanChangSheng": "日干十二长生",
+    "liuNianFortune": "流年运势",
+    "recent5Years": "近5年",
+    "ageSuffix": "{{age}}岁",
+    "thisYear": "今年",
+    "qiYunJiaoYun": "起运交运",
+    "qiYunAgeLabel": "起运岁数",
+    "daYunDirection": "大运方向",
+    "jiaoYunTime": "交运时间",
+    "taiYuan": "胎元",
+    "mingGong": "命宫",
+    "yearLabel": "年",
+    "monthLabel": "月",
+    "dayLabel": "日",
+    "hourLabel": "时",
+    "reasonMonthStrong": "月令{{zhi}}为旺相，得令+15",
+    "reasonMonthWeak": "月令{{zhi}}为弱相，失令-15",
+    "reasonDayRoot": "日支{{zhi}}藏有日干{{gan}}，得根+10",
+    "reasonBiJie": "天干有{{count}}个比劫帮身+10",
+    "reasonPianKu": "五行偏枯，主导五行占比{{percent}}%-10",
+    "reasonMissing": "有五行缺失，可能倾向特殊格局+5"
+  },
+  "lifeKLine": {
+    "title": "命运K线",
+    "goodLuck": "顺势",
+    "badLuck": "回撤",
+    "momentum": "动能",
+    "rising": "上升",
+    "falling": "下行",
+    "fortune": "运势",
+    "daYun": "大运",
+    "liuNian": "流年",
+    "volatility": "波动",
+    "confidence": "置信度",
+    "currentStage": "当前阶段",
+    "opportunityWindow": "机会窗口",
+    "riskWindow": "风险窗口",
+    "yearSuffix": "年",
+    "monthSuffix": "{{month}}月",
+    "age": "年龄",
+    "ageSuffix": "岁",
+    "noData": "暂无K线数据",
+    "prev": "上一页",
+    "next": "下一页",
+    "page": "第",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "reset": "重置",
+    "signals": {
+      "strongBuy": "强势窗口",
+      "buy": "上升窗口",
+      "hold": "观察",
+      "sell": "调整窗口"
+    },
+    "trendSignal": "趋势信号",
+    "lowPointLine": "低点线",
+    "goldenCross": "金叉",
+    "crossDown": "下行",
+    "navigationHint": "可用方向键切换",
+    "tooltipOverview": "这一年怎么看",
+    "tooltipSuitable": "适合",
+    "tooltipCaution": "谨慎",
+    "tooltipBasis": "依据"
+  },
+  "adminPage": {
+    "unlockRecords": "会员解锁",
+    "creditUsage": "积分消耗",
+    "llmFailures": "LLM失败",
+    "noRecords": "暂无记录"
+  }
+}

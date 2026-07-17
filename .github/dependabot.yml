@@ -1,0 +1,73 @@
+# Dependabot 依赖自动更新配置
+# 文档：https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+#
+# 注意：以下 `reviewers` 字段为占位符，需替换为仓库中真实存在的 GitHub 用户名/团队 slug：
+#   - frontend-lead  -> 前端负责人 GitHub 用户名
+#   - backend-lead   -> 后端负责人 GitHub 用户名
+# 替换前若该用户/团队不存在，Dependabot 创建 PR 时会忽略 reviewers 并在日志中告警。
+# 替换后请同步更新 docs/05审核与质量/依赖更新策略.md 中的责任人清单。
+
+version: 2
+updates:
+  # 前端依赖
+  - package-ecosystem: "npm"
+    directory: "/apps/AWKN-LABlife/app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "frontend"
+    commit-message:
+      prefix: "deps(frontend)"
+    reviewers:
+      - "frontend-lead"
+
+  # 后端依赖
+  - package-ecosystem: "npm"
+    directory: "/apps/AWKN-LABlife/awkn-life-backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "backend"
+    commit-message:
+      prefix: "deps(backend)"
+    reviewers:
+      - "backend-lead"
+
+  # 后端 api-server 依赖
+  - package-ecosystem: "npm"
+    directory: "/apps/AWKN-LABlife/awkn-life-backend/apps/api-server"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Shanghai"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "backend"
+    commit-message:
+      prefix: "deps(api-server)"
+    reviewers:
+      - "backend-lead"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "ci"
+    commit-message:
+      prefix: "deps(ci)"

@@ -1,0 +1,72 @@
+{
+  "ziping-001": {
+    "summaryLine": "借势守财，先稳后攻",
+    "summaryBody": "日主得月令牵动，当前大运先考验承载力，再给扩张机会。重点不是有没有机会，而是现金流和责任边界能不能接住。",
+    "classicAnalysis": "[ZP-TH-01] 调候先看寒暖燥湿→当前月令决定底盘温度；[ZP-GJ-01] 格局成败看制化→当前命局要先把大运压力转成规则。",
+    "daYunTheme": "这十年主题是资产、责任、现金流和规则边界。",
+    "keyYearPhenomenon": "流年冲合牵动财星，机会会来，但要先定回款与责任。",
+    "futureYearsRhythm": [{"year": "2026", "theme": "守", "advice": "稳现金流"}, {"year": "2027", "theme": "攻", "advice": "小步扩张"}, {"year": "2028", "theme": "稳", "advice": "巩固成果"}],
+    "modulesRating": {"career": 7, "wealth": 6, "relationship": 7, "health": 6},
+    "decisionAudit": {"rightOrWrong": "可做但不能重仓", "safetyMargin": "先保底现金流", "mvpPlan": "先做90天试点"},
+    "mvpPlan": {"coreAction": "先做一个试点", "steps": ["定边界", "验回款"], "timeline": "3个月"},
+    "stopDoingList": ["不要先垫钱+财根被冲+会拖累现金流"]
+  },
+  "ziping-002": {
+    "monthlyFortune": [{"period": "立夏后", "liuYue": "癸巳", "rating": 4, "judgment": "节气后流月财动，宜谈回款"}],
+    "bestMonths": ["4月壬辰", "8月丙申", "10月戊戌"],
+    "worstMonths": ["6月甲午", "9月丁酉", "12月庚子"],
+    "timeRhythm": [{"period": "5月5日立夏后", "phase": "流月财动", "advice": "推进报价，忌口头承诺"}],
+    "futureYearsRhythm": [{"year": "2026", "theme": "守", "advice": "稳"}, {"year": "2027", "theme": "攻", "advice": "进"}, {"year": "2028", "theme": "稳", "advice": "收"}],
+    "classicAnalysis": "[ZP-CH-01] 冲主动荡，合主绑定→流月窗口要看冲合落点，建议每月只抓一个主动作。"
+  },
+  "ziping-003": {
+    "modules": {"career": "事业看规则与平台，先拿确定订单。", "wealth": "财运看回款，先收款后交付。"},
+    "modulesRating": {"career": 7, "wealth": 6, "relationship": 7, "health": 6},
+    "decisionAudit": {"rightOrWrong": "可做小，不可赌大", "safetyMargin": "预算封顶", "mvpPlan": "先跑一单"},
+    "mvpPlan": {"coreAction": "先跑一单", "steps": ["报价", "收款"], "timeline": "30天"},
+    "actions": ["动作：先收款", "动作：再交付"],
+    "risks": ["风险：财星受冲时先垫款会被拖住"],
+    "classicAnalysis": "[ZP-CAI-01] 身弱财旺需印比承载→财来先看能不能接住。"
+  },
+  "ziping-004": {
+    "oneLineConclusion": "你适合借平台做事，不适合单点硬冲",
+    "characterPortrait": "适合做有规则、有资源、有复盘的事情，不适合只靠情绪和灵感推进。",
+    "label": "借势精算型",
+    "ranking": "现金流 > 边界 > 面子",
+    "testScenarios": ["分利时看让不让", "担责时看缩不缩", "付款时看拖不拖"],
+    "classicAnalysis": "[ZP-GJ-01] 格局看制化→验证场景要落到利益和责任。"
+  },
+  "liuren-001": {
+    "summaryLine": "可谈但不能急推",
+    "summaryBody": "课体显示前段虚热，三传先阻后通。当前宜轻版探口风，不宜一上来递大方案。",
+    "coreReasoning": "真太阳时校正后按当前时辰起课，课体重审，三传前段受阻但末段有承接，合局未满，核心矛盾是承诺多、落地少。",
+    "keySignals": ["[LR-BF-01] 三传递克→谈判阻力大", "[LR-KT-01] 重审课→需要反复改"],
+    "evidenceTags": ["[LR-BF-01] 三传递克", "[LR-KT-01] 重审课", "[LR-BM-01] 发端门受阻"],
+    "timeWindows": [{"period": "4月上旬", "ganzhiDays": "甲辰/乙巳", "suitable": "探口风"}]
+  },
+  "liuren-002": {
+    "counterpartPortrait": {"willingness": "对方不是不愿意，而是要确定性", "realConcerns": ["边界", "结果", "责任"]},
+    "actionStrategy": "先用轻版试点验证确定性，不要直接递完整大方案。",
+    "phasedCalendar": [{"period": "一段", "goal": "探温度", "doThis": ["发口风"], "doNotDo": ["发长案"]}],
+    "scripts": {"openingLine": "先谈一个小模型", "keyPhrases": ["先试点"], "forbiddenPhrases": ["资源很多"]},
+    "proposalVersions": [{"version": "轻版", "when": "探态度", "content": ["6句话"]}],
+    "evidenceTags": ["[LR-BM-01] 发端门", "[LR-BF-01] 首尾相加", "[LR-KT-01] 重审课"]
+  },
+  "liuren-003": {
+    "currentRisks": ["[LR-SS-01] 旬空→口头承诺虚，如果只停在口头就先暂停"],
+    "nowDoThis": ["先问对方是否给试点口"],
+    "nowDoNotDo": ["不要直接报大预算"],
+    "successSignals": ["信号：指定对接人", "信号：让你出书面版", "信号：给会议时间"],
+    "failureSignals": ["信号：一直说有机会", "信号：不指定人", "信号：只听概念"],
+    "evidenceTags": ["[LR-SS-01] 旬空", "[LR-BF-01] 初末相克", "[LR-BM-01] 归计门"]
+  },
+  "kline-001": {
+    "chartData": [{"year": 2026, "score": 68, "volatility": 8, "evidenceTags": ["大运甲辰", "流年丙午"], "confidence": 86}],
+    "confidence": 86,
+    "evidenceTags": ["大运甲辰", "流年丙午"],
+    "volatility": 8,
+    "currentAge": 36,
+    "currentDaYun": "甲辰",
+    "summary": "大运和流年共同决定参考强度"
+  }
+}

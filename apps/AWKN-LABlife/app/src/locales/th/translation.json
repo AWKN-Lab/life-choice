@@ -1,0 +1,331 @@
+{
+  "app": {
+    "name": "ปรมาจารย์ตัดสินใจชีวิต",
+    "tagline": "ผสมผสานภูมิปัญญาตะวันออกโบราณกับ AI ล้ำสมัย"
+  },
+  "nav": {
+    "home": "หน้าหลัก",
+    "services": "บริการ",
+    "about": "เกี่ยวกับ",
+    "consult": "ปรึกษา",
+    "membership": "สมาชิก",
+    "history": "ประวัติ",
+    "profile": "โปรไฟล์"
+  },
+  "hero": {
+    "title": "ปรมาจารย์ตัดสินใจชีวิต",
+    "subtitle": "ผสมผสานภูมิปัญญาตะวันออกโบราณกับ AI ล้ำสมัย",
+    "description": "สัมผัสการผสมผสานที่สมบูรณ์แบบของโหราศาสตร์ดั้งเดิมและปัญญาประดิษฐ์สมัยใหม่ ปรมาจารย์ดิจิทัลของเรามอบคำแนะนำชีวิตที่แม่นยำ",
+    "ctaPrimary": "เริ่มปรึกษา",
+    "ctaSecondary": "เรียนรู้เพิ่มเติม"
+  },
+  "consult": {
+    "title": "คุณอยากถามอะไร?",
+    "subtitle": "บอกคำถามของคุณ ฉันจะตัดสินวิธีการวิเคราะห์ เรื่องเฉพาะสำหรับปัจจุบัน จังหวะโดยรวมสำหรับแนวโน้ม",
+    "placeholder": "เช่น ควรทำต่อ partnerships นี้หรือไม่? โชคชะตาปีนี้เป็นอย่างไร?",
+    "quickTags": {
+      "career": "ตัดสินใจอาชีพ",
+      "partnership": "พันธมิตร",
+      "assets": "ตัดสินใจสินทรัพย์",
+      "family": "เรื่องครอบครัว",
+      "yearly": "โชคชะตาประจำปี",
+      "weekly": "เตือนประจำสัปดาห์"
+    },
+    "startButton": "เริ่มการปรึกษาครั้งแรก",
+    "hint": "ประสบการณ์แรกรวมถึงการวิเคราะห์เบื้องต้น ระบบจะจับคู่วิธีที่ดีที่สุดโดยอัตโนมัติ"
+  },
+  "info": {
+    "divination": {
+      "title": "ให้ฉันวิเคราะห์เรื่องนี้",
+      "location": "สถานที่",
+      "datetime": "วันที่และเวลา",
+      "submit": "เริ่มพยากรณ์"
+    },
+    "destiny": {
+      "title": "ให้ฉันสร้างจังหวะส่วนตัวของคุณ",
+      "birthDate": "วันเกิด",
+      "birthTime": "เวลาเกิด",
+      "birthLocation": "สถานที่เกิด",
+      "gender": "เพศ",
+      "male": "ชาย",
+      "female": "หญิง",
+      "uncertainTime": "ไม่แน่ใจเวลาเกิด",
+      "submit": "เริ่มการวิเคราะห์"
+    }
+  },
+  "result": {
+    "title": "การวิเคราะห์เบื้องต้น",
+    "summary": "ข้อมูลเชิงลึกสำคัญ",
+    "analysis": "การวิเคราะห์สั้น",
+    "risks": "ความเสี่ยงที่ต้องระวัง",
+    "actions": "การดำเนินการที่แนะนำ",
+    "save": "บันทึกผล",
+    "continue": "วิเคราะห์ลึกต่อ",
+    "membership": {
+      "title": "นี่เป็นเพียงจุดเริ่มต้น",
+      "subtitle": "หากต้องการดูเพิ่มเติม ปลดล็อกบริการเหล่านี้",
+      "breakthrough": "คู่มือทะลุวงจร",
+      "breakthroughDesc": "ติดตามอย่างรวดเร็วในช่วงเวลาสำคัญ",
+      "morning": "ข้อมูลเชิงลึกตอนเช้า",
+      "morningDesc": "การเตือนรายวันเพื่อให้คุณอยู่ในเส้นทาง",
+      "review": "ทบทวนรายวัน",
+      "reviewDesc": "ปรับเทียบกับเหตุการณ์วันนี้",
+      "master": "การวิเคราะห์ปรมาจารย์",
+      "masterDesc": "การตัดสินใจที่ลึกซึ้งกว่าในเรื่องสำคัญ"
+    }
+  },
+  "membership": {
+    "title": "เปลี่ยนการวิเคราะห์หนึ่งครั้งเป็นการแนะนำอย่างต่อเนื่อง",
+    "subtitle": "คุณได้รับชั้นแรกแล้ว ปลดล็อกสมาชิกสำหรับการติดตาม การเตือน และข้อมูลเชิงลึกระยะยาว",
+    "plans": {
+      "free": {
+        "name": "ทดลองใช้ฟรี",
+        "description": "สัมผัสคุณค่าก่อน"
+      },
+      "monthly": {
+        "name": "สมาชิกรายเดือน",
+        "description": "สำหรับผู้ใช้ประจำ"
+      },
+      "yearly": {
+        "name": "สมาชิกรายปี",
+        "description": "สำหรับผู้ใช้ตัดสินใจหนัก"
+      },
+      "single": {
+        "name": "การวิเคราะห์ปรมาจารย์ครั้งเดียว",
+        "description": "เจาะลึกโดยไม่ต้องสมัครสมาชิก"
+      }
+    },
+    "benefits": {
+      "completeResult": "ผลลัพธ์ครบถ้วน",
+      "multiRound": "ติดตามหลายรอบ",
+      "reminder": "การเตือนรายวัน",
+      "history": "เข้าถึงประวัติ",
+      "masterAnalysis": "การวิเคราะห์ปรมาจารย์",
+      "deepDive": "เจาะลึก"
+    },
+    "subscribe": "สมัครตอนนี้",
+    "currentPlan": "แผนปัจจุบัน"
+  },
+  "auth": {
+    "login": "เข้าสู่ระบบ",
+    "register": "ลงทะเบียน",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "name": "ชื่อ",
+    "phone": "โทรศัพท์",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "noAccount": "ไม่มีบัญชี?",
+    "hasAccount": "มีบัญชีแล้ว?",
+    "loginSuccess": "เข้าสู่ระบบสำเร็จ",
+    "registerSuccess": "ลงทะเบียนสำเร็จ"
+  },
+  "home": {
+    "domains": {
+      "career": "อาชีพ",
+      "love": "ความรัก",
+      "wealth": "การเงิน",
+      "family": "ครอบครัว",
+      "naming": "ตั้งชื่อ",
+      "lifeKLine": "ไลน์ชะตา",
+      "lifeKLineDesc": "ดูช่วงขึ้น จุดเปลี่ยน และปีสำคัญ"
+    },
+    "destinyKlineTitle": "สร้างไลน์ชะตาของคุณ",
+    "destinyKlineSubtitle": "ดูช่วงขึ้น จุดเปลี่ยน และปีสำคัญของคุณ",
+    "destinyKlineCta": "สร้างไลน์ชะตาของฉัน",
+    "entries": {
+      "heading": "เลือกเส้นทางการตัดสินใจ",
+      "subheading": "สามเส้นทาง หนึ่งคำตอบ",
+      "kline": {
+        "title": "ไลน์ชะตา",
+        "description": "มองเห็นช่วงขาขึ้น จุดเปลี่ยน และปีสำคัญในชีวิต เปลี่ยนสัญชาตญาณเป็นข้อมูลที่ชัดเจน",
+        "cta": "สร้างไลน์ของฉัน"
+      },
+      "naming": {
+        "title": "ตั้งชื่อ",
+        "description": "ตั้งชื่อลูก เปลี่ยนชื่อผู้ใหญ่ หรือตั้งชื่อแบรนด์ ค้นหาชื่อที่เหมาะสมที่สุดผ่านระบบโป๊ยหยิน",
+        "cta": "หาชื่อดีๆ"
+      },
+      "question": {
+        "title": "ถามเรื่อง",
+        "description": "ควรเปลี่ยนงานไหม? ความสัมพันธ์นี้จะไปต่อได้ไหม? ระบายสิ่งที่กังวลและรับคำตอบที่ชัดเจน",
+        "cta": "ถามให้ชัด"
+      }
+    }
+  },
+  "klineIntro": {
+    "title": "สร้างไลน์ชะตาของคุณ",
+    "subtitle": "กรอกข้อมูลวันเกิดเพื่อคำนวณแนวโน้มชีวิตของคุณ",
+    "step": "ขั้นตอน {{step}}/{{total}}",
+    "info": "ไลน์ชะตาคำนวณจากดวงชะตาแปดอักษรและวัฏจักรใหญ่ แสดงแนวโน้มชีวิตและปีสำคัญ ข้อมูลที่แม่นยำขึ้นนำไปสู่ผลลัพธ์ที่แม่นยำขึ้น",
+    "cta": "สร้างไลน์ชะตาของฉัน"
+  },
+  "naming": {
+    "title": "หาชื่อดีๆ",
+    "subtitle": "ให้เราค้นหาชื่อที่เหมาะสมที่สุดสำหรับคุณ",
+    "step": "ขั้นตอน {{step}}/{{total}}",
+    "step1Question": "คุณต้องการตั้งชื่อให้ใคร?",
+    "types": {
+      "baby": { "title": "ตั้งชื่อลูก", "desc": "ค้นหาชื่อที่ดีสำหรับทารกแรกเกิด" },
+      "adult": { "title": "เปลี่ยนชื่อผู้ใหญ่", "desc": "ปรับปรุงโชคชะตา เริ่มต้นบทใหม่" },
+      "brand": { "title": "ตั้งชื่อแบรนด์", "desc": "ตั้งชื่อบริษัทหรือผลิตภัณฑ์ของคุณ" }
+    },
+    "babyStep2Title": "ข้อมูลเพิ่มเติม",
+    "adultStep2Title": "ข้อมูลเพิ่มเติม",
+    "brandStep2Title": "ข้อมูลเพิ่มเติม",
+    "babySurname": "นามสกุล",
+    "babySurnamePlaceholder": "เช่น วงศ์",
+    "adultOriginalName": "ชื่อปัจจุบัน",
+    "adultOriginalNamePlaceholder": "ชื่อปัจจุบันของคุณ",
+    "improveDirection": "ทิศทางการปรับปรุง",
+    "improveDirectionPlaceholder": "เช่น อาชีพ สุขภาพ ความสัมพันธ์",
+    "brandIndustry": "อุตสาหกรรม",
+    "brandIndustryPlaceholder": "เช่น อาหาร การศึกษา เทคโนโลยี",
+    "stylePreference": "สไตล์ที่ชอบ",
+    "styles": {
+      "steady": "มั่นคง",
+      "lively": "มีชีวิตชีวา",
+      "scholarly": "วิชาการ",
+      "modern": "ทันสมัย",
+      "premium": "พรีเมียม",
+      "friendly": "เป็นมิตร",
+      "oriental": "ตะวันออก",
+      "commercial": "เชิงพาณิชย์"
+    },
+    "nextStep": "ถัดไป",
+    "babyStep3Title": "ข้อมูลการเกิดของลูก",
+    "cta": "เริ่มวิเคราะห์ชื่อ",
+    "frontdesk": {
+      "greeting": "Let me help you find the right name direction. Are you naming a baby, changing an adult's name, or creating a brand name?",
+      "typeBaby": "ตั้งชื่อทารก",
+      "typeAdult": "เปลี่ยนชื่อผู้ใหญ่",
+      "typeBrand": "ตั้งชื่อแบรนด์",
+      "followupBaby": "นามสกุลของทารกคืออะไร? ต้องการสไตล์เรียบง่าย สดใส วิชาการ หรือทันสมัย?",
+      "followupAdult": "ชื่อปัจจุบันของคุณคืออะไร? ต้องการปรับปรุงอารมณ์ ความสัมพันธ์ อาชีพ หรือพลังโดยรวม?",
+      "followupBrand": "อุตสาหกรรมอะไร? ต้องการสไตล์พรีเมียม เป็นกันเอง ตะวันออก หรือเชิงธุรกิจ?",
+      "confirm": "ดีมาก ให้ฉันยืนยันรายละเอียดและเริ่มวิเคราะห์ทันที",
+      "autoSubmit": "ข้อมูลเพียงพอแล้ว ฉันจะเริ่มวิเคราะห์ชื่อทันที",
+      "confirmButton": "ยืนยัน",
+      "chatting": "กำลังสนทนา",
+      "supplementary": "หมายเหตุเพิ่มเติม",
+      "surnameDetected": "ตรวจพบนามสกุล: ",
+      "analyzing": "กำลังวิเคราะห์...",
+      "submitCta": "เริ่มวิเคราะห์ชื่อ",
+      "inputPlaceholderBaby": "เช่น หวัง",
+      "inputPlaceholderAdult": "ชื่อปัจจุบันของคุณ",
+      "inputPlaceholderBrand": "เช่น อาหาร, การศึกษา, เทคโนโลยี",
+      "genderLabel": "เพศ",
+      "birthTimeLabel": "เวลาเกิด",
+      "improveDirectionLabel": "ทิศทางการปรับปรุง",
+      "targetAudienceLabel": "กลุ่มเป้าหมาย",
+      "birthDateLabel": "วันเกิด",
+      "surnamePrefix": "นามสกุล {{value}}",
+      "preferencePrefix": "ค่าที่ต้องการ: {{value}}",
+      "originalNameFormat": "ชื่อเดิม: {{name}} (นามสกุล {{surname}})",
+      "improvePrefix": "ต้องการปรับปรุง {{value}}",
+      "industryFormat": "อุตสาหกรรม: {{value}}",
+      "selected": "เลือกแล้ว",
+      "noPreference": "ไม่มีค่าที่ต้องการ",
+      "babyDefault": "baby",
+      "brandDefault": "brand",
+      "overallFortune": "overall fortune",
+      "targetAudiencePlaceholder": "e.g., young professionals, moms",
+      "customDescriptionPlaceholder": "Describe your special requirements, desired meanings, characters to avoid...",
+      "questionBaby": "I want to choose a good name for {{surname}}, style preference: {{styleLabel}}{{birthTimePart}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionAdult": "I want to rename, {{improveDirectionLabel}}: {{improveFocus}}{{birthDatePart}}{{genderPart}}{{customPart}}",
+      "questionBrand": "I want to name {{industry}}{{targetAudiencePart}}, style preference: {{styleLabel}}{{customPart}}",
+      "resultIntro": "วิเคราะห์เสร็จแล้ว นี่คือชื่อที่แนะนำสามชื่อ",
+      "favorite": "บันทึก",
+      "unfavorite": "ยกเลิกบันทึก",
+      "compare": "เปรียบเทียบ",
+      "remove": "ตัดออก",
+      "restore": "คืนค่า",
+      "selectFinal": "เลือกเป็นชื่อสุดท้าย",
+      "finalSelected": "ชื่อที่เลือก",
+      "comparisonTitle": "เปรียบเทียบชื่อ",
+      "wugeScore": "คะแนนห้าช่อง: {{score}}",
+      "actionNeedsRecord": "ยังไม่มีบันทึกอย่างเป็นทางการ จึงยังบันทึกการเลือกไม่ได้",
+      "actionSaveFailed": "บันทึกการเลือกไม่สำเร็จ โปรดลองอีกครั้ง",
+      "noResult": "ยังไม่พบชื่อที่เหมาะสม โปรดลองอีกครั้ง",
+      "restart": "ลองชื่ออื่น"
+    }
+  },
+  "question": {
+    "header": "ถาม",
+    "title": "พูดสิ่งที่กังวล",
+    "subtitle": "อธิบายคำถามของคุณด้วยคำง่ายๆ ยิ่งเป็นธรรมชาติยิ่งดี",
+    "placeholder": "เช่น ควรเปลี่ยนงานไหม?\nความสัมพันธ์นี้ควรไปต่อไหม?\nตอนนี้เหมาะที่จะเปิดร้านไหม?",
+    "emptyError": "กรุณากรอกคำถามของคุณ",
+    "analyze": "วิเคราะห์ความตั้งใจ",
+    "intentDetected": "ตรวจพบว่าเป็น",
+    "cta": "ดูผลวิเคราะห์",
+    "suggestions": {
+      "career": "ควรเปลี่ยนงานไหม",
+      "love": "ตัดสินใจเรื่องความสัมพันธ์",
+      "wealth": "ช่วงนี้เหมาะลงทุนไหม",
+      "family": "ความสัมพันธ์ครอบครัว",
+      "timing": "เวลาไหนดีที่สุด",
+      "decision": "ควรทำสิ่งนี้ไหม"
+    },
+    "frontdesk": {
+      "greeting": "อะไรกังวลคุณมากที่สุด? บอกมาได้เลย — เช่น: ควรเปลี่ยนงานไหม ความสัมพันธ์นี้ควรดำเนินต่อไหม หรือความร่วมมือนี้ได้ผลไหม",
+      "engineSelected": "ฉันจะใช้ {{engine}} ดูเรื่องนี้ให้คุณ",
+      "klineNodeSignal": " โดยมีสัญญาณจุดว่า “{{signal}}”",
+      "klineNodePrompt": "ฉันต้องการถามเกี่ยวกับจุดเวลา {{targetDate}}{{signalPart}} เรื่องเฉพาะที่ต้องการวิเคราะห์คือ: ",
+      "klineNodeContext": "แนบจุดแนวโน้ม {{targetDate}} แล้ว โปรดเติมเรื่องเฉพาะที่ต้องการวิเคราะห์ท้ายช่องข้อความ แล้วฉันจะวิเคราะห์ร่วมกับหลักฐานแนวโน้ม",
+      "forceQuestionRoute": "จัดการเป็นคำถามเฉพาะเรื่อง และใช้การพิจารณาเหตุการณ์เพื่อดูเรื่องนี้",
+      "master": "อาจารย์",
+      "submit": "บอกมา",
+      "quickCareer": "ควรเปลี่ยนงานไหม",
+      "quickLove": "ความสัมพันธ์นี้ควรดำเนินต่อไหม",
+      "quickCooperation": "ความร่วมมือนี้ได้ผลไหม",
+      "quickTurningPoint": "เมื่อไหร่จะดีขึ้น"
+    }
+  },
+  "kline": {
+    "title": "ไลน์ชะตา",
+    "currentStage": "ช่วงปัจจุบัน",
+    "opportunityWindow": "ช่วงโอกาส",
+    "riskWindow": "ช่วงเสี่ยง",
+    "nextThreeYears": "3 ปีข้างหน้า",
+    "aiInterpreter": "ผู้อ่านดวง AI",
+    "generating": "กำลังสร้างไลน์ชะตา / ข้อมูลไม่เพียงพอ",
+    "brandName": "ไลน์ชะตา",
+    "overview": "ภาพรวมไลน์ชะตา",
+    "riskPeriods": "ช่วงเสี่ยง",
+    "fallbackLabel": "ทางออก:",
+    "rhythmAdvice": "คำแนะนำจังหวะชีวิต",
+    "stopDoingList": "สิ่งที่ควรหยุดทำ",
+    "threeDayReminder": "การแจ้งเตือน 3 วัน",
+    "todayAvoid": "สิ่งที่ไม่ควรทำวันนี้"
+  },
+  "destinyKline": {
+    "aspect": {
+      "overall": "ภาพรวม",
+      "career": "อาชีพ",
+      "wealth": "การเงิน",
+      "relationship": "ความรัก"
+    },
+    "overview": "ภาพรวมไลน์ชะตา",
+    "opportunityWindow": "ช่วงโอกาส",
+    "riskWindow": "ช่วงเสี่ยง",
+    "aiInterpreter": "ผู้อ่านดวง AI",
+    "summary": "ขณะนี้อยู่ในช่วง{{current}} แนะนำให้จัดการปัญหาหลักก่อนแทนที่จะมุ่งหวังผลตอบแทนระยะสั้น"
+  },
+  "common": {
+    "loading": "กำลังโหลด...",
+    "submit": "ส่ง",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "close": "ปิด",
+    "back": "กลับ",
+    "next": "ถัดไป",
+    "skip": "ข้าม",
+    "listSeparator": ", "
+  },
+  "form": {
+    "defaultCity": "กรุงเทพมหานคร"
+  }
+}

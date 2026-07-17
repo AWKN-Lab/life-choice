@@ -1,0 +1,260 @@
+[
+  {
+    "label": "C++ Example 1: Summer 2011",
+    "solarDate": "2011-06-18 03:56",
+    "yuan3": 3,
+    "ju": 9,
+    "jieQi": "",
+    "gan": "丙",
+    "zhi": "寅",
+    "xun": "甲子",
+    "dutyStar": "英",
+    "dutyDoor": "景",
+    "palaces": [
+      {
+        "idx": 1,
+        "hostGan": "己",
+        "guestGan": "丙",
+        "star": "柱",
+        "door": "开",
+        "god": "太阴"
+      },
+      {
+        "idx": 2,
+        "hostGan": "庚",
+        "guestGan": "壬",
+        "star": "辅",
+        "door": "景",
+        "god": "九天"
+      },
+      {
+        "idx": 3,
+        "hostGan": "辛",
+        "guestGan": "己",
+        "star": "蓬",
+        "door": "生",
+        "god": "白虎"
+      },
+      {
+        "idx": 4,
+        "hostGan": "壬",
+        "guestGan": "乙",
+        "star": "任",
+        "door": "伤",
+        "god": "玄武"
+      },
+      {
+        "idx": 5,
+        "hostGan": "癸",
+        "guestGan": "癸",
+        "star": "禽",
+        "door": "",
+        "god": ""
+      },
+      {
+        "idx": 6,
+        "hostGan": "丁",
+        "guestGan": "庚",
+        "star": "芮",
+        "door": "惊",
+        "god": "腾蛇"
+      },
+      {
+        "idx": 7,
+        "hostGan": "丙",
+        "guestGan": "戊",
+        "star": "英",
+        "door": "死",
+        "god": "值符"
+      },
+      {
+        "idx": 8,
+        "hostGan": "乙",
+        "guestGan": "丁",
+        "star": "心",
+        "door": "休",
+        "god": "六合"
+      },
+      {
+        "idx": 9,
+        "hostGan": "戊",
+        "guestGan": "辛",
+        "star": "冲",
+        "door": "杜",
+        "god": "九地"
+      }
+    ]
+  },
+  {
+    "label": "C++ Example 2: Autumn 2002",
+    "solarDate": "2002-11-19 00:00",
+    "yuan3": 3,
+    "ju": -3,
+    "jieQi": "",
+    "gan": "戊",
+    "zhi": "子",
+    "xun": "甲申",
+    "dutyStar": "蓬",
+    "dutyDoor": "休",
+    "palaces": [
+      {
+        "idx": 1,
+        "hostGan": "庚",
+        "guestGan": "癸",
+        "star": "柱",
+        "door": "生",
+        "god": "太阴"
+      },
+      {
+        "idx": 2,
+        "hostGan": "己",
+        "guestGan": "乙",
+        "star": "辅",
+        "door": "惊",
+        "god": "玄武"
+      },
+      {
+        "idx": 3,
+        "hostGan": "戊",
+        "guestGan": "庚",
+        "star": "蓬",
+        "door": "杜",
+        "god": "值符"
+      },
+      {
+        "idx": 4,
+        "hostGan": "乙",
+        "guestGan": "壬",
+        "star": "任",
+        "door": "景",
+        "god": "九天"
+      },
+      {
+        "idx": 5,
+        "hostGan": "丙",
+        "guestGan": "丙",
+        "star": "禽",
+        "door": "",
+        "god": ""
+      },
+      {
+        "idx": 6,
+        "hostGan": "丁",
+        "guestGan": "己",
+        "star": "芮",
+        "door": "休",
+        "god": "六合"
+      },
+      {
+        "idx": 7,
+        "hostGan": "癸",
+        "guestGan": "辛",
+        "star": "英",
+        "door": "开",
+        "god": "白虎"
+      },
+      {
+        "idx": 8,
+        "hostGan": "壬",
+        "guestGan": "丁",
+        "star": "心",
+        "door": "伤",
+        "god": "腾蛇"
+      },
+      {
+        "idx": 9,
+        "hostGan": "辛",
+        "guestGan": "戊",
+        "star": "冲",
+        "door": "死",
+        "god": "九地"
+      }
+    ]
+  },
+  {
+    "label": "C++ Example 3: Solstice 2023",
+    "solarDate": "2023-06-21 12:00",
+    "yuan3": 1,
+    "ju": 6,
+    "jieQi": "",
+    "gan": "壬",
+    "zhi": "午",
+    "xun": "甲戌",
+    "dutyStar": "柱",
+    "dutyDoor": "惊",
+    "palaces": [
+      {
+        "idx": 1,
+        "hostGan": "壬",
+        "guestGan": "己",
+        "star": "柱",
+        "door": "开",
+        "god": "值符"
+      },
+      {
+        "idx": 2,
+        "hostGan": "癸",
+        "guestGan": "丙",
+        "star": "辅",
+        "door": "景",
+        "god": "玄武"
+      },
+      {
+        "idx": 3,
+        "hostGan": "丁",
+        "guestGan": "壬",
+        "star": "蓬",
+        "door": "生",
+        "god": "太阴"
+      },
+      {
+        "idx": 4,
+        "hostGan": "丙",
+        "guestGan": "庚",
+        "star": "任",
+        "door": "伤",
+        "god": "六合"
+      },
+      {
+        "idx": 5,
+        "hostGan": "乙",
+        "guestGan": "乙",
+        "star": "禽",
+        "door": "",
+        "god": ""
+      },
+      {
+        "idx": 6,
+        "hostGan": "戊",
+        "guestGan": "癸",
+        "star": "芮",
+        "door": "惊",
+        "god": "九天"
+      },
+      {
+        "idx": 7,
+        "hostGan": "己",
+        "guestGan": "辛",
+        "star": "英",
+        "door": "死",
+        "god": "九地"
+      },
+      {
+        "idx": 8,
+        "hostGan": "庚",
+        "guestGan": "戊",
+        "star": "心",
+        "door": "休",
+        "god": "腾蛇"
+      },
+      {
+        "idx": 9,
+        "hostGan": "辛",
+        "guestGan": "丁",
+        "star": "冲",
+        "door": "杜",
+        "god": "白虎"
+      }
+    ]
+  }
+]

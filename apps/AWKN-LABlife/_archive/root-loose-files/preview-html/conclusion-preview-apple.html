@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Style - 白天版</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --surface: #ffffff;
+      --surface-secondary: #f5f5f7;
+      --surface-tertiary: #fbfbfd;
+      --primary: #007AFF;
+      --primary-hover: #0056CC;
+      --primary-light: rgba(0, 122, 255, 0.08);
+      --primary-medium: rgba(0, 122, 255, 0.15);
+      --wu-wood: #34C759;
+      --wu-wood-bg: rgba(52, 199, 89, 0.1);
+      --wu-fire: #FF3B30;
+      --wu-fire-bg: rgba(255, 59, 48, 0.1);
+      --wu-earth: #FF9500;
+      --wu-earth-bg: rgba(255, 149, 0, 0.1);
+      --wu-metal: #8E8E93;
+      --wu-metal-bg: rgba(142, 142, 147, 0.1);
+      --wu-water: #5856D6;
+      --wu-water-bg: rgba(88, 86, 214, 0.1);
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --text-tertiary: #aeaeb2;
+      --separator: rgba(60, 60, 67, 0.08);
+      --separator-heavy: rgba(60, 60, 67, 0.12);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background-color: var(--surface-secondary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-system { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; }
+
+    .wu-wood { color: var(--wu-wood); }
+    .wu-fire { color: var(--wu-fire); }
+    .wu-earth { color: var(--wu-earth); }
+    .wu-metal { color: var(--wu-metal); }
+    .wu-water { color: var(--wu-water); }
+
+    .card-apple {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 0.5px solid var(--separator-heavy);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card-apple:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    @keyframes springIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.97); }
+      60% { opacity: 1; transform: translateY(-2px) scale(1.005); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .animate-spring { animation: springIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    .stagger-1 { animation-delay: 0.06s; opacity: 0; }
+    .stagger-2 { animation-delay: 0.12s; opacity: 0; }
+    .stagger-3 { animation-delay: 0.18s; opacity: 0; }
+    .stagger-4 { animation-delay: 0.24s; opacity: 0; }
+    .stagger-5 { animation-delay: 0.30s; opacity: 0; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .divider-apple {
+      height: 0.5px;
+      background: var(--separator);
+    }
+
+    .tag-wood { background: var(--wu-wood-bg); color: #248a3d; }
+    .tag-fire { background: var(--wu-fire-bg); color: #d70015; }
+    .tag-earth { background: var(--wu-earth-bg); color: #c93400; }
+    .tag-metal { background: var(--wu-metal-bg); color: #636366; }
+    .tag-water { background: var(--wu-water-bg); color: #4a3db8; }
+
+    .bar-segment {
+      transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen pb-28">
+
+    <div class="px-5 pt-12 pb-8 animate-spring">
+      <div class="text-center">
+        <p class="text-xs font-medium tracking-widest uppercase" style="color: var(--text-tertiary);">Bazi Analysis</p>
+        <h1 class="text-2xl font-semibold mt-2" style="color: var(--text-primary); letter-spacing: -0.02em;">初步结论</h1>
+        <div class="mt-3 flex items-center justify-center gap-1">
+          <span class="w-8 h-0.5 rounded-full" style="background: var(--primary); opacity: 0.3;"></span>
+          <span class="w-2 h-2 rounded-full" style="background: var(--primary); opacity: 0.6;"></span>
+          <span class="w-8 h-0.5 rounded-full" style="background: var(--primary); opacity: 0.3;"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-5 mb-4 animate-spring stagger-1">
+      <div class="card-apple rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-5">
+          <span class="text-xs font-medium" style="color: var(--text-secondary);">四柱八字</span>
+          <div class="pill px-3 py-1" style="background: var(--primary-light); color: var(--primary);">命盘</div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">年柱</p>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-semibold wu-wood">甲</span>
+              <span class="text-xs" style="color: var(--text-tertiary);">·</span>
+              <span class="text-xl font-semibold wu-wood">寅</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">月柱</p>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-semibold wu-fire">丙</span>
+              <span class="text-xs" style="color: var(--text-tertiary);">·</span>
+              <span class="text-xl font-semibold wu-earth">辰</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">日柱</p>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-semibold wu-metal">壬</span>
+              <span class="text-xs" style="color: var(--text-tertiary);">·</span>
+              <span class="text-xl font-semibold wu-water">子</span>
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">时柱</p>
+            <div class="flex items-center justify-center gap-1">
+              <span class="text-xl font-semibold wu-earth">戊</span>
+              <span class="text-xs" style="color: var(--text-tertiary);">·</span>
+              <span class="text-xl font-semibold wu-fire">午</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mx-5 mb-4 animate-spring stagger-2">
+      <div class="card-apple rounded-2xl p-4 text-center">
+        <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">综合评分</p>
+        <p class="text-3xl font-bold" style="color: var(--wu-earth);">8.2</p>
+        <p class="text-[10px] mt-1" style="color: var(--text-tertiary);">分</p>
+      </div>
+      <div class="card-apple rounded-2xl p-4 text-center" style="border-color: rgba(52, 199, 89, 0.2);">
+        <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">日主</p>
+        <p class="text-xl font-bold wu-wood">身旺</p>
+      </div>
+      <div class="card-apple rounded-2xl p-4 text-center">
+        <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">格局</p>
+        <p class="text-lg font-bold" style="color: var(--text-primary);">正官格</p>
+      </div>
+    </div>
+
+    <div class="mx-5 mb-4 animate-spring stagger-3">
+      <div class="card-apple rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-medium" style="color: var(--text-secondary);">五行分布</span>
+          <span class="pill px-2.5 py-0.5 tag-wood">木旺</span>
+        </div>
+        <div class="flex h-7 rounded-xl overflow-hidden" style="background: var(--surface-secondary);">
+          <div class="bar-segment flex items-center justify-center text-white text-xs font-semibold" style="width: 44%; background: var(--wu-wood); border-radius: 12px 0 0 12px;">木</div>
+          <div class="bar-segment flex items-center justify-center text-white text-xs font-semibold" style="width: 22%; background: var(--wu-fire);">火</div>
+          <div class="bar-segment flex items-center justify-center text-white text-xs font-semibold" style="width: 11%; background: var(--wu-earth);">土</div>
+          <div class="bar-segment flex items-center justify-center text-white text-xs font-semibold" style="width: 11%; background: var(--wu-metal);">金</div>
+          <div class="bar-segment flex items-center justify-center text-white text-xs font-semibold" style="width: 12%; background: var(--wu-water); border-radius: 0 12px 12px 0;">水</div>
+        </div>
+        <div class="flex justify-between mt-3">
+          <span class="pill px-2 py-0.5 tag-wood">木 4</span>
+          <span class="pill px-2 py-0.5 tag-fire">火 2</span>
+          <span class="pill px-2 py-0.5 tag-earth">土 1</span>
+          <span class="pill px-2 py-0.5 tag-metal">金 1</span>
+          <span class="pill px-2 py-0.5 tag-water">水 2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-5 mb-4 animate-spring stagger-3">
+      <div class="divider-apple"></div>
+    </div>
+
+    <div class="mx-5 mb-4 animate-spring stagger-4">
+      <div class="card-apple rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: var(--primary-light);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <span class="text-xs font-medium" style="color: var(--text-secondary);">命理总评</span>
+        </div>
+        <p class="text-sm leading-relaxed" style="color: var(--text-primary); opacity: 0.85;">
+          日主甲木，生于寅月，得令而旺。木气过盛，宜泄不宜克。格局为正官格，官星清透，有贵气。事业上宜往东方发展，忌西方金旺之地。
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-5 mb-4 animate-spring stagger-5">
+      <div class="card-apple rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: var(--primary-light);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="text-xs font-medium" style="color: var(--text-secondary);">喜忌用神</span>
+        </div>
+        <div class="flex items-center gap-5">
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">用神</p>
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background: var(--wu-metal);">金</div>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">喜神</p>
+            <div class="flex gap-2">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold tag-fire">火</div>
+              <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold tag-earth">土</div>
+            </div>
+          </div>
+          <div class="h-10 w-px" style="background: var(--separator);"></div>
+          <div class="text-center">
+            <p class="text-[10px] font-medium mb-2 uppercase tracking-wider" style="color: var(--text-tertiary);">忌神</p>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium" style="background: var(--surface-secondary); color: var(--text-tertiary); text-decoration: line-through;">水</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-5 animate-spring stagger-5">
+      <div class="rounded-2xl p-5" style="background: linear-gradient(135deg, rgba(0, 122, 255, 0.06), rgba(88, 86, 214, 0.06)); border: 0.5px solid var(--separator-heavy);">
+        <div class="flex items-center gap-4">
+          <div class="w-1.5 h-10 rounded-full" style="background: linear-gradient(to bottom, var(--primary), var(--wu-water));"></div>
+          <div>
+            <p class="text-[10px] font-medium uppercase tracking-wider" style="color: var(--text-tertiary);">大运提示</p>
+            <p class="text-sm font-medium mt-0.5" style="color: var(--text-primary);">37岁起运，逢兔、虎年大吉</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <p class="text-xs tracking-wider" style="color: var(--text-tertiary);">虚怀若谷 · 顺势而为</p>
+    </div>
+
+  </div>
+
+  <div class="fixed bottom-0 left-0 right-0 p-4" style="background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-top: 0.5px solid var(--separator);">
+    <div class="max-w-md mx-auto text-center">
+      <p class="text-sm font-semibold" style="color: var(--primary);">Apple Style · 白天版</p>
+      <p class="text-xs mt-0.5" style="color: var(--text-tertiary);">纯白底 + 系统蓝 + 毛玻璃卡片 + SF Pro 字体</p>
+    </div>
+  </div>
+</body>
+</html>

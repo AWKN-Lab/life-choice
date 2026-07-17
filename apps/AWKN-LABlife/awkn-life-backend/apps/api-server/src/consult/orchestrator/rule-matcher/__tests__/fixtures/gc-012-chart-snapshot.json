@@ -1,0 +1,52 @@
+{
+  "caseId": "gc-012",
+  "description": "男方 1989-08-20 06:00 广西柳州 + 女方 1993-07-24 12:00 广西河池（双命 case）",
+  "maleBirthYear": 1989,
+  "femaleBirthYear": 1993,
+  "male": {
+    "yearPillar": "己巳",
+    "monthPillar": "壬申",
+    "dayPillar": "壬子",
+    "hourPillar": "癸卯",
+    "yearShishen": "正官",
+    "monthShishen": "比肩",
+    "dayShishen": "日主",
+    "hourShishen": "劫财",
+    "wuxing": { "wood": 0.3, "fire": 0.3, "earth": 0.65, "metal": 0.5, "water": 1.55 },
+    "daYun": [
+      { "index": 4, "gan": "戊", "zhi": "辰", "full": "戊辰", "startAge": 34, "endAge": 43 }
+    ],
+    "liuNian": [
+      { "year": 2026, "ganZhi": "丙午", "shishen": "偏财" }
+    ],
+    "xingChongHeHai": {
+      "he": [{ "pillars": ["年柱", "月柱"], "relation": "巳申合" }],
+      "chong": [{ "pillars": ["日柱", "流年"], "relation": "子午冲" }],
+      "hai": [],
+      "xing": []
+    }
+  },
+  "female": {
+    "yearPillar": "癸酉",
+    "monthPillar": "己未",
+    "dayPillar": "丙午",
+    "hourPillar": "甲午",
+    "yearShishen": "正官",
+    "monthShishen": "伤官",
+    "dayShishen": "日主",
+    "hourShishen": "偏印",
+    "wuxing": { "wood": 0.5, "fire": 1.15, "earth": 1.05, "metal": 0.3, "water": 0.35 },
+    "daYun": [
+      { "index": 3, "gan": "壬", "zhi": "戌", "full": "壬戌", "startAge": 24, "endAge": 33 }
+    ],
+    "liuNian": [
+      { "year": 2026, "ganZhi": "丙午", "shishen": "比肩" }
+    ],
+    "xingChongHeHai": {
+      "he": [],
+      "chong": [{ "pillars": ["日柱", "时柱"], "relation": "午午自刑" }],
+      "hai": [],
+      "xing": [{ "pillars": ["日柱", "时柱"], "relation": "午午自刑" }]
+    }
+  }
+}

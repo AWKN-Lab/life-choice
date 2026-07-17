@@ -1,0 +1,34 @@
+{
+  "meta": {"description": "天干地支阴阳五行属性表", "version": "1.0.0"},
+  "tian_gan": [
+    {"index": 0, "name": "甲", "yin_yang": "阳", "element": "木", "pinyin": "jiǎ"},
+    {"index": 1, "name": "乙", "yin_yang": "阴", "element": "木", "pinyin": "yǐ"},
+    {"index": 2, "name": "丙", "yin_yang": "阳", "element": "火", "pinyin": "bǐng"},
+    {"index": 3, "name": "丁", "yin_yang": "阴", "element": "火", "pinyin": "dīng"},
+    {"index": 4, "name": "戊", "yin_yang": "阳", "element": "土", "pinyin": "wù"},
+    {"index": 5, "name": "己", "yin_yang": "阴", "element": "土", "pinyin": "jǐ"},
+    {"index": 6, "name": "庚", "yin_yang": "阳", "element": "金", "pinyin": "gēng"},
+    {"index": 7, "name": "辛", "yin_yang": "阴", "element": "金", "pinyin": "xīn"},
+    {"index": 8, "name": "壬", "yin_yang": "阳", "element": "水", "pinyin": "rén"},
+    {"index": 9, "name": "癸", "yin_yang": "阴", "element": "水", "pinyin": "guǐ"}
+  ],
+  "di_zhi": [
+    {"index": 0, "name": "子", "yin_yang": "阳", "element": "水", "pinyin": "zǐ", "animal": "鼠"},
+    {"index": 1, "name": "丑", "yin_yang": "阴", "element": "土", "pinyin": "chǒu", "animal": "牛"},
+    {"index": 2, "name": "寅", "yin_yang": "阳", "element": "木", "pinyin": "yín", "animal": "虎"},
+    {"index": 3, "name": "卯", "yin_yang": "阴", "element": "木", "pinyin": "mǎo", "animal": "兔"},
+    {"index": 4, "name": "辰", "yin_yang": "阳", "element": "土", "pinyin": "chén", "animal": "龙"},
+    {"index": 5, "name": "巳", "yin_yang": "阴", "element": "火", "pinyin": "sì", "animal": "蛇"},
+    {"index": 6, "name": "午", "yin_yang": "阳", "element": "火", "pinyin": "wǔ", "animal": "马"},
+    {"index": 7, "name": "未", "yin_yang": "阴", "element": "土", "pinyin": "wèi", "animal": "羊"},
+    {"index": 8, "name": "申", "yin_yang": "阳", "element": "金", "pinyin": "shēn", "animal": "猴"},
+    {"index": 9, "name": "酉", "yin_yang": "阴", "element": "金", "pinyin": "yǒu", "animal": "鸡"},
+    {"index": 10, "name": "戌", "yin_yang": "阳", "element": "土", "pinyin": "xū", "animal": "狗"},
+    {"index": 11, "name": "亥", "yin_yang": "阴", "element": "水", "pinyin": "hài", "animal": "猪"}
+  ],
+  "wuxing_shengke": {
+    "sheng": ["木生火", "火生土", "土生金", "金生水", "水生木"],
+    "ke": ["木克土", "土克水", "水克火", "火克金", "金克木"],
+    "note": "生我者父母，我生者子孙，克我者官鬼，我克者妻财，同我者兄弟"
+  }
+}

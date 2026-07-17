@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AETHERIA - 人生决策宗师 | Life Decision Master</title>
+  <meta name="description" content="AETHERIA - 融合东方命理智慧与现代博弈论，为你提供关键人生节点的决策支持。">
+  
+  <!-- Fonts - 高质量字体配置 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* AETHERIA 设计系统 - 神秘优雅风格 */
+      --primary: #dacf98;
+      --primary-dim: #beb47e;
+      --secondary: #d7baff;
+      --tertiary: #00eab2;
+      --surface: #10141a;
+      --surface-light: #1c2026;
+      --surface-lighter: #262a31;
+      --surface-lowest: #0a0e14;
+      --on-surface: #dfe2eb;
+      --on-surface-dim: #d0c5af;
+      --outline: #99907c;
+      --outline-dim: #4d4635;
+      
+      /* 渐变 */
+      --gradient-gold: linear-gradient(135deg, #dacf98 0%, #beb47e 100%);
+      --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(218,207,152,0.08) 0%, transparent 60%);
+      
+      /* 阴影 */
+      --shadow-glow: 0 0 30px rgba(218,207,152,0.2);
+      --shadow-card: 0 10px 40px rgba(0,0,0,0.4);
+      
+      /* 字体 */
+      --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', serif;
+      --font-sans: 'Noto Sans SC', 'Source Han Sans SC', 'Source Han Sans CN', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+      
+      /* 过渡 */
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--surface);
+      color: var(--on-surface);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    
+    /* 中文优化渲染 */
+    .text-zh {
+      font-family: var(--font-serif);
+      letter-spacing: 0.02em;
+      font-weight: 500;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .text-en {
+      font-family: var(--font-body);
+      letter-spacing: 0;
+    }
+    
+    /* 语言切换 */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 3px;
+      margin-right: 8px;
+    }
+    
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-body);
+    }
+    
+    .lang-toggle button.active {
+      background: rgba(218,207,152,0.2);
+      color: var(--primary);
+    }
+    
+    .lang-toggle button:hover:not(.active) {
+      color: #fff;
+    }
+    
+    /* 语言显示控制 */
+    html.lang-zh .zh { display: inline !important; }
+    html.lang-zh .en { display: none !important; }
+    html.lang-en .zh { display: none !important; }
+    html.lang-en .en { display: inline !important; }
+    
+    /* 顶部导航 */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #1a1a0f;
+      font-weight: 700;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .logo-text {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .nav-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+    
+    .nav-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+    
+    .nav-btn.active {
+      color: var(--primary);
+      background: rgba(218,207,152,0.1);
+    }
+    
+    /* 页面容器 */
+    .page-container {
+      padding-top: 56px;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    .page {
+      display: none;
+      min-height: calc(100vh - 56px);
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    /* 背景层 */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(218,207,152,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(215,186,255,0.04) 0%, transparent 50%),
+        var(--surface);
+    }
+    
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(6,6,12,0.5) 0%, rgba(6,6,12,0.8) 60%, rgba(6,6,12,0.95) 100%);
+    }
+    
+    /* 首页内容 */
+    .home-content {
+      position: relative;
+      z-index: 1;
+      padding: 60px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 56px);
+      text-align: center;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(218,207,152,0.2);
+      background: rgba(218,207,152,0.08);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+    
+    .hero-title .highlight {
+      color: var(--primary);
+    }
+    
+    .hero-title .highlight-secondary {
+      color: var(--secondary);
+      text-shadow: 0 0 20px rgba(215,186,255,0.4);
+    }
+    
+    .hero-subtitle {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--on-surface-dim);
+      max-width: 320px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+      padding: 16px 32px;
+      border-radius: 14px;
+      border: none;
+      background: var(--gradient-gold);
+      color: #1a1a0f;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      box-shadow: var(--shadow-glow), 0 4px 20px rgba(218,207,152,0.3);
+      transition: var(--transition-smooth);
+      margin-bottom: 40px;
+    }
+    
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(218,207,152,0.4), 0 8px 30px rgba(218,207,152,0.3);
+    }
+    
+    .btn-gold:active {
+      transform: scale(0.98);
+    }
+    
+    .hero-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.8;
+      max-width: 300px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 0;
+    }
+    
+    /* 底部导航 */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 8px 0;
+      padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+    }
+    
+    .bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 0;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    
+    .bottom-nav-item .nav-icon {
+      font-size: 24px;
+      font-style: normal;
+    }
+    
+    .bottom-nav-item.active {
+      color: var(--primary);
+    }
+    
+    /* 咨询页 */
+    .consult-content {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px 100px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    .consult-content h1 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    
+    .consult-content .subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+      font-family: var(--font-sans);
+    }
+    
+    .form-label .icon {
+      color: var(--primary);
+      font-size: 16px;
+    }
+    
+    .form-input {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(218,207,152,0.2);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 15px;
+      font-family: var(--font-sans);
+      transition: var(--transition-smooth);
+      -webkit-appearance: none;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(218,207,152,0.15);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    
+    textarea.form-input {
+      resize: none;
+      min-height: 120px;
+    }
+    
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .quick-tag {
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+    
+    .quick-tag:hover, .quick-tag.active {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(218,207,152,0.1);
+    }
+    
+    /* 历史记录页 */
+    .history-content {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px 100px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    .history-content h1 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .record-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: var(--transition-smooth);
+    }
+    
+    .record-card:hover {
+      border-color: rgba(218,207,152,0.2);
+    }
+    
+    .record-card .record-q {
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 10px;
+      font-family: var(--font-sans);
+    }
+    
+    .record-card .record-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    
+    .record-card .record-tag {
+      padding: 3px 10px;
+      background: rgba(218,207,152,0.15);
+      color: var(--primary);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    
+    /* 个人中心页 */
+    .profile-content {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px 100px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    .profile-content h1 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    
+    .profile-card {
+      background: linear-gradient(135deg, rgba(218,207,152,0.08) 0%, rgba(0,0,0,0.4) 100%);
+      border: 1px solid rgba(218,207,152,0.2);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .profile-card .user-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .profile-card .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a0f;
+      font-family: var(--font-serif);
+    }
+    
+    .profile-card .username {
+      font-size: 17px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+    
+    .profile-card .useremail {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-sans);
+    }
+    
+    .profile-card .membership {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid rgba(218,207,152,0.1);
+      font-size: 13px;
+    }
+    
+    .profile-card .membership-label {
+      color: rgba(255,255,255,0.4);
+      font-family: var(--font-sans);
+    }
+    
+    .profile-card .membership-value {
+      color: var(--primary);
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 14px;
+      font-family: var(--font-sans);
+    }
+    
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    
+    .menu-item:hover {
+      border-color: rgba(218,207,152,0.3);
+      background: rgba(218,207,152,0.05);
+    }
+    
+    .menu-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-sans);
+    }
+    
+    .menu-item-icon {
+      font-size: 18px;
+      opacity: 0.7;
+    }
+    
+    .menu-item-arrow {
+      color: rgba(255,255,255,0.3);
+      font-size: 16px;
+    }
+    
+    .menu-item.danger {
+      border-color: rgba(239,68,68,0.2);
+      color: #ef4444;
+      margin-top: 20px;
+    }
+    
+    .menu-item.danger .menu-item-left {
+      color: #ef4444;
+    }
+    
+    /* 领域卡片 */
+    .domain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .domain-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    
+    .domain-card:hover {
+      border-color: rgba(218,207,152,0.3);
+      transform: translateY(-2px);
+    }
+    
+    .domain-card .domain-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .domain-card .domain-name {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .domain-card .domain-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+    
+    /* 动画 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="top-nav">
+  <div class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">AETHERIA</span>
+  </div>
+  <div class="nav-links">
+    <div class="lang-toggle">
+      <button class="active" data-lang="zh">中</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <button class="nav-btn active" data-page="home">
+      <span class="zh">首页</span>
+      <span class="en">Home</span>
+    </button>
+    <button class="nav-btn" data-page="consult">
+      <span class="zh">咨询</span>
+      <span class="en">Consult</span>
+    </button>
+    <button class="nav-btn" data-page="history">
+      <span class="zh">历史</span>
+      <span class="en">Records</span>
+    </button>
+    <button class="nav-btn" data-page="profile">
+      <span class="zh">我的</span>
+      <span class="en">Profile</span>
+    </button>
+  </div>
+</nav>
+
+<!-- 背景层 -->
+<div class="bg-layer"></div>
+<div class="bg-overlay"></div>
+
+<!-- ===== 首页 ===== -->
+<div class="page active" id="page-home">
+  <div class="page-container">
+    <div class="home-content">
+      <div class="hero-badge">
+        <span>✦</span>
+        <span class="zh">炼金术人生教练</span>
+        <span class="en">Alchemical Life Coaching</span>
+      </div>
+      
+      <h1 class="hero-title text-zh">
+        <span class="zh">命运没有<span class="highlight">标准答案</span></span>
+        <span class="zh"><br>但博弈有<span class="highlight-secondary">最优解</span></span>
+        <span class="en" style="display:none">Fate Has No Standard Answer<br>But <span class="highlight">Game Theory</span> Has<br><span class="highlight-secondary">Optimal Solutions</span></span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        <span class="zh">在不确定的世界里，为你交付一套确定的坐标系</span>
+        <span class="en" style="display:none">Delivering a definitive coordinate system in an uncertain world</span>
+      </p>
+      
+      <button class="btn-gold" onclick="switchPage('consult')">
+        <span>✦</span>
+        <span class="zh">开始咨询</span>
+        <span class="en">Start Consultation</span>
+      </button>
+      
+      <p class="hero-note">
+        <span class="zh">为您提供关键节点的决策支持<br>帮助你在对的时间，做更有胜算的选择</span>
+        <span class="en" style="display:none">Decision support at critical turning points<br>Helping you make smarter choices at the right moment</span>
+      </p>
+    </div>
+    
+    <div class="bottom-nav">
+      <div class="bottom-nav-item active" onclick="switchPage('home')">
+        <span class="nav-icon">⌂</span>
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')">
+        <span class="nav-icon">✎</span>
+        <span class="zh">咨询</span>
+        <span class="en">Consult</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('history')">
+        <span class="nav-icon">☰</span>
+        <span class="zh">历史</span>
+        <span class="en">Records</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')">
+        <span class="nav-icon">⊙</span>
+        <span class="zh">我的</span>
+        <span class="en">Profile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 咨询页 ===== -->
+<div class="page" id="page-consult">
+  <div class="page-container">
+    <div class="consult-content">
+      <h1 class="text-zh">
+        <span class="zh">✦ 开始咨询</span>
+        <span class="en">✦ Start Consultation</span>
+      </h1>
+      <p class="subtitle">
+        <span class="zh">描述你的问题，AI 将为你智能分流</span>
+        <span class="en">Describe your question — AI will intelligently route it</span>
+      </p>
+      
+      <!-- 领域选择 -->
+      <div class="domain-grid">
+        <div class="domain-card">
+          <div class="domain-icon">🎯</div>
+          <div class="domain-name text-zh">
+            <span class="zh">事业</span>
+            <span class="en">Career</span>
+          </div>
+          <div class="domain-desc">Ascension</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon">💜</div>
+          <div class="domain-name text-zh">
+            <span class="zh">感情</span>
+            <span class="en">Relations</span>
+          </div>
+          <div class="domain-desc">Bonding</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon">💎</div>
+          <div class="domain-name text-zh">
+            <span class="zh">财运</span>
+            <span class="en">Wealth</span>
+          </div>
+          <div class="domain-desc">Abundance</div>
+        </div>
+        <div class="domain-card">
+          <div class="domain-icon">🌟</div>
+          <div class="domain-name text-zh">
+            <span class="zh">其他</span>
+            <span class="en">General</span>
+          </div>
+          <div class="domain-desc">The Void</div>
+        </div>
+      </div>
+      
+      <div class="form-group" style="margin-top: 24px;">
+        <label class="form-label">
+          <span class="icon">◈</span>
+          <span class="zh">您想问什么？</span>
+          <span class="en">What would you like to ask?</span>
+        </label>
+        <textarea class="form-input" rows="4" placeholder="">
+          <span class="zh">比如：这件事能不能成？今年运势如何？给宝宝起个名字...</span>
+          <span class="en">e.g. Will this work out? How is my fortune this year? Baby name suggestions...</span>
+        </textarea>
+      </div>
+      
+      <div class="quick-tags">
+        <span class="quick-tag">
+          <span class="zh">能不能成</span>
+          <span class="en">Will it succeed?</span>
+        </span>
+        <span class="quick-tag">
+          <span class="zh">会不会发生</span>
+          <span class="en">Will it happen?</span>
+        </span>
+        <span class="quick-tag">
+          <span class="zh">要不要做</span>
+          <span class="en">Should I do it?</span>
+        </span>
+        <span class="quick-tag">
+          <span class="zh">何时发生</span>
+          <span class="en">When will it happen?</span>
+        </span>
+        <span class="quick-tag">
+          <span class="zh">今年运势</span>
+          <span class="en">This year's fortune</span>
+        </span>
+        <span class="quick-tag">
+          <span class="zh">事业运</span>
+          <span class="en">Career fortune</span>
+        </span>
+      </div>
+      
+      <button class="btn-gold" style="width: 100%;">
+        <span>✦</span>
+        <span class="zh">提交咨询</span>
+        <span class="en">Submit Consultation</span>
+      </button>
+    </div>
+    
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')">
+        <span class="nav-icon">⌂</span>
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </div>
+      <div class="bottom-nav-item active" onclick="switchPage('consult')">
+        <span class="nav-icon">✎</span>
+        <span class="zh">咨询</span>
+        <span class="en">Consult</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('history')">
+        <span class="nav-icon">☰</span>
+        <span class="zh">历史</span>
+        <span class="en">Records</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')">
+        <span class="nav-icon">⊙</span>
+        <span class="zh">我的</span>
+        <span class="en">Profile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 历史记录页 ===== -->
+<div class="page" id="page-history">
+  <div class="page-container">
+    <div class="history-content">
+      <h1 class="text-zh">
+        <span class="zh">咨询记录</span>
+        <span class="en">Consultation Records</span>
+      </h1>
+      
+      <div class="record-card">
+        <p class="record-q">
+          <span class="zh">这个合作还能不能继续推进</span>
+          <span class="en">Can this partnership continue to move forward?</span>
+        </p>
+        <div class="record-meta">
+          <span class="record-tag">大六壬</span>
+          <span>2026-04-07</span>
+          <span>15:23</span>
+        </div>
+      </div>
+      
+      <div class="record-card">
+        <p class="record-q">
+          <span class="zh">今年事业运怎么样</span>
+          <span class="en">How is my career fortune this year?</span>
+        </p>
+        <div class="record-meta">
+          <span class="record-tag">子平命理</span>
+          <span>2026-04-06</span>
+          <span>09:12</span>
+        </div>
+      </div>
+      
+      <div class="record-card">
+        <p class="record-q">
+          <span class="zh">宝宝起名有什么推荐</span>
+          <span class="en">Any recommendations for baby name suggestions?</span>
+        </p>
+        <div class="record-meta">
+          <span class="record-tag">八字取名</span>
+          <span>2026-04-05</span>
+          <span>21:08</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')">
+        <span class="nav-icon">⌂</span>
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')">
+        <span class="nav-icon">✎</span>
+        <span class="zh">咨询</span>
+        <span class="en">Consult</span>
+      </div>
+      <div class="bottom-nav-item active" onclick="switchPage('history')">
+        <span class="nav-icon">☰</span>
+        <span class="zh">历史</span>
+        <span class="en">Records</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('profile')">
+        <span class="nav-icon">⊙</span>
+        <span class="zh">我的</span>
+        <span class="en">Profile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 个人中心页 ===== -->
+<div class="page" id="page-profile">
+  <div class="page-container">
+    <div class="profile-content">
+      <h1 class="text-zh">
+        <span class="zh">我的</span>
+        <span class="en">Profile</span>
+      </h1>
+      
+      <!-- 已登录状态 -->
+      <div class="profile-card">
+        <div class="user-info">
+          <div class="avatar">陈</div>
+          <div>
+            <div class="username">陈婷</div>
+            <div class="useremail">10919669@qq.com</div>
+          </div>
+        </div>
+        <div class="membership">
+          <span class="membership-label">
+            <span class="zh">当前身份</span>
+            <span class="en">Membership</span>
+          </span>
+          <span class="membership-value">
+            <span class="zh">轻陪伴会员</span>
+            <span class="en">Light Companion</span>
+          </span>
+        </div>
+      </div>
+
+      <h2 class="section-title">
+        <span class="zh">订单记录</span>
+        <span class="en">Order History</span>
+      </h2>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">📋</span>
+          <span class="zh">查看订单</span>
+          <span class="en">View Orders</span>
+        </div>
+        <span class="menu-item-arrow">›</span>
+      </div>
+
+      <h2 class="section-title">
+        <span class="zh">我的信息</span>
+        <span class="en">My Information</span>
+      </h2>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">✉</span>
+          <span class="zh">邮箱</span>
+          <span class="en">Email</span>
+        </div>
+        <span class="menu-item-arrow">10919669@qq.com ›</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">☎</span>
+          <span class="zh">手机</span>
+          <span class="en">Phone</span>
+        </div>
+        <span class="menu-item-arrow">
+          <span class="zh">未绑定 ›</span>
+          <span class="en">Not bound ›</span>
+        </span>
+      </div>
+
+      <h2 class="section-title" style="margin-top: 20px;">
+        <span class="zh">其他</span>
+        <span class="en">Other</span>
+      </h2>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">📜</span>
+          <span class="zh">咨询记录</span>
+          <span class="en">Records</span>
+        </div>
+        <span class="menu-item-arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">⚙</span>
+          <span class="zh">设置</span>
+          <span class="en">Settings</span>
+        </div>
+        <span class="menu-item-arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">❓</span>
+          <span class="zh">帮助与反馈</span>
+          <span class="en">Help & Feedback</span>
+        </div>
+        <span class="menu-item-arrow">›</span>
+      </div>
+      <div class="menu-item danger">
+        <div class="menu-item-left">
+          <span class="menu-item-icon">↩</span>
+          <span class="zh">退出登录</span>
+          <span class="en">Log Out</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bottom-nav">
+      <div class="bottom-nav-item" onclick="switchPage('home')">
+        <span class="nav-icon">⌂</span>
+        <span class="zh">首页</span>
+        <span class="en">Home</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('consult')">
+        <span class="nav-icon">✎</span>
+        <span class="zh">咨询</span>
+        <span class="en">Consult</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchPage('history')">
+        <span class="nav-icon">☰</span>
+        <span class="zh">历史</span>
+        <span class="en">Records</span>
+      </div>
+      <div class="bottom-nav-item active" onclick="switchPage('profile')">
+        <span class="nav-icon">⊙</span>
+        <span class="zh">我的</span>
+        <span class="en">Profile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 语言切换
+  function setLang(lang) {
+    document.documentElement.className = 'dark lang-' + lang;
+    document.querySelectorAll('.lang-toggle button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    localStorage.setItem('aetheria_lang', lang);
+  }
+  
+  // 初始化语言
+  var savedLang = localStorage.getItem('aetheria_lang') || 'zh';
+  setLang(savedLang);
+  
+  // 语言切换按钮事件
+  document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setLang(btn.dataset.lang);
+    });
+  });
+  
+  // 页面切换
+  function switchPage(name) {
+    document.querySelectorAll('.page').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    document.querySelectorAll('.bottom-nav-item').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelector('.nav-btn[data-page="' + name + '"]')?.classList.add('active');
+    
+    // 滚动到顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  // 导航按钮事件
+  document.querySelectorAll('.nav-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchPage(btn.dataset.page);
+    });
+  });
+  
+  // 快捷标签点击
+  document.querySelectorAll('.quick-tag').forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+  
+  // 领域卡片点击
+  document.querySelectorAll('.domain-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('.domain-card').forEach(function(c) {
+        c.style.borderColor = 'rgba(255,255,255,0.06)';
+      });
+      this.style.borderColor = 'rgba(218,207,152,0.5)';
+      switchPage('consult');
+    });
+  });
+</script>
+
+</body>
+</html>

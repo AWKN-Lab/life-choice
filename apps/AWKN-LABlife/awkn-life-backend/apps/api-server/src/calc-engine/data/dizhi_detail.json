@@ -1,0 +1,209 @@
+{
+  "meta": {"description": "十二地支详细属性（藏干、冲合刑害、方位、季节、生肖）", "version": "1.0.0", "sources": ["渊海子平", "三命通会", "滴天髓"]},
+  "dizhi": [
+    {
+      "name": "子", "element": "水", "yin_yang": "阳", "animal": "鼠", "direction": "北方",
+      "month": "十一月（大雪~小寒）", "hour": "23:00-01:00",
+      "zanggan": {"main": "癸", "middle": null, "residual": null},
+      "liu_he": "子丑合土", "liu_chong": "子午冲", "liu_hai": "子未害",
+      "san_he": "申子辰合水局", "san_hui": "亥子丑会北方水",
+      "san_xing": null, "zi_xing": null,
+      "contains_shen_sha": ["桃花（午卯戌见子）", "将星（申子辰见子）", "驿马（寅午戌不见子）"],
+      "wuxing_relationships": {
+        "with_chou": "子丑合土（合中有克，子水克丑中己土）",
+        "with_wu": "子午冲（水火相冲，主内心矛盾、家庭变动）",
+        "with_mao": "子卯无礼之刑（水生木太过反为刑）",
+        "with_wei": "子未害（暗中小人、不和）"
+      },
+      "description": "子为水之禄地，壬癸临官。子水主智、主流动、主寒冷。子月为仲冬，水旺之极。子时为夜半，阴极阳生之时。",
+      "application": "子水旺者聪明灵活，但易多思多虑。子午冲主感情波折，子丑合主人际和谐。"
+    },
+    {
+      "name": "丑", "element": "土", "yin_yang": "阴", "animal": "牛", "direction": "北方（偏中）",
+      "month": "十二月（小寒~立春）", "hour": "01:00-03:00",
+      "zanggan": {"main": "己", "middle": "辛", "residual": "癸"},
+      "liu_he": "子丑合土", "liu_chong": "丑未冲", "liu_hai": "丑午害",
+      "san_he": "巳酉丑合金局", "san_hui": "亥子丑会北方水",
+      "san_xing": "丑戌未恃势之刑", "zi_xing": null,
+      "contains_shen_sha": ["华盖（巳酉丑见丑）", "天乙贵人（甲戊庚牛羊）"],
+      "wuxing_relationships": {
+        "with_zi": "子丑合土",
+        "with_wei": "丑未冲（土土相冲，主脾胃健康、房产变动）",
+        "with_xu": "丑戌刑（恃势之刑，主仗势欺人反受其害）",
+        "with_wu": "丑午害（主暗损、不和）"
+      },
+      "description": "丑为金库、水之余气。丑中藏己土辛金癸水，为湿土能生金蓄水。丑月为季冬，寒冻之极。",
+      "application": "丑土为湿土，能生金蓄水。丑戌刑主固执冲突，丑未冲主脾胃问题。丑中辛金为财星余气。"
+    },
+    {
+      "name": "寅", "element": "木", "yin_yang": "阳", "animal": "虎", "direction": "东方",
+      "month": "正月（立春~惊蛰）", "hour": "03:00-05:00",
+      "zanggan": {"main": "甲", "middle": "丙", "residual": "戊"},
+      "liu_he": "寅亥合木", "liu_chong": "寅申冲", "liu_hai": "寅巳害",
+      "san_he": "寅午戌合火局", "san_hui": "寅卯辰会东方木",
+      "san_xing": "寅巳申无恩之刑", "zi_xing": null,
+      "contains_shen_sha": ["驿马（寅午戌见申）", "华盖（寅午戌见戌）", "天乙贵人（丙丁猪鸡位不在寅）"],
+      "wuxing_relationships": {
+        "with_hai": "寅亥合木（木气增旺）",
+        "with_shen": "寅申冲（金木相冲，主出行迁移、事业变动）",
+        "with_si": "寅巳害（无恩之刑之一，主恩将仇报）",
+        "with_mao": "寅卯辰会东方木（木势极旺）"
+      },
+      "description": "寅为甲木临官之地，三阳开泰之首。寅中藏甲丙戊，为火土之长生。寅月为孟春，万物始生。",
+      "application": "寅木为春之始，寅月甲木得禄。寅申冲主动荡，寅亥合主贵人。寅巳申三刑最复杂，需看全局配合。"
+    },
+    {
+      "name": "卯", "element": "木", "yin_yang": "阴", "animal": "兔", "direction": "东方",
+      "month": "二月（惊蛰~清明）", "hour": "05:00-07:00",
+      "zanggan": {"main": "乙", "middle": null, "residual": null},
+      "liu_he": "卯戌合火", "liu_chong": "卯酉冲", "liu_hai": "卯辰害",
+      "san_he": "亥卯未合木局", "san_hui": "寅卯辰会东方木",
+      "san_xing": "子卯无礼之刑", "zi_xing": null,
+      "contains_shen_sha": ["桃花（申子辰见酉不在卯）", "将星（亥卯未见卯）", "桃花（寅午戌见卯）"],
+      "wuxing_relationships": {
+        "with_xu": "卯戌合火（木生火，主合作中有变化）",
+        "with_you": "卯酉冲（金木相冲，主感情变动、合作变化、身体意外）",
+        "with_chen": "卯辰害（主暗损）",
+        "with_zi": "子卯无礼之刑（水生木太过）"
+      },
+      "description": "卯为乙木临官之地，仲春木旺。卯中只藏乙木，为纯粹之木气。卯月为仲春，花木繁盛。",
+      "application": "卯木纯粹，卯酉冲为八字中最剧烈的冲之一。卯戌合主人际合作。卯月乙木最旺，喜丙火泄秀。"
+    },
+    {
+      "name": "辰", "element": "土", "yin_yang": "阳", "animal": "龙", "direction": "中央（偏东）",
+      "month": "三月（清明~立夏）", "hour": "07:00-09:00",
+      "zanggan": {"main": "戊", "middle": "乙", "residual": "癸"},
+      "liu_he": "辰酉合金", "liu_chong": "辰戌冲", "liu_hai": "卯辰害",
+      "san_he": "申子辰合水局", "san_hui": "寅卯辰会东方木",
+      "san_xing": null, "zi_xing": "辰辰自刑",
+      "contains_shen_sha": ["华盖（申子辰见辰）", "天乙贵人（不在辰）"],
+      "wuxing_relationships": {
+        "with_you": "辰酉合金（化金生水，主合作聚财）",
+        "with_xu": "辰戌冲（土土相冲，主房产变动、合同纠纷）",
+        "with_mao": "卯辰害（主暗损不和）",
+        "with_chen": "辰辰自刑（主自寻烦恼、抑郁纠结）"
+      },
+      "description": "辰为水库、金之余气。辰中藏戊乙癸，为湿土能蓄水生木。辰月为季春，春末夏初之交。",
+      "application": "辰为四库之首，辰戌冲为开库。辰酉合金为上等合。辰中癸水为财星余气，辰中乙木为印星余气。"
+    },
+    {
+      "name": "巳", "element": "火", "yin_yang": "阴", "animal": "蛇", "direction": "南方",
+      "month": "四月（立夏~芒种）", "hour": "09:00-11:00",
+      "zanggan": {"main": "丙", "middle": "庚", "residual": "戊"},
+      "liu_he": "巳申合水", "liu_chong": "巳亥冲", "liu_hai": "寅巳害",
+      "san_he": "巳酉丑合金局", "san_hui": "巳午未会南方火",
+      "san_xing": "寅巳申无恩之刑", "zi_xing": null,
+      "contains_shen_sha": ["驿马（寅午戌不见巳）", "文昌贵人（丙申不在巳）"],
+      "wuxing_relationships": {
+        "with_shen": "巳申合水（合中有刑，主合作中有矛盾）",
+        "with_hai": "巳亥冲（水火相冲，主奔波变动）",
+        "with_yin": "寅巳害（无恩之刑之一）",
+        "with_si": "巳午未会南方火（火势极旺）"
+      },
+      "description": "巳为丙火临官之地，又为金之长生。巳中藏丙庚戊，为火金土三气并存。巳月为孟夏，火初旺。",
+      "application": "巳中庚金为财星长生，巳月庚金有根。巳申合水为六合中较复杂者，合中有刑。巳亥冲主动荡出行。"
+    },
+    {
+      "name": "午", "element": "火", "yin_yang": "阳", "animal": "马", "direction": "南方",
+      "month": "五月（芒种~小暑）", "hour": "11:00-13:00",
+      "zanggan": {"main": "丁", "middle": "己", "residual": null},
+      "liu_he": "午未合土/火", "liu_chong": "子午冲", "liu_hai": "丑午害",
+      "san_he": "寅午戌合火局", "san_hui": "巳午未会南方火",
+      "san_xing": null, "zi_xing": "午午自刑",
+      "contains_shen_sha": ["桃花（申子辰见酉不在午）", "将星（寅午戌见午）", "羊刃（丙午戊午为刃）"],
+      "wuxing_relationships": {
+        "with_zi": "子午冲（水火相冲，主内心矛盾、家庭变动、感情波折）",
+        "with_wei": "午未合（合中有化，主亲近合作）",
+        "with_chou": "丑午害（主暗损不和）",
+        "with_wu": "午午自刑（主自寻烦恼、纠结）"
+      },
+      "description": "午为丁火临官之地，火旺之极。午中藏丁己，为火土并存。午月为仲夏，火炎土燥。",
+      "application": "午火最旺，午月需水调候。子午冲为八字中最重要的冲之一。午未合为六合中较柔和者。午午自刑主内心煎熬。"
+    },
+    {
+      "name": "未", "element": "土", "yin_yang": "阴", "animal": "羊", "direction": "中央（偏南）",
+      "month": "六月（小暑~立秋）", "hour": "13:00-15:00",
+      "zanggan": {"main": "己", "middle": "丁", "residual": "乙"},
+      "liu_he": "午未合土/火", "liu_chong": "丑未冲", "liu_hai": "子未害",
+      "san_he": "亥卯未合木局", "san_hui": "巳午未会南方火",
+      "san_xing": "丑戌未恃势之刑", "zi_xing": null,
+      "contains_shen_sha": ["华盖（亥卯未见未）", "天乙贵人（甲戊庚牛羊）"],
+      "wuxing_relationships": {
+        "with_wu": "午未合（合中有化，主亲近合作）",
+        "with_chou": "丑未冲（土土相冲，主脾胃健康、人际关系变化）",
+        "with_zi": "子未害（主暗中小人、不和）",
+        "with_xu": "丑戌未恃势之刑（主仗势欺人反受其害）"
+      },
+      "description": "未为木库、火之余气。未中藏己丁乙，为燥土能收火敛木。未月为季夏，暑热未消。",
+      "application": "未为燥土，能收火气。丑未冲主脾胃问题。亥卯未合木局为上等合。未中丁火为印星余气。"
+    },
+    {
+      "name": "申", "element": "金", "yin_yang": "阳", "animal": "猴", "direction": "西方",
+      "month": "七月（立秋~白露）", "hour": "15:00-17:00",
+      "zanggan": {"main": "庚", "middle": "壬", "residual": "戊"},
+      "liu_he": "巳申合水", "liu_chong": "寅申冲", "liu_hai": "申亥害",
+      "san_he": "申子辰合水局", "san_hui": "申酉戌会西方金",
+      "san_xing": "寅巳申无恩之刑", "zi_xing": null,
+      "contains_shen_sha": ["驿马（寅午戌见申）", "文昌贵人（丙申见申）"],
+      "wuxing_relationships": {
+        "with_si": "巳申合水（合中有刑，主合作中有矛盾）",
+        "with_yin": "寅申冲（金木相冲，主出行迁移、事业变动）",
+        "with_hai": "申亥害（主暗损不和）",
+        "with_you": "申酉戌会西方金（金势极旺）"
+      },
+      "description": "申为庚金临官之地，又为水之长生。申中藏庚壬戊，为金水土三气并存。申月为孟秋，金初旺。",
+      "application": "申中壬水为食伤长生，申月壬水有根。寅申冲为八字中常见的冲，主动荡。巳申合水为六合中较复杂者。"
+    },
+    {
+      "name": "酉", "element": "金", "yin_yang": "阴", "animal": "鸡", "direction": "西方",
+      "month": "八月（白露~寒露）", "hour": "17:00-19:00",
+      "zanggan": {"main": "辛", "middle": null, "residual": null},
+      "liu_he": "辰酉合金", "liu_chong": "卯酉冲", "liu_hai": "酉戌害",
+      "san_he": "巳酉丑合金局", "san_hui": "申酉戌会西方金",
+      "san_xing": null, "zi_xing": "酉酉自刑",
+      "contains_shen_sha": ["桃花（申子辰见酉）", "将星（巳酉丑见酉）", "文昌贵人（丙申见酉）"],
+      "wuxing_relationships": {
+        "with_chen": "辰酉合金（化金生水，主合作聚财）",
+        "with_mao": "卯酉冲（金木相冲，主感情变动、合作变化、身体意外）",
+        "with_xu": "酉戌害（主暗损不和）",
+        "with_you": "酉酉自刑（主自寻烦恼、纠结）"
+      },
+      "description": "酉为辛金临官之地，仲秋金旺。酉中只藏辛金，为纯粹之金气。酉月为仲秋，金气肃杀。",
+      "application": "酉金纯粹，卯酉冲为八字中最剧烈的冲之一。辰酉合金为上等合。酉月辛金最旺，喜壬水淘洗。"
+    },
+    {
+      "name": "戌", "element": "土", "yin_yang": "阳", "animal": "狗", "direction": "中央（偏西）",
+      "month": "九月（寒露~立冬）", "hour": "19:00-21:00",
+      "zanggan": {"main": "戊", "middle": "辛", "residual": "丁"},
+      "liu_he": "卯戌合火", "liu_chong": "辰戌冲", "liu_hai": "酉戌害",
+      "san_he": "寅午戌合火局", "san_hui": "申酉戌会西方金",
+      "san_xing": "丑戌未恃势之刑", "zi_xing": null,
+      "contains_shen_sha": ["华盖（寅午戌见戌）", "天乙贵人（不在戌）"],
+      "wuxing_relationships": {
+        "with_mao": "卯戌合火（木生火，主合作中有变化）",
+        "with_chen": "辰戌冲（土土相冲，主房产变动、合同纠纷）",
+        "with_you": "酉戌害（主暗损不和）",
+        "with_chou": "丑戌未恃势之刑（主仗势欺人反受其害）"
+      },
+      "description": "戌为火库、金之余气。戌中藏戊辛丁，为燥土能收火敛金。戌月为季秋，秋末冬初之交。",
+      "application": "戌为四库之一，辰戌冲为开库。卯戌合主人际合作。戌中辛金为财星余气，戌中丁火为印星余气。"
+    },
+    {
+      "name": "亥", "element": "水", "yin_yang": "阴", "animal": "猪", "direction": "北方",
+      "month": "十月（立冬~大雪）", "hour": "21:00-23:00",
+      "zanggan": {"main": "壬", "middle": "甲", "residual": null},
+      "liu_he": "寅亥合木", "liu_chong": "巳亥冲", "liu_hai": "申亥害",
+      "san_he": "亥卯未合木局", "san_hui": "亥子丑会北方水",
+      "san_xing": null, "zi_xing": "亥亥自刑",
+      "contains_shen_sha": ["驿马（寅午戌见申不在亥）", "天乙贵人（壬癸兔蛇藏见亥）"],
+      "wuxing_relationships": {
+        "with_yin": "寅亥合木（木气增旺）",
+        "with_si": "巳亥冲（水火相冲，主奔波变动）",
+        "with_shen": "申亥害（主暗损不和）",
+        "with_hai": "亥亥自刑（主自寻烦恼、纠结）"
+      },
+      "description": "亥为壬水临官之地，又为甲木长生。亥中藏壬甲，为水木之气并存。亥月为孟冬，水初旺。",
+      "application": "亥中甲木为印星长生，亥月甲木有根。寅亥合为上等合。巳亥冲主动荡。亥亥自刑主内心纠结。"
+    }
+  ]
+}
