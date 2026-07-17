@@ -56,7 +56,7 @@ references/materials/**/*.pdf
 references/materials/**/*.docx
 references/projects/legacy-unknown/**/*.png
 
-# ---- 知识库产物（向量/索引，超 100MB 不入 git） ----
+# ---- 知识库产物：单体数据库/缓存不入 Git；*.parts/ 分片保留 ----
 knowledge/processed/**/*.npy
 knowledge/processed/classics_index*.jsonl*
 knowledge/processed/_*_import.jsonl

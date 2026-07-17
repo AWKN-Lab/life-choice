@@ -1,0 +1,70 @@
+{
+  "format": "awkn-jsonl-parts/v1",
+  "source_name": "classics_index.jsonl",
+  "dataset_sha256": "c34b46843740d8739cf865307cf3c3fdc843e7b4535c90a4a93b90c8cecd7275",
+  "rows": 329577,
+  "max_part_bytes": 25165824,
+  "part_count": 10,
+  "parts": [
+    {
+      "file": "classics_index.part-0001.jsonl",
+      "rows": 46219,
+      "bytes": 25165655,
+      "sha256": "0083f4a4dd4d6abce929f6e1dc80c045968e1eae17e2f73e9e45c115b139b48b"
+    },
+    {
+      "file": "classics_index.part-0002.jsonl",
+      "rows": 49445,
+      "bytes": 25165516,
+      "sha256": "3a64fb22aba3fdf140cc70c027613a56f3756d2f580df3ed5422a73d56999596"
+    },
+    {
+      "file": "classics_index.part-0003.jsonl",
+      "rows": 27105,
+      "bytes": 25165502,
+      "sha256": "9945706cb30f34471e4ae46ba7f82734e11302db2c11506b297439e40d72ff9b"
+    },
+    {
+      "file": "classics_index.part-0004.jsonl",
+      "rows": 35052,
+      "bytes": 25164547,
+      "sha256": "3c7494abb7a824aa79566f71aa9c79bb38fef7a6d40cd61c8e4fa9b4b04649c3"
+    },
+    {
+      "file": "classics_index.part-0005.jsonl",
+      "rows": 35066,
+      "bytes": 25165609,
+      "sha256": "4f5503aec14eee0a92f26760e609f5d13ec48a3bd7a3c14e5ed3c7d0ffe2e7ed"
+    },
+    {
+      "file": "classics_index.part-0006.jsonl",
+      "rows": 22772,
+      "bytes": 25165141,
+      "sha256": "d466a2996d4468e9532079195f2dca97d1236ae0b1cdd80cb6abad3726dd75a5"
+    },
+    {
+      "file": "classics_index.part-0007.jsonl",
+      "rows": 23817,
+      "bytes": 25165792,
+      "sha256": "963dad8ff41d2be8caa51880af68c7b8afba492bdc5e9f0dc200be6bbda90008"
+    },
+    {
+      "file": "classics_index.part-0008.jsonl",
+      "rows": 25144,
+      "bytes": 25165741,
+      "sha256": "8155e39c6b20752a68e7bf86c2ebb5b41791d190619378a9b0fed613bfc488de"
+    },
+    {
+      "file": "classics_index.part-0009.jsonl",
+      "rows": 25234,
+      "bytes": 25165797,
+      "sha256": "e2288b626a1b6ccc66107d7e5cd32895f0b69cd93f39dc65a108cfd383a8246d"
+    },
+    {
+      "file": "classics_index.part-0010.jsonl",
+      "rows": 39723,
+      "bytes": 22273613,
+      "sha256": "f5ba9bd121717b177a2c83063710ea1e7d2b10612ba921cf25eabe7e5db5f2be"
+    }
+  ]
+}

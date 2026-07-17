@@ -1,0 +1,52 @@
+{
+  "format": "awkn-jsonl-parts/v1",
+  "source_name": "_recovered_import.jsonl",
+  "dataset_sha256": "da11c9a972df385420f7c9c8e03ac3241e4853338ce7273c9f3a51bd2e2dbe44",
+  "rows": 167111,
+  "max_part_bytes": 25165824,
+  "part_count": 7,
+  "parts": [
+    {
+      "file": "recovered_import.part-0001.jsonl",
+      "rows": 30815,
+      "bytes": 25165059,
+      "sha256": "8639aa5d981ea782e804744479a8149474dcdc123ebff009a8436b57fee772bb"
+    },
+    {
+      "file": "recovered_import.part-0002.jsonl",
+      "rows": 30483,
+      "bytes": 25165672,
+      "sha256": "80c7d401ea795bdc61f3fcd112665591be096047764ffa4cc6a925519b0f3d40"
+    },
+    {
+      "file": "recovered_import.part-0003.jsonl",
+      "rows": 23576,
+      "bytes": 25164904,
+      "sha256": "89c727178ce3ea44937a70d67217e327aefd891328f828ad30d19cdcc61d6ba9"
+    },
+    {
+      "file": "recovered_import.part-0004.jsonl",
+      "rows": 24799,
+      "bytes": 25165585,
+      "sha256": "94024a5f62102cb3c92250f0c1b2b7139871f4e02a143ea55640134902e21ce9"
+    },
+    {
+      "file": "recovered_import.part-0005.jsonl",
+      "rows": 25568,
+      "bytes": 25165443,
+      "sha256": "2b8a41574e7e7b5dfe02b2074c72780a9a8b0f7b3e79b3d2a8d089910ef41e03"
+    },
+    {
+      "file": "recovered_import.part-0006.jsonl",
+      "rows": 23546,
+      "bytes": 25164747,
+      "sha256": "870cc6de4c5aa52fd93f3b7ef9700fd5d0d6a3c5e1936d5b4ece8f3e0fa2949c"
+    },
+    {
+      "file": "recovered_import.part-0007.jsonl",
+      "rows": 8324,
+      "bytes": 9644810,
+      "sha256": "39df62147d12437e5702225123690f6db3f243f75889c9d3b890e208e556a1b3"
+    }
+  ]
+}

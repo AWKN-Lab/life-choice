@@ -2,6 +2,8 @@ import json
 import os
 from typing import List, Dict
 
+from jsonl_dataset import iter_jsonl_lines, resolve_jsonl_paths
+
 # loader.py 位于 apps/AWKN-LABlife/services/knowledge-service/
 # __file__ = .../apps/AWKN-LABlife/services/knowledge-service/loader.py
 # x1=knowledge-service, x2=services, x3=AWKN-LABlife, x4=apps, x5=人生决策宗师
@@ -28,9 +30,10 @@ def load_all() -> Dict:
     """
     items = []
 
-    # 1. 加载 classics_index.jsonl
-    if not os.path.exists(INDEX_FILE):
-        print(f"[loader] WARNING: classics_index.jsonl 不存在: {INDEX_FILE}，检索将返回空")
+    # 1. 加载部署单文件，或 Git 中按序保存的分片
+    index_paths = resolve_jsonl_paths(INDEX_FILE)
+    if not index_paths:
+        print(f"[loader] WARNING: classics_index 数据集不存在: {INDEX_FILE}，检索将返回空")
         return {
             'items': [],
             'by_system': {},
@@ -38,24 +41,23 @@ def load_all() -> Dict:
             'manifest': {},
         }
 
-    with open(INDEX_FILE, 'r', encoding='utf-8') as f:
-        for line_no, line in enumerate(f, 1):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                it = json.loads(line)
-            except json.JSONDecodeError as e:
-                print(f"[loader] WARN: 第 {line_no} 行 JSON 解析失败: {e}")
-                continue
-            items.append({
-                'source': it.get('source', ''),
-                'text': (it.get('text', '') or '')[:500],  # 截断到 500 字
-                'system_type': it.get('system_type', 'other'),
-                'book': it.get('book', ''),
-                'passage_id': it.get('passage_id', ''),
-                'chapter': it.get('chapter', ''),
-            })
+    for path, line_no, line in iter_jsonl_lines(INDEX_FILE):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            it = json.loads(line)
+        except json.JSONDecodeError as e:
+            print(f"[loader] WARN: {path} 第 {line_no} 行 JSON 解析失败: {e}")
+            continue
+        items.append({
+            'source': it.get('source', ''),
+            'text': (it.get('text', '') or '')[:500],  # 截断到 500 字
+            'system_type': it.get('system_type', 'other'),
+            'book': it.get('book', ''),
+            'passage_id': it.get('passage_id', ''),
+            'chapter': it.get('chapter', ''),
+        })
 
     # 2. 按 system_type 分组
     by_system: Dict[str, List[Dict]] = {}

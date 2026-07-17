@@ -12,6 +12,9 @@
 *.tsx text eol=lf
 *.json text eol=lf
 *.jsonl text eol=lf
+# Database parts preserve the source byte stream so manifest SHA-256 stays exact.
+knowledge/processed/*.parts/*.jsonl -text !eol
+knowledge/asset-ledger/*.parts/*.jsonl -text !eol
 *.yaml text eol=lf
 *.yml text eol=lf
 *.toml text eol=lf

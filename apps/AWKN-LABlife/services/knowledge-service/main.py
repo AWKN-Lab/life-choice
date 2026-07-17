@@ -14,6 +14,7 @@ if not hasattr(_np, 'uint'):
     _np.uint = _np.uint64
 
 from loader import load_all
+from jsonl_dataset import count_jsonl_rows, iter_jsonl_lines, resolve_jsonl_paths
 
 app = FastAPI(title="Knowledge Service", version="2026-05-v1")
 
@@ -157,8 +158,9 @@ def _init_chroma():
         if not os.path.exists(EMBED_FILE):
             _chroma_init_error = f"embeddings 文件不存在: {EMBED_FILE}"
             return False
-        if not os.path.exists(INDEX_FILE):
-            _chroma_init_error = f"classics_index.jsonl 不存在: {INDEX_FILE}"
+        index_paths = resolve_jsonl_paths(INDEX_FILE)
+        if not index_paths:
+            _chroma_init_error = f"classics_index 数据集不存在: {INDEX_FILE}"
             return False
 
         print(f"[{_EMBED_VERSION}] 加载 embeddings: {EMBED_FILE}")
@@ -168,9 +170,8 @@ def _init_chroma():
             if _EMBED_META_FILE and os.path.exists(_EMBED_META_FILE):
                 _meta = json.loads(open(_EMBED_META_FILE, encoding="utf-8").read())
                 dim = _meta.get("dim", 512)
-            # 从 INDEX_FILE 行数推断 n
-            with open(INDEX_FILE, encoding='utf-8') as f:
-                n = sum(1 for _ in f)
+            # 从单文件或有序分片的总行数推断 n
+            n = count_jsonl_rows(INDEX_FILE)
             _loaded_embeddings = np.memmap(EMBED_FILE, dtype=np.float32, mode='r', shape=(n, dim))
             print(f"[v3] memmap 加载, dim={dim}")
         else:
@@ -183,20 +184,19 @@ def _init_chroma():
                 _loaded_embeddings = np.load(EMBED_FILE)
         print(f"[{_EMBED_VERSION}] embeddings shape={_loaded_embeddings.shape}, dtype={_loaded_embeddings.dtype}")
 
-        print(f"[{_EMBED_VERSION}] 加载 classics_index.jsonl: {INDEX_FILE}")
+        print(f"[{_EMBED_VERSION}] 加载 classics_index 数据集: {', '.join(index_paths)}")
         # 精简加载：只保留检索必要字段，减少内存占用（text 截断到 500 字）
         _loaded_items = []
-        with open(INDEX_FILE, encoding='utf-8') as f:
-            for line in f:
-                it = json.loads(line)
-                _loaded_items.append({
-                    'passage_id': it.get('passage_id', ''),
-                    'book': it.get('book', ''),
-                    'chapter': it.get('chapter', ''),
-                    'system_type': it.get('system_type', 'bazi'),
-                    'text': it.get('text', '')[:500],  # 截断到 500 字，减少内存
-                    'source': it.get('source', ''),
-                })
+        for _path, _line_no, line in iter_jsonl_lines(INDEX_FILE):
+            it = json.loads(line)
+            _loaded_items.append({
+                'passage_id': it.get('passage_id', ''),
+                'book': it.get('book', ''),
+                'chapter': it.get('chapter', ''),
+                'system_type': it.get('system_type', 'bazi'),
+                'text': it.get('text', '')[:500],  # 截断到 500 字，减少内存
+                'source': it.get('source', ''),
+            })
         print(f"[{_EMBED_VERSION}] items={len(_loaded_items)}")
 
         if len(_loaded_items) != _loaded_embeddings.shape[0]:

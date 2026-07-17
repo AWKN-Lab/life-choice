@@ -1,0 +1,28 @@
+{
+  "format": "awkn-jsonl-parts/v1",
+  "source_name": "source-lineage.jsonl",
+  "dataset_sha256": "a8f2bd91c7478eac510cbcfe1cbdad1a1169db5d9f844edc24d2c5e655389fbe",
+  "rows": 329577,
+  "max_part_bytes": 25165824,
+  "part_count": 3,
+  "parts": [
+    {
+      "file": "source-lineage.part-0001.jsonl",
+      "rows": 94498,
+      "bytes": 25165586,
+      "sha256": "dcaa65376c441815a19f732a416558c1e18f95ad5ed234dc7244787cce5a1131"
+    },
+    {
+      "file": "source-lineage.part-0002.jsonl",
+      "rows": 116957,
+      "bytes": 25165688,
+      "sha256": "b586d63c47e9dc1898e76633adc67fe0cc2297ce17cc041dc32ac90b891ad7df"
+    },
+    {
+      "file": "source-lineage.part-0003.jsonl",
+      "rows": 118122,
+      "bytes": 22180662,
+      "sha256": "792246461f859ec287c407711c3b4ba6feb3224316cb47f3dea65dbfce89ac21"
+    }
+  ]
+}
